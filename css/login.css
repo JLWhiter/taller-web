@@ -1,0 +1,98 @@
+body{
+    margin: 0 auto;
+    background: linear-gradient(
+        90deg,
+        #fff,
+        #000000
+    );
+}
+a{
+    text-decoration: none;
+    color: #000000;
+}
+.contenedor-header{
+    max-width: 100%;
+    background-color: #fff;
+    padding: .2rem;
+    display: flex;
+    justify-content: end;
+}
+.contenedor-header nav ul li{
+    text-decoration: none;
+    list-style: none;
+}
+.contenedor-header a{
+    color: #000000;
+    padding: 0.7rem;
+    border-radius: 10px;
+    transition: 0.5s ease;
+}
+/* Animacion modo invitado*/
+.contenedor-header a:hover{ 
+    background-color: #161616;
+    color: #fff;
+}
+
+/* Login*/
+.login{
+    display: grid;
+    align-items: center;
+    text-align: center;
+    margin: 50px auto;
+    height: 500px;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 15px;
+    max-width: 500px;
+    box-shadow: 0px 5px 30px white;
+}
+.login img{
+    max-width: 100%;
+    margin-top: -50px;
+}
+.formulario h1{
+    font-family:'robot', 'arial';
+    color: #6b6b6be8;
+    text-shadow: 0px 1px 25px black;
+}
+.entrada_usuario{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 0.7rem;
+}
+/* Entrada de datos*/
+.entrada_datos{
+    margin-top: 15px;
+    border-radius: 6px;
+    height: 30px;
+    border: 1px solid black ;
+    transition: 0.5s ease;
+}
+.entrada_datos h2{
+    text-align: right;
+    font-weight: bolder;
+}
+/*Animacion entrada de datos*/
+.entrada_datos:hover{
+    border: 1px solid rgb(146, 0, 0);
+}
+.entrada_datos:focus{
+    outline: none;
+    border-color: rgb(146, 0, 0);
+    box-shadow: 0 0 10px rgba(146, 0, 0, 0.6);
+}
+.btn_iniciar{
+    border: none;
+    padding: 1rem;
+    margin-top: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: #55555570;
+    transition: 0.5s ease;
+}
+/*Animacion suave btn*/
+.btn_iniciar:hover{
+    background-color: #000000;
+    color: #fff;
+}
