@@ -1,0 +1,284 @@
+/* --- CONFIGURACIÓN BASE --- */
+* {
+  margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    /* Fondo de gris claro a oscuro de la página */
+    background-image: linear-gradient(to right, #e0e0e0, #1a1a1a);
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*  PANEL CONTENEDOR FLOTANTE  */
+.panel-contenedor {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    width: 90%;
+    max-width: 1400px;
+    border-radius: 40px; 
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1); 
+    overflow: hidden;
+    margin: 40px auto;
+}
+
+/*  BARRA SUPERIOR  */
+#barra-superior {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 0 50px;
+    height: 90px;
+    background-color: #ffffff;
+    
+}
+/* Logo UTP*/
+.logo-utp {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+    font-size: 1.2rem;
+    color: #cc0000; 
+}
+/* Tamaño imagen */
+.logo-imagen {
+    
+    height: 40px; 
+    width: auto;
+}
+
+.universidad-nombre {
+    color: #333333;
+    font-size: 0.9rem;
+    font-weight: normal;
+}
+
+/* Separación entre perfil y botón */
+.usuario-seccion {
+    display: flex;
+    align-items: center;
+    gap: 40px; 
+}
+
+/* --- CONTENIDO --- */
+#contenido-principal {
+    padding: 40px 50px;
+    margin: 0;
+}
+
+#titulo-principal {
+    font-size: 32px;
+    color: #1a1a1a;
+}
+
+.subtitulo {
+    color: #777777;
+    margin-bottom: 40px;
+}
+
+/*  Elemento UTP */
+.contenedor-tarjetas {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.tarjeta {
+    flex: 1;
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px; 
+    border: none; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+}
+
+.tarjeta-titulo {
+    color: #888888;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tarjeta-valor {
+    display: block;
+    font-size: 36px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.barra-controles {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#buscador {
+    width: 45%;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.boton-rojo {
+    background-color: #cc0000;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+    box-shadow: 0 5px 15px rgba(204, 0, 0, 0.2);
+}
+
+.boton-rojo:hover {
+    background-color: #990000;
+    box-shadow: 0 5px 15px rgba(153, 0, 0, 0.3);
+}
+
+/* Filtro y tablas */
+.lista-filtros {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.filtro-item {
+    padding: 10px 25px;
+    border: 1px solid #e0e0e0;
+    border-radius: 25px; 
+    font-size: 14px;
+    background: white;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.filtro-item.activo {
+    background-color: #cc0000;
+    color: white;
+    border-color: #cc0000;
+}
+
+.filtro-item:not(.activo):hover {
+    background-color: #f9f9f9;
+}
+
+.contenedor-tabla {
+    background: white;
+    border: none; 
+    border-radius: 20px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #fcfcfc;
+    padding: 20px;
+    text-align: left;
+    font-size: 14px;
+    color: #888;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+td {
+    padding: 22px 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.estado-activo {
+    color: #cc0000;
+    font-weight: bold;
+}
+
+.boton-eliminar {
+    background: none;
+    border: none;
+    color: #cc0000;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.perfil-usuario-wrapper {
+    display: flex;
+    align-items: center; 
+    gap: 15px; 
+}
+
+
+.foto-perfil {
+    width: 50px; 
+    height: 50px;
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 3px solid #cc0000; 
+}
+
+.texto-usuario {
+    display: flex;
+    flex-direction: column; 
+}
+
+
+.nombre-usuario {
+    font-weight: bold;
+    font-size: 16px;
+    color: #1a1a1a;
+}
+
+
+.correo-usuario {
+    color: #888888; 
+    font-size: 13px;
+}
+.etiqueta-roja {
+    background-color: #cc0000;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+
+.enlace-salir {
+    display: flex; 
+    align-items: center;
+    gap: 8px; 
+    text-decoration: none;
+    color: #1a1a1a; 
+    background-color: #ffffff; 
+    border: 1px solid #e0e0e0; 
+    padding: 10px 20px; 
+    border-radius: 10px; 
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+
+.enlace-salir:hover {
+    border-color: #888888; 
+}
+
+
+.icono-salir {
+    font-size: 18px; 
+    color: #1a1a1a;
+}
+
+.enlace-salir:hover {
+    background-color: #f9f9f9;
+}
