@@ -17,7 +17,7 @@
         </nav>
     </section>
 
-    <section class="contendor-login">
+    <section class="contendor-login layer-frontal">
         <div class="login">
             <div class="formulario">
                 <img src="assets/logo.webp" alt="logo_login">
@@ -33,12 +33,34 @@
                         <input class="entrada_datos" type="password" id="password"> 
                     </div>
                     <div class="contendor_btn">
-                        <input class="btn_iniciar" type="submit" value="Iniciar Sesion">
-                        <input class="btn_iniciar" type="submit" value="Registrar">
+                        <input class="btn_iniciar" type="submit" value="Iniciar Sesion" id="iniciar_sesion">
+                        <input class="btn_iniciar" type="submit" value="Registrar" id="ir_registro">
                     </div>
                 </form>
 
             </div>
+        </div>
+    </section>
+    <section class="contenedor-registro layer-trasero">
+        <div class="formulario register">
+            <img src="assets/logo.webp" alt="logo_login">
+            <h1>Educate Plataforma</h1>
+            <form>
+                <div class="entrada_usuario">
+                    <label>Nombre Completo</label>
+                    <input class="entrada_datos" type="text" id="nombres">
+                    <label>Apellido Completo</label>
+                    <input class="entrada_datos" type="text" id="apellidos">
+                    <label>DNI</label>
+                    <input class="entrada_datos" type="text" id="dni">
+                    <label>Usuario</label>
+                    <input class="entrada_datos" type="text" id="usuario">
+                    <label>Constraseña</label>
+                    <input class="entrada_datos" type="password" id="constraseña">
+                    <label>Celular</label>
+                    <input class="entrada_datos" type="text" id="celular">
+                </div>
+            </form>
         </div>
     </section>
 </body>

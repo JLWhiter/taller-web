@@ -34,10 +34,10 @@ a{
 }
 
 /* Login*/
-.contendor-login,.formulario{
+.contendor-login,.formulario, .contenedor-registro /*contendor registro reutilzar codigo*/{
     max-width: 100%;
 }
-.login{
+.login, .register /*registro reutilizar codigo*/{
     display: grid;
     align-items: center;
     text-align: center;
@@ -49,12 +49,12 @@ a{
     max-width: 500px;
     box-shadow: 0px 5px 30px white;
 }
-.login img{
+.login img, .register img{
     max-width: 100%;
     margin-top: -50px;
 }
 .formulario h1{
-    font-family:'robot', 'arial';
+    font-family:arial;
     color: #6b6b6be8;
     text-shadow: 0px 1px 25px black;
     padding: 1rem;
@@ -108,6 +108,18 @@ a{
     transform: scale(1.1);
     color: #fff;
 }
+/*Registro*/
+.register{
+    display: none;
+    align-self: center;
+    max-height: 100%;
+    padding: 5rem;
+}
+
+/*cambio de login a registro*/
+body:has(#ir_registro:active) .register {
+    display: block;
+}
 /*Pantalla Celular*/
 @media (max-width:750px){
     .contendor-login{
@@ -119,10 +131,8 @@ a{
 }
 
 /*Pantalla de smartwacth*/
-@media (max-width:200px){
-    .contenedor-header{
 
-    }
+@media (max-width:200px){
     .contenedor-header a{
         font-size: 8px  ;
     }
