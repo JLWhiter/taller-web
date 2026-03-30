@@ -1,8 +1,11 @@
 body{
+    display: grid;
+    align-items: center;
+    align-content: center;
+    align-self: center;
     margin: 0 auto;
-    background: linear-gradient(
-        90deg,#cacaca,#000000
-    );
+    background-image: url(../assets/pexels-matteo-milan-136935423-17180777.jpg);
+    backface-visibility: .5;
 }
 a{
     text-decoration: none;
@@ -47,7 +50,7 @@ a{
     padding: 1rem;
     background-color: #fff;
     border-radius: 15px;
-    box-shadow: 0px 5px 30px white;
+    box-shadow: 0px 0px 25px rgb(0, 0, 0);
 }
 .login img, .register img{
     max-width: 100%;
