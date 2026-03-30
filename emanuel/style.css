@@ -1,0 +1,78 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    height: 65px;
+    background-color: white;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.logo-universidad {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-universidad img {
+    height: 25px;
+}
+
+.logo-universidad span {
+    font-family: 'Inter', monospace;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.header-usuario {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.rol {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-family: 'Inter', monospace;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.foto-perfil {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.informacion-admin {
+    display: flex;
+    flex-direction: column;
+}
+
+.nombre {
+    font-family: 'Inter', monospace;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.email {
+    font-family: 'Inter', monospace;
+    font-size: 12px;
+    color: #888;
+}
+
+.boton-cerrar-sesion {
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.boton-cerrar-sesion:hover {
+    background-color: #f5f5f5;
+}
