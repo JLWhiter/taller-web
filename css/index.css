@@ -1,0 +1,11 @@
+.contenedor-header{
+    display: grid;
+}
+.contenedor-nav nav ul{
+    display:inline-flex;
+    gap: 15px;
+}
+.contenedor-nav nav ul li{
+    list-style: none;
+}
+
