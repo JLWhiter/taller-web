@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>UTP - Matrícula</title>
+    <link rel="stylesheet" href="./css/estilos.css">
+</head>
+<body>
+    <header>
+        <img src="img/logo-utp.png" alt="Logo UTP">
+        <h1>Proceso de Matrícula</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="carreras.html">Carreras</a></li>
+            <li><a href="matricula.html">Matrícula</a></li>
+            <li><a href="horarios.html">Horarios</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="directorio.html">Directorio</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+    <div class="wrapper">
+        <main>
+            <h2>Formulario de Inscripción 2026</h2>
+            <form action="#" method="POST">
+                <fieldset>
+                    <legend>Datos Personales</legend>
+                    <label>Código de Estudiante:</label>
+                    <input type="text" placeholder="Ej. U26123456" required>
+                    <label>Nombres y Apellidos:</label>
+                    <input type="text" required>
+                    <label>Sede de Preferencia:</label>
+                    <select>
+                        <option>Ate</option>
+                        <option>Lima Centro</option>
+                        <option>Lima Norte</option>
+                    </select>
+                </fieldset>
+                
+                <fieldset style="margin-top:15px;">
+                    <legend>Preferencias de Estudio</legend>
+                    <label>Modalidad:</label><br>
+                    <input type="radio" name="mod" value="p"> Presencial
+                    <input type="radio" name="mod" value="v"> Virtual
+                    <br><br>
+                    <label>Comentarios adicionales:</label>
+                    <textarea rows="4" style="width:100%"></textarea>
+                </fieldset>
+                <button type="submit" class="btn-enviar" style="margin-top:15px;">Finalizar Matrícula</button>
+            </form>
+        </main>
+        <aside>
+            <h3>Importante</h3>
+            <p>Debes estar al día en tus pagos para evitar bloqueos en el sistema.</p>
+        </aside>
+    </div>
+    <footer><p>&copy; 2026 Universidad Tecnológica del Perú</p></footer>
+</body>
+</html>
