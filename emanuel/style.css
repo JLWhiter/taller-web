@@ -1,78 +1,160 @@
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 30px;
-    height: 65px;
-    background-color: white;
-    border-bottom: 2px solid #e0e0e0;
+* {
+    font-family: "Inter", sans-serif;
 }
 
-.logo-universidad {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+body {
+    margin: 0;
+    height: 100vh;
 
-.logo-universidad img {
-    height: 25px;
-}
-
-.logo-universidad span {
-    font-family: 'Inter', monospace;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.header-usuario {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.rol {
-    background-color: #e8f5e9;
-    color: #2e7d32;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-family: 'Inter', monospace;
-    font-weight: 600;
-    font-size: 13px;
-}
-
-.foto-perfil {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.informacion-admin {
     display: flex;
     flex-direction: column;
-}
 
-.nombre {
-    font-family: 'Inter', monospace;
-    font-size: 14px;
-    font-weight: 600;
-}
+    .bloque-encabezado {
+        height: 40px;
+        padding: 10px;
 
-.email {
-    font-family: 'Inter', monospace;
-    font-size: 12px;
-    color: #888;
-}
+        border-bottom: 1.5px solid rgb(185, 185, 185);
 
-.boton-cerrar-sesion {
-    padding: 8px 16px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #fff;
-    cursor: pointer;
-    font-size: 13px;
-}
+        display: flex;
+        align-items: center;
 
-.boton-cerrar-sesion:hover {
-    background-color: #f5f5f5;
+        .logo-universidad {
+            flex: 1;
+            margin-left: 120px;
+            gap: 15px;
+
+            display: flex;
+            align-items: center;
+
+            .imagen-logo-universidad {
+                height: 30px;
+                width: auto;
+            }
+
+            .nombre-universidad {
+                font-size: 20px;
+            }
+        }
+
+        .seccion-usuario {
+            flex: 1;
+            margin-right: 120px;
+
+            display: flex;
+            align-items: center;
+            justify-content: right;
+
+            gap: 15px;
+
+            .foto-carnet-usuario {
+                height: 40px;
+                width: auto;
+
+                border: 2px solid rgb(185, 185, 185);
+                border-radius: 50%;
+            }
+
+            .rol-usuario {
+                background-color: rgb(229, 255, 229);
+
+                color: rgb(29, 153, 29);
+                font-weight: bold;
+                font-size: 13px;
+
+                padding: 5px 12px;
+                border-radius: 15px;
+            }
+
+            .informacion-usuario {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+
+                .nombre-email {
+                    display: flex;
+                    flex-direction: column;
+
+                    .nombre-usuario {
+                        font-size: 14px;
+                        font-weight: bold;
+                    }
+
+                    .email {
+                        font-size: 12px;
+                    }
+                }
+            }
+
+            .cerrar-sesion {
+                background-color: white;
+
+                &:hover {
+                    background-color: rgb(233, 233, 233);
+                }
+
+                margin-left: 15px;
+                width: 140px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+
+                border: 1px solid rgb(133, 131, 131);
+                border-radius: 15px;
+
+                cursor: pointer;
+
+                .img-cerrar-sesion {
+                    height: 20px;
+                    width: auto;
+                }
+
+                .etiqueta-cerrar-sesion {
+                    color: black;
+                }
+            }
+        }
+    }
+
+    .contenedor {
+        display: flex;
+        flex: 1;
+
+        .bloque-lateral {
+            width: 220px;
+            padding: 15px;
+            gap: 5px;
+
+            border-right: 1.5px solid rgb(185, 185, 185);
+
+            display: flex;
+            flex-direction: column;
+
+            .boton {
+                background-color: rgb(255, 246, 246);
+
+                &:hover {
+                    background-color: rgb(250, 192, 192);
+                }
+
+                border: 1px solid rgb(250, 192, 192);
+                border-radius: 7px;
+
+                height: 40px;
+
+                color: rgb(155, 62, 62);
+                font-weight: bold;
+
+                cursor: pointer;
+            }
+
+        }
+
+        .bloque-contenido {
+            background-color: rgb(250, 250, 250);
+
+            flex: 1;
+        }
+    }
 }
