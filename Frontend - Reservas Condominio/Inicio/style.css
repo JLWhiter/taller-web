@@ -1,0 +1,177 @@
+* {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+
+    .barra-lateral {
+        display: flex;
+        flex-direction: column;
+        width: 250px;
+        background-color: rgb(97, 56, 56);
+
+        .titulo-condominio {
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 10px;
+
+            border-bottom: 1px solid rgb(255, 255, 255, 0.2);
+
+            img {
+                height: 50px;
+                width: auto;
+            }
+
+            .informacion {
+                display: flex;
+                flex-direction: column;
+
+                .titulo {
+                    color: white;
+                    font-weight: bold;
+                }
+
+                .subtitulo {
+                    color: white;
+                    font-size: 12px;
+                }
+            }
+        }
+
+        .secciones {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            gap: 8px;
+
+            button {
+                height: 40px;
+                width: auto;
+                border-radius: 10px;
+                border: none;
+                background-color: rgb(117, 74, 74);
+
+                cursor: pointer;
+
+                display: flex;
+                align-items: center;
+                justify-content: left;
+                gap: 10px;
+
+                img {
+                    height: 15px;
+                    width: auto;
+                    margin-left: 10px;
+                }
+
+                span {
+                    color: white;
+                    font-weight: 500;
+                }
+
+                &:hover {
+                    background-color: rgb(150, 86, 86);
+                }
+            }
+        }
+
+        footer {
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            gap: 15px;
+
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+            .usuario {
+                display: flex;
+                gap: 15px;
+                align-items: center;
+                justify-content: center;
+                padding: 15px;
+
+                background-color: rgb(114, 73, 73);
+                border: none;
+                border-radius: 10px;
+
+                cursor: pointer;
+
+                &:hover {
+                    background-color: rgb(150, 86, 86);
+                }
+
+                .avatar-usuario {
+                    height: 40px;
+                    width: 40px;
+                    border-radius: 50%;
+                    background-color: rgb(80, 56, 56);
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    span {
+                        color: white;
+                    }
+                }
+
+                .informacion {
+                    display: flex;
+                    flex-direction: column;
+
+                    .nombre-apellido {
+                        color: white;
+                        text-align: left;
+                        font-weight: 500;
+                    }
+
+                    .torre-depa {
+                        color: white;
+                        opacity: 0.75;
+                        font-size: 12px;
+                        text-align: left;
+                    }
+                }
+            }
+
+            .cerrar-sesion {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 7px;
+
+                height: 40px;
+                border-radius: 10px;
+                background-color: rgb(114, 73, 73);
+                border: 0.5px solid rgb(184, 129, 129);
+
+                cursor: pointer;
+
+                &:hover {
+                    background-color: rgb(150, 86, 86);
+                }
+
+                img {
+                    height: 15px;
+                    width: auto;
+                }
+
+                span {
+                    color: white;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+    .contenido {
+        flex: 1;
+    }
+}

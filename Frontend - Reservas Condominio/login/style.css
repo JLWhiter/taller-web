@@ -16,7 +16,7 @@ body {
         /*INVESTIGAR*/
         background-image:
             linear-gradient(rgba(0, 0, 0, 0.6)),
-            url(images/background.png);
+            url(../images/background.png);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
