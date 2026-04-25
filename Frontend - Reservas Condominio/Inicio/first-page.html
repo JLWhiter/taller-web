@@ -50,23 +50,83 @@
             </button>
         </footer>
     </div>
-    <div class="contenido">
-        <div class="reservas">
-            <span>Reservas del Condominio</span>
-            <div class="botones">
-                <button class="boton-reserva"></button>
-                <button class="boton-reserva"></button>
-                <button class="boton-reserva"></button>
-                <button class="boton-reserva"></button>
-            </div>
+        <div class="panel-info">
+
+            <section class="seccion-info">
+                <h2 class="seccion-titulo">Información del Condominio</h2>
+                <div class="cards-grid">
+
+                    <div class="card" onclick="window.open('https://www.google.com/maps?q=Av.+Nicolas+Ayllon+7548+Ate+Lima', '_blank')" title="Ver en Google Maps">
+                        <div class="card-icono ubicacion">📍</div>
+                        <h3>Ubicación <span class="badge">↗</span></h3>
+                        <p>Av. Nicolas Ayllon 7548</p>
+                        <p>Ate, Lima - Perú</p>
+                        <p>Código Postal: 15487</p>
+                    </div>
+
+                    <div class="card"  title="Información de la construccion">
+                        <div class="card-icono construccion">🗓️</div>
+                        <h3>Año de Construcción <span class="badge">↗</span></h3>
+                        <p>Inaugurado en 2018</p>
+                        <p>8 años de antigüedad</p>
+                        <p>Última remodelación: 2024</p>
+                    </div>
+
+                    <div class="card"  title="Ver reglamento interno">
+                        <div class="card-icono datos">👥</div>
+                        <h3>Datos Generales <span class="badge">📄</span></h3>
+                        <p>4 Torres (A, B, C, D)</p>
+                        <p>120 Departamentos</p>
+                        <p>150 Estacionamientos</p>
+                    </div>
+
+                    <div class="card contacto-card" title="Contactar">
+                        <div class="card-icono contacto">📞</div>
+                        <h3>Contacto</h3>
+                        <a class="link-contacto" href="tel:+5112345678">📞 +51 1 234 5678</a>
+                        <a class="link-contacto" href="mailto:info@villasantaclara.com">✉️ info@villasantaclara.com</a>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="seccion-info">
+                <h2 class="seccion-titulo">Junta Directiva 2026</h2>
+                <div class="cards-grid">
+
+                     <div class="card directivo" onclick="window.open('https://wa.me/51987654321', '_blank')" title="Contactar por WhatsApp">
+                        <span class="rol">Presidente</span>
+                        <h3>Carlos Mendoza</h3>
+                        <p>+51 987 654 321</p>
+                        <span class="whatsapp-badge"> WhatsApp</span>
+                    </div>
+
+                    <div class="card directivo" onclick="window.open('https://wa.me/51987654322', '_blank')" title="Contactar por WhatsApp">
+                        <span class="rol">Vicepresidente</span>
+                        <h3>Ana Rodríguez</h3>
+                        <p>+51 987 654 322</p>
+                        <span class="whatsapp-badge">💬 WhatsApp</span>
+                    </div>
+
+                    <div class="card directivo" onclick="window.open('https://wa.me/51987654323', '_blank')" title="Contactar por WhatsApp">
+                        <span class="rol">Secretario</span>
+                        <h3>Luis Torres</h3>
+                        <p>+51 987 654 323</p>
+                        <span class="whatsapp-badge">💬 WhatsApp</span>
+                    </div>
+
+                    <div class="card directivo" onclick="window.open('https://wa.me/51987654324', '_blank')" title="Contactar por WhatsApp">
+                        <span class="rol">Tesorero</span>
+                        <h3>María Sánchez</h3>
+                        <p>+51 987 654 324</p>
+                        <span class="whatsapp-badge">💬 WhatsApp</span>
+                    </div>
+
+                </div>
+            </section>
+
         </div>
-        <div class="Herramientas">
-            <span>Herramientas</span>
-            <div class="botones">
-                <button class="calendario"></button>
-                <button class="mis-reservas"></button>
-            </div>
-        </div>
+    </div>
 </body>
 
 </html>
