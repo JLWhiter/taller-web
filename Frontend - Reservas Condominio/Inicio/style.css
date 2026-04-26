@@ -10,21 +10,28 @@ body {
     .barra-lateral {
         display: flex;
         flex-direction: column;
-        width: 250px;
-        background-color: rgb(97, 56, 56);
+        width: 200px;
+        background-color: rgb(32, 34, 46);
+        margin: 15px;
+
+        border-radius: 15px;
+        box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.5);
+        padding: 15px;
 
         .titulo-condominio {
-            height: 90px;
+            height: 40px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: left;
 
             gap: 10px;
+            padding: 10px;
+            padding-top: 0px;
 
-            border-bottom: 1px solid rgb(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgb(109, 109, 109);
 
             img {
-                height: 50px;
+                height: 30px;
                 width: auto;
             }
 
@@ -33,14 +40,41 @@ body {
                 flex-direction: column;
 
                 .titulo {
-                    color: white;
+                    color: rgb(255, 255, 255);
                     font-weight: bold;
                 }
 
                 .subtitulo {
-                    color: white;
+                    color: rgb(255, 255, 255);
                     font-size: 12px;
+                    text-align: left;
                 }
+            }
+        }
+
+        .busqueda {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid white;
+            margin-top: 15px;
+            height: 40px;
+            background: none;
+            border-radius: 8px;
+            gap: 10px;
+
+            img {
+                height: 15px;
+                width: auto;
+                margin-left: 10px;
+            }
+
+            input {
+                background: none;
+                border: none;
+                width: 100%;
+                color: white;
+                outline: none;
             }
         }
 
@@ -48,15 +82,15 @@ body {
             flex: 1;
             display: flex;
             flex-direction: column;
-            padding: 15px;
-            gap: 8px;
+            padding-top: 15px;
+            gap: 5px;
 
             button {
                 height: 40px;
                 width: auto;
-                border-radius: 10px;
+                border-radius: 8px;
                 border: none;
-                background-color: rgb(117, 74, 74);
+                background-color: rgb(255, 255, 255, 0.05);
 
                 cursor: pointer;
 
@@ -77,7 +111,7 @@ body {
                 }
 
                 &:hover {
-                    background-color: rgb(150, 86, 86);
+                    background-color: rgb(255, 255, 255, 0.3);
                 }
             }
         }
@@ -85,93 +119,290 @@ body {
         footer {
             display: flex;
             flex-direction: column;
-            padding: 15px;
-            gap: 15px;
+            padding-top: 15px;
+            gap: 5px;
 
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-
-            .usuario {
-                display: flex;
-                gap: 15px;
-                align-items: center;
-                justify-content: center;
-                padding: 15px;
-
-                background-color: rgb(114, 73, 73);
-                border: none;
-                border-radius: 10px;
-
-                cursor: pointer;
-
-                &:hover {
-                    background-color: rgb(150, 86, 86);
-                }
-
-                .avatar-usuario {
-                    height: 40px;
-                    width: 40px;
-                    border-radius: 50%;
-                    background-color: rgb(80, 56, 56);
-
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-
-                    span {
-                        color: white;
-                    }
-                }
-
-                .informacion {
-                    display: flex;
-                    flex-direction: column;
-
-                    .nombre-apellido {
-                        color: white;
-                        text-align: left;
-                        font-weight: 500;
-                    }
-
-                    .torre-depa {
-                        color: white;
-                        opacity: 0.75;
-                        font-size: 12px;
-                        text-align: left;
-                    }
-                }
-            }
-
-            .cerrar-sesion {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 7px;
-
+            button {
                 height: 40px;
-                border-radius: 10px;
-                background-color: rgb(114, 73, 73);
-                border: 0.5px solid rgb(184, 129, 129);
+                width: auto;
+                border-radius: 8px;
+                border: none;
+                background-color: rgb(255, 255, 255, 0.05);
 
                 cursor: pointer;
 
-                &:hover {
-                    background-color: rgb(150, 86, 86);
-                }
+                display: flex;
+                align-items: center;
+                justify-content: left;
+                gap: 10px;
 
                 img {
                     height: 15px;
                     width: auto;
+                    margin-left: 10px;
                 }
 
                 span {
                     color: white;
                     font-weight: 500;
                 }
+
+                &:hover {
+                    background-color: rgb(255, 255, 255, 0.3);
+                }
+
+            }
+        }
+    }
+
+    .panel-contenido {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        header {
+            display: flex;
+            border-bottom: 1px solid rgb(223, 223, 223);
+            padding-bottom: 15px;
+            margin: 15px;
+
+            .left {
+                flex: 1;
+
+                .titulo-seccion {
+                    text-align: left;
+                    color: black;
+                    font-size: 30px;
+                    margin-top: 5px;
+                }
+
+                p {
+                    font-size: 13px;
+                    opacity: 0.75;
+                }
+            }
+
+            .right {
+                flex: 1;
+                display: flex;
+                justify-content: right;
+                align-items: center;
+                gap: 20px;
+
+
+                .rol {
+                    background-color: rgb(214, 255, 229);
+                    border-radius: 15px;
+                    padding: 5px 15px;
+                    font-size: 13px;
+                    font-weight: bold;
+                    color: rgb(15, 99, 50);
+                }
+
+                .usuario {
+                    display: flex;
+                    gap: 15px;
+                    align-items: center;
+                    justify-content: center;
+
+                    .avatar-usuario {
+                        height: 40px;
+                        width: 40px;
+                        border-radius: 50%;
+                        background-color: rgb(126, 89, 10);
+
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        span {
+                            color: white;
+                        }
+                    }
+
+                    .informacion {
+                        display: flex;
+                        flex-direction: column;
+
+                        .nombre-apellido {
+                            color: rgb(0, 0, 0);
+                            text-align: left;
+                            font-weight: 500;
+                        }
+
+                        .torre-depa {
+                            color: rgb(0, 0, 0);
+                            opacity: 0.75;
+                            font-size: 12px;
+                            text-align: left;
+                        }
+                    }
+                }
+
+                .cerrar-sesion {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 7px;
+
+                    width: 150px;
+                    height: 40px;
+                    border-radius: 10px;
+                    background-color: white;
+                    border: 0.5px solid rgb(110, 110, 110);
+
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: rgba(0, 0, 0, 0.05);
+                    }
+
+                    img {
+                        height: 15px;
+                        width: auto;
+                    }
+
+                    span {
+                        color: rgb(0, 0, 0);
+                        font-weight: 500;
+                    }
+                }
             }
         }
     }
 
     .contenido {
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        padding-top: 0;
         flex: 1;
+        margin-right: 15px;
+
+        .reservas {
+            height: auto;
+
+            h4 {
+                margin-bottom: 15px;
+            }
+
+            .botones {
+                display: flex;
+                gap: 15px;
+
+                .loza-deportiva,
+                .casa-club,
+                .zona-parrilla,
+                .cita-jd {
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    height: 250px;
+                    border-radius: 20px;
+                    padding: 15px 20px;
+
+                    img {
+                        height: 50px;
+                        width: auto;
+                        margin-bottom: 15px;
+                    }
+
+                    h1 {
+                        margin-bottom: 10px;
+                        font-size: 20px;
+                    }
+
+                    p {
+                        opacity: 0.65;
+                    }
+                }
+
+                .loza-deportiva {
+                    background-color: rgba(239, 246, 255);
+                    border: 3px solid rgba(205, 227, 255);
+
+                    &:hover {
+                        background-color: rgb(219, 234, 254)
+                    }
+                }
+
+                .casa-club {
+                    background-color: rgba(240, 253, 244);
+                    border: 3px solid rgba(185, 248, 207);
+
+                    &:hover {
+                        background-color: rgba(219, 252, 231)
+                    }
+                }
+
+                .zona-parrilla {
+                    background-color: rgba(255, 247, 237);
+                    border: 3px solid rgba(255, 229, 200);
+
+                    &:hover {
+                        background-color: rgba(255, 237, 212)
+                    }
+                }
+
+                .cita-jd {
+                    background-color: rgba(250, 245, 255);
+                    border: 3px solid rgba(233, 212, 255);
+
+                    &:hover {
+                        background-color: rgba(243, 232, 255)
+                    }
+                }
+            }
+        }
+
+        .herramientas {
+            flex: 1;
+
+            h4 {
+                margin-top: 30px;
+                margin-bottom: 15px;
+            }
+
+            .botones {
+                display: flex;
+                gap: 15px;
+
+                .calendario,
+                .mis-reservas {
+                    flex: 1;
+                    height: 100px;
+                    border-radius: 20px;
+                    border: 0px;
+                    background-color: rgba(0, 0, 0, 0.05);
+                    display: flex;
+                    align-items: center;
+                    justify-content: left;
+                    gap: 15px;
+
+                    &:hover {
+                        background-color: rgb(212, 212, 212);
+                    }
+
+                    img {
+                        height: 30px;
+                        margin-left: 30px;
+                    }
+
+                    div {
+                        h1 {
+                            font-size: 15px;
+                            text-align: left;
+                        }
+
+                        p {
+                            text-align: left;
+                            opacity: 0.75;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
