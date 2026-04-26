@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+
+    <title>Página principal</title>
+</head>
+
+<body>
+    <div class="barra-lateral">
+        <div class="titulo-condominio">
+            <img src="../images/icons/condominio.png" alt="img-logo">
+            <div class="informacion">
+                <span class="titulo">Villa Santa Clara</span>
+                <span class="subtitulo">Sistema de Gestión</span>
+            </div>
+        </div>
+        <button class="busqueda">
+            <img src="../images/icons/lupa.png" alt="lupa">
+            <input type="text" placeholder="Buscar">
+        </button>
+        <div class="secciones">
+            <button class="panel-principal">
+                <img src="../images/icons/dashboard.png" alt="img-dashboard">
+                <span>Panel Principal</span>
+            </button>
+        </div>
+        <footer>
+            <button class="encoger">
+                <img src="../images/icons/compactar.png" alt="img-encoger">
+                <span>Encoger Barra</span>
+            </button>
+            <button class="notificacion" class="notificaciones">
+                <img src="../images/icons/notificacion.png" alt="img-notifi">
+                <span>Notificaciones</span>
+            </button>
+            <button class="Configuracion">
+                <img src="../images/icons/setting.png" alt="img-configuracion">
+                <span>Configuración</span>
+            </button>
+        </footer>
+    </div>
+    <div class="panel-contenido">
+        <header>
+            <div class="left">
+                <h1 class="titulo-seccion">Panel Principal</h1>
+                <p>Gestiona tus reservas de áreas comunes</p>
+            </div>
+            <div class="right">
+                <span class="rol">Residente</span>
+                <div class="usuario">
+                    <div class="avatar-usuario">
+                        <span>E</span>
+                    </div>
+                    <div class="informacion">
+                        <span class="nombre-apellido">Emanuel Espinoza</span>
+                        <span class="torre-depa">Torre B - Dpto 205</span>
+                    </div>
+                </div>
+                <button class="cerrar-sesion">
+                    <img src="../images/icons/salida-dark.png" alt="img-cerrar-sesion">
+                    <span>Cerrar Sesión</span>
+                </button>
+            </div>
+        </header>
+        <div class="contenido">
+            <div class="reservas">
+                <h4>Sección de reservas</h4>
+                <div class="botones">
+                    <button class="loza-deportiva">
+                        <img src="../images/icons/trofeo-de-campeonato.png" alt="trofeo">
+                        <h1>Loza Deportiva</h1>
+                        <p>
+                            Reserva la cancha para tus actividades deportivas
+                        </p>
+                    </button>
+                    <button class="casa-club">
+                        <img src="../images/icons/hogar.png" alt="casa">
+                        <h1>Casa Club</h1>
+                        <p>
+                            Reserva el salón para eventos y celebraciones
+                        </p>
+                    </button>
+                    <button class="zona-parrilla">
+                        <img src="../images/icons/parrilla.png" alt="fuego">
+                        <h1>Zona de Parrillas</h1>
+                        <p>
+                            Reserva el piso de parrillas para tu evento
+                        </p>
+                    </button>
+                    <button class="cita-jd">
+                        <img src="../images/icons/documento.png" alt="cita">
+                        <h1>Junta Directiva</h1>
+                        <p>
+                            Agenda una reunión con la administración
+                        </p>
+                    </button>
+                </div>
+            </div>
+            <div class="herramientas">
+                <h4>Herramientas</h4>
+                <div class="botones">
+                    <button class="calendario">
+                        <img src="../images/icons/calendario.png" alt="calendario">
+                        <div>
+                            <h1>Calendario del Condominio</h1>
+                            <p>Ver todas las reservas realizadas por el condominio</p>
+                        </div>
+                    </button>
+                    <button class="mis-reservas">
+                        <img src="../images/icons/usuario.png" alt="persona">
+                        <div>
+                            <h1>Mis Reservas</h1>
+                            <p>Ver todas mis reservas</p>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
