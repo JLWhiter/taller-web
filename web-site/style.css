@@ -6,10 +6,7 @@
 body {
     display: flex;
     height: 100vh;
-
-    /*POR INVESTIGAR*/
     overflow: hidden;
-    /*---------------*/
 
     .barra-lateral {
         display: flex;
@@ -21,6 +18,11 @@ body {
         border-radius: 15px;
         box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.5);
         padding: 15px;
+
+        /*POR INVESTIGAR*/
+        transition: width 0.25s ease;
+        white-space: nowrap;
+        /*---------------*/
 
         .titulo-condominio {
             height: 40px;
@@ -158,6 +160,45 @@ body {
                     background-color: rgb(255, 255, 255, 0.3);
                 }
 
+            }
+        }
+    }
+
+    .barra-lateral.minimize {
+        width: 2.9rem;
+        overflow: hidden;
+
+        .titulo-condominio {
+            justify-content: center;
+
+            .informacion {
+                display: none;
+            }
+        }
+
+        .busqueda {
+            justify-content: center;
+            padding: 0;
+
+            input {
+                display: none;
+            }
+
+            img {
+                margin-left: 0;
+            }
+        }
+
+        .secciones button,
+        footer button {
+            justify-content: center;
+
+            span {
+                display: none;
+            }
+
+            img {
+                margin-left: 0;
             }
         }
     }

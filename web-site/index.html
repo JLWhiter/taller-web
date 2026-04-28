@@ -5,26 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!--CSS-->
     <link rel="stylesheet" href="css-contenidos/panel-principal.css">
     <link rel="stylesheet" href="css-contenidos/informacion.css">
     <link rel="stylesheet" href="style.css">
 
+    <!--Tipogafía: Inter-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet">
 
-    <title>Página principal</title>
+    <title>[NE] - Sistema de Gestión de Reservas</title>
 </head>
 
 <body>
-    <div class="barra-lateral">
+    <div class="barra-lateral" id="barra-lateral">
         <div class="titulo-condominio">
             <img src="../images/icons/condominio.png" alt="img-logo">
             <div class="informacion">
                 <span class="titulo">Villa Santa Clara</span>
-                <span class="subtitulo">Sistema de Gestión</span>
+                <span class="subtitulo">Gestión de Reservas</span>
             </div>
         </div>
         <button class="busqueda">
@@ -42,7 +44,7 @@
             </button>
         </div>
         <footer>
-            <button class="encoger">
+            <button class="encoger" id="minimizar-btn">
                 <img src="../images/icons/compactar.png" alt="img-encoger">
                 <span>Encoger Barra</span>
             </button>

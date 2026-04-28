@@ -11,6 +11,15 @@ botones.forEach((btn) => {
     });
 });
 
+// Minimizar barra lateral
+const sidebar = document.getElementById("barra-lateral");
+const minimizarBtn = document.getElementById("minimizar-btn");
+
+minimizarBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("minimize");
+})
+
+
 // Contenido barra lateral
 const vistas = {
     "panel-principal": {
@@ -92,16 +101,16 @@ const vistas = {
                     <div class="card"  title="Información de la construccion">
                         <div class="card-icono construccion">🗓️</div>
                         <h3>Año de Construcción <span class="badge">↗</span></h3>
-                        <p>Inaugurado en 2018</p>
-                        <p>8 años de antigüedad</p>
-                        <p>Última remodelación: 2024</p>
+                        <p>Inaugurado en 2010</p>
+                        <p>16 años de antigüedad</p>
+                        <p>Última remodelación: 2025</p>
                     </div>
 
                     <div class="card"  title="Ver reglamento interno">
                         <div class="card-icono datos">👥</div>
                         <h3>Datos Generales <span class="badge">📄</span></h3>
-                        <p>4 Torres (A, B, C, D)</p>
-                        <p>120 Departamentos</p>
+                        <p>17 Torres</p>
+                        <p>544 Departamentos</p>
                         <p>150 Estacionamientos</p>
                     </div>
 
@@ -169,14 +178,7 @@ cargarVista("panel-principal"); // Cargar panel principal al arrancar
 document.querySelector(".panel-principal").classList.add("activo");
 
 // Contenido
-const btnReserva = document.querySelectorAll(".botones button");
 
-btnReserva.forEach((btn) => {
-    btn.addEventListener("click", () => {
-        btnReserva.forEach((b) => b.classList.remove("activo"));
-        btn.classList.add("activo");
-    })
-})
 
 // Cerrar Sesión
 const btnCerrar = document.querySelector(".cerrar-sesion");
