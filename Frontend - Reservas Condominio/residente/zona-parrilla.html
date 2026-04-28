@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/Frontend - Reservas Condominio/residente/style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+
+    <title>Zona de Parrilla</title>
+</head>
+
+<body>
+    <div class="barra-lateral">
+        <div class="titulo-condominio">
+            <img src="../images/icons/condominio.png" alt="img-logo">
+            <div class="informacion">
+                <span class="titulo">Villa Santa Clara</span>
+                <span class="subtitulo">Sistema de Gestión</span>
+            </div>
+        </div>
+        <button class="busqueda">
+            <img src="../images/icons/lupa.png" alt="lupa">
+            <input type="text" placeholder="Buscar">
+        </button>
+        <div class="secciones">
+            <button class="panel-principal" onclick="window.location.href='/Frontend - Reservas Condominio/residente/first-page.html'">
+                <img src="../images/icons/dashboard.png" alt="img-dashboard">
+                <span>Panel Principal</span>
+            </button>
+        </div>
+        <footer>
+            <button class="encoger">
+                <img src="../images/icons/compactar.png" alt="img-encoger">
+                <span>Encoger Barra</span>
+            </button>
+            <button class="notificacion" class="notificaciones">
+                <img src="../images/icons/notificacion.png" alt="img-notifi">
+                <span>Notificaciones</span>
+            </button>
+            <button class="Configuracion">
+                <img src="../images/icons/setting.png" alt="img-configuracion">
+                <span>Configuración</span>
+            </button>
+        </footer>
+    </div>
+    <div class="panel-contenido">
+        <header>
+            <div class="left">
+                <h1 class="titulo-seccion">Zona de Parrilla</h1>
+                <p>Reserva el área de parrilla para tus eventos sociales</p>
+            </div>
+            <div class="right">
+                <span class="rol">Residente</span>
+                <div class="usuario">
+                    <div class="avatar-usuario">
+                        <span>E</span>
+                    </div>
+                    <div class="informacion">
+                        <span class="nombre-apellido">Emanuel Espinoza</span>
+                        <span class="torre-depa">Torre B - Dpto 205</span>
+                    </div>
+                </div>
+                <button class="cerrar-sesion">
+                    <img src="../images/icons/salida-dark.png" alt="img-cerrar-sesion">
+                    <span>Cerrar Sesión</span>
+                </button>
+            </div>
+        </header>
+        <div class="contenido">
+            <div class="reservas">
+                <h4>Zona de Parrilla</h4>
+                <p>Reserva el área de parrilla para tus eventos sociales</p>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
