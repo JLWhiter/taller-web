@@ -178,7 +178,39 @@ cargarVista("panel-principal"); // Cargar panel principal al arrancar
 document.querySelector(".panel-principal").classList.add("activo");
 
 // Contenido
+// 1. Modales
+function abrirModal(id) {
+    document.getElementById(id).classList.add("visible");
+}
 
+function cerrarModal(overlay) {
+    overlay.classList.remove("visible")
+}
+
+// 1.1. Secciones
+document.getElementById("vista").addEventListener("click", (e) => {
+    if (e.target.closest(".loza-deportiva")) abrirModal("overlay-loza");
+    if (e.target.closest(".casa-club")) abrirModal("overlay-casa");
+    if (e.target.closest(".zona-parrilla")) abrirModal("overlay-parrilla");
+    if (e.target.closest(".cita-jd")) abrirModal("overlay-jd");
+});
+
+// --------------
+
+document.querySelectorAll(".modal-close, .modal-cancelar").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const overlay = btn.closest(".modal-overlay");
+        cerrarModal(overlay);
+    })
+})
+
+document.querySelectorAll(".modal-overlay").forEach(overlay => {
+    overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) cerrarModal(overlay);
+    })
+})
+
+// --------------
 
 // Cerrar Sesión
 const btnCerrar = document.querySelector(".cerrar-sesion");
