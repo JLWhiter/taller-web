@@ -197,7 +197,7 @@ document.getElementById("vista").addEventListener("click", (e) => {
 
 // --------------
 
-document.querySelectorAll(".modal-close, .modal-cancelar").forEach(btn => {
+document.querySelectorAll(".modal-close, .modal-cancel").forEach(btn => {
     btn.addEventListener("click", () => {
         const overlay = btn.closest(".modal-overlay");
         cerrarModal(overlay);
