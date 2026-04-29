@@ -158,7 +158,6 @@ const vistas = {
 
                 </div>
             </section>
-
         </div>
     </div>`
     }
@@ -193,6 +192,8 @@ document.getElementById("vista").addEventListener("click", (e) => {
     if (e.target.closest(".casa-club")) abrirModal("overlay-casa");
     if (e.target.closest(".zona-parrilla")) abrirModal("overlay-parrilla");
     if (e.target.closest(".cita-jd")) abrirModal("overlay-jd");
+    if (e.target.closest(".calendario")) abrirModal("overlay-calendario");
+    if (e.target.closest(".mis-reservas")) abrirModal("overlay-misreservas");
 });
 
 // --------------

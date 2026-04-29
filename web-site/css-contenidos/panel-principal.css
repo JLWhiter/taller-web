@@ -29,6 +29,7 @@
                 height: 250px;
                 border-radius: 20px;
                 padding: 15px 20px;
+                cursor: pointer;
 
                 img {
                     height: 50px;
@@ -111,6 +112,7 @@
                 align-items: center;
                 justify-content: left;
                 gap: 15px;
+                cursor: pointer;
 
                 &:hover {
                     background-color: rgb(212, 212, 212);
