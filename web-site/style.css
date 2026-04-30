@@ -96,7 +96,7 @@ body {
                 width: auto;
                 border-radius: 8px;
                 border: none;
-                background-color: rgb(255, 255, 255, 0.05);
+                background: none;
 
                 cursor: pointer;
 
@@ -118,7 +118,7 @@ body {
 
                 &:hover,
                 &.activo {
-                    background-color: rgb(255, 255, 255, 0.3);
+                    background-color: rgb(255, 255, 255, 0.2);
                 }
             }
         }
@@ -135,7 +135,7 @@ body {
                 width: auto;
                 border-radius: 8px;
                 border: none;
-                background-color: rgb(255, 255, 255, 0.05);
+                background: none;
 
                 cursor: pointer;
 
@@ -157,7 +157,7 @@ body {
 
                 &:hover,
                 &.activo {
-                    background-color: rgb(255, 255, 255, 0.3);
+                    background-color: rgb(255, 255, 255, 0.2);
                 }
 
             }
@@ -354,11 +354,201 @@ body {
             max-width: 90%;
             border-radius: 20px;
             transform: scale(0.7);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
 
             /*INVESTIGAR*/
             transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
 
+            .modal-header {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                padding-bottom: 15px;
+                border-bottom: 1px solid rgb(223, 223, 223);
+
+                .modal-close {
+                    position: absolute;
+                    right: 0;
+                    border: 1px solid rgb(214, 214, 214);
+                    border-radius: 10px;
+                    background: rgba(0, 0, 0, 0.03);
+                    cursor: pointer;
+                    font-size: 18px;
+                }
+            }
+
+            .modal-content {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+
+                .detalles-reserva {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+
+                    span {
+                        font-size: 15px;
+                        font-weight: bold;
+                    }
+
+                    .informacion {
+                        background-color: rgb(243, 243, 243);
+                        border-radius: 10px;
+                        padding: 15px;
+                        padding-left: 20px;
+                        display: flex;
+                        justify-content: center;
+                        gap: 8px;
+
+                        .left,
+                        .right {
+                            flex: 1;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 5px;
+                        }
+
+                        .right {
+                            border-left: 1px solid silver;
+                            padding-left: 20px;
+                        }
+
+                        .usuario,
+                        .vivienda,
+                        .fecha-reserva,
+                        .horario-reserva {
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+
+                            img {
+                                height: 12px;
+                                opacity: 0.65;
+                            }
+
+                            p {
+                                font-size: 13px;
+                            }
+                        }
+                    }
+                }
+
+                .fecha {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+
+                    .subtitulo {
+                        font-size: 15px;
+                        font-weight: bold;
+                    }
+
+                    .botones {
+                        display: flex;
+                        gap: 15px;
+
+                        .hoy,
+                        .personalizado {
+                            flex: 1;
+                            height: 40px;
+                            border-radius: 10px;
+                            border: 2px solid silver;
+                            transition: 0.35s ease;
+                            background: none;
+                            cursor: pointer;
+
+                            &:hover {
+                                border: 2px solid rgb(32, 34, 46);
+                                transition: 0.35s ease;
+                            }
+                        }
+                    }
+
+                    .fecha-reserva {
+                        font-size: 13px;
+                    }
+                }
+
+                .horario {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+
+                    span {
+                        font-size: 15px;
+                        font-weight: bold;
+                    }
+
+                    .seleccion-rango-horario {
+                        display: flex;
+                        gap: 15px;
+
+                        .inicio,
+                        .fin {
+                            flex: 1;
+                            height: 40px;
+                            border-radius: 10px;
+                            border: 2px solid silver;
+                            transition: 0.35s ease;
+                            background: none;
+                            cursor: pointer;
+
+                            &:hover {
+                                border: 2px solid rgb(32, 34, 46);
+                                transition: 0.35s ease;
+                            }
+                        }
+                    }
+                }
+
+                .detalles {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+
+                    span {
+                        font-size: 15px;
+                        font-weight: bold;
+                    }
+
+                    textarea {
+                        height: 60px;
+                        padding: 15px;
+                        padding-top: 10px;
+                        outline: none;
+                        border-radius: 10px;
+                        border: 2px solid silver;
+                        transition: 0.4s ease;
+
+                        &:hover {
+                            border: 2px solid rgb(32, 34, 46);
+                            transition: 0.35s ease;
+                        }
+                    }
+                }
+            }
+
+            .btn-confirmar-reserva {
+                height: 40px;
+                border-radius: 10px;
+                border: none;
+                color: white;
+                background-color: rgba(32, 34, 46, 0.8);
+                transition: 0.3s ease;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: rgba(32, 34, 46, 1);
+                    transition: 0.3s ease;
+                }
+            }
+        }
     }
 
     .modal-overlay.visible {

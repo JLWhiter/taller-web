@@ -46,7 +46,7 @@ const vistas = {
                     </button>
                     <button class="zona-parrilla">
                         <img src="../images/icons/parrilla.png" alt="fuego">
-                        <h3>Zona de Parrillas</h3>
+                        <h3>Zona de Parrilla</h3>
                         <p>
                             Reserva el piso de parrillas para tu evento
                         </p>
@@ -198,16 +198,10 @@ document.getElementById("vista").addEventListener("click", (e) => {
 
 // --------------
 
-document.querySelectorAll(".modal-close, .modal-cancel").forEach(btn => {
+document.querySelectorAll(".modal-close").forEach(btn => {
     btn.addEventListener("click", () => {
         const overlay = btn.closest(".modal-overlay");
         cerrarModal(overlay);
-    })
-})
-
-document.querySelectorAll(".modal-overlay").forEach(overlay => {
-    overlay.addEventListener("click", (e) => {
-        if (e.target === overlay) cerrarModal(overlay);
     })
 })
 
