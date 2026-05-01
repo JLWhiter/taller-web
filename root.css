@@ -1,0 +1,13 @@
+:root {
+    --color-primario: rgb(32, 34, 46);
+    --color-primario-hover: rgba(32, 34, 46, 0.8);
+    --color-borde-claro: rgb(223, 223, 223);
+    --color-borde-hover: rgb(32, 34, 46);
+    --radio-grande: 15px;
+    --radio-mediano: 10px;
+    --radio-pequeno: 8px;
+    --espaciado-estandar: 15px;
+    --altura-botones: 40px;
+    --transicion-rapido: 0.3s ease;
+    --transicion-normal: 0.35s ease;
+}

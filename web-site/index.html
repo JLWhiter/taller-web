@@ -6,83 +6,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--CSS-->
+
+    <link rel="stylesheet" href="../root.css">
     <link rel="stylesheet" href="css-contenidos/panel-principal.css">
     <link rel="stylesheet" href="css-contenidos/informacion.css">
     <link rel="stylesheet" href="style.css">
 
     <!--Tipogafía: Inter-->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet">
 
+    <!--Tipografía: Reloj-->
+
     <title>[NE] - Sistema de Gestión de Reservas</title>
 </head>
 
 <body>
-    <div class="barra-lateral" id="barra-lateral">
-        <div class="titulo-condominio">
-            <img src="../images/icons/condominio.png" alt="img-logo">
-            <div class="informacion">
-                <span class="titulo">Villa Santa Clara</span>
-                <span class="subtitulo">Gestión de Reservas</span>
-            </div>
+    <aside id="sidebar">
+        <div class="logo">
+            <img src="../images/icons/condominio.png" alt="Logo Villa Santa Clara">
+            <hgroup>
+                <h2>Villa Santa Clara</h2>
+                <p>Gestión de Reservas</p>
+            </hgroup>
         </div>
-        <button class="busqueda">
-            <img src="../images/icons/lupa.png" alt="lupa">
-            <input type="text" placeholder="Buscar">
-        </button>
-        <div class="secciones">
-            <button class="panel-principal">
-                <img src="../images/icons/dashboard.png" alt="img-dashboard">
+        <search>
+            <label for="buscar"><img src="../images/icons/lupa.png" alt=""></label>
+            <input id="buscar" type="search" placeholder="Buscar">
+        </search>
+        <nav>
+            <button data-seccion="panel-principal">
+                <img src="../images/icons/dashboard.png" alt="">
                 <span>Panel Principal</span>
             </button>
-            <button class="seccion-informacion">
-                <img src="../images/icons/informacion.png" alt="img-info">
+            <button data-seccion="informacion">
+                <img src="../images/icons/informacion.png" alt="">
                 <span>Información</span>
             </button>
-        </div>
+        </nav>
         <footer>
-            <button class="encoger" id="minimizar-btn">
-                <img src="../images/icons/compactar.png" alt="img-encoger">
-                <span>Encoger Barra</span>
+            <button id="btn-minimizar">
+                <img src="../images/icons/compactar.png" alt="">
+                <span>Minimizar Barra</span>
             </button>
-            <button class="notificacion">
-                <img src="../images/icons/notificacion.png" alt="img-notifi">
+            <button>
+                <img src="../images/icons/notificacion.png" alt="">
                 <span>Notificaciones</span>
             </button>
-            <button class="configuracion">
-                <img src="../images/icons/setting.png" alt="img-configuracion">
+            <button>
+                <img src="../images/icons/setting.png" alt="">
                 <span>Configuración</span>
             </button>
         </footer>
-    </div>
-    <div class="panel-contenido">
+    </aside>
+    <main>
         <header>
-            <div class="left">
-                <h1 class="titulo-seccion" id="titulo-seccion">Panel Principal</h1>
+            <hgroup>
+                <h1 id="titulo-seccion">Panel Principal</h1>
                 <p id="subtitulo-seccion">Gestiona tus reservas de áreas comunes</p>
-            </div>
-            <div class="right">
-                <span class="rol">Residente</span>
+            </hgroup>
+            <div class="perfil">
+                <p class="rol">Residente</p>
                 <div class="usuario">
-                    <div class="avatar-usuario">
+                    <div class="avatar">
                         <span>E</span>
                     </div>
-                    <div class="info-usuario">
-                        <span class="nombre-apellido">Emanuel Espinoza</span>
-                        <span class="torre-depa">Torre B - Dpto 205</span>
+                    <div class="informacion">
+                        <p class="nombre-apellido">Emanuel Espinoza</p>
+                        <p class="torre-departamento">Torre B - Dpto 205</p>
                     </div>
                 </div>
-                <button class="cerrar-sesion">
-                    <img src="../images/icons/salida-dark.png" alt="img-cerrar-sesion">
+                <button id="cerrar-sesion">
+                    <img src="../images/icons/salida-dark.png" alt="">
                     <span>Cerrar Sesión</span>
                 </button>
             </div>
         </header>
         <div id="vista"></div>
-    </div>
+    </main>
 
     <!--Modal: Loza deportiva-->
 
@@ -91,55 +96,55 @@
 
             <!--Encabezado del modal-->
 
-            <div class="modal-header">
+            <header>
                 <h2>Loza Deportiva</h2>
                 <button class="modal-close">✕</button>
-            </div>
+            </header>
 
             <!--Contenido del modal-->
 
-            <div class="modal-content">
+            <div id="modal-content">
                 <div class="detalles-reserva">
-                    <span class="detalles">Detalles de la reservación</span>
+                    <h3 class="detalles">Detalles de la reservación</h3>
                     <div class="informacion">
-                        <div class="left">
+                        <div class="datos-personales">
                             <div class="usuario">
-                                <img src="../images/icons/persona.png" alt="img-persona">
-                                <p class="usuario">Alberto Jupiter Apaza</p>
+                                <img src="../images/icons/persona.png" alt="">
+                                <p>Alberto Jupiter Apaza</p>
                             </div>
                             <div class="vivienda">
-                                <img src="../images/icons/hogar.png" alt="img-casa">
-                                <p class="vivienda">Torre B - 205</p>
+                                <img src="../images/icons/hogar.png" alt="">
+                                <p>Torre B - 205</p>
                             </div>
                         </div>
-                        <div class="right">
+                        <div class="datos-reserva">
                             <div class="fecha-reserva">
-                                <img src="../images/icons/calendario.png" alt="img-casa">
-                                <p class="vivienda">29 de abril del 2026</p>
+                                <img src="../images/icons/calendario.png" alt="">
+                                <p>29 de abril del 2026</p>
                             </div>
                             <div class="horario-reserva">
-                                <img src="../images/icons/reloj.png" alt="img-casa">
-                                <p class="vivienda">8:00 - 10:00 PM</p>
+                                <img src="../images/icons/reloj.png" alt="">
+                                <p>8:00 - 10:00 PM</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="fecha">
-                    <span class="subtitulo">Fecha de la reserva</span>
+                    <h3>Fecha de la reserva</h3>
                     <div class="botones">
-                        <input type="button" class="hoy" value="Hoy">
-                        <input type="button" class="personalizado" value="Personalizado">
+                        <button class="hoy" value="Hoy">Hoy</button>
+                        <button class="personalizado" value="Personalizado">Personalizado</button>
                     </div>
                 </div>
                 <div class="horario">
-                    <span class="subtitulo">Horario</span>
+                    <h3>Horario</h3>
                     <div class="seleccion-rango-horario">
-                        <input type="button" class="inicio" value="Hora de Inicio">
-                        <input type="button" class="fin" value="Hora de Finalización">
+                        <button class="inicio" value="Hora de Inicio">Hora de Inicio</button>
+                        <button class="fin" value="Hora de Finalización">Hora de Finalización</button>
                     </div>
                 </div>
-                <div class="detalles">
-                    <span class="subtitulo">Información Adicional</span>
+                <div class="info-detalles">
+                    <h3>Información Adicional</h3>
                     <textarea
                         placeholder="Agrega información adicional sobre tu reserva o motivo de la cita."></textarea>
                 </div>
@@ -147,209 +152,209 @@
 
             <!--Pie del modal-->
 
-            <input type="submit" class="btn-confirmar-reserva" value="Confirmar Reserva">
+            <button class="btn-confirmar-reserva">Confirmar Reserva</button>
 
         </div>
     </div>
 
-    <!--Modal: Casa club-->
+    <!--Modal: Casa Club-->
 
     <div class="modal-overlay" id="overlay-casa">
         <div class="modal">
 
             <!--Encabezado del modal-->
 
-            <div class="modal-header">
+            <header>
                 <h2>Casa Club</h2>
                 <button class="modal-close">✕</button>
-            </div>
+            </header>
 
             <!--Contenido del modal-->
 
-            <div class="modal-content">
+            <div id="modal-content">
                 <div class="detalles-reserva">
-                    <span class="detalles">Detalles de la reservación</span>
+                    <h3 class="detalles">Detalles de la reservación</h3>
                     <div class="informacion">
-                        <div class="left">
+                        <div class="datos-personales">
                             <div class="usuario">
-                                <img src="../images/icons/persona.png" alt="img-persona">
-                                <p class="usuario">Alberto Jupiter Apaza</p>
+                                <img src="../images/icons/persona.png" alt="">
+                                <p>Alberto Jupiter Apaza</p>
                             </div>
                             <div class="vivienda">
-                                <img src="../images/icons/hogar.png" alt="img-casa">
-                                <p class="vivienda">Torre B - 205</p>
+                                <img src="../images/icons/hogar.png" alt="">
+                                <p>Torre B - 205</p>
                             </div>
                         </div>
-                        <div class="right">
+                        <div class="datos-reserva">
                             <div class="fecha-reserva">
-                                <img src="../images/icons/calendario.png" alt="img-casa">
-                                <p class="vivienda">29 de abril del 2026</p>
+                                <img src="../images/icons/calendario.png" alt="">
+                                <p>29 de abril del 2026</p>
                             </div>
                             <div class="horario-reserva">
-                                <img src="../images/icons/reloj.png" alt="img-casa">
-                                <p class="vivienda">8:00 - 10:00 PM</p>
+                                <img src="../images/icons/reloj.png" alt="">
+                                <p>8:00 - 10:00 PM</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="fecha">
-                    <span class="subtitulo">Fecha de la reserva</span>
+                    <h3>Fecha de la reserva</h3>
                     <div class="botones">
-                        <input type="button" class="hoy" value="Hoy">
-                        <input type="button" class="personalizado" value="Personalizado">
+                        <button class="hoy" value="Hoy">Hoy</button>
+                        <button class="personalizado" value="Personalizado">Personalizado</button>
                     </div>
                 </div>
                 <div class="horario">
-                    <span class="subtitulo">Horario</span>
+                    <h3>Horario</h3>
                     <div class="seleccion-rango-horario">
-                        <input type="button" class="inicio" value="Hora de Inicio">
+                        <button class="inicio" value="Hora de Inicio">Hora de Inicio</button>
                     </div>
                 </div>
-                <div class="detalles">
-                    <span class="subtitulo">Información Adicional</span>
+                <div class="info-detalles">
+                    <h3>Información Adicional</h3>
                     <textarea
-                        placeholder="Agrega información adicional sobre tu reserva o motivo de la cita"></textarea>
+                        placeholder="Agrega información adicional sobre tu reserva o motivo de la cita."></textarea>
                 </div>
             </div>
 
             <!--Pie del modal-->
 
-            <input type="submit" class="btn-confirmar-reserva" value="Confirmar Reserva">
+            <button class="btn-confirmar-reserva">Confirmar Reserva</button>
 
         </div>
     </div>
 
-    <!--Modal: Zona de parrilla-->
+    <!--Modal: Zona Parrilla-->
 
     <div class="modal-overlay" id="overlay-parrilla">
         <div class="modal">
 
             <!--Encabezado del modal-->
 
-            <div class="modal-header">
+            <header>
                 <h2>Zona de Parrilla</h2>
                 <button class="modal-close">✕</button>
-            </div>
+            </header>
 
             <!--Contenido del modal-->
 
-            <div class="modal-content">
+            <div id="modal-content">
                 <div class="detalles-reserva">
-                    <span class="detalles">Detalles de la reservación</span>
+                    <h3 class="detalles">Detalles de la reservación</h3>
                     <div class="informacion">
-                        <div class="left">
+                        <div class="datos-personales">
                             <div class="usuario">
-                                <img src="../images/icons/persona.png" alt="img-persona">
-                                <p class="usuario">Alberto Jupiter Apaza</p>
+                                <img src="../images/icons/persona.png" alt="">
+                                <p>Alberto Jupiter Apaza</p>
                             </div>
                             <div class="vivienda">
-                                <img src="../images/icons/hogar.png" alt="img-casa">
-                                <p class="vivienda">Torre B - 205</p>
+                                <img src="../images/icons/hogar.png" alt="">
+                                <p>Torre B - 205</p>
                             </div>
                         </div>
-                        <div class="right">
+                        <div class="datos-reserva">
                             <div class="fecha-reserva">
-                                <img src="../images/icons/calendario.png" alt="img-casa">
-                                <p class="vivienda">29 de abril del 2026</p>
+                                <img src="../images/icons/calendario.png" alt="">
+                                <p>29 de abril del 2026</p>
                             </div>
                             <div class="horario-reserva">
-                                <img src="../images/icons/reloj.png" alt="img-casa">
-                                <p class="vivienda">8:00 - 10:00 PM</p>
+                                <img src="../images/icons/reloj.png" alt="">
+                                <p>8:00 - 10:00 PM</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="fecha">
-                    <span class="subtitulo">Fecha de la reserva</span>
+                    <h3>Fecha de la reserva</h3>
                     <div class="botones">
-                        <input type="button" class="hoy" value="Hoy">
-                        <input type="button" class="personalizado" value="Personalizado">
+                        <button class="hoy" value="Hoy">Hoy</button>
+                        <button class="personalizado" value="Personalizado">Personalizado</button>
                     </div>
                 </div>
                 <div class="horario">
-                    <span class="subtitulo">Horario</span>
+                    <h3>Horario</h3>
                     <div class="seleccion-rango-horario">
-                        <input type="button" class="inicio" value="Hora de Inicio">
-                        <input type="button" class="fin" value="Hora de Finalización">
+                        <button class="inicio" value="Hora de Inicio">Hora de Inicio</button>
+                        <button class="fin" value="Hora de Finalización">Hora de Finalización</button>
                     </div>
                 </div>
-                <div class="detalles">
-                    <span class="subtitulo">Información Adicional</span>
+                <div class="info-detalles">
+                    <h3>Información Adicional</h3>
                     <textarea
-                        placeholder="Agrega información adicional sobre tu reserva o motivo de la cita"></textarea>
+                        placeholder="Agrega información adicional sobre tu reserva o motivo de la cita."></textarea>
                 </div>
             </div>
 
             <!--Pie del modal-->
 
-            <input type="submit" class="btn-confirmar-reserva" value="Confirmar Reserva">
+            <button class="btn-confirmar-reserva">Confirmar Reserva</button>
 
         </div>
     </div>
 
-    <!--Modal: Cita con la junta directiva-->
+    <!--Modal: Cita con la Junta Directiva-->
 
     <div class="modal-overlay" id="overlay-jd">
         <div class="modal">
 
             <!--Encabezado del modal-->
 
-            <div class="modal-header">
+            <header>
                 <h2>Cita con la Junta Directiva</h2>
                 <button class="modal-close">✕</button>
-            </div>
+            </header>
 
             <!--Contenido del modal-->
 
-            <div class="modal-content">
+            <div id="modal-content">
                 <div class="detalles-reserva">
-                    <span class="detalles">Detalles de la reservación</span>
+                    <h3 class="detalles">Detalles de la reservación</h3>
                     <div class="informacion">
-                        <div class="left">
+                        <div class="datos-personales">
                             <div class="usuario">
-                                <img src="../images/icons/persona.png" alt="img-persona">
-                                <p class="usuario">Alberto Jupiter Apaza</p>
+                                <img src="../images/icons/persona.png" alt="">
+                                <p>Alberto Jupiter Apaza</p>
                             </div>
                             <div class="vivienda">
-                                <img src="../images/icons/hogar.png" alt="img-casa">
-                                <p class="vivienda">Torre B - 205</p>
+                                <img src="../images/icons/hogar.png" alt="">
+                                <p>Torre B - 205</p>
                             </div>
                         </div>
-                        <div class="right">
+                        <div class="datos-reserva">
                             <div class="fecha-reserva">
-                                <img src="../images/icons/calendario.png" alt="img-casa">
-                                <p class="vivienda">29 de abril del 2026</p>
+                                <img src="../images/icons/calendario.png" alt="">
+                                <p>29 de abril del 2026</p>
                             </div>
                             <div class="horario-reserva">
-                                <img src="../images/icons/reloj.png" alt="img-casa">
-                                <p class="vivienda">8:00 - 10:00 PM</p>
+                                <img src="../images/icons/reloj.png" alt="">
+                                <p>8:00 - 10:00 PM</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="fecha">
-                    <span class="subtitulo">Fecha de la cita</span>
+                    <h3>Fecha de la reserva</h3>
                     <div class="botones">
-                        <input type="button" class="hoy" value="Hoy">
-                        <input type="button" class="personalizado" value="Personalizado">
+                        <button class="hoy" value="Hoy">Hoy</button>
+                        <button class="personalizado" value="Personalizado">Personalizado</button>
                     </div>
                 </div>
                 <div class="horario">
-                    <span class="subtitulo">Horario</span>
+                    <h3>Horario</h3>
                     <div class="seleccion-rango-horario">
-                        <input type="button" class="inicio" value="Hora de inicio">
+                        <button class="inicio" value="Hora de Inicio">Hora de la Cita</button>
                     </div>
                 </div>
-                <div class="detalles">
-                    <span class="subtitulo">Información Adicional</span>
+                <div class="info-detalles">
+                    <h3>Información Adicional</h3>
                     <textarea
-                        placeholder="Agrega información adicional sobre tu reserva o motivo de la cita"></textarea>
+                        placeholder="Agrega información adicional sobre tu reserva o motivo de la cita."></textarea>
                 </div>
             </div>
 
             <!--Pie del modal-->
 
-            <input type="submit" class="btn-confirmar-reserva" value="Confirmar Reserva">
+            <button class="btn-confirmar-reserva">Confirmar Reserva</button>
 
         </div>
     </div>

@@ -8,31 +8,29 @@ body {
     height: 100vh;
     overflow: hidden;
 
-    .barra-lateral {
+    aside {
         display: flex;
         flex-direction: column;
         width: 200px;
-        background-color: rgb(32, 34, 46);
-        margin: 15px;
-
-        border-radius: 15px;
+        background-color: var(--color-primario);
+        margin: var(--espaciado-estandar);
+        border-radius: var(--radio-grande);
         box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.5);
-        padding: 15px;
+        padding: var(--espaciado-estandar);
+        transition: width 0.25s ease;
 
         /*POR INVESTIGAR*/
-        transition: width 0.25s ease;
         white-space: nowrap;
         /*---------------*/
 
-        .titulo-condominio {
-            height: 40px;
+        .logo {
+            height: var(--altura-botones);
             display: flex;
             align-items: center;
             justify-content: left;
 
             gap: 10px;
-            padding: 10px;
-            padding-top: 0px;
+            padding: 0px 10px 10px 10px;
 
             border-bottom: 1px solid rgb(109, 109, 109);
 
@@ -41,16 +39,17 @@ body {
                 width: auto;
             }
 
-            .informacion {
+            hgroup {
                 display: flex;
                 flex-direction: column;
 
-                .titulo {
+                h2 {
                     color: rgb(255, 255, 255);
                     font-weight: bold;
+                    font-size: 17.5px;
                 }
 
-                .subtitulo {
+                p {
                     color: rgb(255, 255, 255);
                     font-size: 12px;
                     text-align: left;
@@ -58,21 +57,27 @@ body {
             }
         }
 
-        .busqueda {
+        search {
             display: flex;
             align-items: center;
             justify-content: center;
             border: 1px solid white;
-            margin-top: 15px;
-            height: 40px;
+            margin-top: var(--espaciado-estandar);
+            height: var(--altura-botones);
             background: none;
-            border-radius: 8px;
+            border-radius: var(--radio-pequeno);
             gap: 10px;
+            padding-left: var(--espaciado-estandar);
 
-            img {
-                height: 15px;
-                width: auto;
-                margin-left: 10px;
+            label {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                img {
+                    height: 15px;
+                    width: auto;
+                }
             }
 
             input {
@@ -84,99 +89,70 @@ body {
             }
         }
 
-        .secciones {
+        nav {
             flex: 1;
             display: flex;
             flex-direction: column;
-            padding-top: 15px;
+            padding-top: var(--espaciado-estandar);
             gap: 5px;
-
-            button {
-                height: 40px;
-                width: auto;
-                border-radius: 8px;
-                border: none;
-                background: none;
-
-                cursor: pointer;
-
-                display: flex;
-                align-items: center;
-                justify-content: left;
-                gap: 10px;
-
-                img {
-                    height: 15px;
-                    width: auto;
-                    margin-left: 10px;
-                }
-
-                span {
-                    color: white;
-                    font-weight: 500;
-                }
-
-                &:hover,
-                &.activo {
-                    background-color: rgb(255, 255, 255, 0.2);
-                }
-            }
         }
 
         footer {
             display: flex;
             flex-direction: column;
-            padding-top: 15px;
+            padding-top: var(--espaciado-estandar);
             gap: 5px;
             border-top: 1px solid rgb(109, 109, 109);
 
-            button {
-                height: 40px;
+        }
+
+        nav button,
+        footer button {
+            height: var(--altura-botones);
+            width: auto;
+            border-radius: var(--radio-pequeno);
+            border: none;
+            background: none;
+
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            gap: 10px;
+
+            img {
+                height: 15px;
                 width: auto;
-                border-radius: 8px;
-                border: none;
-                background: none;
-
-                cursor: pointer;
-
-                display: flex;
-                align-items: center;
-                justify-content: left;
-                gap: 10px;
-
-                img {
-                    height: 15px;
-                    width: auto;
-                    margin-left: 10px;
-                }
-
-                span {
-                    color: white;
-                    font-weight: 500;
-                }
-
-                &:hover,
-                &.activo {
-                    background-color: rgb(255, 255, 255, 0.2);
-                }
-
+                margin-left: 10px;
             }
+
+            span {
+                color: white;
+                font-weight: 500;
+            }
+
+            &:hover,
+            &.activo {
+                background-color: rgb(255, 255, 255, 0.2);
+            }
+
         }
     }
 
-    .barra-lateral.minimize {
+    aside.minimize {
         width: 2.9rem;
         overflow: hidden;
 
-        .titulo-condominio {
+        .logo {
             justify-content: center;
 
-            .informacion {
+            hgroup {
                 display: none;
             }
         }
 
-        .busqueda {
+        search {
             justify-content: center;
             padding: 0;
 
@@ -189,7 +165,7 @@ body {
             }
         }
 
-        .secciones button,
+        nav button,
         footer button {
             justify-content: center;
 
@@ -203,7 +179,7 @@ body {
         }
     }
 
-    .panel-contenido {
+    main {
         flex: 1;
         display: flex;
         flex-direction: column;
@@ -211,21 +187,21 @@ body {
 
         header {
             display: flex;
-            border-bottom: 1px solid rgb(223, 223, 223);
-            padding-bottom: 15px;
-            margin: 15px;
+            border-bottom: 1px solid var(--color-borde-claro);
+            padding-bottom: var(--espaciado-estandar);
+            margin: var(--espaciado-estandar);
+            background-color: white;
 
             /*POR INVESTIGAR*/
             position: sticky;
             top: 0;
-            background-color: white;
             z-index: 10;
             /*--------------*/
 
-            .left {
+            hgroup {
                 flex: 1;
 
-                .titulo-seccion {
+                #titulo-seccion {
                     text-align: left;
                     color: black;
                     font-size: 30px;
@@ -238,7 +214,7 @@ body {
                 }
             }
 
-            .right {
+            .perfil {
                 flex: 1;
                 display: flex;
                 justify-content: right;
@@ -248,8 +224,8 @@ body {
 
                 .rol {
                     background-color: rgb(214, 255, 229);
-                    border-radius: 15px;
-                    padding: 5px 15px;
+                    border-radius: var(--radio-grande);
+                    padding: 5px var(--espaciado-estandar);
                     font-size: 13px;
                     font-weight: bold;
                     color: rgb(15, 99, 50);
@@ -257,13 +233,13 @@ body {
 
                 .usuario {
                     display: flex;
-                    gap: 15px;
+                    gap: var(--espaciado-estandar);
                     align-items: center;
                     justify-content: center;
 
-                    .avatar-usuario {
-                        height: 40px;
-                        width: 40px;
+                    .avatar {
+                        height: var(--altura-botones);
+                        width: var(--altura-botones);
                         border-radius: 50%;
                         background-color: rgb(126, 89, 10);
 
@@ -276,7 +252,7 @@ body {
                         }
                     }
 
-                    .info-usuario {
+                    .informacion {
                         display: flex;
                         flex-direction: column;
 
@@ -286,7 +262,7 @@ body {
                             font-weight: 500;
                         }
 
-                        .torre-depa {
+                        .torre-departamento {
                             color: rgb(0, 0, 0);
                             opacity: 0.75;
                             font-size: 12px;
@@ -295,22 +271,24 @@ body {
                     }
                 }
 
-                .cerrar-sesion {
+                button {
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     gap: 7px;
 
                     width: 150px;
-                    height: 40px;
-                    border-radius: 10px;
+                    height: var(--altura-botones);
+                    border-radius: var(--radio-mediano);
                     background-color: white;
-                    border: 0.5px solid rgb(110, 110, 110);
+                    transition: var(--transicion-normal);
+                    border: 1px solid rgb(110, 110, 110);
 
                     cursor: pointer;
 
                     &:hover {
                         background-color: rgba(0, 0, 0, 0.05);
+                        transition: var(--transicion-normal);
                     }
 
                     img {
@@ -326,14 +304,12 @@ body {
             }
         }
 
-        /*POR INVESTIGAR*/
         #vista {
-            overflow-y: auto;
             flex: 1;
+
+            /*POR INVESTIGAR*/
+            overflow-y: auto;
         }
-
-        /*--------------*/
-
     }
 
     .modal-overlay {
@@ -362,26 +338,26 @@ body {
             /*INVESTIGAR*/
             transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
 
-            .modal-header {
+            header {
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 position: relative;
-                padding-bottom: 15px;
-                border-bottom: 1px solid rgb(223, 223, 223);
+                padding-bottom: var(--espaciado-estandar);
+                border-bottom: 1px solid var(--color-borde-claro);
 
                 .modal-close {
                     position: absolute;
                     right: 0;
                     border: 1px solid rgb(214, 214, 214);
-                    border-radius: 10px;
+                    border-radius: var(--radio-mediano);
                     background: rgba(0, 0, 0, 0.03);
                     cursor: pointer;
                     font-size: 18px;
                 }
             }
 
-            .modal-content {
+            #modal-content {
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
@@ -390,31 +366,26 @@ body {
                 .detalles-reserva {
                     display: flex;
                     flex-direction: column;
-                    gap: 10px;
-
-                    span {
-                        font-size: 15px;
-                        font-weight: bold;
-                    }
+                    gap: var(--radio-mediano);
 
                     .informacion {
                         background-color: rgb(243, 243, 243);
-                        border-radius: 10px;
-                        padding: 15px;
+                        border-radius: var(--radio-mediano);
+                        padding: 15px 15px 15px 20px;
                         padding-left: 20px;
                         display: flex;
                         justify-content: center;
                         gap: 8px;
 
-                        .left,
-                        .right {
+                        .datos-personales,
+                        .datos-reserva {
                             flex: 1;
                             display: flex;
                             flex-direction: column;
                             gap: 5px;
                         }
 
-                        .right {
+                        .datos-reserva {
                             border-left: 1px solid silver;
                             padding-left: 20px;
                         }
@@ -442,32 +413,11 @@ body {
                 .fecha {
                     display: flex;
                     flex-direction: column;
-                    gap: 10px;
-
-                    .subtitulo {
-                        font-size: 15px;
-                        font-weight: bold;
-                    }
+                    gap: var(--radio-mediano);
 
                     .botones {
                         display: flex;
-                        gap: 15px;
-
-                        .hoy,
-                        .personalizado {
-                            flex: 1;
-                            height: 40px;
-                            border-radius: 10px;
-                            border: 2px solid silver;
-                            transition: 0.35s ease;
-                            background: none;
-                            cursor: pointer;
-
-                            &:hover {
-                                border: 2px solid rgb(32, 34, 46);
-                                transition: 0.35s ease;
-                            }
-                        }
+                        gap: var(--espaciado-estandar);
                     }
 
                     .fecha-reserva {
@@ -478,73 +428,69 @@ body {
                 .horario {
                     display: flex;
                     flex-direction: column;
-                    gap: 10px;
-
-                    span {
-                        font-size: 15px;
-                        font-weight: bold;
-                    }
+                    gap: var(--radio-mediano);
 
                     .seleccion-rango-horario {
                         display: flex;
-                        gap: 15px;
-
-                        .inicio,
-                        .fin {
-                            flex: 1;
-                            height: 40px;
-                            border-radius: 10px;
-                            border: 2px solid silver;
-                            transition: 0.35s ease;
-                            background: none;
-                            cursor: pointer;
-
-                            &:hover {
-                                border: 2px solid rgb(32, 34, 46);
-                                transition: 0.35s ease;
-                            }
-                        }
+                        gap: var(--espaciado-estandar);
                     }
                 }
 
-                .detalles {
+                .hoy,
+                .personalizado,
+                .inicio,
+                .fin {
+                    flex: 1;
+                    height: var(--altura-botones);
+                    border-radius: var(--radio-mediano);
+                    border: 2px solid silver;
+                    transition: var(--transicion-normal);
+                    background: none;
+                    cursor: pointer;
+
+                    &:hover {
+                        border: 2px solid var(--color-borde-hover);
+                        transition: var(--transicion-normal);
+                    }
+                }
+
+                .info-detalles {
                     display: flex;
                     flex-direction: column;
-                    gap: 10px;
-
-                    span {
-                        font-size: 15px;
-                        font-weight: bold;
-                    }
+                    gap: var(--radio-mediano);
 
                     textarea {
                         height: 60px;
-                        padding: 15px;
-                        padding-top: 10px;
+                        padding: 10px 15px 15px 15px;
                         outline: none;
-                        border-radius: 10px;
+                        border-radius: var(--radio-mediano);
                         border: 2px solid silver;
-                        transition: 0.4s ease;
+                        transition: var(--transicion-normal);
 
                         &:hover {
-                            border: 2px solid rgb(32, 34, 46);
-                            transition: 0.35s ease;
+                            border: 2px solid var(--color-borde-hover);
+                            transition: var(--transicion-normal);
                         }
                     }
                 }
             }
 
+            #modal-content h3 {
+                font-size: 15px;
+                font-weight: bold;
+            }
+
             .btn-confirmar-reserva {
-                height: 40px;
-                border-radius: 10px;
+                height: var(--altura-botones);
+                border-radius: var(--radio-mediano);
                 border: none;
                 color: white;
-                background-color: rgba(32, 34, 46, 0.8);
+                background-color: var(--color-primario-hover);
                 transition: 0.3s ease;
                 cursor: pointer;
 
                 &:hover {
-                    background-color: rgba(32, 34, 46, 1);
+                    background-color: var(--color-primario);
                     transition: 0.3s ease;
                 }
             }

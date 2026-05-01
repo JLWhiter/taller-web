@@ -1,19 +1,19 @@
 // Botón activo en la barra lateral
-const botones = document.querySelectorAll(".secciones button, footer button");
+const botones = document.querySelectorAll("nav button, footer button");
 
 botones.forEach((btn) => {
     btn.addEventListener("click", () => {
         botones.forEach((b) => b.classList.remove("activo"));
         btn.classList.add("activo");
 
-        const seccion = [...btn.classList].find(c => c !== "activo");
+        const seccion = btn.dataset.seccion;
         cargarVista(seccion);
     });
 });
 
 // Minimizar barra lateral
-const sidebar = document.getElementById("barra-lateral");
-const minimizarBtn = document.getElementById("minimizar-btn");
+const sidebar = document.getElementById("sidebar");
+const minimizarBtn = document.getElementById("btn-minimizar");
 
 minimizarBtn.addEventListener("click", () => {
     sidebar.classList.toggle("minimize");
@@ -83,7 +83,7 @@ const vistas = {
         `
     },
 
-    "seccion-informacion": {
+    "informacion": {
         titulo: "Información",
         descripcion: "Consulte los datos generales, ubicación y miembros de la junta directiva",
         html: `<section class="seccion-info">
@@ -174,7 +174,7 @@ function cargarVista(seccion) {
 cargarVista("panel-principal"); // Cargar panel principal al arrancar
 
 // Panel Principal encendido por defecto al cargar
-document.querySelector(".panel-principal").classList.add("activo");
+document.querySelector("[data-seccion='panel-principal']").classList.add("activo");
 
 // Contenido
 // 1. Modales
@@ -208,7 +208,7 @@ document.querySelectorAll(".modal-close").forEach(btn => {
 // --------------
 
 // Cerrar Sesión
-const btnCerrar = document.querySelector(".cerrar-sesion");
+const btnCerrar = document.querySelector("#cerrar-sesion");
 
 btnCerrar.addEventListener("click", () => {
     window.location.href = "../login/login.html"

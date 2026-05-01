@@ -97,12 +97,20 @@ body {
                 opacity: 0.75;
             }
 
+
             input {
                 height: 35px;
                 border-radius: 7px;
-                border: 1px solid silver;
                 padding-left: 10px;
                 margin-top: 5px;
+                border: 2px solid var(--color-borde-claro);
+                transition: var(--transicion-normal);
+            }
+
+            .correo input:hover,
+            .password input:hover {
+                border: 2px solid var(--color-borde-hover);
+                transition: var(--transicion-normal);
             }
 
             .recuerdame-recuperacion {
@@ -133,7 +141,7 @@ body {
                     flex: 1;
                     font-size: 13px;
                     text-align: right;
-                    color: rgb(97, 56, 56);
+                    color: var(--color-primario);
                     font-weight: bold;
                 }
             }
@@ -147,25 +155,12 @@ body {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-
-                background-color: rgb(97, 56, 56);
-
-                /* POR INVESTIGAR */
-                background-image:
-                    radial-gradient(circle at 50% 50%,
-                        rgba(160, 90, 60, 0.55) 0%,
-                        transparent 110%);
-                /* ------+------ */
+                background-color: var(--color-primario);
+                transition: var(--transicion-normal);
 
                 &:hover {
-                    background-color: rgb(119, 66, 66);
-
-                    /* POR INVESTIGAR */
-                    background-image:
-                        radial-gradient(circle at 50% 140%,
-                            rgba(180, 105, 70, 0.6) 0%,
-                            transparent 100%);
-                    /* ------+------ */
+                    background-color: var(--color-primario-hover);
+                    transition: var(--transicion-normal);
                 }
 
                 img {
@@ -185,7 +180,7 @@ body {
                 text-align: center;
 
                 a {
-                    color: rgb(97, 56, 56);
+                    color: var(--color-primario);
                     font-weight: bold;
                 }
             }

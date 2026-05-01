@@ -1,21 +1,21 @@
 .contenido {
     display: flex;
     flex-direction: column;
-    padding: 15px;
+    padding: var(--espaciado-estandar);
     padding-top: 0;
     flex: 1;
-    margin-right: 15px;
+    margin-right: var(--espaciado-estandar);
 
     .reservas {
         height: auto;
 
         h4 {
-            margin-bottom: 15px;
+            margin-bottom: var(--espaciado-estandar);
         }
 
         .botones {
             display: flex;
-            gap: 15px;
+            gap: var(--espaciado-estandar);
 
             .loza-deportiva,
             .casa-club,
@@ -34,11 +34,11 @@
                 img {
                     height: 50px;
                     width: auto;
-                    margin-bottom: 15px;
+                    margin-bottom: var(--espaciado-estandar);
                 }
 
                 h3 {
-                    margin-bottom: 10px;
+                    margin-bottom: var(--radio-mediano);
                     font-size: 17px;
                 }
 
@@ -102,12 +102,12 @@
 
         h4 {
             margin-top: 30px;
-            margin-bottom: 15px;
+            margin-bottom: var(--espaciado-estandar);
         }
 
         .botones {
             display: flex;
-            gap: 15px;
+            gap: var(--espaciado-estandar);
 
             .calendario,
             .mis-reservas {
@@ -118,7 +118,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: left;
-                gap: 15px;
+                gap: var(--espaciado-estandar);
                 cursor: pointer;
                 background-color: rgba(0, 0, 0, 0.05);
                 transition: 0.35s ease;
