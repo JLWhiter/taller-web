@@ -1,0 +1,72 @@
+/* Cocheras - colores por tarjeta */
+.reservar-cochera {
+    background-color: rgb(230, 241, 251) !important;
+    border: 2px solid rgb(181, 212, 244) !important;
+}
+
+.alquilar-cochera {
+    background-color: rgb(250, 238, 218) !important;
+    border: 2px solid rgb(250, 199, 117) !important;
+}
+
+.publicar-cochera {
+    background-color: rgb(225, 245, 238) !important;
+    border: 2px solid rgb(159, 225, 203) !important;
+}
+
+.reservar-cochera:hover {
+    background-color: rgb(210, 228, 245) !important;
+    border: 2px solid rgb(130, 175, 220) !important;
+    filter: none !important;
+    transform: translateY(-2px);
+}
+
+.alquilar-cochera:hover {
+    background-color: rgb(245, 225, 195) !important;
+    border: 2px solid rgb(220, 165, 60) !important;
+    filter: none !important;
+    transform: translateY(-2px);
+}
+
+.publicar-cochera:hover {
+    background-color: rgb(200, 235, 220) !important;
+    border: 2px solid rgb(80, 185, 145) !important;
+    filter: none !important;
+    transform: translateY(-2px);
+}
+/* Tamaño de íconos en botones de reserva */
+.reservas .botones button img {
+    height: 50px;
+    width: auto;
+}
+
+/* Tamaño de íconos en botones de herramientas */
+.herramientas .botones button img {
+    height: 20px;
+    width: auto;
+}
+.reservas .botones button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    gap: 10px;
+    flex: 1;
+    min-height: 180px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.reservas .botones button:hover {
+    filter: brightness(0.96);
+    transform: translateY(-2px);
+}
+
+.reservas .botones {
+    display: flex;
+    gap: 14px;
+}

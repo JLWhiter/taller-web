@@ -2,13 +2,13 @@
 const botones = document.querySelectorAll("nav button, footer button");
 
 botones.forEach((btn) => {
-    btn.addEventListener("click", () => {
-        botones.forEach((b) => b.classList.remove("activo"));
-        btn.classList.add("activo");
+  btn.addEventListener("click", () => {
+    botones.forEach((b) => b.classList.remove("activo"));
+    btn.classList.add("activo");
 
-        const seccion = btn.dataset.seccion;
-        cargarVista(seccion);
-    });
+    const seccion = btn.dataset.seccion;
+    cargarVista(seccion);
+  });
 });
 
 // Minimizar barra lateral
@@ -16,16 +16,15 @@ const sidebar = document.getElementById("sidebar");
 const minimizarBtn = document.getElementById("btn-minimizar");
 
 minimizarBtn.addEventListener("click", () => {
-    sidebar.classList.toggle("minimize");
-})
-
+  sidebar.classList.toggle("minimize");
+});
 
 // Contenido barra lateral
 const vistas = {
-    "panel-principal": {
-        titulo: "Panel Principal",
-        descripcion: "Gestiona tus reservas de áreas comunes",
-        html: `
+  "panel-principal": {
+    titulo: "Panel Principal",
+    descripcion: "Gestiona tus reservas de áreas comunes",
+    html: `
         <div class="contenido">
             <div class="reservas">
                 <h4>Sección de reservas</h4>
@@ -80,13 +79,66 @@ const vistas = {
                 </div>
             </div>
         </div>
-        `
-    },
-
-    "informacion": {
-        titulo: "Información",
-        descripcion: "Consulte los datos generales, ubicación y miembros de la junta directiva",
-        html: `<section class="seccion-info">
+        `,
+  },
+  "cochera": {
+    titulo: "Cochera",
+    descripcion: "Reserva o gestiona tu cochera dentro del condominio",
+    html: `
+    <div class="contenido">
+        <div class="reservas">
+            <h4>Sección de cocheras</h4>
+            <div class="botones">
+                <button class="reservar-cochera">
+                    <img src="../images/icons/reservar-cochera.png" alt="cochera">
+                    <h3>Reservar Cochera</h3>
+                    <p>
+                        Reserva una cochera común del condominio por horas o días
+                    </p>
+                </button>
+                <button class="alquilar-cochera">
+                    <img src="../images/icons/alquilar-cochera.png" alt="alquilar">
+                    <h3>Alquilar Cochera</h3>
+                    <p>
+                        Alquila la cochera de un propietario que no la está usando
+                    </p>
+                </button>
+                <button class="publicar-cochera">
+                    <img src="../images/icons/publicar-cochera.png" alt="publicar">
+                    <h3>Publicar mi Cochera</h3>
+                    <p>
+                        Ofrece tu cochera en alquiler a otros residentes
+                    </p>
+                </button>
+            </div>
+        </div>
+        <div class="herramientas">
+            <h4>Herramientas</h4>
+            <div class="botones">
+                <button class="calendario">
+                    <img src="../images/icons/calendario.png" alt="calendario">
+                    <div>
+                        <h3>Disponibilidad de Cocheras</h3>
+                        <p>Ver qué cocheras están libres hoy</p>
+                    </div>
+                </button>
+                <button class="mis-reservas">
+                    <img src="../images/icons/usuario.png" alt="persona">
+                    <div>
+                        <h3>Mis Solicitudes</h3>
+                        <p>Ver el estado de mis reservas de cochera</p>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+    `
+},
+  informacion: {
+    titulo: "Información",
+    descripcion:
+      "Consulte los datos generales, ubicación y miembros de la junta directiva",
+    html: `<section class="seccion-info">
                 <h4 class="subtitulo_1">Información del Condominio</h4>
                 <div class="cards-grid">
 
@@ -159,51 +211,55 @@ const vistas = {
                 </div>
             </section>
         </div>
-    </div>`
-    }
+    </div>`,
+  },
 };
 
-
 function cargarVista(seccion) {
-    const vista = vistas[seccion];
-    document.getElementById("titulo-seccion").textContent = vista.titulo;
-    document.getElementById("subtitulo-seccion").textContent = vista.descripcion;
-    document.getElementById("vista").innerHTML = vista.html;
+  const vista = vistas[seccion];
+  document.getElementById("titulo-seccion").textContent = vista.titulo;
+  document.getElementById("subtitulo-seccion").textContent = vista.descripcion;
+  document.getElementById("vista").innerHTML = vista.html;
 }
 
 cargarVista("panel-principal"); // Cargar panel principal al arrancar
 
 // Panel Principal encendido por defecto al cargar
-document.querySelector("[data-seccion='panel-principal']").classList.add("activo");
+document
+  .querySelector("[data-seccion='panel-principal']")
+  .classList.add("activo");
 
 // Contenido
 // 1. Modales
 function abrirModal(id) {
-    document.getElementById(id).classList.add("visible");
+  document.getElementById(id).classList.add("visible");
 }
 
 function cerrarModal(overlay) {
-    overlay.classList.remove("visible")
+  overlay.classList.remove("visible");
 }
 
 // 1.1. Secciones
 document.getElementById("vista").addEventListener("click", (e) => {
-    if (e.target.closest(".loza-deportiva")) abrirModal("overlay-loza");
-    if (e.target.closest(".casa-club")) abrirModal("overlay-casa");
-    if (e.target.closest(".zona-parrilla")) abrirModal("overlay-parrilla");
-    if (e.target.closest(".cita-jd")) abrirModal("overlay-jd");
-    if (e.target.closest(".calendario")) abrirModal("overlay-calendario");
-    if (e.target.closest(".mis-reservas")) abrirModal("overlay-misreservas");
+  if (e.target.closest(".loza-deportiva")) abrirModal("overlay-loza");
+  if (e.target.closest(".casa-club")) abrirModal("overlay-casa");
+  if (e.target.closest(".zona-parrilla")) abrirModal("overlay-parrilla");
+  if (e.target.closest(".cita-jd")) abrirModal("overlay-jd");
+  if (e.target.closest(".calendario")) abrirModal("overlay-calendario");
+  if (e.target.closest(".mis-reservas")) abrirModal("overlay-misreservas");
+  if (e.target.closest(".reservar-cochera"))  abrirModal("overlay-cochera");
+  if (e.target.closest(".alquilar-cochera"))  abrirModal("overlay-alquilar-cochera");
+  if (e.target.closest(".publicar-cochera"))  abrirModal("overlay-publicar-cochera");
 });
 
 // --------------
 
-document.querySelectorAll(".modal-close").forEach(btn => {
-    btn.addEventListener("click", () => {
-        const overlay = btn.closest(".modal-overlay");
-        cerrarModal(overlay);
-    })
-})
+document.querySelectorAll(".modal-close").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const overlay = btn.closest(".modal-overlay");
+    cerrarModal(overlay);
+  });
+});
 
 // --------------
 
@@ -211,5 +267,5 @@ document.querySelectorAll(".modal-close").forEach(btn => {
 const btnCerrar = document.querySelector("#cerrar-sesion");
 
 btnCerrar.addEventListener("click", () => {
-    window.location.href = "../login/login.html"
-})
+  window.location.href = "../login/login.html";
+});

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Villa Santa Clara</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="topnav" id="topnav">
+    <div class="brand">
+      <span class="brand-name">Villa Santa Clara</span>
+      <span class="brand-sep">|</span>
+      <span class="brand-sub">Condominio Residencial</span>
+    </div>
+    <nav>
+      <button class="nav-btn active" data-index="0">Inicio</button>
+      <button class="nav-btn" data-index="1">Áreas comunes</button>
+      <button class="nav-btn" data-index="2">Nosotros</button>
+      <button class="nav-btn" data-index="3">Cómo reservar</button>
+      <button class="nav-btn" data-index="4">Contacto</button>
+    </nav>
+    <a href="../login/login.html" class="btn-login">Iniciar sesión</a>
+  </header>
+
+  <!-- SECCIONES FULLSCREEN -->
+  <main id="main">
+
+    <!-- 0: INICIO -->
+    <section class="panel" id="panel-0">
+      <div class="panel-bg">
+        <img src="../images/background.png" alt="Condominio Villa Santa Clara"
+          onerror="this.style.display='none';document.getElementById('ph0').style.display='flex'" />
+        <div class="ph" id="ph0"><span>hero.jpg</span></div>
+        <div class="overlay"></div>
+      </div>
+      <div class="panel-content center">
+        <p class="eyebrow reveal">Ate, Lima · Perú</p>
+        <h1 class="display reveal delay-1">Villa Santa Clara</h1>
+        <p class="subtitle reveal delay-2">Gestiona tus reservas de áreas comunes<br>de forma fácil y desde cualquier dispositivo.</p>
+        <button class="btn-ghost reveal delay-3" onclick="goTo(3)">Ver cómo reservar</button>
+      </div>
+      <div class="scroll-hint reveal delay-4">
+        <span>Desliza para explorar</span>
+        <div class="arrow-down"></div>
+      </div>
+    </section>
+
+    <!-- 1: ÁREAS COMUNES -->
+    <section class="panel" id="panel-1">
+      <div class="panel-header reveal">
+        <p class="eyebrow light">Espacios del condominio</p>
+        <h2 class="display-sm light">Áreas comunes</h2>
+      </div>
+      <div class="areas-row">
+        <div class="area reveal">
+          <div class="area-img">
+            <img src="../images/icons/loza.png" alt="Loza deportiva"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="ph"><span>loza.jpg</span></div>
+            <div class="area-tag">Reservable</div>
+          </div>
+          <div class="area-body">
+            <h3>Loza deportiva</h3>
+            <p>Cancha multiusos para fútbol, básquet y actividades al aire libre disponible todos los días.</p>
+          </div>
+        </div>
+        <div class="area reveal delay-1">
+          <div class="area-img">
+            <img src="../images/icons/casa_clup.png" alt="Casa club"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="ph"><span>casaclub.jpg</span></div>
+            <div class="area-tag">Reservable</div>
+          </div>
+          <div class="area-body">
+            <h3>Casa club</h3>
+            <p>Salón equipado para eventos, reuniones y celebraciones familiares con amplia capacidad.</p>
+          </div>
+        </div>
+        <div class="area reveal delay-2">
+          <div class="area-img">
+            <img src="../images/icons/parrillas.png" alt="Zona de parrilla"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="ph"><span>parrilla.jpg</span></div>
+            <div class="area-tag">Reservable</div>
+          </div>
+          <div class="area-body">
+            <h3>Zona de parrilla</h3>
+            <p>Piso equipado para asados y reuniones al aire libre en familia o con amigos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2: NOSOTROS -->
+    <section class="panel split" id="panel-2">
+      <div class="split-img reveal">
+        <img src="../images/icons/nosotros.png" alt="Condominio"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="ph"><span>nosotros.jpg</span></div>
+      </div>
+      <div class="split-text reveal delay-1">
+        <p class="eyebrow">Nuestra historia</p>
+        <h2 class="display-sm">Un condominio construido para durar</h2>
+        <p class="body-text">Inaugurado en 2010, Villa Santa Clara nació con la visión de ofrecer vivienda de calidad en Ate, Lima. Con 17 torres y 544 departamentos, ha crecido junto a sus residentes por más de una década.</p>
+        <p class="body-text" style="margin-top:1rem">En 2025 se completó su última remodelación, renovando espacios comunes y fortaleciendo la infraestructura del condominio.</p>
+        <div class="stats">
+          <div class="stat"><span class="num">17</span><span class="lbl">Torres</span></div>
+          <div class="stat"><span class="num">544</span><span class="lbl">Departamentos</span></div>
+          <div class="stat"><span class="num">150</span><span class="lbl">Estacionamientos</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3: CÓMO RESERVAR -->
+    <section class="panel dark" id="panel-3">
+      <div class="panel-header reveal">
+        <p class="eyebrow bronze">Proceso de reserva</p>
+        <h2 class="display-sm light">¿Cómo reservar un área común?</h2>
+        <p class="subtitle muted">Solo necesitas tu cuenta de residente. Son 4 pasos simples.</p>
+      </div>
+      <div class="steps-row">
+        <div class="step reveal">
+          <div class="step-img">
+            <img src="../images/icons/sesion.png" alt="Paso 1"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="ph dark"><span>paso1.jpg</span></div>
+          </div>
+          <div class="step-num">01</div>
+          <h3 class="step-title">Inicia sesión</h3>
+          <p class="step-desc">Ingresa con tu correo de residente y contraseña.</p>
+        </div>
+        <div class="step reveal delay-1">
+          <div class="step-img">
+            <img src="../images/icons/elegir.png" alt="Paso 2"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="ph dark"><span>paso2.jpg</span></div>
+          </div>
+          <div class="step-num">02</div>
+          <h3 class="step-title">Elige el área</h3>
+          <p class="step-desc">Selecciona el espacio que deseas reservar desde el panel.</p>
+        </div>
+        <div class="step reveal delay-2">
+          <div class="step-img">
+            <img src="../images/icons/fecha.png" alt="Paso 3"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="ph dark"><span>paso3.jpg</span></div>
+          </div>
+          <div class="step-num">03</div>
+          <h3 class="step-title">Elige fecha y hora</h3>
+          <p class="step-desc">Consulta disponibilidad y escoge el horario que prefieras.</p>
+        </div>
+        <div class="step reveal delay-3">
+          <div class="step-img">
+            <img src="../images/icons/confirmacion.png" alt="Paso 4"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="ph dark"><span>paso4.jpg</span></div>
+          </div>
+          <div class="step-num">04</div>
+          <h3 class="step-title">Confirma</h3>
+          <p class="step-desc">Revisa los detalles y confirma. Recibirás una notificación.</p>
+        </div>
+      </div>
+      <div class="cta-row reveal delay-4">
+        <span class="cta-text">¿Listo para reservar?</span>
+        <a href="../login/login.html" class="btn-bronze">Iniciar sesión</a>
+      </div>
+    </section>
+
+    <!-- 4: CONTACTO -->
+    <section class="panel cream" id="panel-4">
+      <div class="panel-header reveal">
+        <p class="eyebrow">Escríbenos</p>
+        <h2 class="display-sm">Contacto</h2>
+      </div>
+      <div class="contact-row">
+        <div class="contact-card reveal">
+          <span class="c-label">Dirección</span>
+          <span class="c-val">Av. Nicolás Ayllón 7548<br>Ate, Lima — Perú</span>
+        </div>
+        <div class="contact-card reveal delay-1">
+          <span class="c-label">Teléfono</span>
+          <span class="c-val">+51 1 234 5678</span>
+        </div>
+        <div class="contact-card reveal delay-2">
+          <span class="c-label">Correo electrónico</span>
+          <span class="c-val">info@villasantaclara.com</span>
+        </div>
+      </div>
+      <footer class="foot">
+        <span>© 2026 Villa Santa Clara · Sistema de Gestión de Reservas</span>
+        <a href="../login/login.html">Acceso para residentes</a>
+      </foot>
+    </section>
+
+  </main>
+
+  <!-- PUNTOS INDICADORES -->
+  <div class="dots" id="dots">
+    <button class="dot active" data-index="0"></button>
+    <button class="dot" data-index="1"></button>
+    <button class="dot" data-index="2"></button>
+    <button class="dot" data-index="3"></button>
+    <button class="dot" data-index="4"></button>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
