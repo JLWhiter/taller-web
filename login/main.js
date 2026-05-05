@@ -15,6 +15,10 @@ form.addEventListener("submit", function (e) {
         return;
     }
 
+    if (emailVal == "admin@correo.com" && passwdVal == "admin123") {
+        window.location.href = "../administrador/first-page.html";
+        return;
+    }
     if (emailVal !== "residente@correo.com" || passwdVal !== "resi123") {
         alert("Correo o contraseña incorrecta!");
         return;

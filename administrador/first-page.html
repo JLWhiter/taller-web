@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/root.css">
+    <link rel="stylesheet" href="/administrador/style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <title>Página Administrativa</title>
+</head>
+
+<body>
+    <aside id="sidebar">
+        <div class="logo">
+            <img src="../images/icons/condominio.png" alt="Logo Villa Santa Clara" />
+            <hgroup>
+                <h2>Villa Santa Clara</h2>
+                <p>Gestión de Reservas</p>
+            </hgroup>
+        </div>
+        <search>
+            <label for="buscar"><img src="../images/icons/lupa.png" alt="" /></label>
+            <input id="buscar" type="search" placeholder="Buscar" />
+        </search>
+        <nav>
+            <button data-seccion="panel-principal">
+                <img src="../images/icons/dashboard.png" alt="" />
+                <span>Panel de Control</span>
+            </button>
+            <button data-seccion="cochera">
+                <img src="../images/icons/users-dark.png" alt="" />
+                <span>Gestión de Usuarios</span>
+            </button>
+            <button data-seccion="informacion">
+                <img src="../images/icons/calendario.png" alt="" />
+                <span>Reserva y Calendario</span>
+            </button>
+            <button data-seccion="informacion">
+                <img src="../images/icons/panel.png" alt="" />
+                <span>Informes y Analítica</span>
+            </button>
+        </nav>
+        <footer>
+            <button id="btn-minimizar">
+                <img src="../images/icons/compactar.png" alt="" />
+                <span>Minimizar Barra</span>
+            </button>
+            <button>
+                <img src="../images/icons/notificacion.png" alt="" />
+                <span>Notificaciones</span>
+            </button>
+            <button>
+                <img src="../images/icons/setting.png" alt="" />
+                <span>Configuración</span>
+            </button>
+        </footer>
+    </aside>
+    <div class="panel-contenido">
+        <header>
+            <div class="left">
+                <h1 class="titulo-seccion">Panel Principal</h1>
+                <p>Gestiona tus reservas de áreas comunes</p>
+            </div>
+            <div class="right">
+                <span class="rol">Administrador</span>
+                <div class="usuario">
+                    <div class="avatar-usuario">
+                        <span>A</span>
+                    </div>
+                    <div class="informacion">
+                        <span class="nombre-apellido">Administrador</span>
+                        <span class="torre-depa">Supervisor General</span>
+                    </div>
+                </div>
+                <button id="cerrar-sesion" onclick="window.location.href='../login/login.html'">
+                    <img src="../images/icons/salida-dark.png" alt="cerrar-sesion" />
+                    <span>Cerrar Sesión</span>
+                </button>
+            </div>
+        </header>
+        <div class="contenido">
+            <div class="reservas">
+                <h4>Sección de reservas</h4>
+                <div class="botones">
+                    <button class="total-usuario" onclick="">
+                        <h3>Total de Usuarios</h3>
+                        <img src="../images/icons/usuario.png" alt="usuario">
+                        <p>
+                            230
+                        </p>
+                    </button>
+                    <button class="reserva-totales" onclick="">
+                        <h3>Reservas Totales Este Mes</h3>
+                        <img src="../images/icons/panel.png" alt="Analisis">
+                        <p>
+                            15650
+                        </p>
+                    </button>
+                    <button class="ingreso-reserva" onclick="">
+                        <h3>Ingresos por Reservas</h3>
+                        <img src="../images/icons/parrilla.png" alt="Ingresos">
+                        <p>
+                            12500
+                        </p>
+                    </button>
+                </div>
+            </div>
+            <div class="reservas-aprobar">
+                <h4>Reservas por Aprobar</h4>
+                <div class="contenedor-tabla">
+                    <table class="pendiente-aprobación">
+                        <thead>
+                            <tr>
+                                <th>Id Reserva</th>
+                                <th>Usuario</th>
+                                <th>Área Común</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#001</td>
+                                <td>Juan Pérez</td>
+                                <td>Salón de Eventos</td>
+                                <td>2024-07-15</td>
+                                <td>18:00 - 22:00</td>
+                                <td>pendiente</td>
+                                <td class="acciones">
+                                    <button class="aprobar">Aprobar</button>
+                                    <button class="rechazar">Rechazar</button>
+                                    <button class="detalles">ver detalles...</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#002</td>
+                                <td>Ana Gómez</td>
+                                <td>Piscina</td>
+                                <td>2024-07-20</td>
+                                <td>10:00 - 12:00</td>
+                                <td>aprobado</td>
+                                <td class="acciones">
+                                    <button class="detalles">ver detalles...</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="actividad-reciente">
+                    <h4>Actividad Reciente</h4>
+                    <ul class="lista-actividad">
+                        <li>
+                            <span class="actividad-usuario">Ana Gomez</span>
+                            <span class="actividad-descripcion">Aprobo reserva #002</span>
+                            <span class="actividad-hora">Hace 2 horas</span>
+                        </li>
+                        <li>
+                            <span class="actividad-usuario">Carlos López</span>
+                            <span class="actividad-descripcion">Aprobo reserva #008</span>
+                            <span class="actividad-hora">Hace 5 horas</span>
+                        </li>
+                        <li>
+                            <span class="actividad-usuario">María Rodríguez</span>
+                            <span class="actividad-descripcion">Rechazó reserva #012</span>
+                            <span class="actividad-hora">Hace 5 horas</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../web-site/main.js"></script>
+</body>
+
+</html>
