@@ -16,7 +16,7 @@ form.addEventListener("submit", function (e) {
     }
 
     if (emailVal == "admin@correo.com" && passwdVal == "admin123") {
-        window.location.href = "../administrador/first-page.html";
+        window.location.href = "../administrador/index.html";
         return;
     }
     if (emailVal !== "residente@correo.com" || passwdVal !== "resi123") {
