@@ -8,53 +8,63 @@
 :root {
 
   /* ── COLORES PRINCIPALES ── */
-  --color-sidebar:          #1A1A18;        /* grafito oscuro (mismo que hero) */
-  --color-sidebar-hover:    rgba(255,255,255,0.08);
-  --color-sidebar-active:   rgba(255,255,255,0.14);
+  --color-sidebar: #1A1A18;
+  /* grafito oscuro (mismo que hero) */
+  --color-sidebar-hover: rgba(255, 255, 255, 0.08);
+  --color-sidebar-active: rgba(255, 255, 255, 0.14);
 
-  --color-bg:               #F7F6F4;        /* blanco cálido (conecta con --cream) */
-  --color-surface:          #FFFFFF;
-  --color-surface-muted:    #F0EDE8;        /* crema suave para fondos de cards */
+  --color-bg: #F7F6F4;
+  /* blanco cálido (conecta con --cream) */
+  --color-surface: #FFFFFF;
+  --color-surface-muted: #F0EDE8;
+  /* crema suave para fondos de cards */
 
-  --color-accent:           #7C6F5B;        /* topo/tierra — acento principal */
-  --color-accent-light:     #9C8F7B;
-  --color-accent-dark:      #5C5244;
-  --color-accent-bg:        #EFEAE3;        /* fondo muy suave del acento */
+  --color-accent: #7C6F5B;
+  /* topo/tierra — acento principal */
+  --color-accent-light: #9C8F7B;
+  --color-accent-dark: #5C5244;
+  --color-accent-bg: #EFEAE3;
+  /* fondo muy suave del acento */
 
   /* ── TEXTO ── */
-  --color-text-1:           #1A1A18;        /* primario */
-  --color-text-2:           #5A5750;        /* secundario */
-  --color-text-3:           #9A9590;        /* placeholder / muted */
+  --color-text-1: #1A1A18;
+  /* primario */
+  --color-text-2: #5A5750;
+  /* secundario */
+  --color-text-3: #9A9590;
+  /* placeholder / muted */
 
   /* ── BORDES ── */
-  --color-borde-claro:      rgba(0,0,0,0.08);
-  --color-borde-hover:      #7C6F5B;
-  --color-borde-dark:       rgba(255,255,255,0.09);
+  --color-borde-claro: rgba(0, 0, 0, 0.08);
+  --color-borde-hover: #7C6F5B;
+  --color-borde-dark: rgba(255, 255, 255, 0.09);
 
   /* ── SEMÁNTICOS (estado) ── */
-  --color-success-bg:       #EEFBF3;
-  --color-success-text:     #1a6b3c;
-  --color-success-border:   #9FDBBA;
+  --color-success-bg: #EEFBF3;
+  --color-success-text: #1a6b3c;
+  --color-success-border: #9FDBBA;
 
-  --color-primario:         #1A1A18;        /* alias para sidebar (compat. con código existente) */
-  --color-primario-hover:   #7C6F5B;        /* alias para btn-confirmar */
+  --color-primario: #1A1A18;
+  /* alias para sidebar (compat. con código existente) */
+  --color-primario-hover: #7C6F5B;
+  /* alias para btn-confirmar */
 
   /* ── ESPACIADO ── */
-  --espaciado-estandar:     14px;
+  --espaciado-estandar: 14px;
 
   /* ── RADIOS ── */
-  --radio-pequeno:          7px;
-  --radio-mediano:          10px;
-  --radio-grande:           14px;
+  --radio-pequeno: 7px;
+  --radio-mediano: 10px;
+  --radio-grande: 14px;
 
   /* ── TAMAÑOS ── */
-  --altura-botones:         36px;
+  --altura-botones: 36px;
 
   /* ── TIPOGRAFÍA ── */
-  --font-display:           'Cormorant Garamond', Georgia, serif;
-  --font-ui:                'DM Sans', system-ui, sans-serif;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-ui: 'DM Sans', system-ui, sans-serif;
 
   /* ── TRANSICIÓN ── */
-  --transicion-normal:      0.2s ease;
-  --ease:                   cubic-bezier(0.4, 0, 0.2, 1);
+  --transicion-normal: 0.2s ease;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }

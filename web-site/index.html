@@ -5,6 +5,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!--Google Icons-->
+
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
   <!--CSS-->
 
   <link rel="stylesheet" href="../root.css" />
@@ -13,13 +17,12 @@
   <link rel="stylesheet" href="css-contenidos/cochera.css">
   <link rel="stylesheet" href="style.css" />
 
-  <!--Tipogafía: Inter-->
+  <!--Tipogafía: Google Sans Flex-->
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-    rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap"
+    rel="stylesheet">
 
   <title>[NE] - Sistema de Gestión de Reservas</title>
 </head>
@@ -34,20 +37,43 @@
       </hgroup>
     </div>
     <search>
-      <label for="buscar"><img src="../images/icons/lupa.png" alt="buscar" /></label>
+      <label for="buscar">
+        <!--Icon: search-->
+        <span class="material-symbols-outlined">
+          search
+        </span>
+      </label>
       <input id="buscar" type="search" placeholder="Buscar" />
     </search>
     <nav>
       <button data-seccion="panel-principal">
-        <img src="../images/icons/dashboard.png" alt="Panel Principal" />
+
+        <!--Icon: dashboard-->
+
+        <span class="material-symbols-outlined">
+          space_dashboard
+        </span>
+
         <span>Panel Principal</span>
       </button>
       <button data-seccion="cochera">
-        <img src="../images/icons/cochera.png" alt="Cochera" />
+
+        <!--Icon: car-->
+
+        <span class="material-symbols-outlined">
+          directions_car
+        </span>
+
         <span>Cochera</span>
       </button>
       <button data-seccion="informacion">
-        <img src="../images/icons/informacion.png" alt="Información" />
+
+        <!--Icon: info-->
+
+        <span class="material-symbols-outlined">
+          info
+        </span>
+
         <span>Información</span>
       </button>
     </nav>
