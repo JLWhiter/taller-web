@@ -865,8 +865,110 @@ const vistas = {
     "informes-analitica": {
         "titulo": "Informes y Analítica",
         "contenido": "Visualiza informes y analíticas de uso.",
-        "html": ` <p>Visualiza informes y analíticas de uso.
-         </p>`,
+        "html": ` 
+            <section class="informes-analitica">
+                <div class="graficos-header">
+                    <ul>
+                        <li><div class="grafico">
+                            <h3>Total de Reservas(Mes actual)</h3>
+                            <span> 23,153 </span>
+                        </div></li>
+                        <li><div class="grafico">
+                            <h3>Amenidades Más Usadas</h3>
+                            <canvas id="grafico-amenidades" width="100" height="40"></canvas>
+                        </div></li>
+                        <li><div class="grafico">
+                            <h3>Ingresos por Reservas</h3>
+                            <canvas id="grafico-ingresos" width="100" height="40"></canvas>
+                        </div></li>
+                        <li><div class="grafico">
+                            <h3>Cancelaciones(Mes Actual)</h3>
+                            <span> 45 </span>
+                        </div></li>
+                    </ul>
+                </div>
+                <div class="graficos-main">
+                    <div class="grafico-superior">
+                    <ul>
+                        <li><div class="grafico">
+                            <h3>Uso de Amenidades por Hora/Día</h3>
+                            <canvas id="grafico-satisfaccion" width="100" height="40"></canvas>
+                            </div></li>
+                        <li><div class="grafico">
+                            <h3>Evolución de Reservas (Año Actual vs Año Anterior)</h3>
+                            <canvas id="grafico-reservas-semana" width="100" height="40"></canvas>
+                        </div></li>
+                        <li><div class="grafico">
+                            <h3>Perfil de Usuario (Propetario vs Inquilino)</h3>
+                            <canvas id="grafico-usuarios" width="100" height="40"></canvas>
+                        </div></li>
+                    </ul>
+                        
+                    </div>
+                    <div class="tabla-reportes inferior">
+                        <h3>Reportes Detallados</h3>
+                        <table class="tabla-informes">
+                            <thead>
+                                <tr>
+                                    <th>ID Informe</th>
+                                    <th>Nombre</th>
+                                    <th>Fecha de Generación</th>
+                                    <th>Formato</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#001</td>
+                                    <td>Informe de Reservas Mensuales</td>
+                                    <td>2024-07-01</td>
+                                    <td>excel</td>
+                                    <td>
+                                        <button class="btn-accion">Descargar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#002</td>
+                                    <td>Análisis de Uso de Amenidades</td>
+                                    <td>2024-07-05</td>
+                                    <td>pdf</td>
+                                    <td>
+                                        <button class="btn-accion">Descargar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#003</td>
+                                    <td>Reporte de Ingresos por Reservas</td>
+                                    <td>2024-07-10</td>
+                                    <td>excel</td>
+                                    <td>
+                                        <button class="btn-accion">Descargar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#004</td>
+                                    <td>Informe de Cancelaciones y Reembolsos</td>
+                                    <td>2024-07-15</td>
+                                    <td>pdf</td>
+                                    <td>
+                                        <button class="btn-accion">Descargar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#005</td>
+                                    <td>Análisis de Satisfacción del Usuario</td>
+                                    <td>2024-07-20</td>
+                                    <td>pdf</td>
+                                    <td>
+                                        <button class="btn-accion">Descargar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        `,
     },
 }
 
@@ -877,6 +979,9 @@ function mostrarVista(seccion) {
     document.getElementById("titulo-seccion").textContent = vista.titulo;
     document.getElementById("descripcion-seccion").textContent = vista.contenido;
     document.getElementById("vista").innerHTML = vista.html;
+     if(seccion === "informes-analitica"){
+        cargarGraficos();
+    }
 }
 
 // cargar por defecto
@@ -894,3 +999,68 @@ document.querySelectorAll("nav button").forEach(btn => {
 document
     .querySelector("[data-seccion='panel-control']")
     .classList.add("activo");
+
+function cargarGraficos(){
+
+    /* BARRAS */
+    new Chart(document.getElementById('grafico-amenidades'), {
+        type: 'bar',
+        data: {
+            labels: ['Piscina', 'Parrilla', 'Gym', 'Sala'],
+            datasets: [{
+                data: [50, 40, 25, 20]
+            }]
+        }
+    });
+
+    /* LINEA */
+    new Chart(document.getElementById('grafico-ingresos'), {
+        type: 'line',
+        data: {
+            labels: ['Ene','Feb','Mar','Abr','May'],
+            datasets: [{
+                data: [200,400,300,600,800],
+                fill: false
+            }]
+        }
+    });
+
+    /* BARRAS GRANDES */
+    new Chart(document.getElementById('grafico-satisfaccion'), {
+        type: 'bar',
+        data: {
+            labels: ['00:00','08:00','12:00','17:00','20:00'],
+            datasets: [{
+                data: [20,240,120,220,40]
+            }]
+        }
+    });
+
+    /* EVOLUCION */
+    new Chart(document.getElementById('grafico-reservas-semana'), {
+        type: 'line',
+        data: {
+            labels: ['Ene','Feb','Mar','Abr','May','Jun'],
+            datasets: [{
+                label:'2024',
+                data:[20,100,120,210,170,280]
+            },
+            {
+                label:'2023',
+                data:[30,120,110,90,150,200]
+            }]
+        }
+    });
+
+    /* PIE */
+    new Chart(document.getElementById('grafico-usuarios'), {
+        type: 'pie',
+        data: {
+            labels: ['Propietario','Inquilino'],
+            datasets: [{
+                data: [60,40]
+            }]
+        }
+    });
+
+}
