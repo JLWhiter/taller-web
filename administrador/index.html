@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/gestion-usuario.css">
     <link rel="stylesheet" href="style/reserva-calendario.css">
-    <link rel="stylesheet" href="style/informes-analitica.css">
+    <link rel="stylesheet" href="style/informe-analitica.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -32,33 +32,33 @@
         </search>
         <nav>
             <button data-seccion="panel-control">
-                <img src="../images/icons/dashboard.png" alt="" />
+                <img src="../images/icons/dashboard.png" alt="Panel de Control" />
                 <span>Panel de Control</span>
             </button>
             <button data-seccion="gestion-usuarios">
-                <img src="../images/icons/users-light.png" alt="" />
+                <img src="../images/icons/users-light.png" alt="Gestión de Usuarios" />
                 <span>Gestión de Usuarios</span>
             </button>
             <button data-seccion="reserva-calendario">
-                <img src="../images/icons/calendario.png" alt="" />
+                <img src="../images/icons/calendario.png" alt="Reserva y Calendario" />
                 <span>Reserva y Calendario</span>
             </button>
             <button data-seccion="informes-analitica">
-                <img src="../images/icons/panel.png" alt="" />
+                <img src="../images/icons/panel.png" alt="Informes y Analítica" />
                 <span>Informes y Analítica</span>
             </button>
         </nav>
         <footer>
             <button id="btn-minimizar">
-                <img src="../images/icons/compactar.png" alt="" />
+                <img src="../images/icons/compactar.png" alt="Minimizar Barra" />
                 <span>Minimizar Barra</span>
             </button>
             <button>
-                <img src="../images/icons/notificacion.png" alt="" />
+                <img src="../images/icons/notificacion.png" alt="Notificaciones" />
                 <span>Notificaciones</span>
             </button>
             <button>
-                <img src="../images/icons/setting.png" alt="" />
+                <img src="../images/icons/setting.png" alt="Configuración" />
                 <span>Configuración</span>
             </button>
         </footer>
@@ -91,8 +91,74 @@
             <div id="vista"></div>
         </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <script src="main.js"></script>
+<script>
+
+/* BARRAS */
+new Chart(document.getElementById('grafico-amenidades'), {
+    type: 'bar',
+    data: {
+        labels: ['Piscina', 'Parrilla', 'Gym', 'Sala'],
+        datasets: [{
+            data: [50, 40, 25, 20]
+        }]
+    }
+});
+
+/* LINEA */
+new Chart(document.getElementById('grafico-ingresos'), {
+    type: 'line',
+    data: {
+        labels: ['Ene','Feb','Mar','Abr','May'],
+        datasets: [{
+            data: [200,400,300,600,800],
+            fill: false
+        }]
+    }
+});
+
+/* BARRAS GRANDES */
+new Chart(document.getElementById('grafico-satisfaccion'), {
+    type: 'bar',
+    data: {
+        labels: ['00:00','08:00','12:00','17:00','20:00'],
+        datasets: [{
+            data: [20,240,120,220,40]
+        }]
+    }
+});
+
+/* EVOLUCION */
+new Chart(document.getElementById('grafico-reservas-semana'), {
+    type: 'line',
+    data: {
+        labels: ['Ene','Feb','Mar','Abr','May','Jun'],
+        datasets: [{
+            label:'2024',
+            data:[20,100,120,210,170,280]
+        },
+        {
+            label:'2023',
+            data:[30,120,110,90,150,200]
+        }]
+    }
+});
+
+/* PIE */
+new Chart(document.getElementById('grafico-usuarios'), {
+    type: 'pie',
+    data: {
+        labels: ['Propietario','Inquilino'],
+        datasets: [{
+            data: [60,40]
+        }]
+    }
+});
+
+</script>
+
+<script src="main.js"></script>
 </body>
 
 </html>
