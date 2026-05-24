@@ -970,6 +970,44 @@ const vistas = {
             </section>
         `,
     },
+    "configuracion": {
+    titulo: "Configuración",
+    descripcion: "Personaliza tu perfil y ajustes de la interfaz.",
+    html: `
+        <div class="contenido-configuracion">
+            <div class="config-card">
+                <h3>Ajustes de Interfaz</h3>
+                <p>Cambia el aspecto visual del sistema.</p>
+                <button id="btn-toggle-dark" class="btn-config">
+                    <img src="../images/icons/dark.png" alt="Luna">
+                    <span>Activar / Desactivar Modo Oscuro</span>
+                </button>
+            </div>
+            
+            <div class="config-card">
+                <h3>Información de Perfil</h3>
+                <p>Actualiza el nombre que se muestra en tu sesión.</p>
+                <div class="grupo-input">
+                    <input type="text" id="nuevo-nombre" placeholder="Escribe tu nuevo nombre...">
+                    <button id="btn-guardar-nombre" class="btn-config-accion">Guardar</button>
+                </div>
+            </div>
+
+<div class="config-card">
+    <h3>Foto de Perfil</h3>
+    <p>Selecciona una imagen desde tu dispositivo.</p>
+    <div class="grupo-input">
+        <input type="file" id="input-archivo-foto" accept="image/*" style="display: none;">
+        <button id="btn-seleccionar-foto" class="btn-config">Seleccionar archivo</button>
+        <button id="btn-guardar-foto" class="btn-config-accion">Guardar</button>
+    </div>
+</div>
+    `
+  }
+
+    
+  
+
 }
 
 // funcion para mostrar la vista seleccionada
@@ -982,7 +1020,12 @@ function mostrarVista(seccion) {
      if(seccion === "informes-analitica"){
         cargarGraficos();
     }
+    if (seccion === "configuracion") {
+    activarFuncionesConfiguracion();
+  }
 }
+
+
 
 // cargar por defecto
 mostrarVista("panel-control");
@@ -999,6 +1042,70 @@ document.querySelectorAll("nav button").forEach(btn => {
 document
     .querySelector("[data-seccion='panel-control']")
     .classList.add("activo");
+
+function activarFuncionesConfiguracion() {
+    // 1. MODO OSCURO
+    const btnDark = document.getElementById("btn-toggle-dark");
+    if (btnDark) {
+        btnDark.addEventListener("click", () => {
+            document.body.classList.toggle("dark-theme");
+            // Guardamos la preferencia en el navegador
+            localStorage.setItem("modoOscuro", document.body.classList.contains("dark-theme"));
+        });
+    }
+
+    // 2. CAMBIAR NOMBRE
+    const btnNombre = document.getElementById("btn-guardar-nombre");
+    const inputNombre = document.getElementById("nuevo-nombre");
+    if (btnNombre && inputNombre) {
+        btnNombre.addEventListener("click", () => {
+            const nuevoNombre = inputNombre.value.trim();
+            if (nuevoNombre !== "") {
+                document.querySelector(".perfil .usuario .informacion .nombre-apellido").textContent = nuevoNombre;
+                localStorage.setItem("nombreGuardado", nuevoNombre);
+                inputNombre.value = "";
+                alert("¡Nombre actualizado correctamente!");
+            }
+        });
+    }
+
+    // 3. CAMBIAR INICIAL DEL AVATAR
+    const btnFoto = document.getElementById("btn-guardar-foto");
+    const inputFoto = document.getElementById("nueva-inicial");
+    if (btnFoto && inputFoto) {
+        btnFoto.addEventListener("click", () => {
+            const nuevaInicial = inputFoto.value.trim().toUpperCase();
+            if (nuevaInicial !== "") {
+                document.querySelector(".perfil .usuario .avatar span").textContent = nuevaInicial;
+                localStorage.setItem("fotoGuardada", nuevaInicial);
+                inputFoto.value = "";
+                alert("¡Avatar actualizado correctamente!");
+            }
+        });
+    }
+}
+
+// Cargar los datos guardados automáticamente al abrir o recargar la página
+window.addEventListener("DOMContentLoaded", () => {
+    // Aplicar tema oscuro si estaba guardado
+    if (localStorage.getItem("modoOscuro") === "true") {
+        document.body.classList.add("dark-theme");
+    }
+    
+    // Aplicar nombre si estaba guardado
+    const nombreGuardado = localStorage.getItem("nombreGuardado");
+    if (nombreGuardado) {
+        const elementoNombre = document.querySelector(".perfil .usuario .informacion .nombre-apellido");
+        if (elementoNombre) elementoNombre.textContent = nombreGuardado;
+    }
+    
+    // Aplicar avatar si estaba guardado
+    const fotoGuardada = localStorage.getItem("fotoGuardada");
+    if (fotoGuardada) {
+        const elementoAvatar = document.querySelector(".perfil .usuario .avatar span");
+        if (elementoAvatar) elementoAvatar.textContent = fotoGuardada;
+    }
+});
 
 function cargarGraficos(){
 

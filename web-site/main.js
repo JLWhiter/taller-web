@@ -241,7 +241,7 @@ const vistas = {
     <p>Selecciona una imagen desde tu dispositivo.</p>
     <div class="grupo-input">
         <input type="file" id="input-archivo-foto" accept="image/*" style="display: none;">
-        <button id="btn-seleccionar-foto" class="btn-config">Seleccionar archivo</button>
+        <button id="btn-seleccionar-foto" class="btn-config">Selecciona</button>
         <button id="btn-guardar-foto" class="btn-config-accion">Guardar</button>
     </div>
 </div>
