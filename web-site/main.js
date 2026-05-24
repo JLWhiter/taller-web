@@ -2,34 +2,29 @@
 const botones = document.querySelectorAll("nav button, footer button");
 
 botones.forEach((btn) => {
-    btn.addEventListener("click", () => {
-        botones.forEach((b) => b.classList.remove("activo"));
-        btn.classList.add("activo");
-        
-        const seccion = btn.dataset.seccion;
-        cargarVista(seccion);
-    });
+  btn.addEventListener("click", () => {
+    botones.forEach((b) => b.classList.remove("activo"));
+    btn.classList.add("activo");
+
+    const seccion = btn.dataset.seccion;
+    cargarVista(seccion);
+  });
 });
 
-// Panel Principal encendido por defecto al cargar
-document
-    .querySelector("[data-seccion='panel-principal']")
-    .classList.add("activo");
-    
 // Minimizar barra lateral
 const sidebar = document.getElementById("sidebar");
 const minimizarBtn = document.getElementById("btn-minimizar");
 
 minimizarBtn.addEventListener("click", () => {
-    sidebar.classList.toggle("minimize");
+  sidebar.classList.toggle("minimize");
 });
 
 // Contenido barra lateral
 const vistas = {
-    "panel-principal": {
-        titulo: "Panel Principal",
-        descripcion: "Gestiona tus reservas de áreas comunes",
-        html: `
+  "panel-principal": {
+    titulo: "Panel Principal",
+    descripcion: "Gestiona tus reservas de áreas comunes",
+    html: `
         <div class="contenido">
             <div class="reservas">
                 <h4>Sección de reservas</h4>
@@ -85,11 +80,11 @@ const vistas = {
             </div>
         </div>
         `,
-    },
-    "cochera": {
-        titulo: "Cochera",
-        descripcion: "Reserva o gestiona tu cochera dentro del condominio",
-        html: `
+  },
+  "cochera": {
+    titulo: "Cochera",
+    descripcion: "Reserva o gestiona tu cochera dentro del condominio",
+    html: `
     <div class="contenido">
         <div class="reservas">
             <h4>Sección de cocheras</h4>
@@ -138,12 +133,12 @@ const vistas = {
         </div>
     </div>
     `
-    },
-    informacion: {
-        titulo: "Información",
-        descripcion:
-            "Consulte los datos generales, ubicación y miembros de la junta directiva",
-        html: `<section class="seccion-info">
+},
+  informacion: {
+    titulo: "Información",
+    descripcion:
+      "Consulte los datos generales, ubicación y miembros de la junta directiva",
+    html: `<section class="seccion-info">
                 <h4 class="subtitulo_1">Información del Condominio</h4>
                 <div class="cards-grid">
 
@@ -217,56 +212,183 @@ const vistas = {
             </section>
         </div>
     </div>`,
-    },
+  },
+"configuracion": {
+    titulo: "Configuración",
+    descripcion: "Personaliza tu perfil y ajustes de la interfaz.",
+    html: `
+        <div class="contenido-configuracion">
+            <div class="config-card">
+                <h3>Ajustes de Interfaz</h3>
+                <p>Cambia el aspecto visual del sistema.</p>
+                <button id="btn-toggle-dark" class="btn-config">
+                    <img src="../images/icons/dark.png" alt="Luna">
+                    <span>Activar / Desactivar Modo Oscuro</span>
+                </button>
+            </div>
+            
+            <div class="config-card">
+                <h3>Información de Perfil</h3>
+                <p>Actualiza el nombre que se muestra en tu sesión.</p>
+                <div class="grupo-input">
+                    <input type="text" id="nuevo-nombre" placeholder="Escribe tu nuevo nombre...">
+                    <button id="btn-guardar-nombre" class="btn-config-accion">Guardar</button>
+                </div>
+            </div>
+
+<div class="config-card">
+    <h3>Foto de Perfil</h3>
+    <p>Selecciona una imagen desde tu dispositivo.</p>
+    <div class="grupo-input">
+        <input type="file" id="input-archivo-foto" accept="image/*" style="display: none;">
+        <button id="btn-seleccionar-foto" class="btn-config">Seleccionar archivo</button>
+        <button id="btn-guardar-foto" class="btn-config-accion">Guardar</button>
+    </div>
+</div>
+    `
+  }
+
 };
 
 function cargarVista(seccion) {
-    const vista = vistas[seccion];
-    document.getElementById("titulo-seccion").textContent = vista.titulo;
-    document.getElementById("subtitulo-seccion").textContent = vista.descripcion;
-    document.getElementById("vista").innerHTML = vista.html;
+  const vista = vistas[seccion];
+  document.getElementById("titulo-seccion").textContent = vista.titulo;
+  document.getElementById("subtitulo-seccion").textContent = vista.descripcion;
+  document.getElementById("vista").innerHTML = vista.html;
+
+if (seccion === "configuracion") {
+    activarFuncionesConfiguracion();
+  }
 }
 
 cargarVista("panel-principal"); // Cargar panel principal al arrancar
 
+// Panel Principal encendido por defecto al cargar
+document
+  .querySelector("[data-seccion='panel-principal']")
+  .classList.add("activo");
 
 // Contenido
 // 1. Modales
 function abrirModal(id) {
-    document.getElementById(id).classList.add("visible");
+  document.getElementById(id).classList.add("visible");
 }
 
 function cerrarModal(overlay) {
-    overlay.classList.remove("visible");
+  overlay.classList.remove("visible");
 }
+
 
 // 1.1. Secciones
 document.getElementById("vista").addEventListener("click", (e) => {
-    if (e.target.closest(".loza-deportiva")) abrirModal("overlay-loza");
-    if (e.target.closest(".casa-club")) abrirModal("overlay-casa");
-    if (e.target.closest(".zona-parrilla")) abrirModal("overlay-parrilla");
-    if (e.target.closest(".cita-jd")) abrirModal("overlay-jd");
-    if (e.target.closest(".calendario")) abrirModal("overlay-calendario");
-    if (e.target.closest(".mis-reservas")) abrirModal("overlay-misreservas");
-    if (e.target.closest(".reservar-cochera")) abrirModal("overlay-cochera");
-    if (e.target.closest(".alquilar-cochera")) abrirModal("overlay-alquilar-cochera");
-    if (e.target.closest(".publicar-cochera")) abrirModal("overlay-publicar-cochera");
+  if (e.target.closest(".loza-deportiva")) abrirModal("overlay-loza");
+  if (e.target.closest(".casa-club")) abrirModal("overlay-casa");
+  if (e.target.closest(".zona-parrilla")) abrirModal("overlay-parrilla");
+  if (e.target.closest(".cita-jd")) abrirModal("overlay-jd");
+  if (e.target.closest(".calendario")) abrirModal("overlay-calendario");
+  if (e.target.closest(".mis-reservas")) abrirModal("overlay-misreservas");
+  if (e.target.closest(".reservar-cochera"))  abrirModal("overlay-cochera");
+  if (e.target.closest(".alquilar-cochera"))  abrirModal("overlay-alquilar-cochera");
+  if (e.target.closest(".publicar-cochera"))  abrirModal("overlay-publicar-cochera");
 });
 
 // --------------
 
 document.querySelectorAll(".modal-close").forEach((btn) => {
-    btn.addEventListener("click", () => {
-        const overlay = btn.closest(".modal-overlay");
-        cerrarModal(overlay);
-    });
+  btn.addEventListener("click", () => {
+    const overlay = btn.closest(".modal-overlay");
+    cerrarModal(overlay);
+  });
 });
 
 // --------------
+
+function activarFuncionesConfiguracion() {
+    // 1. MODO OSCURO
+    const btnDark = document.getElementById("btn-toggle-dark");
+    if (btnDark) {
+        btnDark.addEventListener("click", () => {
+            document.body.classList.toggle("dark-theme");
+            // Guardamos la preferencia en el navegador
+            localStorage.setItem("modoOscuro", document.body.classList.contains("dark-theme"));
+        });
+    }
+// 2. CAMBIAR NOMBRE (SIN ALERT)
+    const btnNombre = document.getElementById("btn-guardar-nombre");
+    const inputNombre = document.getElementById("nuevo-nombre");
+    if (btnNombre && inputNombre) {
+        btnNombre.addEventListener("click", () => {
+            const nuevoNombre = inputNombre.value.trim();
+            if (nuevoNombre !== "") {
+                document.querySelector(".perfil .usuario .informacion .nombre-apellido").textContent = nuevoNombre;
+                localStorage.setItem("nombreGuardado", nuevoNombre);
+                inputNombre.value = ""; // Limpia el input pero no molesta con alertas
+            }
+        });
+    }
+
+    // 3. CAMBIAR FOTO DE PERFIL (SIN ALERT Y DIRECTO)
+    const btnSeleccionar = document.getElementById("btn-seleccionar-foto");
+    const inputFile = document.getElementById("input-archivo-foto");
+    const btnGuardar = document.getElementById("btn-guardar-foto");
+
+    if (btnSeleccionar && inputFile) {
+        btnSeleccionar.addEventListener("click", () => inputFile.click());
+        inputFile.addEventListener("change", (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    // Guardamos temporalmente en localStorage y aplicamos al instante
+                    const imgData = event.target.result;
+                    localStorage.setItem("fotoGuardada", imgData);
+                    
+                    // Aplicar al instante al perfil
+                    const avatar = document.querySelector(".perfil .usuario .avatar");
+                    const spanLetra = avatar.querySelector("span");
+                    avatar.style.backgroundImage = `url('${imgData}')`;
+                    avatar.style.backgroundSize = "cover";
+                    avatar.style.backgroundPosition = "center";
+                    if (spanLetra) spanLetra.style.display = "none";
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+}
+
+
+
+// Cargar los datos guardados automáticamente al abrir o recargar la página
+window.addEventListener("DOMContentLoaded", () => {
+    // Aplicar tema oscuro si estaba guardado
+    if (localStorage.getItem("modoOscuro") === "true") {
+        document.body.classList.add("dark-theme");
+    }
+    
+    // Aplicar nombre si estaba guardado
+    const nombreGuardado = localStorage.getItem("nombreGuardado");
+    if (nombreGuardado) {
+        const elementoNombre = document.querySelector(".perfil .usuario .informacion .nombre-apellido");
+        if (elementoNombre) elementoNombre.textContent = nombreGuardado;
+    }
+    
+// Aplicar foto si estaba guardada
+const fotoGuardada = localStorage.getItem("fotoGuardada");
+    if (fotoGuardada) {
+        const avatar = document.querySelector(".perfil .usuario .avatar");
+        const spanLetra = avatar.querySelector("span");
+        
+        avatar.style.backgroundImage = `url('${fotoGuardada}')`;
+        avatar.style.backgroundSize = "cover";
+        avatar.style.backgroundPosition = "center";
+        if (spanLetra) spanLetra.style.display = "none";
+    }
+});
 
 // Cerrar Sesión
 const btnCerrar = document.querySelector("#cerrar-sesion");
 
 btnCerrar.addEventListener("click", () => {
-    window.location.href = "../login/login.html";
+  window.location.href = "../login/login.html";
 });
