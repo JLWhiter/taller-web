@@ -232,7 +232,7 @@ const vistas = {
                 <p>Actualiza tu numero telefonico.</p>
 
                 <div class="grupo-input">
-                    <input type="text" id="nuevo-nombre" placeholder="Escribe tu nuevo nombre...">
+                    <input type="text" id="nuevo-nombre" placeholder="Escribe numero telefonico">
                     <button id="btn-guardar-nombre" class="btn-config-accion">Cambiar</button>
                 </div>
                 
@@ -316,18 +316,18 @@ function activarFuncionesConfiguracion() {
         });
     }
 // 2. CAMBIAR NOMBRE (SIN ALERT)
-    const btnNombre = document.getElementById("btn-guardar-nombre");
-    const inputNombre = document.getElementById("nuevo-nombre");
-    if (btnNombre && inputNombre) {
-        btnNombre.addEventListener("click", () => {
-            const nuevoNombre = inputNombre.value.trim();
-            if (nuevoNombre !== "") {
-                document.querySelector(".perfil .usuario .informacion .nombre-apellido").textContent = nuevoNombre;
-                localStorage.setItem("nombreGuardado", nuevoNombre);
-                inputNombre.value = ""; // Limpia el input pero no molesta con alertas
-            }
-        });
-    }
+//    const btnNombre = document.getElementById("btn-guardar-nombre");
+//    const inputNombre = document.getElementById("nuevo-nombre");
+//    if (btnNombre && inputNombre) {
+//        btnNombre.addEventListener("click", () => {
+//            const nuevoNombre = inputNombre.value.trim();
+//            if (nuevoNombre !== "") {
+//                document.querySelector(".perfil .usuario .informacion .nombre-apellido").textContent = nuevoNombre;
+//                localStorage.setItem("nombreGuardado", nuevoNombre);
+//                inputNombre.value = ""; // Limpia el input pero no molesta con alertas
+//            }
+//        });
+//    }
 
     // 3. CAMBIAR FOTO DE PERFIL (SIN ALERT Y DIRECTO)
     const btnSeleccionar = document.getElementById("btn-seleccionar-foto");
