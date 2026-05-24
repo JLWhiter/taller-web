@@ -219,21 +219,23 @@ const vistas = {
     html: `
         <div class="contenido-configuracion">
             <div class="config-card">
-                <h3>Ajustes de Interfaz</h3>
+                <h3>Modo Oscuro</h3>
                 <p>Cambia el aspecto visual del sistema.</p>
                 <button id="btn-toggle-dark" class="btn-config">
                     <img src="../images/icons/dark.png" alt="Luna">
-                    <span>Activar / Desactivar Modo Oscuro</span>
+                    <span>Activar / Desactivar</span>
                 </button>
             </div>
             
             <div class="config-card">
                 <h3>Información de Perfil</h3>
-                <p>Actualiza el nombre que se muestra en tu sesión.</p>
+                <p>Actualiza tu numero telefonico.</p>
+
                 <div class="grupo-input">
                     <input type="text" id="nuevo-nombre" placeholder="Escribe tu nuevo nombre...">
-                    <button id="btn-guardar-nombre" class="btn-config-accion">Guardar</button>
+                    <button id="btn-guardar-nombre" class="btn-config-accion">Cambiar</button>
                 </div>
+                
             </div>
 
 <div class="config-card">
