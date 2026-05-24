@@ -2,29 +2,34 @@
 const botones = document.querySelectorAll("nav button, footer button");
 
 botones.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    botones.forEach((b) => b.classList.remove("activo"));
-    btn.classList.add("activo");
-
-    const seccion = btn.dataset.seccion;
-    cargarVista(seccion);
-  });
+    btn.addEventListener("click", () => {
+        botones.forEach((b) => b.classList.remove("activo"));
+        btn.classList.add("activo");
+        
+        const seccion = btn.dataset.seccion;
+        cargarVista(seccion);
+    });
 });
 
+// Panel Principal encendido por defecto al cargar
+document
+    .querySelector("[data-seccion='panel-principal']")
+    .classList.add("activo");
+    
 // Minimizar barra lateral
 const sidebar = document.getElementById("sidebar");
 const minimizarBtn = document.getElementById("btn-minimizar");
 
 minimizarBtn.addEventListener("click", () => {
-  sidebar.classList.toggle("minimize");
+    sidebar.classList.toggle("minimize");
 });
 
 // Contenido barra lateral
 const vistas = {
-  "panel-principal": {
-    titulo: "Panel Principal",
-    descripcion: "Gestiona tus reservas de áreas comunes",
-    html: `
+    "panel-principal": {
+        titulo: "Panel Principal",
+        descripcion: "Gestiona tus reservas de áreas comunes",
+        html: `
         <div class="contenido">
             <div class="reservas">
                 <h4>Sección de reservas</h4>
@@ -80,11 +85,11 @@ const vistas = {
             </div>
         </div>
         `,
-  },
-  "cochera": {
-    titulo: "Cochera",
-    descripcion: "Reserva o gestiona tu cochera dentro del condominio",
-    html: `
+    },
+    "cochera": {
+        titulo: "Cochera",
+        descripcion: "Reserva o gestiona tu cochera dentro del condominio",
+        html: `
     <div class="contenido">
         <div class="reservas">
             <h4>Sección de cocheras</h4>
@@ -133,12 +138,12 @@ const vistas = {
         </div>
     </div>
     `
-},
-  informacion: {
-    titulo: "Información",
-    descripcion:
-      "Consulte los datos generales, ubicación y miembros de la junta directiva",
-    html: `<section class="seccion-info">
+    },
+    informacion: {
+        titulo: "Información",
+        descripcion:
+            "Consulte los datos generales, ubicación y miembros de la junta directiva",
+        html: `<section class="seccion-info">
                 <h4 class="subtitulo_1">Información del Condominio</h4>
                 <div class="cards-grid">
 
@@ -212,53 +217,49 @@ const vistas = {
             </section>
         </div>
     </div>`,
-  },
+    },
 };
 
 function cargarVista(seccion) {
-  const vista = vistas[seccion];
-  document.getElementById("titulo-seccion").textContent = vista.titulo;
-  document.getElementById("subtitulo-seccion").textContent = vista.descripcion;
-  document.getElementById("vista").innerHTML = vista.html;
+    const vista = vistas[seccion];
+    document.getElementById("titulo-seccion").textContent = vista.titulo;
+    document.getElementById("subtitulo-seccion").textContent = vista.descripcion;
+    document.getElementById("vista").innerHTML = vista.html;
 }
 
 cargarVista("panel-principal"); // Cargar panel principal al arrancar
 
-// Panel Principal encendido por defecto al cargar
-document
-  .querySelector("[data-seccion='panel-principal']")
-  .classList.add("activo");
 
 // Contenido
 // 1. Modales
 function abrirModal(id) {
-  document.getElementById(id).classList.add("visible");
+    document.getElementById(id).classList.add("visible");
 }
 
 function cerrarModal(overlay) {
-  overlay.classList.remove("visible");
+    overlay.classList.remove("visible");
 }
 
 // 1.1. Secciones
 document.getElementById("vista").addEventListener("click", (e) => {
-  if (e.target.closest(".loza-deportiva")) abrirModal("overlay-loza");
-  if (e.target.closest(".casa-club")) abrirModal("overlay-casa");
-  if (e.target.closest(".zona-parrilla")) abrirModal("overlay-parrilla");
-  if (e.target.closest(".cita-jd")) abrirModal("overlay-jd");
-  if (e.target.closest(".calendario")) abrirModal("overlay-calendario");
-  if (e.target.closest(".mis-reservas")) abrirModal("overlay-misreservas");
-  if (e.target.closest(".reservar-cochera"))  abrirModal("overlay-cochera");
-  if (e.target.closest(".alquilar-cochera"))  abrirModal("overlay-alquilar-cochera");
-  if (e.target.closest(".publicar-cochera"))  abrirModal("overlay-publicar-cochera");
+    if (e.target.closest(".loza-deportiva")) abrirModal("overlay-loza");
+    if (e.target.closest(".casa-club")) abrirModal("overlay-casa");
+    if (e.target.closest(".zona-parrilla")) abrirModal("overlay-parrilla");
+    if (e.target.closest(".cita-jd")) abrirModal("overlay-jd");
+    if (e.target.closest(".calendario")) abrirModal("overlay-calendario");
+    if (e.target.closest(".mis-reservas")) abrirModal("overlay-misreservas");
+    if (e.target.closest(".reservar-cochera")) abrirModal("overlay-cochera");
+    if (e.target.closest(".alquilar-cochera")) abrirModal("overlay-alquilar-cochera");
+    if (e.target.closest(".publicar-cochera")) abrirModal("overlay-publicar-cochera");
 });
 
 // --------------
 
 document.querySelectorAll(".modal-close").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const overlay = btn.closest(".modal-overlay");
-    cerrarModal(overlay);
-  });
+    btn.addEventListener("click", () => {
+        const overlay = btn.closest(".modal-overlay");
+        cerrarModal(overlay);
+    });
 });
 
 // --------------
@@ -267,5 +268,5 @@ document.querySelectorAll(".modal-close").forEach((btn) => {
 const btnCerrar = document.querySelector("#cerrar-sesion");
 
 btnCerrar.addEventListener("click", () => {
-  window.location.href = "../login/login.html";
+    window.location.href = "../login/login.html";
 });
