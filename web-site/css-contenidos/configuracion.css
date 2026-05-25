@@ -1,0 +1,75 @@
+/* ===== ESTILOS DE CONFIGURACIÓN ===== */
+.contenido-configuracion {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.config-card {
+    background-color: white;
+    border: 1px solid var(--color-borde-claro);
+    border-radius: 14px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.config-card h3 {
+    font-size: 18px;
+    color: black;
+}
+
+.config-card p {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.btn-config {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 45px;
+    border-radius: 8px;
+    border: 1px solid var(--color-borde-hover);
+    background-color: transparent;
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-config:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.btn-config img {
+    height: 18px;
+    width: auto;
+}
+
+.grupo-input {
+    display: flex;
+    gap: 10px;
+}
+
+.grupo-input input {
+    flex: 1;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid silver;
+    outline: none;
+}
+
+.btn-config-accion {
+    padding: 0 20px;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--color-primario);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}

@@ -18,10 +18,7 @@
             grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
             gap: var(--espaciado-estandar);
 
-            .loza-deportiva,
-            .casa-club,
-            .zona-parrilla,
-            .cita-jd {
+            button {
                 flex: 1;
                 display: flex;
                 align-items: center;
@@ -32,10 +29,8 @@
                 padding: 15px 20px;
                 cursor: pointer;
 
-                img {
-                    height: 50px;
-                    width: auto;
-                    margin-bottom: var(--espaciado-estandar);
+                .material-symbols-outlined {
+                    font-size: 40px;
                 }
 
                 h3 {

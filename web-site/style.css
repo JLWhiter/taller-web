@@ -11,13 +11,14 @@ body {
     aside {
         display: flex;
         flex-direction: column;
-        width: 200px;
+        width: 250px;
         background-color: var(--color-primario);
         margin: var(--espaciado-estandar);
         border-radius: var(--radio-grande);
         box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.5);
-        padding: var(--espaciado-estandar);
+        padding: 20px;
         transition: width 0.25s ease;
+        box-sizing: border-box;
 
         /*POR INVESTIGAR*/
         white-space: nowrap;
@@ -35,7 +36,7 @@ body {
             justify-content: space-between;
 
             gap: 10px;
-            padding: 0px 10px 10px 10px;
+            padding: 5px 3px 10px 3px;
 
             border-bottom: 1px solid rgb(109, 109, 109);
 
@@ -46,46 +47,27 @@ body {
                 h2 {
                     color: rgb(255, 255, 255);
                     font-weight: 500;
-                    font-size: 17.5px;
+                    font-size: 15px;
                 }
 
                 p {
-                    color: rgb(255, 255, 255);
-                    font-size: 12px;
+                    color: rgba(255, 255, 255, 0.795);
+                    font-size: 10px;
                     text-align: left;
                     font-weight: 300;
                 }
             }
-        }
 
-        search {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid white;
-            margin-top: var(--espaciado-estandar);
-            height: var(--altura-botones);
-            background: none;
-            border-radius: var(--radio-pequeno);
-            gap: 10px;
-            padding-left: var(--espaciado-estandar);
-
-            label {
+            button {
+                background-color: rgb(49, 49, 49);
+                border: 2px solid rgb(71, 71, 71);
                 display: flex;
                 align-items: center;
                 justify-content: center;
-
-                .material-symbols-outlined {
-                    font-size: 20px;
-                }
-            }
-
-            input {
-                background: none;
-                border: none;
-                width: 100%;
-                color: white;
-                outline: none;
+                border-radius: 10px;
+                height: 35px;
+                width: 35px;
+                
             }
         }
 
@@ -124,15 +106,10 @@ body {
             padding-left: 15px;
             box-sizing: border-box;
 
-            img {
-                height: 15px;
-                width: auto;
-                margin-left: 10px;
-            }
-
             span {
                 color: white;
-                font-weight: 500;
+                font-size: 12px;
+                font-weight: 300;
             }
 
             &:hover,
@@ -186,7 +163,6 @@ body {
             border-bottom: 1px solid var(--color-borde-claro);
             padding-bottom: var(--espaciado-estandar);
             margin: var(--espaciado-estandar);
-            background-color: white;
 
             /*POR INVESTIGAR*/
             position: sticky;
@@ -501,79 +477,4 @@ body {
     .modal-overlay.visible .modal {
         transform: scale(1);
     }
-}
-/* ===== ESTILOS DE CONFIGURACIÓN ===== */
-.contenido-configuracion {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
-
-.config-card {
-    background-color: white;
-    border: 1px solid var(--color-borde-claro);
-    border-radius: 14px;
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.config-card h3 {
-    font-size: 18px;
-    color: black;
-}
-
-.config-card p {
-    font-size: 13px;
-    color: #555;
-    margin-bottom: 5px;
-}
-
-.btn-config {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    height: 45px;
-    border-radius: 8px;
-    border: 1px solid var(--color-borde-hover);
-    background-color: transparent;
-    color: black;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.btn-config:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-}
-
-.btn-config img {
-    height: 18px;
-    width: auto;
-}
-
-.grupo-input {
-    display: flex;
-    gap: 10px;
-}
-
-.grupo-input input {
-    flex: 1;
-    padding: 10px 15px;
-    border-radius: 8px;
-    border: 1px solid silver;
-    outline: none;
-}
-
-.btn-config-accion {
-    padding: 0 20px;
-    border-radius: 8px;
-    border: none;
-    background-color: var(--color-primario);
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
 }

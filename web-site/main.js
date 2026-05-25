@@ -2,13 +2,13 @@
 const botones = document.querySelectorAll("nav button, footer button");
 
 botones.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    botones.forEach((b) => b.classList.remove("activo"));
-    btn.classList.add("activo");
+    btn.addEventListener("click", () => {
+        botones.forEach((b) => b.classList.remove("activo"));
+        btn.classList.add("activo");
 
-    const seccion = btn.dataset.seccion;
-    cargarVista(seccion);
-  });
+        const seccion = btn.dataset.seccion;
+        cargarVista(seccion);
+    });
 });
 
 // Minimizar barra lateral
@@ -16,42 +16,59 @@ const sidebar = document.getElementById("sidebar");
 const minimizarBtn = document.getElementById("btn-minimizar");
 
 minimizarBtn.addEventListener("click", () => {
-  sidebar.classList.toggle("minimize");
+    sidebar.classList.toggle("minimize");
 });
 
 // Contenido barra lateral
 const vistas = {
-  "panel-principal": {
-    titulo: "Panel Principal",
-    descripcion: "Gestiona tus reservas de áreas comunes",
-    html: `
+    "panel-principal": {
+        titulo: "Panel Principal",
+        descripcion: "Gestiona tus reservas de áreas comunes",
+        html: `
         <div class="contenido">
             <div class="reservas">
                 <h4>Sección de reservas</h4>
                 <div class="botones">
                     <button class="loza-deportiva">
-                        <img src="../images/icons/trofeo-de-campeonato.png" alt="trofeo">
-                        <h3>Loza Deportiva</h3>
-                        <p>
-                            Reserva la cancha para tus actividades deportivas
-                        </p>
+                        <span class="material-symbols-outlined">
+                            award_star
+                        </span>
+                        <hgroup>
+                            <h3>Loza Deportiva</h3>
+                            <p>
+                                Reserva la cancha para tus actividades deportivas
+                            </p>
+                        </hgorup>
                     </button>
                     <button class="casa-club">
-                        <img src="../images/icons/hogar.png" alt="casa">
-                        <h3>Casa Club</h3>
-                        <p>
-                            Reserva el salón para eventos y celebraciones
-                        </p>
+                        <span class="material-symbols-outlined">
+                            liquor
+                        </span>
+                        <hgroup>
+                            <h3>Casa Club</h3>
+                            <p>
+                                Reserva el salón para eventos y celebraciones
+                            </p>
+                        </hgorup>
                     </button>
                     <button class="zona-parrilla">
-                        <img src="../images/icons/parrilla.png" alt="fuego">
+                        <span class="material-symbols-outlined">
+                            yakitori
+                        </span>
+                        <hgroup>
                         <h3>Zona de Parrilla</h3>
                         <p>
                             Reserva el piso de parrillas para tu evento
                         </p>
+                        </hgorup>
+
                     </button>
                     <button class="cita-jd">
-                        <img src="../images/icons/documento.png" alt="cita">
+                        <span class="material-symbols-outlined">
+                            assignment_add
+                        </span>
+                        <hgroup></hgorup>
+
                         <h3>Junta Directiva</h3>
                         <p>
                             Agenda una reunión con la administración
@@ -80,11 +97,11 @@ const vistas = {
             </div>
         </div>
         `,
-  },
-  "cochera": {
-    titulo: "Cochera",
-    descripcion: "Reserva o gestiona tu cochera dentro del condominio",
-    html: `
+    },
+    "cochera": {
+        titulo: "Cochera",
+        descripcion: "Reserva o gestiona tu cochera dentro del condominio",
+        html: `
     <div class="contenido">
         <div class="reservas">
             <h4>Sección de cocheras</h4>
@@ -133,12 +150,12 @@ const vistas = {
         </div>
     </div>
     `
-},
-  informacion: {
-    titulo: "Información",
-    descripcion:
-      "Consulte los datos generales, ubicación y miembros de la junta directiva",
-    html: `<section class="seccion-info">
+    },
+    informacion: {
+        titulo: "Información",
+        descripcion:
+            "Consulte los datos generales, ubicación y miembros de la junta directiva",
+        html: `<section class="seccion-info">
                 <h4 class="subtitulo_1">Información del Condominio</h4>
                 <div class="cards-grid">
 
@@ -212,11 +229,11 @@ const vistas = {
             </section>
         </div>
     </div>`,
-  },
-"configuracion": {
-    titulo: "Configuración",
-    descripcion: "Personaliza tu perfil y ajustes de la interfaz.",
-    html: `
+    },
+    "configuracion": {
+        titulo: "Configuración",
+        descripcion: "Personaliza tu perfil y ajustes de la interfaz.",
+        html: `
         <div class="contenido-configuracion">
             <div class="config-card">
                 <h3>Ajustes de Interfaz</h3>
@@ -246,59 +263,59 @@ const vistas = {
     </div>
 </div>
     `
-  }
+    }
 
 };
 
 function cargarVista(seccion) {
-  const vista = vistas[seccion];
-  document.getElementById("titulo-seccion").textContent = vista.titulo;
-  document.getElementById("subtitulo-seccion").textContent = vista.descripcion;
-  document.getElementById("vista").innerHTML = vista.html;
+    const vista = vistas[seccion];
+    document.getElementById("titulo-seccion").textContent = vista.titulo;
+    document.getElementById("subtitulo-seccion").textContent = vista.descripcion;
+    document.getElementById("vista").innerHTML = vista.html;
 
-if (seccion === "configuracion") {
-    activarFuncionesConfiguracion();
-  }
+    if (seccion === "configuracion") {
+        activarFuncionesConfiguracion();
+    }
 }
 
 cargarVista("panel-principal"); // Cargar panel principal al arrancar
 
 // Panel Principal encendido por defecto al cargar
 document
-  .querySelector("[data-seccion='panel-principal']")
-  .classList.add("activo");
+    .querySelector("[data-seccion='panel-principal']")
+    .classList.add("activo");
 
 // Contenido
 // 1. Modales
 function abrirModal(id) {
-  document.getElementById(id).classList.add("visible");
+    document.getElementById(id).classList.add("visible");
 }
 
 function cerrarModal(overlay) {
-  overlay.classList.remove("visible");
+    overlay.classList.remove("visible");
 }
 
 
 // 1.1. Secciones
 document.getElementById("vista").addEventListener("click", (e) => {
-  if (e.target.closest(".loza-deportiva")) abrirModal("overlay-loza");
-  if (e.target.closest(".casa-club")) abrirModal("overlay-casa");
-  if (e.target.closest(".zona-parrilla")) abrirModal("overlay-parrilla");
-  if (e.target.closest(".cita-jd")) abrirModal("overlay-jd");
-  if (e.target.closest(".calendario")) abrirModal("overlay-calendario");
-  if (e.target.closest(".mis-reservas")) abrirModal("overlay-misreservas");
-  if (e.target.closest(".reservar-cochera"))  abrirModal("overlay-cochera");
-  if (e.target.closest(".alquilar-cochera"))  abrirModal("overlay-alquilar-cochera");
-  if (e.target.closest(".publicar-cochera"))  abrirModal("overlay-publicar-cochera");
+    if (e.target.closest(".loza-deportiva")) abrirModal("overlay-loza");
+    if (e.target.closest(".casa-club")) abrirModal("overlay-casa");
+    if (e.target.closest(".zona-parrilla")) abrirModal("overlay-parrilla");
+    if (e.target.closest(".cita-jd")) abrirModal("overlay-jd");
+    if (e.target.closest(".calendario")) abrirModal("overlay-calendario");
+    if (e.target.closest(".mis-reservas")) abrirModal("overlay-misreservas");
+    if (e.target.closest(".reservar-cochera")) abrirModal("overlay-cochera");
+    if (e.target.closest(".alquilar-cochera")) abrirModal("overlay-alquilar-cochera");
+    if (e.target.closest(".publicar-cochera")) abrirModal("overlay-publicar-cochera");
 });
 
 // --------------
 
 document.querySelectorAll(".modal-close").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const overlay = btn.closest(".modal-overlay");
-    cerrarModal(overlay);
-  });
+    btn.addEventListener("click", () => {
+        const overlay = btn.closest(".modal-overlay");
+        cerrarModal(overlay);
+    });
 });
 
 // --------------
@@ -313,7 +330,7 @@ function activarFuncionesConfiguracion() {
             localStorage.setItem("modoOscuro", document.body.classList.contains("dark-theme"));
         });
     }
-// 2. CAMBIAR NOMBRE (SIN ALERT)
+    // 2. CAMBIAR NOMBRE (SIN ALERT)
     const btnNombre = document.getElementById("btn-guardar-nombre");
     const inputNombre = document.getElementById("nuevo-nombre");
     if (btnNombre && inputNombre) {
@@ -342,7 +359,7 @@ function activarFuncionesConfiguracion() {
                     // Guardamos temporalmente en localStorage y aplicamos al instante
                     const imgData = event.target.result;
                     localStorage.setItem("fotoGuardada", imgData);
-                    
+
                     // Aplicar al instante al perfil
                     const avatar = document.querySelector(".perfil .usuario .avatar");
                     const spanLetra = avatar.querySelector("span");
@@ -365,20 +382,20 @@ window.addEventListener("DOMContentLoaded", () => {
     if (localStorage.getItem("modoOscuro") === "true") {
         document.body.classList.add("dark-theme");
     }
-    
+
     // Aplicar nombre si estaba guardado
     const nombreGuardado = localStorage.getItem("nombreGuardado");
     if (nombreGuardado) {
         const elementoNombre = document.querySelector(".perfil .usuario .informacion .nombre-apellido");
         if (elementoNombre) elementoNombre.textContent = nombreGuardado;
     }
-    
-// Aplicar foto si estaba guardada
-const fotoGuardada = localStorage.getItem("fotoGuardada");
+
+    // Aplicar foto si estaba guardada
+    const fotoGuardada = localStorage.getItem("fotoGuardada");
     if (fotoGuardada) {
         const avatar = document.querySelector(".perfil .usuario .avatar");
         const spanLetra = avatar.querySelector("span");
-        
+
         avatar.style.backgroundImage = `url('${fotoGuardada}')`;
         avatar.style.backgroundSize = "cover";
         avatar.style.backgroundPosition = "center";
@@ -390,5 +407,5 @@ const fotoGuardada = localStorage.getItem("fotoGuardada");
 const btnCerrar = document.querySelector("#cerrar-sesion");
 
 btnCerrar.addEventListener("click", () => {
-  window.location.href = "../login/login.html";
+    window.location.href = "../login/login.html";
 });
