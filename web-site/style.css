@@ -36,7 +36,7 @@ body {
             justify-content: space-between;
 
             gap: 10px;
-            padding: 5px 3px 10px 3px;
+            padding: 0px 0px 15px 5px;
 
             border-bottom: 1px solid rgb(109, 109, 109);
 
@@ -59,15 +59,23 @@ body {
             }
 
             button {
-                background-color: rgb(49, 49, 49);
-                border: 2px solid rgb(71, 71, 71);
+                background-color: transparent;
+                border: 2px solid transparent;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 border-radius: 10px;
                 height: 35px;
                 width: 35px;
-                
+                transition: 0.2s ease;
+                cursor: pointer;
+                box-sizing: border-box;
+
+                &:hover {
+                    background-color: rgb(49, 49, 49);
+                    border: 2px solid rgb(71, 71, 71);
+                    transform: scale(0.9);
+                }
             }
         }
 
@@ -75,7 +83,7 @@ body {
             flex: 1;
             display: flex;
             flex-direction: column;
-            padding-top: var(--espaciado-estandar);
+            padding-top: 15px;
             gap: 5px;
         }
 
@@ -90,11 +98,11 @@ body {
 
         nav button,
         footer button {
-            height: var(--altura-botones);
+            height: 35px;
             width: auto;
             border-radius: var(--radio-pequeno);
-            border: none;
-            background: none;
+            border: 2px solid transparent;
+            background-color: transparent;
 
             cursor: pointer;
 
@@ -103,8 +111,9 @@ body {
             justify-content: left;
             gap: 10px;
 
-            padding-left: 15px;
+            padding-left: 12px;
             box-sizing: border-box;
+            transition: 0.2s ease;
 
             span {
                 color: white;
@@ -112,16 +121,21 @@ body {
                 font-weight: 300;
             }
 
-            &:hover,
-            &.activo {
-                background-color: rgb(255, 255, 255, 0.2);
+            &:hover {
+                background-color: rgb(49, 49, 49);
+                border: 2px solid rgb(71, 71, 71);
+                transform: scale(0.97);
             }
 
+            &.activo {
+                background-color: rgb(49, 49, 49);
+                border: 2px solid rgb(71, 71, 71);
+            }
         }
     }
 
     aside.minimize {
-        width: 2.9rem;
+        width: 4.7rem;
         overflow: hidden;
 
         .logo {
@@ -132,19 +146,12 @@ body {
             }
         }
 
-        search {
-            justify-content: center;
-            padding: 0;
-
-            input {
-                display: none;
-            }
-        }
-
         nav button,
         footer button {
             justify-content: center;
             padding: 0;
+            width: 35px;
+            height: 35px;
 
             span:not(.material-symbols-outlined) {
                 display: none;
