@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="style/informe-analitica.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet">
@@ -49,19 +51,36 @@
             </button>
         </nav>
         <footer>
-            <button id="btn-minimizar">
-                <img src="../images/icons/compactar.png" alt="Minimizar Barra" />
-                <span>Minimizar Barra</span>
-            </button>
-            <button>
-                <img src="../images/icons/notificacion.png" alt="Notificaciones" />
-                <span>Notificaciones</span>
-            </button>
-<button data-seccion="configuracion">
-  <img src="../images/icons/setting.png" alt="Configuración" />
-  <span>Configuración</span>
-</button>
-        </footer>
+      <button id="btn-minimizar">
+
+        <!--Icon: minimizar-->
+
+        <span class="material-symbols-outlined">
+          left_panel_close
+        </span>
+
+        <span>Minimizar Barra</span>
+      </button>
+       <button id="btn-notificaciones" class="btn-notificaciones">
+
+        <!--Icon: notificacion-->
+
+        <span class="material-symbols-outlined">notifications</span>
+        <span>Notificaciones</span>
+        </button>
+
+
+        <button data-seccion="configuracion">
+        
+        <!--Icon: configuracion-->
+
+        <span class="material-symbols-outlined">
+          settings
+        </span>
+
+        <span>Configuración</span>
+      </button>
+    </footer>
     </aside>
 
     <main>
@@ -91,7 +110,22 @@
             <div id="vista"></div>
         </div>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <div class="panel-notificaciones" id="panel-notificaciones">
+
+    <h3>Notificaciones</h3>
+
+    <ul>
+        <li>📅 Carlos Ramírez solicitó la Loza Deportiva — <span>Hace 5 min</span></li>
+        <li>⚠️ La reserva #003 de Pedro vence hoy a las 14:00 — <span>Hace 20 min</span></li>
+        <li>👤 Ana Beltrán se unió como Residente — <span>Hace 1 hora</span></li>
+        <li>✅ Aprobaste la reserva #008 de Diego Navarro — <span>Hace 3 horas</span></li>
+        <li>❌ Lucía Fernández canceló su reserva — <span>Ayer</span></li>
+    </ul>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
 
