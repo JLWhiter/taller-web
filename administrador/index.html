@@ -61,18 +61,17 @@
 
         <span>Minimizar Barra</span>
       </button>
-      <button>
+       <button id="btn-notificaciones" class="btn-notificaciones">
 
         <!--Icon: notificacion-->
 
-        <span class="material-symbols-outlined">
-          notifications
-        </span>
-
+        <span class="material-symbols-outlined">notifications</span>
         <span>Notificaciones</span>
-      </button>
-      <button data-seccion="configuracion">
+        </button>
 
+
+        <button data-seccion="configuracion">
+        
         <!--Icon: configuracion-->
 
         <span class="material-symbols-outlined">
@@ -111,7 +110,22 @@
             <div id="vista"></div>
         </div>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <div class="panel-notificaciones" id="panel-notificaciones">
+
+    <h3>Notificaciones</h3>
+
+    <ul>
+        <li>📅 Carlos Ramírez solicitó la Loza Deportiva — <span>Hace 5 min</span></li>
+        <li>⚠️ La reserva #003 de Pedro vence hoy a las 14:00 — <span>Hace 20 min</span></li>
+        <li>👤 Ana Beltrán se unió como Residente — <span>Hace 1 hora</span></li>
+        <li>✅ Aprobaste la reserva #008 de Diego Navarro — <span>Hace 3 horas</span></li>
+        <li>❌ Lucía Fernández canceló su reserva — <span>Ayer</span></li>
+    </ul>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
 
