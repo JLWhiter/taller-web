@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../web-site/css-contenidos/configuracion.css">
     <link rel="stylesheet" href="../root.css">
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/gestion-usuario.css">
     <link rel="stylesheet" href="style/reserva-calendario.css">
     <link rel="stylesheet" href="style/informe-analitica.css">
+    <link rel="stylesheet" href="../web-site/css-contenidos/configuracion.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
@@ -172,74 +172,7 @@
 
 </main>
 
-
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <script>
-
-        /* BARRAS */
-        new Chart(document.getElementById('grafico-amenidades'), {
-            type: 'bar',
-            data: {
-                labels: ['Piscina', 'Parrilla', 'Gym', 'Sala'],
-                datasets: [{
-                    data: [50, 40, 25, 20]
-                }]
-            }
-        });
-
-        /* LINEA */
-        new Chart(document.getElementById('grafico-ingresos'), {
-            type: 'line',
-            data: {
-                labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May'],
-                datasets: [{
-                    data: [200, 400, 300, 600, 800],
-                    fill: false
-                }]
-            }
-        });
-
-        /* BARRAS GRANDES */
-        new Chart(document.getElementById('grafico-satisfaccion'), {
-            type: 'bar',
-            data: {
-                labels: ['00:00', '08:00', '12:00', '17:00', '20:00'],
-                datasets: [{
-                    data: [20, 240, 120, 220, 40]
-                }]
-            }
-        });
-
-        /* EVOLUCION */
-        new Chart(document.getElementById('grafico-reservas-semana'), {
-            type: 'line',
-            data: {
-                labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
-                datasets: [{
-                    label: '2024',
-                    data: [20, 100, 120, 210, 170, 280]
-                },
-                {
-                    label: '2023',
-                    data: [30, 120, 110, 90, 150, 200]
-                }]
-            }
-        });
-
-        /* PIE */
-        new Chart(document.getElementById('grafico-usuarios'), {
-            type: 'pie',
-            data: {
-                labels: ['Propietario', 'Inquilino'],
-                datasets: [{
-                    data: [60, 40]
-                }]
-            }
-        });
-
-    </script>
 
     <script src="main.js"></script>
 </body>

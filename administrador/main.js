@@ -970,41 +970,49 @@ const vistas = {
                 </div>
             </section>
         `,
-    },
-    "configuracion": {
-    titulo: "   Configuración",
-    descripcion: "Personaliza tu perfil y ajustes de la interfaz.",
-    html: `
+    },"configuracion": {
+        titulo: "Configuración",
+        descripcion: "Personaliza tu perfil y ajustes de la interfaz.",
+        html: `
         <div class="contenido-configuracion">
             <div class="config-card">
-                <h3>Ajustes de Interfaz</h3>
+                <h3>Modo Oscuro</h3>
                 <p>Cambia el aspecto visual del sistema.</p>
                 <button id="btn-toggle-dark" class="btn-config">
                     <img src="../images/icons/dark.png" alt="Luna">
-                    <span>Activar / Desactivar Modo Oscuro</span>
+                    <span>Activar / Desactivar</span>
                 </button>
-            </div>
-            
+            </div>           
             <div class="config-card">
                 <h3>Información de Perfil</h3>
-                <p>Actualiza el nombre que se muestra en tu sesión.</p>
-                <div class="grupo-input">
-                    <input type="text" id="nuevo-nombre" placeholder="Escribe tu nuevo nombre...">
-                    <button id="btn-guardar-nombre" class="btn-config-accion">Guardar</button>
+                <p>Actualiza tu numero telefonico.</p>
+                <div class="contenedor-input">
+                <form id="form-guardar-nombre" class="grupo-input">
+
+                    <input 
+                        type="text" 
+                        id="nuevo-nombre" 
+                        name="nuevo-nombre" 
+                        minlength="1" 
+                        maxlength="9"  
+                        required
+                        placeholder="Escribe tu numero..."
+                    >
+                    <button id="btn-guardar-nombre" class="btn-config-accion" type="submit">Guardar</button>
+                </form>
                 </div>
             </div>
-
-<div class="config-card">
-    <h3>Foto de Perfil</h3>
-    <p>Selecciona una imagen desde tu dispositivo.</p>
-    <div class="grupo-input">
-        <input type="file" id="input-archivo-foto" accept="image/*" style="display: none;">
-        <button id="btn-seleccionar-foto" class="btn-config">Seleccionar archivo</button>
-        <button id="btn-guardar-foto" class="btn-config-accion">Guardar</button>
-    </div>
-</div>
+            <div class="config-card">
+                <h3>Foto de Perfil</h3>
+                <p>Selecciona una imagen desde tu dispositivo.</p>
+                <div class="grupo-input">
+                    <input type="file" id="input-archivo-foto" accept="image/*" style="display: none;">
+                    <button id="btn-seleccionar-foto" class="btn-config">Selecciona</button>
+                    <button id="btn-guardar-foto" class="btn-config-accion">Guardar</button>
+                </div>
+            </div>
     `
-  }
+    }
   
 
 }

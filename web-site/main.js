@@ -246,20 +246,31 @@ const vistas = {
             <div class="config-card">
                 <h3>Información de Perfil</h3>
                 <p>Actualiza tu numero telefonico.</p>
-                <div class="grupo-input">
-                    <input type="text" id="nuevo-nombre" placeholder="Escribe tu numero...">
-                    <button id="btn-guardar-nombre" class="btn-config-accion">Guardar</button>
+                <div class="contenedor-input">
+                <form id="form-guardar-nombre" class="grupo-input">
+
+                    <input 
+                        type="text" 
+                        id="nuevo-nombre" 
+                        name="nuevo-nombre" 
+                        minlength="1" 
+                        maxlength="9"  
+                        required
+                        placeholder="Escribe tu numero..."
+                    >
+                    <button id="btn-guardar-nombre" class="btn-config-accion" type="submit">Guardar</button>
+                </form>
                 </div>
             </div>
-    <div class="config-card">
-        <h3>Foto de Perfil</h3>
-        <p>Selecciona una imagen desde tu dispositivo.</p>
-        <div class="grupo-input">
-            <input type="file" id="input-archivo-foto" accept="image/*" style="display: none;">
-            <button id="btn-seleccionar-foto" class="btn-config">Selecciona</button>
-            <button id="btn-guardar-foto" class="btn-config-accion">Guardar</button>
-        </div>
-    </div>
+            <div class="config-card">
+                <h3>Foto de Perfil</h3>
+                <p>Selecciona una imagen desde tu dispositivo.</p>
+                <div class="grupo-input">
+                    <input type="file" id="input-archivo-foto" accept="image/*" style="display: none;">
+                    <button id="btn-seleccionar-foto" class="btn-config">Selecciona</button>
+                    <button id="btn-guardar-foto" class="btn-config-accion">Guardar</button>
+                </div>
+            </div>
     `
     }
 
