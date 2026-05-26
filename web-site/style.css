@@ -184,6 +184,7 @@ body {
                     text-align: left;
                     color: black;
                     font-size: 30px;
+                    font-weight: 500;
                     margin-top: 5px;
                 }
 
@@ -206,7 +207,7 @@ body {
                     border-radius: var(--radio-grande);
                     padding: 5px var(--espaciado-estandar);
                     font-size: 13px;
-                    font-weight: bold;
+                    font-weight: 500;
                     color: rgb(15, 99, 50);
                 }
 
@@ -483,5 +484,217 @@ body {
 
     .modal-overlay.visible .modal {
         transform: scale(1);
+    }
+}
+
+/* ===================== RESPONSIVE MÓVIL ===================== */
+
+#btn-menu-movil {
+    display: none !important;
+}
+
+#btn-menu-movil {
+    display: none;
+}
+
+#sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 50;
+}
+
+@media (max-width: 768px) {
+
+    #titulo-seccion {
+        line-height: 1 !important;
+        margin-top: 0 !important;
+    }
+
+    .contenido {
+        margin-right: 0 !important;
+    }
+
+    main header hgroup {
+        flex: 1 !important;
+        white-space: nowrap !important;
+    }
+
+    #titulo-seccion {
+        font-size: 18px !important;
+        white-space: nowrap !important;
+    }
+
+    /* Header en una sola fila */
+    main header {
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 0 !important;
+    }
+
+    /* Perfil alineado a la derecha */
+    main header .perfil {
+        width: auto !important;
+        justify-content: flex-end !important;
+        flex-wrap: nowrap !important;
+        gap: 10px !important;
+    }
+
+    .perfil .usuario .informacion {
+        display: none !important;
+    }
+
+    /* Ocultar subtítulo */
+    #subtitulo-seccion {
+        display: none;
+    }
+
+    /* Ocultar rol "Residente" */
+    .perfil .rol {
+        display: none;
+    }
+
+    /* Ocultar nombre y torre del usuario */
+    .perfil .usuario .informacion {
+        display: none;
+    }
+
+    /* Ocultar texto "Cerrar Sesión", dejar solo el ícono */
+    #cerrar-sesion span {
+        display: none;
+    }
+
+    /* Ajustar ancho del botón cerrar sesión al solo tener ícono */
+    #cerrar-sesion {
+        width: auto;
+        padding: 0 10px;
+    }
+
+    /* Ocultar el botón minimizar dentro de la sidebar en móvil */
+    #sidebar #btn-minimizar {
+        display: none;
+    }
+
+    /* Ocultar sidebar por defecto en móvil */
+    #sidebar {
+        position: fixed;
+        left: -280px;
+        top: 0;
+        height: 100%;
+        z-index: 60;
+        margin: 0;
+        border-radius: 0 var(--radio-grande) var(--radio-grande) 0;
+        transition: left 0.3s ease;
+    }
+
+    /* Sidebar abierta */
+    #sidebar.open {
+        left: 0;
+    }
+
+    /* Overlay activo */
+    #sidebar-overlay.active {
+        display: block;
+    }
+
+    /* Mostrar botón menú en el header */
+    #btn-menu-movil {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        margin-right: 8px;
+        border-radius: 8px;
+        transition: background 0.2s ease;
+    }
+
+    #btn-menu-movil:hover {
+        background: rgba(0, 0, 0, 0.06);
+    }
+
+    #btn-menu-movil .material-symbols-outlined {
+        font-size: 22px;
+        color: #000;
+    }
+
+    /* El hgroup del header ahora es flex para alinear ícono + título */
+    main header hgroup {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Ajustar header en móvil */
+    main header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    main header .perfil {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    /* Ajustar tamaño de título */
+    #titulo-seccion {
+        font-size: 22px !important;
+    }
+
+    #btn-menu-movil {
+        display: flex !important;
+    }
+}
+
+/* ===== TABLET (769px - 1024px) ===== */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    /* Sidebar minimizada en tablet */
+    aside.minimize {
+        width: 70px !important;
+    }
+
+    /* Que el contenido principal ocupe el espacio libre */
+    main {
+        flex: 1;
+        min-width: 0;
+    }
+
+    /* Ocultar rol, nombre y torre */
+    .perfil .rol {
+        display: none;
+    }
+
+    .perfil .usuario .informacion {
+        display: none;
+    }
+
+    /* Cerrar sesión solo ícono */
+    #cerrar-sesion span {
+        display: none;
+    }
+
+    #cerrar-sesion {
+        width: auto !important;
+        padding: 0 10px;
+    }
+
+    /* Reducir tamaño del título */
+    #titulo-seccion {
+        font-size: 22px !important;
+    }
+
+    #subtitulo-seccion {
+        font-size: 11px;
+    }
+
+    /* Sidebar más angosta */
+    aside {
+        width: 200px !important;
     }
 }

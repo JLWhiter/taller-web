@@ -11,6 +11,7 @@
 
         h4 {
             margin-bottom: var(--espaciado-estandar);
+            font-weight: 500;
         }
 
         .botones {
@@ -36,11 +37,13 @@
                     h3 {
                         margin-bottom: var(--radio-mediano);
                         font-size: 17px;
+                        font-weight: 500;
                     }
     
                     p {
                         font-size: 12px;
                         opacity: 0.65;
+                        font-weight: 300;
                     }
                 }
             }
@@ -100,11 +103,13 @@
 
         h4 {
             margin-top: 30px;
+            font-weight: 500;
             margin-bottom: var(--espaciado-estandar);
         }
 
         .botones {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: var(--espaciado-estandar);
 
             .calendario,
@@ -120,6 +125,7 @@
                 cursor: pointer;
                 background-color: rgba(0, 0, 0, 0.05);
                 transition: 0.35s ease;
+                padding: 20px;
 
                 &:hover {
                     background-color: rgb(212, 212, 212);
@@ -133,13 +139,16 @@
 
                 div {
                     h3 {
-                        font-size: 15px;
+                        font-size: 17px;
                         text-align: left;
+                        font-weight: 500;
                     }
 
                     p {
                         text-align: left;
                         opacity: 0.75;
+                        font-size: 12px;
+                        font-weight: 300;
                     }
                 }
             }
