@@ -649,10 +649,28 @@ body {
     #btn-menu-movil {
         display: flex !important;
     }
+
+    #sidebar-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        z-index: 59;
+        display: none;
+    }
+
+    #sidebar-overlay.active {
+        display: block;
+    }
 }
 
 /* ===== TABLET (769px - 1024px) ===== */
 @media (min-width: 769px) and (max-width: 1024px) {
+
+    #sidebar-overlay.active {
+        display: block;
+        z-index: 59;
+        /* debajo de la sidebar (60) pero encima de todo lo demás */
+    }
 
     /* Sidebar minimizada en tablet */
     aside.minimize {

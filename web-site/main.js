@@ -446,11 +446,13 @@ function abrirSidebar() {
     sidebar.classList.add("open");
     sidebarOverlay.classList.add("active");
     btnMenuMovil.style.display = "none";
+    document.getElementById("vista").style.pointerEvents = "none"; // ← bloquear clicks
 }
 
 function cerrarSidebar() {
     sidebar.classList.remove("open");
     sidebarOverlay.classList.remove("active");
+    document.getElementById("vista").style.pointerEvents = "auto"; // ← desbloquear clicks
     if (window.innerWidth <= 768) {
         btnMenuMovil.style.display = "flex";
     }
@@ -468,4 +470,11 @@ botones.forEach((btn) => {
     btn.addEventListener("click", () => {
         if (window.innerWidth <= 768) cerrarSidebar();
     });
+});
+
+// Cerrar sidebar al tocar el contenido principal
+document.getElementById("vista").addEventListener("click", () => {
+    if (window.innerWidth <= 768 && sidebar.classList.contains("open")) {
+        cerrarSidebar();
+    }
 });
