@@ -10,33 +10,34 @@ body {
     aside {
         display: flex;
         flex-direction: column;
-        width: 200px;
+        width: 250px;
         background-color: var(--color-primario);
         margin: var(--espaciado-estandar);
         border-radius: var(--radio-grande);
         box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.5);
-        padding: var(--espaciado-estandar);
+        padding: 20px;
         transition: width 0.25s ease;
+        box-sizing: border-box;
 
         /*POR INVESTIGAR*/
         white-space: nowrap;
         /*---------------*/
 
+        .material-symbols-outlined {
+            color: white;
+            font-size: 18px;
+        }
+
         .logo {
             height: var(--altura-botones);
             display: flex;
             align-items: center;
-            justify-content: left;
+            justify-content: space-between;
 
             gap: 10px;
-            padding: 0px 10px 10px 10px;
+            padding: 0px 0px 15px 5px;
 
             border-bottom: 1px solid rgb(109, 109, 109);
-
-            img {
-                height: 30px;
-                width: auto;
-            }
 
             hgroup {
                 display: flex;
@@ -44,47 +45,36 @@ body {
 
                 h2 {
                     color: rgb(255, 255, 255);
-                    font-weight: bold;
-                    font-size: 17.5px;
+                    font-weight: 500;
+                    font-size: 15px;
                 }
 
                 p {
-                    color: rgb(255, 255, 255);
-                    font-size: 12px;
+                    color: rgba(255, 255, 255, 0.795);
+                    font-size: 10px;
                     text-align: left;
+                    font-weight: 300;
                 }
             }
-        }
 
-        search {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid white;
-            margin-top: var(--espaciado-estandar);
-            height: var(--altura-botones);
-            background: none;
-            border-radius: var(--radio-pequeno);
-            gap: 10px;
-            padding-left: var(--espaciado-estandar);
-
-            label {
+            button {
+                background-color: transparent;
+                border: 2px solid transparent;
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                border-radius: 10px;
+                height: 35px;
+                width: 35px;
+                transition: 0.2s ease;
+                cursor: pointer;
+                box-sizing: border-box;
 
-                img {
-                    height: 15px;
-                    width: auto;
+                &:hover {
+                    background-color: rgb(49, 49, 49);
+                    border: 2px solid rgb(71, 71, 71);
+                    transform: scale(0.9);
                 }
-            }
-
-            input {
-                background: none;
-                border: none;
-                width: 100%;
-                color: white;
-                outline: none;
             }
         }
 
@@ -92,7 +82,7 @@ body {
             flex: 1;
             display: flex;
             flex-direction: column;
-            padding-top: var(--espaciado-estandar);
+            padding-top: 15px;
             gap: 5px;
         }
 
@@ -107,11 +97,11 @@ body {
 
         nav button,
         footer button {
-            height: var(--altura-botones);
+            height: 35px;
             width: auto;
             border-radius: var(--radio-pequeno);
-            border: none;
-            background: none;
+            border: 2px solid transparent;
+            background-color: transparent;
 
             cursor: pointer;
 
@@ -120,27 +110,31 @@ body {
             justify-content: left;
             gap: 10px;
 
-            img {
-                height: 15px;
-                width: auto;
-                margin-left: 10px;
-            }
+            padding-left: 12px;
+            box-sizing: border-box;
+            transition: 0.15s ease;
 
             span {
                 color: white;
-                font-weight: 500;
+                font-size: 12px;
+                font-weight: 300;
             }
 
-            &:hover,
+            &:hover {
+                background-color: rgb(49, 49, 49);
+                border: 2px solid rgb(71, 71, 71);
+                transform: scale(0.98);
+            }
+
             &.activo {
-                background-color: rgb(255, 255, 255, 0.2);
+                background-color: rgb(49, 49, 49);
+                border: 2px solid rgb(71, 71, 71);
             }
-
         }
     }
 
     aside.minimize {
-        width: 2.9rem;
+        width: 4.7rem;
         overflow: hidden;
 
         .logo {
@@ -151,29 +145,15 @@ body {
             }
         }
 
-        search {
-            justify-content: center;
-            padding: 0;
-
-            input {
-                display: none;
-            }
-
-            img {
-                margin-left: 0;
-            }
-        }
-
         nav button,
         footer button {
             justify-content: center;
+            padding: 0;
+            width: 35px;
+            height: 35px;
 
-            span {
+            span:not(.material-symbols-outlined) {
                 display: none;
-            }
-
-            img {
-                margin-left: 0;
             }
         }
     }
@@ -524,7 +504,6 @@ body {
     list-style: none;
     padding: 0;
     margin: 0;
-
     max-height: 300px;
     overflow-y: auto;
 }
@@ -545,9 +524,254 @@ body {
 
     .panel-notificaciones{
         right: 10px;
-        left: 10px;
+        left: 10px; 
 
         width: auto;
     }
 
+}
+
+/* ===================== RESPONSIVE MÓVIL ===================== */
+
+#btn-menu-movil {
+    display: none !important;
+}
+
+#sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 50;
+}
+
+/* ===================== MOBILE ===================== */
+@media (max-width: 768px) {
+
+    body {
+        flex-direction: column;
+        overflow-x: hidden;
+    }
+
+    /* ================= SIDEBAR ================= */
+
+    aside {
+        position: fixed !important;
+        top: 0;
+        left: -280px;
+        width: 260px !important;
+        height: 100vh;
+        margin: 0 !important;
+        border-radius: 0 20px 20px 0 !important;
+        z-index: 100;
+        transition: left .3s ease;
+    }
+
+    aside.open {
+        left: 0;
+    }
+
+    aside.minimize {
+        width: 260px !important;
+    }
+
+    aside.minimize hgroup,
+    aside.minimize span:not(.material-symbols-outlined) {
+        display: flex !important;
+    }
+
+    aside.minimize nav button,
+    aside.minimize footer button {
+        justify-content: flex-start !important;
+        width: 100% !important;
+        padding-left: 12px !important;
+    }
+
+    #sidebar-overlay.active {
+        display: block;
+    }
+
+    #btn-minimizar {
+        display: none !important;
+    }
+
+    /* ================= HEADER ================= */
+
+    main {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    main .panel-contenido header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        margin: 10px;
+    }
+
+    main .panel-contenido header .left {
+        width: 100%;
+    }
+
+    main .panel-contenido header .left .titulo-seccion {
+        font-size: 22px !important;
+        line-height: 1.1;
+    }
+
+    main .panel-contenido header .left p {
+        font-size: 12px;
+    }
+
+    main .panel-contenido header .right {
+        width: 100%;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .right .rol {
+        display: none !important;
+    }
+
+    .usuario .informacion {
+        display: none !important;
+    }
+
+    #cerrar-sesion {
+        width: auto !important;
+        padding: 0 12px !important;
+    }
+
+    #cerrar-sesion span {
+        display: none;
+    }
+
+    /* ================= BOTÓN MENÚ ================= */
+
+    #btn-menu-movil {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        border-radius: 10px;
+        padding: 6px;
+        cursor: pointer;
+    }
+
+    #btn-menu-movil:hover {
+        background: rgba(0,0,0,.06);
+    }
+
+    #btn-menu-movil .material-symbols-outlined {
+        color: black;
+        font-size: 24px;
+    }
+
+    /* ================= CONTENIDO ================= */
+
+    .contenido {
+        padding: 10px !important;
+        margin-right: 0 !important;
+    }
+
+    /* Cards estadísticas */
+    .reservas .botones {
+        flex-direction: column;
+    }
+
+    .reservas .botones .total-usuario,
+    .reservas .botones .reserva-totales,
+    .reservas .botones .ingreso-reserva {
+        width: 100%;
+        height: auto;
+        min-height: 130px;
+    }
+
+    /* ================= TABLAS ================= */
+
+    .contenedor-tabla {
+        overflow-x: auto;
+    }
+
+    .contenedor-tabla table {
+        min-width: 700px;
+    }
+
+    .acciones {
+        flex-wrap: wrap;
+    }
+
+    /* ================= PANEL NOTIFICACIONES ================= */
+
+    .panel-notificaciones {
+        left: 10px !important;
+        right: 10px !important;
+        width: auto !important;
+        bottom: 70px !important;
+    }
+}
+
+/* ===================== TABLET ===================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    aside {
+        width: 210px !important;
+    }
+
+    aside.minimize {
+        width: 75px !important;
+    }
+
+    aside.minimize hgroup {
+        display: none;
+    }
+
+    main {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .contenido {
+        margin-right: 0 !important;
+    }
+
+    .reservas .botones {
+        flex-wrap: wrap;
+    }
+
+    .reservas .botones .total-usuario,
+    .reservas .botones .reserva-totales,
+    .reservas .botones .ingreso-reserva {
+        min-width: calc(50% - 10px);
+    }
+
+    .right .rol {
+        display: none;
+    }
+
+    .usuario .informacion {
+        display: none;
+    }
+
+    #cerrar-sesion {
+        width: auto !important;
+        padding: 0 10px;
+    }
+
+    #cerrar-sesion span {
+        display: none;
+    }
+
+    .titulo-seccion {
+        font-size: 24px !important;
+    }
+
+    .contenedor-tabla {
+        overflow-x: auto;
+    }
+
+    .contenedor-tabla table {
+        min-width: 850px;
+    }
 }

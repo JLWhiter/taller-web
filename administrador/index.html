@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="style/informe-analitica.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
@@ -22,65 +22,66 @@
 <body>
     <aside id="sidebar">
         <div class="logo">
-            <img src="../images/icons/condominio.png" alt="Logo Villa Santa Clara" />
             <hgroup>
                 <h2>Villa Santa Clara</h2>
                 <p>Gestión de Reservas</p>
             </hgroup>
+            <button id="btn-minimizar">
+                <span class="material-symbols-outlined">
+                    menu
+                </span>
+            </button>
         </div>
-        <search>
-            <label for="buscar"><img src="../images/icons/lupa.png" alt="" /></label>
-            <input id="buscar" type="search" placeholder="Buscar" />
-        </search>
+
+
         <nav>
             <button data-seccion="panel-control">
-                <img src="../images/icons/dashboard.png" alt="Panel de Control" />
+                <span class="material-symbols-outlined">
+                    space_dashboard
+                </span>
                 <span>Panel de Control</span>
             </button>
             <button data-seccion="gestion-usuarios">
-                <img src="../images/icons/users-light.png" alt="Gestión de Usuarios" />
+                <span class="material-symbols-outlined">
+                    people
+                </span>
                 <span>Gestión de Usuarios</span>
             </button>
             <button data-seccion="reserva-calendario">
-                <img src="../images/icons/calendario.png" alt="Reserva y Calendario" />
+                <span class="material-symbols-outlined">
+                    calendar_today
+                </span>
                 <span>Reserva y Calendario</span>
             </button>
             <button data-seccion="informes-analitica">
-                <img src="../images/icons/panel.png" alt="Informes y Analítica" />
+                <span class="material-symbols-outlined">
+                    bar_chart
+                </span>
                 <span>Informes y Analítica</span>
             </button>
         </nav>
         <footer>
-      <button id="btn-minimizar">
 
-        <!--Icon: minimizar-->
+            <button id="btn-notificaciones" class="btn-notificaciones">
 
-        <span class="material-symbols-outlined">
-          left_panel_close
-        </span>
+                <!--Icon: notificacion-->
 
-        <span>Minimizar Barra</span>
-      </button>
-       <button id="btn-notificaciones" class="btn-notificaciones">
-
-        <!--Icon: notificacion-->
-
-        <span class="material-symbols-outlined">notifications</span>
-        <span>Notificaciones</span>
-        </button>
+                <span class="material-symbols-outlined">notifications</span>
+                <span>Notificaciones</span>
+            </button>
 
 
-        <button data-seccion="configuracion">
-        
-        <!--Icon: configuracion-->
+            <button data-seccion="configuracion">
 
-        <span class="material-symbols-outlined">
-          settings
-        </span>
+                <!--Icon: configuracion-->
 
-        <span>Configuración</span>
-      </button>
-    </footer>
+                <span class="material-symbols-outlined">
+                    settings
+                </span>
+
+                <span>Configuración</span>
+            </button>
+        </footer>
     </aside>
 
     <main>
@@ -113,86 +114,86 @@
 
     <div class="panel-notificaciones" id="panel-notificaciones">
 
-    <h3>Notificaciones</h3>
+        <h3>Notificaciones</h3>
 
-    <ul>
-        <li>📅 Carlos Ramírez solicitó la Loza Deportiva — <span>Hace 5 min</span></li>
-        <li>⚠️ La reserva #003 de Pedro vence hoy a las 14:00 — <span>Hace 20 min</span></li>
-        <li>👤 Ana Beltrán se unió como Residente — <span>Hace 1 hora</span></li>
-        <li>✅ Aprobaste la reserva #008 de Diego Navarro — <span>Hace 3 horas</span></li>
-        <li>❌ Lucía Fernández canceló su reserva — <span>Ayer</span></li>
-    </ul>
+        <ul>
+            <li>📅 Carlos Ramírez solicitó la Loza Deportiva — <span>Hace 5 min</span></li>
+            <li>⚠️ La reserva #003 de Pedro vence hoy a las 14:00 — <span>Hace 20 min</span></li>
+            <li>👤 Ana Beltrán se unió como Residente — <span>Hace 1 hora</span></li>
+            <li>✅ Aprobaste la reserva #008 de Diego Navarro — <span>Hace 3 horas</span></li>
+            <li>❌ Lucía Fernández canceló su reserva — <span>Ayer</span></li>
+        </ul>
 
-</div>
+    </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<script>
+    <script>
 
-/* BARRAS */
-new Chart(document.getElementById('grafico-amenidades'), {
-    type: 'bar',
-    data: {
-        labels: ['Piscina', 'Parrilla', 'Gym', 'Sala'],
-        datasets: [{
-            data: [50, 40, 25, 20]
-        }]
-    }
-});
+        /* BARRAS */
+        new Chart(document.getElementById('grafico-amenidades'), {
+            type: 'bar',
+            data: {
+                labels: ['Piscina', 'Parrilla', 'Gym', 'Sala'],
+                datasets: [{
+                    data: [50, 40, 25, 20]
+                }]
+            }
+        });
 
-/* LINEA */
-new Chart(document.getElementById('grafico-ingresos'), {
-    type: 'line',
-    data: {
-        labels: ['Ene','Feb','Mar','Abr','May'],
-        datasets: [{
-            data: [200,400,300,600,800],
-            fill: false
-        }]
-    }
-});
+        /* LINEA */
+        new Chart(document.getElementById('grafico-ingresos'), {
+            type: 'line',
+            data: {
+                labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May'],
+                datasets: [{
+                    data: [200, 400, 300, 600, 800],
+                    fill: false
+                }]
+            }
+        });
 
-/* BARRAS GRANDES */
-new Chart(document.getElementById('grafico-satisfaccion'), {
-    type: 'bar',
-    data: {
-        labels: ['00:00','08:00','12:00','17:00','20:00'],
-        datasets: [{
-            data: [20,240,120,220,40]
-        }]
-    }
-});
+        /* BARRAS GRANDES */
+        new Chart(document.getElementById('grafico-satisfaccion'), {
+            type: 'bar',
+            data: {
+                labels: ['00:00', '08:00', '12:00', '17:00', '20:00'],
+                datasets: [{
+                    data: [20, 240, 120, 220, 40]
+                }]
+            }
+        });
 
-/* EVOLUCION */
-new Chart(document.getElementById('grafico-reservas-semana'), {
-    type: 'line',
-    data: {
-        labels: ['Ene','Feb','Mar','Abr','May','Jun'],
-        datasets: [{
-            label:'2024',
-            data:[20,100,120,210,170,280]
-        },
-        {
-            label:'2023',
-            data:[30,120,110,90,150,200]
-        }]
-    }
-});
+        /* EVOLUCION */
+        new Chart(document.getElementById('grafico-reservas-semana'), {
+            type: 'line',
+            data: {
+                labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+                datasets: [{
+                    label: '2024',
+                    data: [20, 100, 120, 210, 170, 280]
+                },
+                {
+                    label: '2023',
+                    data: [30, 120, 110, 90, 150, 200]
+                }]
+            }
+        });
 
-/* PIE */
-new Chart(document.getElementById('grafico-usuarios'), {
-    type: 'pie',
-    data: {
-        labels: ['Propietario','Inquilino'],
-        datasets: [{
-            data: [60,40]
-        }]
-    }
-});
+        /* PIE */
+        new Chart(document.getElementById('grafico-usuarios'), {
+            type: 'pie',
+            data: {
+                labels: ['Propietario', 'Inquilino'],
+                datasets: [{
+                    data: [60, 40]
+                }]
+            }
+        });
 
-</script>
+    </script>
 
-<script src="main.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>

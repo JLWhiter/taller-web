@@ -18,6 +18,7 @@ const minimizarBtn = document.getElementById("btn-minimizar");
 minimizarBtn.addEventListener("click", () => {
     sidebar.classList.toggle("minimize");
 });
+
 const vistas = {
     "panel-control": {
         "titulo": "Panel Principal",
@@ -971,7 +972,7 @@ const vistas = {
         `,
     },
     "configuracion": {
-    titulo: "Configuración",
+    titulo: "   Configuración",
     descripcion: "Personaliza tu perfil y ajustes de la interfaz.",
     html: `
         <div class="contenido-configuracion">
@@ -1004,8 +1005,6 @@ const vistas = {
 </div>
     `
   }
-
-    
   
 
 }
@@ -1024,7 +1023,6 @@ function mostrarVista(seccion) {
     activarFuncionesConfiguracion();
   }
 }
-
 
 
 // cargar por defecto
