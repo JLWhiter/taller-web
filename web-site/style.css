@@ -113,7 +113,7 @@ body {
 
             padding-left: 12px;
             box-sizing: border-box;
-            transition: 0.2s ease;
+            transition: 0.15s ease;
 
             span {
                 color: white;
@@ -124,7 +124,7 @@ body {
             &:hover {
                 background-color: rgb(49, 49, 49);
                 border: 2px solid rgb(71, 71, 71);
-                transform: scale(0.97);
+                transform: scale(0.98);
             }
 
             &.activo {
