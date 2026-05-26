@@ -117,7 +117,7 @@
 ══════════════════════════════════════════════ */
 body.dark-theme .config-card {
     background-color: rgba(30, 30, 28, 0.95);
-    border-color: rgba(255, 0, 0, 0.1);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 body.dark-theme .config-card h3 {
