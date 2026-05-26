@@ -1,67 +1,77 @@
+/* ===== GESTIÓN DE USUARIOS ===== */
+
 section {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    padding: 15px;
+    box-sizing: border-box;
+    width: 100%;
+
+    /* ================= NAV ================= */
 
     nav {
         display: grid;
-        grid-template-columns: repeat(4, auto);
+        grid-template-columns: auto minmax(150px, 1fr) auto auto;
         gap: var(--espaciado-estandar);
+        align-items: center;
+        width: 100%;
 
+        /* BOTÓN CREAR */
         .crear {
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1rem;
             background-color: var(--color-primario);
             color: rgb(255, 255, 255);
-            font-weight: bolder;
+            font-weight: bold;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
+            transition: 0.3s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+
+            &:hover {
+                opacity: 0.9;
+            }
         }
 
-        .roles {
+        /* ROLES y FILTROS (Optimización de desborde horizontal) */
+        .roles, .filtros {
             display: flex;
-            width: 400px;
             gap: 15px;
             overflow-x: auto;
+            scrollbar-width: thin;
+            padding-bottom: 5px;
+            min-width: 0; /* Permite que el flex se encoja correctamente dentro del grid */
 
-            .rol {
+            .rol, .filtro {
                 padding: 0.5rem 1rem;
                 background-color: var(--color-primario);
                 color: rgb(255, 255, 255);
                 border: none;
-                border-radius: 4px;
+                border-radius: 6px;
                 cursor: pointer;
+                white-space: nowrap;
+                flex-shrink: 0;
             }
         }
 
         .filtros {
-            display: flex;
-            gap: 15px;
-            width: 200px;
-            overflow: auto;
-
-            .filtro {
-                padding: 0.5rem 1rem;
-                background-color: var(--color-primario);
-                color: rgb(255, 255, 255);
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-            }
+            gap: 10px;
         }
 
+        /* SEARCH */
         search {
             display: flex;
             align-items: center;
-            width: 200px;
-            justify-content: center;
             border: 1px solid var(--color-primario);
-            margin-top: var(--espaciado-estandar);
             height: var(--altura-botones);
-            background: none;
+            background: white;
             border-radius: var(--radio-pequeno);
             gap: 10px;
-            padding-left: var(--espaciado-estandar);
+            padding: 0 12px;
+            min-width: 220px;
+            flex-shrink: 0;
 
             label {
                 display: flex;
@@ -80,46 +90,175 @@ section {
                 width: 100%;
                 color: rgb(0, 0, 0);
                 outline: none;
+                font-size: 14px;
             }
         }
     }
 
+    /* ================= CONTENIDO ================= */
+
     .contenido-submenu {
-        background-color: 00#f9f9f9;
+        background-color: #f9f9f9;
         padding: 1rem;
-        border-radius: 4px;
+        border-radius: 8px;
+        overflow-x: auto; /* Asegura el scroll contenedor si la tabla excede el tamaño */
+        width: 100%;
+        -webkit-overflow-scrolling: touch;
 
         p {
             margin: 0;
         }
 
+        /* TABLA DE USUARIOS */
         .tabla-usuarios {
             width: 100%;
+            min-width: 850px; /* Evita que las columnas colapsen entre sí */
             border-collapse: collapse;
             margin-top: 1rem;
             background-color: var(--color-primario);
-            border-radius: var(--radio-pequeno);;
-            thead {
+            border-radius: var(--radio-pequeno);
+            overflow: hidden;
 
-                th,
-                td {
-                    padding: 0.5rem;
+            thead {
+                th, td {
+                    padding: 0.8rem;
                     text-align: left;
                     color: white;
+                    font-size: 14px;
+                    white-space: nowrap;
                 }
             }
 
             tbody {
                 background-color: rgb(255, 255, 255);
+
                 tr {
                     border-bottom: 1px solid #aeaeae;
+
+                    &:last-child {
+                        border-bottom: none;
+                    }
+
+                    &:hover {
+                        background-color: #f5f5f5;
+                    }
                 }
 
                 td {
-                    padding: 0.5rem;
+                    padding: 0.8rem;
+                    font-size: 14px;
+                    white-space: nowrap;
+                    vertical-align: middle; /* Alinea verticalmente el avatar y textos */
+                }
+
+                /* Control de la imagen de Avatar */
+                .avatar {
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    display: block;
+                }
+
+                /* Estilos base para las celdas de Acciones sin romper flujo */
+                .acciones {
+                    display: flex;
+                    gap: 6px;
+                    white-space: nowrap;
+
+                    button {
+                        padding: 0.4rem 0.8rem;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        font-size: 13px;
+                        border: 1px solid transparent;
+                        transition: background-color 0.2s;
+                    }
                 }
             }
         }
     }
 
+    /* ================= TABLET (1024px) ================= */
+
+    @media (max-width: 1024px) {
+        nav {
+            grid-template-columns: 1fr 1fr; /* Estructura limpia de 2 columnas */
+            gap: 12px;
+
+            .crear {
+                grid-column: 1;
+                width: 100%;
+                text-align: center;
+            }
+
+            search {
+                grid-column: 2;
+                width: 100%;
+                min-width: unset;
+            }
+
+            .roles {
+                grid-column: 1 / span 2;
+                width: 100%;
+            }
+
+            .filtros {
+                grid-column: 1 / span 2;
+                width: 100%;
+            }
+        }
+    }
+
+    /* ================= MOBILE (768px) ================= */
+
+    @media (max-width: 768px) {
+        padding: 10px;
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 12px;
+
+            .crear {
+                width: 100%;
+                order: 1;
+            }
+
+            search {
+                width: 100%;
+                min-width: unset;
+                margin-top: 0;
+                order: 2;
+            }
+
+            .roles, .filtros {
+                width: 100%;
+                overflow-x: auto;
+                order: 3;
+                padding-bottom: 8px;
+                
+                /* Comportamiento de scroll oculto en móviles nativos */
+                scrollbar-width: none; 
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
+        }
+
+        .contenido-submenu {
+            padding: 10px;
+
+            .tabla-usuarios {
+                min-width: 780px; /* Espacio exacto para proteger las columnas del HTML */
+
+                thead th,
+                tbody td {
+                    font-size: 13px;
+                    padding: 10px 8px;
+                }
+            }
+        }
+    }
 }

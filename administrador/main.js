@@ -1010,29 +1010,27 @@ const vistas = {
 }
 
 // funcion para mostrar la vista seleccionada
-function mostrarVista(seccion) {
+function cargarVista(seccion) {
     const vista = vistas[seccion];
-
     document.getElementById("titulo-seccion").textContent = vista.titulo;
-    document.getElementById("descripcion-seccion").textContent = vista.contenido;
+    document.getElementById("subtitulo-seccion").textContent = vista.contenido;
     document.getElementById("vista").innerHTML = vista.html;
-     if(seccion === "informes-analitica"){
+    if(seccion === "informes-analitica"){
         cargarGraficos();
     }
     if (seccion === "configuracion") {
-    activarFuncionesConfiguracion();
-  }
+        activarFuncionesConfiguracion();
+    }
 }
 
-
 // cargar por defecto
-mostrarVista("panel-control");
+cargarVista("panel-control");
 
 // eventos botones
 document.querySelectorAll("nav button").forEach(btn => {
     btn.addEventListener("click", () => {
         const seccion = btn.getAttribute("data-seccion");
-        mostrarVista(seccion);
+        cargarVista(seccion);
     });
 });
 
@@ -1093,18 +1091,17 @@ window.addEventListener("DOMContentLoaded", () => {
     // Aplicar nombre si estaba guardado
     const nombreGuardado = localStorage.getItem("nombreGuardado");
     if (nombreGuardado) {
-        const elementoNombre = document.querySelector(".perfil .usuario .informacion .nombre-apellido");
+        const elementoNombre = document.querySelector(".usuario .informacion .nombre-apellido")
         if (elementoNombre) elementoNombre.textContent = nombreGuardado;
     }
     
     // Aplicar avatar si estaba guardado
     const fotoGuardada = localStorage.getItem("fotoGuardada");
     if (fotoGuardada) {
-        const elementoAvatar = document.querySelector(".perfil .usuario .avatar span");
+        const elementoAvatar = document.querySelector(".usuario .avatar span")
         if (elementoAvatar) elementoAvatar.textContent = fotoGuardada;
     }
 });
-
 function cargarGraficos(){
 
     /* BARRAS */
@@ -1185,5 +1182,47 @@ btnNotif.addEventListener("click", function(e) {
 document.addEventListener("click", function(e) {
     if (!panel.contains(e.target)) {
         panel.classList.remove("visible");
+    }
+});
+
+
+// ===================== MENÚ MÓVIL =====================
+const btnMenuMovil = document.getElementById("btn-menu-movil");
+const sidebarOverlay = document.getElementById("sidebar-overlay");
+
+function abrirSidebar() {
+    sidebar.classList.add("open");
+    sidebarOverlay.classList.add("active");
+    btnMenuMovil.style.display = "none";
+    document.getElementById("vista").style.pointerEvents = "none"; // ← bloquear clicks
+}
+
+function cerrarSidebar() {
+    sidebar.classList.remove("open");
+    sidebarOverlay.classList.remove("active");
+    document.getElementById("vista").style.pointerEvents = "auto"; // ← desbloquear clicks
+    if (window.innerWidth <= 768) {
+        btnMenuMovil.style.display = "flex";
+    }
+}
+
+if (btnMenuMovil) {
+    btnMenuMovil.addEventListener("click", abrirSidebar);
+}
+
+if (sidebarOverlay) {
+    sidebarOverlay.addEventListener("click", cerrarSidebar);
+}
+
+botones.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        if (window.innerWidth <= 768) cerrarSidebar();
+    });
+});
+
+// Cerrar sidebar al tocar el contenido principal
+document.getElementById("vista").addEventListener("click", () => {
+    if (window.innerWidth <= 768 && sidebar.classList.contains("open")) {
+        cerrarSidebar();
     }
 });

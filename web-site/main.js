@@ -80,18 +80,14 @@ const vistas = {
                 <h4>Herramientas</h4>
                 <div class="botones">
                     <button class="calendario">
-                        <span class="material-symbols-outlined">
-                            calendar_month
-                        </span>
+                        <img src="../images/icons/calendario.png" alt="calendario">
                         <div>
                             <h3>Calendario del Condominio</h3>
                             <p>Ver todas las reservas realizadas por el condominio</p>
                         </div>
                     </button>
                     <button class="mis-reservas">
-                        <span class="material-symbols-outlined">
-                            list_arrow
-                        </span>
+                        <img src="../images/icons/usuario.png" alt="persona">
                         <div>
                             <h3>Mis Reservas</h3>
                             <p>Ver todas mis reservas</p>
@@ -137,21 +133,17 @@ const vistas = {
             <h4>Herramientas</h4>
             <div class="botones">
                 <button class="calendario">
-                    <span class="material-symbols-outlined">
-                        calendar_month
-                    </span>
+                    <img src="../images/icons/calendario.png" alt="calendario">
                     <div>
-                        <h3>Calendario del Condominio</h3>
-                        <p>Ver todas las reservas realizadas por el condominio</p>
+                        <h3>Disponibilidad de Cocheras</h3>
+                        <p>Ver qué cocheras están libres hoy</p>
                     </div>
                 </button>
                 <button class="mis-reservas">
-                    <span class="material-symbols-outlined">
-                        list_arrow
-                    </span>
+                    <img src="../images/icons/usuario.png" alt="persona">
                     <div>
-                        <h3>Mis Reservas</h3>
-                        <p>Ver todas mis reservas</p>
+                        <h3>Mis Solicitudes</h3>
+                        <p>Ver el estado de mis reservas de cochera</p>
                     </div>
                 </button>
             </div>

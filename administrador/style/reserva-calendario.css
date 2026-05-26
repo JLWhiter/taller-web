@@ -31,20 +31,36 @@
             }
 
             .filtros-calendario {
-                display: flex;
-                gap: 10px;
-                background-color: white;
-                margin-left: auto;
-                padding: 10px;
+            display: flex;
+            background-color: var(--color-primario);
+            border-radius: 4px;
+            gap: 10px;
+            margin-left: auto;
+            padding: 10px;
+            overflow-x: auto;
+            scrollbar-width: none; 
+            min-width: 0; 
 
-                .filtro-calendario {
-                    background-color: var(--color-primario);
-                    color: rgb(255, 255, 255);
-                    border: none;
-                    border-radius: 4px;
-                    cursor: pointer;
+            .filtro-calendario {
+                background-color: transparent; 
+                color: rgb(255, 255, 255);
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                white-space: nowrap; 
+                flex-shrink: 0; 
+                transition: background-color 0.2s ease, color 0.2s ease;
+
+                &:hover {
+                    background-color: rgb(255, 255, 255); /* Fondo blanco sutil */
+                    color: var(--color-primario); /* El texto toma el color primario para mantener un contraste perfecto */
+                }
+
+                &:active {
+                    transform: scale(0.97); /* Pequeño efecto de pulsación al hacer clic */
                 }
             }
+        }
         }
     }
 
@@ -138,5 +154,178 @@
             }
             
         }
+    }
+}
+/* ===================== RESPONSIVE CALENDARIO ===================== */
+
+@media (max-width: 768px) {
+
+    .reserva-calendario {
+        width: 100%;
+        padding: 10px;
+        gap: 15px;
+    }
+
+    /* ================= NAVEGADOR ================= */
+
+    .reserva-calendario .calendario-navegador {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .reserva-calendario .calendario-navegador .sub-menu-calendario {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    /* BOTONES DE VISTA */
+
+    .reserva-calendario .vistas {
+        width: 100%;
+    }
+
+    .reserva-calendario .opciones-vista {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .reserva-calendario .opciones-vista .vista {
+        flex: 1;
+        min-width: 100px;
+        height: 42px;
+    }
+
+    /* FILTROS */
+
+    .reserva-calendario .filtros-calendario {
+        width: 100%;
+        margin-left: 0 !important;
+        background: transparent !important;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 15px !important;
+    }
+
+    .reserva-calendario .filtro-calendario {
+        flex: 1;
+        min-width: 120px;
+
+        background: rgb(59, 59, 59) !important;
+        height: 42px;
+    }
+    .filtros-calendario {
+        margin-left: 0; 
+        width: 100%; 
+        justify-content: flex-start; 
+        -webkit-overflow-scrolling: touch; 
+    }
+
+    /* ================= CONTENIDO ================= */
+
+    .reserva-calendario .contenedor-vista {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    /* ================= CALENDARIO ================= */
+
+    .reserva-calendario .contenedor-calendario {
+        width: 100%;
+        overflow-x: auto;
+        padding: 10px;
+    }
+
+    .reserva-calendario .calendario {
+        min-width: 650px;
+    }
+
+    .reserva-calendario .calendario .dia {
+        min-height: 70px;
+        font-size: 12px;
+    }
+
+    .reserva-calendario .calendario .dia.reserva {
+        width: 100%;
+        min-height: 60px;
+        padding: 5px;
+        border-radius: 6px;
+    }
+
+    .reserva-calendario .calendario .dia.reserva span {
+        font-size: 9px;
+        margin-top: 4px;
+        text-align: center;
+    }
+
+    /* ================= RESUMEN ================= */
+
+    .reserva-calendario .resumen-dia {
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+
+        overflow-y: auto;
+        overflow-x: auto;
+
+        padding: 10px;
+        border-radius: 10px;
+
+        background: #f7f7f7;
+    }
+
+    /* TABLA RESUMEN */
+
+    .reserva-calendario .resumen-reservas {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .reserva-calendario .resumen-reservas table {
+        min-width: 600px;
+    }
+
+    .reserva-calendario .resumen-reservas td {
+        font-size: 11px;
+        white-space: nowrap;
+    }
+}
+
+/* ===================== TABLET ===================== */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    .reserva-calendario {
+        padding: 15px;
+    }
+
+    .reserva-calendario .contenedor-vista {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .reserva-calendario .contenedor-calendario {
+        width: 100%;
+    }
+
+    .reserva-calendario .calendario {
+        min-width: 800px;
+    }
+
+    .reserva-calendario .resumen-dia {
+        width: 100%;
+        max-height: 450px;
+        overflow: auto;
+    }
+
+    .reserva-calendario .resumen-reservas table {
+        min-width: 700px;
+    }
+
+    .reserva-calendario .filtros-calendario {
+        flex-wrap: wrap;
     }
 }
