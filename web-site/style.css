@@ -669,21 +669,21 @@ body {
     #sidebar-overlay.active {
         display: block;
         z-index: 59;
-        /* debajo de la sidebar (60) pero encima de todo lo demás */
+        /* Queda abajo del sidebar (60) pero tapa el resto del contenido */
     }
 
-    /* Sidebar minimizada en tablet */
+    /* Comportamiento si el sidebar se colapsa en tablet */
     aside.minimize {
         width: 70px !important;
     }
 
-    /* Que el contenido principal ocupe el espacio libre */
+    /* Ajuste para que el contenedor principal rellene el espacio sobrante */
     main {
         flex: 1;
         min-width: 0;
     }
 
-    /* Ocultar rol, nombre y torre */
+    /* Limpieza de espacio: ocultamos textos secundarios del perfil */
     .perfil .rol {
         display: none;
     }
@@ -692,7 +692,7 @@ body {
         display: none;
     }
 
-    /* Cerrar sesión solo ícono */
+    /* El botón de logout pasa a modo compacto (solo ícono) */
     #cerrar-sesion span {
         display: none;
     }
@@ -702,7 +702,7 @@ body {
         padding: 0 10px;
     }
 
-    /* Reducir tamaño del título */
+    /* Ajustes menores de tipografía para optimizar espacio */
     #titulo-seccion {
         font-size: 22px !important;
     }
@@ -711,15 +711,14 @@ body {
         font-size: 11px;
     }
 
-    /* Sidebar más angosta */
+    /* Reducimos el ancho por defecto del sidebar en este breakpoint */
     aside {
         width: 200px !important;
     }
 }
 
 
-
-/* El panel flotante — posición superior derecha */
+/* Estilos globales del panel flotante de notificaciones */
 .panel-notificaciones {
     position: fixed;
     top: 20px;
@@ -731,21 +730,21 @@ body {
     border: 1px solid #eee;
     z-index: 1000;
 
-    /* Estado inicial: oculto */
+    /* Por defecto arranca oculto y desplazado un poco hacia arriba para el efecto de entrada */
     opacity: 0;
     transform: translateY(-10px);
     pointer-events: none;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* Cuando JavaScript agrega la clase "visible", aparece */
+/* El estado activo se maneja inyectando esta clase desde JS */
 .panel-notificaciones.visible {
     opacity: 1;
     transform: translateY(0);
     pointer-events: all;
 }
 
-/* Título del panel — usa Flexbox para alinear ícono y texto */
+/* Header del panel: usamos flexbox para alinear el título y el icono */
 .panel-notificaciones h3 {
     display: flex;
     align-items: center;
@@ -758,14 +757,13 @@ body {
     margin: 0;
 }
 
-/* Lista sin viñetas */
 .panel-notificaciones ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-/* Cada notificación usa Grid para organizar el texto y la hora */
+/* Distribución interna de cada alerta usando Grid (texto arriba, metadata abajo) */
 .panel-notificaciones li {
     display: grid;
     grid-template-columns: 1fr;
@@ -777,22 +775,22 @@ body {
     transition: background 0.2s ease;
 }
 
+/* Quitamos el borde al último elemento de la lista */
 .panel-notificaciones li:last-child {
     border-bottom: none;
 }
 
-/* Efecto hover */
 .panel-notificaciones li:hover {
     background: #f7f6f4;
 }
 
-/* La hora/detalle en gris debajo del texto */
+/* Estilos para el timestamp o texto secundario de la notificación */
 .panel-notificaciones li span {
     font-size: 11px;
     color: #999;
 }
 
-/* Responsive: en pantallas pequeñas ocupa todo el ancho */
+/* En mobile rompemos el ancho fijo y hacemos que abarque casi toda la pantalla */
 @media (max-width: 768px) {
     .panel-notificaciones {
         top: 10px;
