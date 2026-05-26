@@ -250,8 +250,7 @@ const vistas = {
                     <img src="../images/icons/dark.png" alt="Luna">
                     <span>Activar / Desactivar</span>
                 </button>
-            </div>
-            
+            </div>           
             <div class="config-card">
                 <h3>Información de Perfil</h3>
                 <p>Actualiza tu numero telefonico.</p>
@@ -260,7 +259,6 @@ const vistas = {
                     <button id="btn-guardar-nombre" class="btn-config-accion">Guardar</button>
                 </div>
             </div>
-
     <div class="config-card">
         <h3>Foto de Perfil</h3>
         <p>Selecciona una imagen desde tu dispositivo.</p>
@@ -352,7 +350,7 @@ function activarFuncionesConfiguracion() {
     //     });
     // }
 
-    // 3. CAMBIAR FOTO DE PERFIL (SIN ALERT Y DIRECTO)
+    // 3. CAMBIAR FOTO DE PERFIL
     const btnSeleccionar = document.getElementById("btn-seleccionar-foto");
     const inputFile = document.getElementById("input-archivo-foto");
     const btnGuardar = document.getElementById("btn-guardar-foto");
@@ -423,16 +421,16 @@ btnCerrar.addEventListener("click", () => {
 
 // Guardamos los elementos
 const btnNotif = document.getElementById("btn-notificaciones");
-const panel    = document.getElementById("panel-notificaciones");
+const panel = document.getElementById("panel-notificaciones");
 
 // Clic en el botón 
-btnNotif.addEventListener("click", function(e) {
+btnNotif.addEventListener("click", function (e) {
     e.stopPropagation();
     panel.classList.toggle("visible");
 });
 
 //Clic fuera del panel 
-document.addEventListener("click", function(e) {
+document.addEventListener("click", function (e) {
     if (!panel.contains(e.target)) {
         panel.classList.remove("visible");
     }
