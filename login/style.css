@@ -188,3 +188,22 @@ body {
         }
     }
 }
+
+@media (max-width: 1024px) {
+    .left {
+        display: none !important;
+    }
+
+    .right {
+        flex: 1 !important;
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .right form {
+        width: 85% !important;
+        max-width: 400px !important;
+    }
+}

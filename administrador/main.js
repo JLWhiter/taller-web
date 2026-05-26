@@ -1169,19 +1169,19 @@ function cargarGraficos(){
     });
 }
 
-// NOTIFICACIONES
+// NOTIFICACIONES DEL ADMINISTRADOR
 
-// Guardamos 
+// Guardamos los elementos
 const btnNotif = document.getElementById("btn-notificaciones");
 const panel    = document.getElementById("panel-notificaciones");
 
-// Al hacer clic en el botón
+// Clic en el botón → abre o cierra el panel
 btnNotif.addEventListener("click", function(e) {
     e.stopPropagation();
     panel.classList.toggle("visible");
 });
 
-// Al hacer clic fuera del panel, se cierra
+// Clic fuera del panel → cierra
 document.addEventListener("click", function(e) {
     if (!panel.contains(e.target)) {
         panel.classList.remove("visible");

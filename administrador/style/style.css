@@ -470,40 +470,54 @@ body {
     }
 }
 
+
+
+/* El panel flotante — posición superior derecha */
 .panel-notificaciones {
-
-    position: fixed;
-    top: 70px;
+    position: fixed;    
+    top: 20px;
     right: 20px;
-
-    width: 350px;
-    max-width: 90%;
-
+    width: 320px;
     background: white;
     border-radius: 12px;
-    padding: 15px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border: 1px solid #eee;
+    z-index: 1000;
 
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-
+    /* Estado inicial: oculto */
     opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-
-    transition: all 0.3s ease;
-
-    z-index: 9999;
+    transform: translateY(-10px);   
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
+/* Cuando JavaScript agrega la clase "visible", aparece */
 
 .panel-notificaciones.visible {
-    opacity: 1;
-    visibility: visible;
+    opacity: 1; 
     transform: translateY(0);
+    pointer-events: all;
 }
 
-.panel-notificaciones ul{
+/* Título del panel — usa Flexbox para alinear ícono y texto */
+.panel-notificaciones h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a18;
+    padding: 14px 16px 10px;
+    border-bottom: 1px solid #eee;
+    margin: 0;
+}
+
+/* Lista sin viñetas */
+.panel-notificaciones ul {
     list-style: none;
     padding: 0;
     margin: 0;
+
     max-height: 300px;
     overflow-y: auto;
 }
@@ -513,265 +527,28 @@ body {
     border-bottom: 1px solid #eee;
 }
 
-.panel-notificaciones li span{
-    display: block;
-    color: gray;
-    font-size: 12px;
-    margin-top: 4px;
+.panel-notificaciones li:last-child {
+    border-bottom: none;
+}
+
+/* Efecto hover */
+.panel-notificaciones li:hover {
+    background: #f7f6f4;
+}
+
+/* La hora en gris debajo del texto */
+.panel-notificaciones li span {
+    font-size: 11px;
+    color: #999;
 }
 
 @media (max-width: 768px){
 
     .panel-notificaciones{
         right: 10px;
-        left: 10px; 
+        left: 10px;
 
         width: auto;
     }
 
-}
-
-/* ===================== RESPONSIVE MÓVIL ===================== */
-
-#btn-menu-movil {
-    display: none !important;
-}
-
-#sidebar-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-    z-index: 50;
-}
-
-/* ===================== MOBILE ===================== */
-@media (max-width: 768px) {
-
-    body {
-        flex-direction: column;
-        overflow-x: hidden;
-    }
-
-    /* ================= SIDEBAR ================= */
-
-    aside {
-        position: fixed !important;
-        top: 0;
-        left: -280px;
-        width: 260px !important;
-        height: 100vh;
-        margin: 0 !important;
-        border-radius: 0 20px 20px 0 !important;
-        z-index: 100;
-        transition: left .3s ease;
-    }
-
-    aside.open {
-        left: 0;
-    }
-
-    aside.minimize {
-        width: 260px !important;
-    }
-
-    aside.minimize hgroup,
-    aside.minimize span:not(.material-symbols-outlined) {
-        display: flex !important;
-    }
-
-    aside.minimize nav button,
-    aside.minimize footer button {
-        justify-content: flex-start !important;
-        width: 100% !important;
-        padding-left: 12px !important;
-    }
-
-    #sidebar-overlay.active {
-        display: block;
-    }
-
-    #btn-minimizar {
-        display: none !important;
-    }
-
-    /* ================= HEADER ================= */
-
-    main {
-        width: 100%;
-        overflow-x: hidden;
-    }
-
-    main .panel-contenido header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-        margin: 10px;
-    }
-
-    main .panel-contenido header .left {
-        width: 100%;
-    }
-
-    main .panel-contenido header .left .titulo-seccion {
-        font-size: 22px !important;
-        line-height: 1.1;
-    }
-
-    main .panel-contenido header .left p {
-        font-size: 12px;
-    }
-
-    main .panel-contenido header .right {
-        width: 100%;
-        justify-content: space-between;
-        gap: 10px;
-        flex-wrap: wrap;
-    }
-
-    .right .rol {
-        display: none !important;
-    }
-
-    .usuario .informacion {
-        display: none !important;
-    }
-
-    #cerrar-sesion {
-        width: auto !important;
-        padding: 0 12px !important;
-    }
-
-    #cerrar-sesion span {
-        display: none;
-    }
-
-    /* ================= BOTÓN MENÚ ================= */
-
-    #btn-menu-movil {
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-        background: transparent;
-        border: none;
-        border-radius: 10px;
-        padding: 6px;
-        cursor: pointer;
-    }
-
-    #btn-menu-movil:hover {
-        background: rgba(0,0,0,.06);
-    }
-
-    #btn-menu-movil .material-symbols-outlined {
-        color: black;
-        font-size: 24px;
-    }
-
-    /* ================= CONTENIDO ================= */
-
-    .contenido {
-        padding: 10px !important;
-        margin-right: 0 !important;
-    }
-
-    /* Cards estadísticas */
-    .reservas .botones {
-        flex-direction: column;
-    }
-
-    .reservas .botones .total-usuario,
-    .reservas .botones .reserva-totales,
-    .reservas .botones .ingreso-reserva {
-        width: 100%;
-        height: auto;
-        min-height: 130px;
-    }
-
-    /* ================= TABLAS ================= */
-
-    .contenedor-tabla {
-        overflow-x: auto;
-    }
-
-    .contenedor-tabla table {
-        min-width: 700px;
-    }
-
-    .acciones {
-        flex-wrap: wrap;
-    }
-
-    /* ================= PANEL NOTIFICACIONES ================= */
-
-    .panel-notificaciones {
-        left: 10px !important;
-        right: 10px !important;
-        width: auto !important;
-        bottom: 70px !important;
-    }
-}
-
-/* ===================== TABLET ===================== */
-@media (min-width: 769px) and (max-width: 1024px) {
-
-    aside {
-        width: 210px !important;
-    }
-
-    aside.minimize {
-        width: 75px !important;
-    }
-
-    aside.minimize hgroup {
-        display: none;
-    }
-
-    main {
-        flex: 1;
-        min-width: 0;
-    }
-
-    .contenido {
-        margin-right: 0 !important;
-    }
-
-    .reservas .botones {
-        flex-wrap: wrap;
-    }
-
-    .reservas .botones .total-usuario,
-    .reservas .botones .reserva-totales,
-    .reservas .botones .ingreso-reserva {
-        min-width: calc(50% - 10px);
-    }
-
-    .right .rol {
-        display: none;
-    }
-
-    .usuario .informacion {
-        display: none;
-    }
-
-    #cerrar-sesion {
-        width: auto !important;
-        padding: 0 10px;
-    }
-
-    #cerrar-sesion span {
-        display: none;
-    }
-
-    .titulo-seccion {
-        font-size: 24px !important;
-    }
-
-    .contenedor-tabla {
-        overflow-x: auto;
-    }
-
-    .contenedor-tabla table {
-        min-width: 850px;
-    }
 }
