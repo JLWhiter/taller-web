@@ -80,18 +80,14 @@ const vistas = {
                 <h4>Herramientas</h4>
                 <div class="botones">
                     <button class="calendario">
-                        <span class="material-symbols-outlined">
-                            calendar_month
-                        </span>
+                        <img src="../images/icons/calendario.png" alt="calendario">
                         <div>
                             <h3>Calendario del Condominio</h3>
                             <p>Ver todas las reservas realizadas por el condominio</p>
                         </div>
                     </button>
                     <button class="mis-reservas">
-                        <span class="material-symbols-outlined">
-                            list_arrow
-                        </span>
+                        <img src="../images/icons/usuario.png" alt="persona">
                         <div>
                             <h3>Mis Reservas</h3>
                             <p>Ver todas mis reservas</p>
@@ -257,15 +253,15 @@ const vistas = {
                 </div>
             </div>
 
-<div class="config-card">
-    <h3>Foto de Perfil</h3>
-    <p>Selecciona una imagen desde tu dispositivo.</p>
-    <div class="grupo-input">
-        <input type="file" id="input-archivo-foto" accept="image/*" style="display: none;">
-        <button id="btn-seleccionar-foto" class="btn-config">Selecciona</button>
-        <button id="btn-guardar-foto" class="btn-config-accion">Guardar</button>
+    <div class="config-card">
+        <h3>Foto de Perfil</h3>
+        <p>Selecciona una imagen desde tu dispositivo.</p>
+        <div class="grupo-input">
+            <input type="file" id="input-archivo-foto" accept="image/*" style="display: none;">
+            <button id="btn-seleccionar-foto" class="btn-config">Selecciona</button>
+            <button id="btn-guardar-foto" class="btn-config-accion">Guardar</button>
+        </div>
     </div>
-</div>
     `
     }
 
@@ -334,7 +330,7 @@ function activarFuncionesConfiguracion() {
             localStorage.setItem("modoOscuro", document.body.classList.contains("dark-theme"));
         });
     }
-    // 2. CAMBIAR NOMBRE (SIN ALERT)
+    // 2. CAMBIAR NOMBRE
     //  const btnNombre = document.getElementById("btn-guardar-nombre");
     //  const inputNombre = document.getElementById("nuevo-nombre");
     //  if (btnNombre && inputNombre) {
@@ -412,38 +408,4 @@ const btnCerrar = document.querySelector("#cerrar-sesion");
 
 btnCerrar.addEventListener("click", () => {
     window.location.href = "../login/login.html";
-});
-
-// ===================== MENÚ MÓVIL =====================
-const btnMenuMovil = document.getElementById("btn-menu-movil");
-const sidebarOverlay = document.getElementById("sidebar-overlay");
-
-function abrirSidebar() {
-    sidebar.classList.add("open");
-    sidebarOverlay.classList.add("active");
-    btnMenuMovil.style.display = "none";
-}
-
-function cerrarSidebar() {
-    sidebar.classList.remove("open");
-    sidebarOverlay.classList.remove("active");
-    // Solo mostrar si seguimos en móvil
-    if (window.innerWidth <= 768) {
-        btnMenuMovil.style.display = "flex";
-    }
-}
-
-if (btnMenuMovil) {
-    btnMenuMovil.addEventListener("click", abrirSidebar);
-}
-
-if (sidebarOverlay) {
-    sidebarOverlay.addEventListener("click", cerrarSidebar);
-}
-
-// Al hacer clic en un ítem del nav en móvil, cerrar sidebar
-botones.forEach((btn) => {
-    btn.addEventListener("click", () => {
-        if (window.innerWidth <= 768) cerrarSidebar();
-    });
 });

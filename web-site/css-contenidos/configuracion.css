@@ -38,7 +38,7 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    height: 50px;
+    height: 45px;
     border-radius: 8px;
     border: 1px solid var(--color-borde-claro);
     background-color: transparent;
@@ -107,9 +107,7 @@
     transition: var(--transicion-normal);
     white-space: nowrap;
 }
-#btn-toggle-dark{
-    
-}
+
 
 .btn-config-accion:hover {
     background-color: var(--color-primario-hover);
