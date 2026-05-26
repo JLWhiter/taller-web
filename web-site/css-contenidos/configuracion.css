@@ -67,13 +67,17 @@
 }
 
 .grupo-input {
+    
     display: flex;
-    gap: 10px;
+    gap: 5px;
 }
 
 .grupo-input input {
     flex: 1;
-    padding: 10px 15px;
+    min-width: 0;
+    height: 45px;
+    box-sizing: border-box;
+    padding: 0px 15px;
     border-radius: 8px;
     border: 1px solid var(--color-borde-claro);
     background-color: var(--color-surface);
@@ -111,6 +115,12 @@
 
 .btn-config-accion:hover {
     background-color: var(--color-primario-hover);
+}
+
+#btn-toggle-dark {
+    width: calc(50% - 0.5px); 
+    box-sizing: border-box;
+    align-self: center;
 }
 
 /* ══════════════════════════════════════════════
@@ -443,4 +453,8 @@ body.dark-theme .info-detalles textarea::placeholder {
 
 body.dark-theme .info-detalles textarea:hover {
     border-color: rgba(255, 255, 255, 0.25) !important;
+}
+body.dark-theme #btn-menu-movil,
+body.dark-theme #btn-menu-movil .material-symbols-outlined {
+    color: #f0ede8 !important;
 }
