@@ -171,7 +171,7 @@ body.dark-theme .btn-config-accion:hover {
    DARK MODE — HEADER MAIN
 ══════════════════════════════════════════════ */
 body.dark-theme main header {
-    background-color: rgba(15, 15, 13, 0.75);
+    background-color: transparent;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-color: rgba(255, 255, 255, 0.08) !important;
