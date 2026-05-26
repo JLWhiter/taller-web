@@ -409,3 +409,23 @@ const btnCerrar = document.querySelector("#cerrar-sesion");
 btnCerrar.addEventListener("click", () => {
     window.location.href = "../login/login.html";
 });
+
+
+// NOTIFICACIONES DEL CLIENTE
+
+// Guardamos los elementos
+const btnNotif = document.getElementById("btn-notificaciones");
+const panel    = document.getElementById("panel-notificaciones");
+
+// Clic en el botón 
+btnNotif.addEventListener("click", function(e) {
+    e.stopPropagation();
+    panel.classList.toggle("visible");
+});
+
+//Clic fuera del panel 
+document.addEventListener("click", function(e) {
+    if (!panel.contains(e.target)) {
+        panel.classList.remove("visible");
+    }
+});

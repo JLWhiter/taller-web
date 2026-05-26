@@ -1173,17 +1173,17 @@ function cargarGraficos(){
 
 // NOTIFICACIONES
 
-// 1. Guardamos los elementos en variables
+// Guardamos 
 const btnNotif = document.getElementById("btn-notificaciones");
 const panel    = document.getElementById("panel-notificaciones");
 
-// 2. Al hacer clic en el botón, abre o cierra el panel
+// Al hacer clic en el botón
 btnNotif.addEventListener("click", function(e) {
     e.stopPropagation();
     panel.classList.toggle("visible");
 });
 
-// 3. Al hacer clic fuera del panel, se cierra
+// Al hacer clic fuera del panel, se cierra
 document.addEventListener("click", function(e) {
     if (!panel.contains(e.target)) {
         panel.classList.remove("visible");
