@@ -490,64 +490,88 @@ body {
     }
 }
 
+
+
+/* El panel flotante — posición superior derecha */
 .panel-notificaciones {
-
-    position: fixed;
-    top: 70px;
+    position: fixed;    
+    top: 20px;
     right: 20px;
-
-    width: 350px;
-    max-width: 90%;
-
+    width: 320px;
     background: white;
     border-radius: 12px;
-    padding: 15px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border: 1px solid #eee;
+    z-index: 1000;
 
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-
+    /* Estado inicial: oculto */
     opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-
-    transition: all 0.3s ease;
-
-    z-index: 9999;
+    transform: translateY(-10px);   
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
+/* Cuando JavaScript agrega la clase "visible", aparece */
 
 .panel-notificaciones.visible {
-    opacity: 1;
-    visibility: visible;
+    opacity: 1; 
     transform: translateY(0);
+    pointer-events: all;
 }
 
-.panel-notificaciones ul{
+/* Título del panel — usa Flexbox para alinear ícono y texto */
+.panel-notificaciones h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a18;
+    padding: 14px 16px 10px;
+    border-bottom: 1px solid #eee;
+    margin: 0;
+}
+
+/* Lista sin viñetas */
+.panel-notificaciones ul {
     list-style: none;
     padding: 0;
     margin: 0;
-
-    max-height: 300px;
-    overflow-y: auto;
 }
 
-.panel-notificaciones li{
-    padding: 12px 0;
-    border-bottom: 1px solid #eee;
+/* Cada notificación usa Grid para organizar el texto y la hora */
+.panel-notificaciones li {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #1a1a18;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.2s ease;
 }
 
-.panel-notificaciones li span{
-    display: block;
-    color: gray;
-    font-size: 12px;
-    margin-top: 4px;
+.panel-notificaciones li:last-child {
+    border-bottom: none;
 }
 
-@media (max-width: 768px){
-
-    .panel-notificaciones{
-        right: 10px;
-        left: 10px;
-
-        width: auto;
-    }
-
+/* Efecto hover */
+.panel-notificaciones li:hover {
+    background: #f7f6f4;
 }
+
+/* La hora en gris debajo del texto */
+.panel-notificaciones li span {
+    font-size: 11px;
+    color: #999;
+}
+
+/* Responsive: en pantallas pequeñas ocupa todo el ancho */
+@media (max-width: 768px) {
+    .panel-notificaciones {
+        top: 10px;
+        right: 10px;    
+        left: 10px; 
+        width: auto;    
+    }   
+}   
