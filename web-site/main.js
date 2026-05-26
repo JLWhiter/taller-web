@@ -80,14 +80,18 @@ const vistas = {
                 <h4>Herramientas</h4>
                 <div class="botones">
                     <button class="calendario">
-                        <img src="../images/icons/calendario.png" alt="calendario">
+                        <span class="material-symbols-outlined">
+                            calendar_month
+                        </span>
                         <div>
                             <h3>Calendario del Condominio</h3>
                             <p>Ver todas las reservas realizadas por el condominio</p>
                         </div>
                     </button>
                     <button class="mis-reservas">
-                        <img src="../images/icons/usuario.png" alt="persona">
+                        <span class="material-symbols-outlined">
+                            list_arrow
+                        </span>
                         <div>
                             <h3>Mis Reservas</h3>
                             <p>Ver todas mis reservas</p>
@@ -133,17 +137,21 @@ const vistas = {
             <h4>Herramientas</h4>
             <div class="botones">
                 <button class="calendario">
-                    <img src="../images/icons/calendario.png" alt="calendario">
+                    <span class="material-symbols-outlined">
+                        calendar_month
+                    </span>
                     <div>
-                        <h3>Disponibilidad de Cocheras</h3>
-                        <p>Ver qué cocheras están libres hoy</p>
+                        <h3>Calendario del Condominio</h3>
+                        <p>Ver todas las reservas realizadas por el condominio</p>
                     </div>
                 </button>
                 <button class="mis-reservas">
-                    <img src="../images/icons/usuario.png" alt="persona">
+                    <span class="material-symbols-outlined">
+                        list_arrow
+                    </span>
                     <div>
-                        <h3>Mis Solicitudes</h3>
-                        <p>Ver el estado de mis reservas de cochera</p>
+                        <h3>Mis Reservas</h3>
+                        <p>Ver todas mis reservas</p>
                     </div>
                 </button>
             </div>
@@ -428,4 +436,36 @@ document.addEventListener("click", function(e) {
     if (!panel.contains(e.target)) {
         panel.classList.remove("visible");
     }
+});
+
+// ===================== MENÚ MÓVIL =====================
+const btnMenuMovil = document.getElementById("btn-menu-movil");
+const sidebarOverlay = document.getElementById("sidebar-overlay");
+
+function abrirSidebar() {
+    sidebar.classList.add("open");
+    sidebarOverlay.classList.add("active");
+    btnMenuMovil.style.display = "none";
+}
+
+function cerrarSidebar() {
+    sidebar.classList.remove("open");
+    sidebarOverlay.classList.remove("active");
+    if (window.innerWidth <= 768) {
+        btnMenuMovil.style.display = "flex";
+    }
+}
+
+if (btnMenuMovil) {
+    btnMenuMovil.addEventListener("click", abrirSidebar);
+}
+
+if (sidebarOverlay) {
+    sidebarOverlay.addEventListener("click", cerrarSidebar);
+}
+
+botones.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        if (window.innerWidth <= 768) cerrarSidebar();
+    });
 });

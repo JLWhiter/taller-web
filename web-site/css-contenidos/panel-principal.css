@@ -132,9 +132,8 @@
                     transition: 0.35s ease;
                 }
 
-                img {
-                    height: 30px;
-                    margin-left: 30px;
+                .material-symbols-outlined {
+                    font-size: 30px;
                 }
 
                 div {
