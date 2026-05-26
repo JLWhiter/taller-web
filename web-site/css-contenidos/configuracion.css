@@ -33,6 +33,7 @@
 }
 
 .btn-config {
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -92,6 +93,7 @@
 }
 
 .btn-config-accion {
+    flex: 1;
     padding: 0 20px;
     height: 45px;
     border-radius: 8px;
@@ -115,7 +117,7 @@
 ══════════════════════════════════════════════ */
 body.dark-theme .config-card {
     background-color: rgba(30, 30, 28, 0.95);
-    border-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 0, 0, 0.1);
 }
 
 body.dark-theme .config-card h3 {
@@ -156,7 +158,7 @@ body.dark-theme .grupo-input input::placeholder {
 }
 
 body.dark-theme .grupo-input input:focus {
-    border-color: rgba(255, 255, 255, 0.3);
+    border-color: rgba(88, 66, 66, 0.3);
 }
 
 body.dark-theme .btn-config-accion {
