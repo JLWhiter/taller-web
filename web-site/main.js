@@ -319,7 +319,7 @@ document.querySelectorAll(".modal-close").forEach((btn) => {
 });
 
 // --------------
-
+// funciones de configuracion
 function activarFuncionesConfiguracion() {
     // 1. MODO OSCURO
     const btnDark = document.getElementById("btn-toggle-dark");
@@ -331,18 +331,18 @@ function activarFuncionesConfiguracion() {
         });
     }
     // 2. CAMBIAR NOMBRE (SIN ALERT)
-  //  const btnNombre = document.getElementById("btn-guardar-nombre");
-  //  const inputNombre = document.getElementById("nuevo-nombre");
-  //  if (btnNombre && inputNombre) {
-  //      btnNombre.addEventListener("click", () => {
-   //         const nuevoNombre = inputNombre.value.trim();
+    //  const btnNombre = document.getElementById("btn-guardar-nombre");
+    //  const inputNombre = document.getElementById("nuevo-nombre");
+    //  if (btnNombre && inputNombre) {
+    //      btnNombre.addEventListener("click", () => {
+    //         const nuevoNombre = inputNombre.value.trim();
     //        if (nuevoNombre !== "") {
-   //             document.querySelector(".perfil .usuario .informacion .nombre-apellido").textContent = nuevoNombre;
+    //             document.querySelector(".perfil .usuario .informacion .nombre-apellido").textContent = nuevoNombre;
     //            localStorage.setItem("nombreGuardado", nuevoNombre);
-   //             inputNombre.value = "";
- //           }
-   //     });
-   // }
+    //             inputNombre.value = "";
+    //           }
+    //     });
+    // }
 
     // 3. CAMBIAR FOTO DE PERFIL (SIN ALERT Y DIRECTO)
     const btnSeleccionar = document.getElementById("btn-seleccionar-foto");
@@ -373,7 +373,7 @@ function activarFuncionesConfiguracion() {
         });
     }
 }
-
+// fin de funcionamiento en configuracion
 
 
 // Cargar los datos guardados automáticamente al abrir o recargar la página
