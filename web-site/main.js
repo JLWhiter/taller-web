@@ -240,19 +240,19 @@ const vistas = {
         html: `
         <div class="contenido-configuracion">
             <div class="config-card">
-                <h3>Ajustes de Interfaz</h3>
+                <h3>Modo Oscuro</h3>
                 <p>Cambia el aspecto visual del sistema.</p>
                 <button id="btn-toggle-dark" class="btn-config">
                     <img src="../images/icons/dark.png" alt="Luna">
-                    <span>Activar / Desactivar Modo Oscuro</span>
+                    <span>Activar / Desactivar</span>
                 </button>
             </div>
             
             <div class="config-card">
                 <h3>Información de Perfil</h3>
-                <p>Actualiza el nombre que se muestra en tu sesión.</p>
+                <p>Actualiza tu numero telefonico.</p>
                 <div class="grupo-input">
-                    <input type="text" id="nuevo-nombre" placeholder="Escribe tu nuevo nombre...">
+                    <input type="text" id="nuevo-nombre" placeholder="Escribe tu numero...">
                     <button id="btn-guardar-nombre" class="btn-config-accion">Guardar</button>
                 </div>
             </div>
@@ -323,7 +323,7 @@ document.querySelectorAll(".modal-close").forEach((btn) => {
 });
 
 // --------------
-
+// funciones de configuracion
 function activarFuncionesConfiguracion() {
     // 1. MODO OSCURO
     const btnDark = document.getElementById("btn-toggle-dark");
@@ -335,18 +335,18 @@ function activarFuncionesConfiguracion() {
         });
     }
     // 2. CAMBIAR NOMBRE (SIN ALERT)
-    const btnNombre = document.getElementById("btn-guardar-nombre");
-    const inputNombre = document.getElementById("nuevo-nombre");
-    if (btnNombre && inputNombre) {
-        btnNombre.addEventListener("click", () => {
-            const nuevoNombre = inputNombre.value.trim();
-            if (nuevoNombre !== "") {
-                document.querySelector(".perfil .usuario .informacion .nombre-apellido").textContent = nuevoNombre;
-                localStorage.setItem("nombreGuardado", nuevoNombre);
-                inputNombre.value = ""; // Limpia el input pero no molesta con alertas
-            }
-        });
-    }
+    //  const btnNombre = document.getElementById("btn-guardar-nombre");
+    //  const inputNombre = document.getElementById("nuevo-nombre");
+    //  if (btnNombre && inputNombre) {
+    //      btnNombre.addEventListener("click", () => {
+    //         const nuevoNombre = inputNombre.value.trim();
+    //        if (nuevoNombre !== "") {
+    //             document.querySelector(".perfil .usuario .informacion .nombre-apellido").textContent = nuevoNombre;
+    //            localStorage.setItem("nombreGuardado", nuevoNombre);
+    //             inputNombre.value = "";
+    //           }
+    //     });
+    // }
 
     // 3. CAMBIAR FOTO DE PERFIL (SIN ALERT Y DIRECTO)
     const btnSeleccionar = document.getElementById("btn-seleccionar-foto");
@@ -377,7 +377,7 @@ function activarFuncionesConfiguracion() {
         });
     }
 }
-
+// fin de funcionamiento en configuracion
 
 
 // Cargar los datos guardados automáticamente al abrir o recargar la página
