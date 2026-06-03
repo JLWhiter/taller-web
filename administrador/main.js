@@ -970,20 +970,21 @@ const vistas = {
                 </div>
             </section>
         `,
-    },"configuracion": {
+    },
+"configuracion": {
         titulo: "Configuración",
         descripcion: "Personaliza tu perfil y ajustes de la interfaz.",
         html: `
         <div class="contenido-configuracion">
-            <div class="config-card">
+            <div class="tarjeta-config">
                 <h3>Modo Oscuro</h3>
                 <p>Cambia el aspecto visual del sistema.</p>
-                <button id="btn-toggle-dark" class="btn-config">
+                <button id="btn-tema-oscuro" class="boton-config">
                     <img src="../images/icons/dark.png" alt="Luna">
                     <span>Activar / Desactivar</span>
                 </button>
             </div>           
-            <div class="config-card">
+            <div class="tarjeta-config">
                 <h3>Información de Perfil</h3>
                 <p>Actualiza tu numero telefonico.</p>
                 <div class="contenedor-input">
@@ -998,23 +999,22 @@ const vistas = {
                         required
                         placeholder="Escribe tu numero..."
                     >
-                    <button id="btn-guardar-nombre" class="btn-config-accion" type="submit">Guardar</button>
+                    <button id="btn-guardar-nombre" class="boton-accion" type="submit">Guardar</button>
                 </form>
                 </div>
             </div>
-            <div class="config-card">
+            <div class="tarjeta-config">
                 <h3>Foto de Perfil</h3>
                 <p>Selecciona una imagen desde tu dispositivo.</p>
                 <div class="grupo-input">
                     <input type="file" id="input-archivo-foto" accept="image/*" style="display: none;">
-                    <button id="btn-seleccionar-foto" class="btn-config">Selecciona</button>
-                    <button id="btn-guardar-foto" class="btn-config-accion">Guardar</button>
+                    <button id="btn-seleccionar-foto" class="boton-config">Selecciona</button>
+                    <button id="btn-guardar-foto" class="boton-accion">Guardar</button>
                 </div>
             </div>
+        </div>
     `
     }
-  
-
 }
 
 // funcion para mostrar la vista seleccionada
@@ -1049,12 +1049,12 @@ document
 
 function activarFuncionesConfiguracion() {
     // 1. MODO OSCURO
-    const btnDark = document.getElementById("btn-toggle-dark");
-    if (btnDark) {
-        btnDark.addEventListener("click", () => {
-            document.body.classList.toggle("dark-theme");
+    const btnOscuro = document.getElementById("btn-tema-oscuro"); // ← Actualizado en español
+    if (btnOscuro) {
+        btnOscuro.addEventListener("click", () => {
+            document.body.classList.toggle("tema-oscuro"); // ← Clase actualizada en español
             // Guardamos la preferencia en el navegador
-            localStorage.setItem("modoOscuro", document.body.classList.contains("dark-theme"));
+            localStorage.setItem("modoOscuro", document.body.classList.contains("tema-oscuro")); // ← Actualizado
         });
     }
 
@@ -1093,20 +1093,20 @@ function activarFuncionesConfiguracion() {
 window.addEventListener("DOMContentLoaded", () => {
     // Aplicar tema oscuro si estaba guardado
     if (localStorage.getItem("modoOscuro") === "true") {
-        document.body.classList.add("dark-theme");
+        document.body.classList.add("tema-oscuro"); // ← Clase actualizada en español
     }
     
     // Aplicar nombre si estaba guardado
     const nombreGuardado = localStorage.getItem("nombreGuardado");
     if (nombreGuardado) {
-        const elementoNombre = document.querySelector(".usuario .informacion .nombre-apellido")
+        const elementoNombre = document.querySelector(".usuario .informacion .nombre-apellido");
         if (elementoNombre) elementoNombre.textContent = nombreGuardado;
     }
     
-    // Aplicar avatar si estaba guardado
+    // Aplicar avatar (inicial) si estaba guardado
     const fotoGuardada = localStorage.getItem("fotoGuardada");
     if (fotoGuardada) {
-        const elementoAvatar = document.querySelector(".usuario .avatar span")
+        const elementoAvatar = document.querySelector(".usuario .avatar span");
         if (elementoAvatar) elementoAvatar.textContent = fotoGuardada;
     }
 });
