@@ -70,7 +70,7 @@
 }
 
 /* ===== MODO OSCURO GLOBAL ===== */
-body.dark-theme {
+body.tema-oscuro {
     background-image: url('images/fondo_oscuro.avif');
     background-size: cover;
     background-position: center;

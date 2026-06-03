@@ -1,4 +1,3 @@
-
 .contenido-configuracion {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -7,7 +6,7 @@
     /* align-items: start;*/
 }
 
-.config-card {
+.tarjeta-config {
     background-color: var(--color-surface);
     border: 1px solid var(--color-borde-claro);
     border-radius: 14px;
@@ -20,18 +19,18 @@
     box-sizing: border-box;
 }
 
-.config-card h3 {
+.tarjeta-config h3 {
     font-size: 18px;
     color: var(--color-text-1);
 }
 
-.config-card p {
+.tarjeta-config p {
     font-size: 13px;
     color: var(--color-text-2);
     margin-bottom: 5px;
 }
 
-.btn-config {
+.boton-config {
     flex: 1;
     display: flex;
     align-items: center;
@@ -48,25 +47,24 @@
     overflow: hidden;
 }
 
-.btn-config:hover {
+.boton-config:hover {
     background-color: var(--color-surface-muted);
     border-color: var(--color-borde-hover);
 }
 
-.btn-config img {
+.boton-config img {
     height: 20px;
     width: 20px;
     object-fit: contain;
     flex-shrink: 0;
 }
 
-.btn-config span {
+.boton-config span {
     font-size: 14px;
     color: var(--color-text-1);
 }
 
 .grupo-input {
-
     display: flex;
     gap: 5px;
 }
@@ -95,7 +93,7 @@
     color: var(--color-text-3);
 }
 
-.btn-config-accion {
+.boton-accion {
     flex: 1;
     padding: 0 20px;
     height: 45px;
@@ -111,12 +109,11 @@
     white-space: nowrap;
 }
 
-
-.btn-config-accion:hover {
+.boton-accion:hover {
     background-color: var(--color-primario-hover);
 }
 
-#btn-toggle-dark {
+#btn-tema-oscuro {
     width: 100%;
     height: 45px;
     box-sizing: border-box;
@@ -126,195 +123,195 @@
 /* ══════════════════════════════════════════════
    DARK MODE — CONFIGURACIÓN
 ══════════════════════════════════════════════ */
-body.dark-theme .config-card {
+body.tema-oscuro .tarjeta-config {
     background-color: rgba(30, 30, 28, 0.95);
     border-color: rgba(255, 255, 255, 0.1);
 }
 
-body.dark-theme .config-card h3 {
+body.tema-oscuro .tarjeta-config h3 {
     color: #f0ede8;
 }
 
-body.dark-theme .config-card p {
+body.tema-oscuro .tarjeta-config p {
     color: #a8a49f;
 }
 
-body.dark-theme .btn-config {
+body.tema-oscuro .boton-config {
     border-color: rgba(255, 255, 255, 0.15);
     color: #f0ede8;
 }
 
-body.dark-theme .btn-config span {
+body.tema-oscuro .boton-config span {
     color: #f0ede8;
 }
 
-body.dark-theme .btn-config:hover {
+body.tema-oscuro .boton-config:hover {
     background-color: rgba(255, 255, 255, 0.07);
     border-color: rgba(255, 255, 255, 0.25);
 }
 
-body.dark-theme .btn-config img {
+body.tema-oscuro .boton-config img {
     filter: brightness(0) invert(1);
     opacity: 0.85;
 }
 
-body.dark-theme .grupo-input input {
+body.tema-oscuro .grupo-input input {
     background-color: rgba(255, 255, 255, 0.06);
     border-color: rgba(255, 255, 255, 0.12);
     color: #f0ede8;
 }
 
-body.dark-theme .grupo-input input::placeholder {
+body.tema-oscuro .grupo-input input::placeholder {
     color: rgba(255, 255, 255, 0.3);
 }
 
-body.dark-theme .grupo-input input:focus {
+body.tema-oscuro .grupo-input input:focus {
     border-color: rgba(88, 66, 66, 0.3);
 }
 
-body.dark-theme .btn-config-accion {
+body.tema-oscuro .boton-accion {
     background-color: var(--color-accent);
 }
 
-body.dark-theme .btn-config-accion:hover {
+body.tema-oscuro .boton-accion:hover {
     background-color: var(--color-accent-light);
 }
 
 /* ══════════════════════════════════════════════
    DARK MODE — HEADER MAIN
 ══════════════════════════════════════════════ */
-body.dark-theme main header {
+body.tema-oscuro main header {
     background-color: transparent;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
-body.dark-theme #titulo-seccion {
+body.tema-oscuro #titulo-seccion {
     color: #f0ede8 !important;
 }
 
-body.dark-theme main header hgroup p {
+body.tema-oscuro main header hgroup p {
     color: #a8a49f !important;
 }
 
-body.dark-theme main header .perfil .rol {
+body.tema-oscuro main header .perfil .rol {
     background-color: rgba(20, 80, 45, 0.4);
     color: #86efac;
     border: 1px solid rgba(34, 197, 94, 0.3);
 }
 
-body.dark-theme main header .perfil .usuario .informacion .nombre-apellido,
-body.dark-theme main header .perfil .usuario .informacion .torre-departamento {
+body.tema-oscuro main header .perfil .usuario .informacion .nombre-apellido,
+body.tema-oscuro main header .perfil .usuario .informacion .torre-departamento {
     color: #f0ede8 !important;
 }
 
-body.dark-theme main header .perfil button {
+body.tema-oscuro main header .perfil button {
     background-color: rgba(255, 255, 255, 0.06);
     border-color: rgba(255, 255, 255, 0.15) !important;
 }
 
-body.dark-theme main header .perfil button span {
+body.tema-oscuro main header .perfil button span {
     color: #f0ede8 !important;
 }
 
-body.dark-theme main header .perfil button img {
+body.tema-oscuro main header .perfil button img {
     filter: brightness(0) invert(1);
     opacity: 0.8;
 }
 
-body.dark-theme main header .perfil button:hover {
+body.tema-oscuro main header .perfil button:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* ══════════════════════════════════════════════
    DARK MODE — PANEL PRINCIPAL
 ══════════════════════════════════════════════ */
-body.dark-theme .reservas h4,
-body.dark-theme .herramientas h4 {
+body.tema-oscuro .reservas h4,
+body.tema-oscuro .herramientas h4 {
     color: #f0ede8 !important;
 }
 
-body.dark-theme .loza-deportiva {
+body.tema-oscuro .loza-deportiva {
     background-color: rgba(29, 78, 137, 0.7);
     border-color: rgba(59, 130, 246, 0.5) !important;
 }
 
-body.dark-theme .loza-deportiva .material-symbols-outlined,
-body.dark-theme .loza-deportiva h3,
-body.dark-theme .loza-deportiva p {
+body.tema-oscuro .loza-deportiva .material-symbols-outlined,
+body.tema-oscuro .loza-deportiva h3,
+body.tema-oscuro .loza-deportiva p {
     color: #2581ea !important;
 }
 
-body.dark-theme .loza-deportiva:hover {
+body.tema-oscuro .loza-deportiva:hover {
     background-color: rgba(21, 74, 138, 0.912);
 }
 
-body.dark-theme .casa-club {
+body.tema-oscuro .casa-club {
     background-color: rgba(17, 78, 40, 0.45);
     border-color: rgba(34, 197, 94, 0.5) !important;
 }
 
-body.dark-theme .casa-club .material-symbols-outlined,
-body.dark-theme .casa-club h3,
-body.dark-theme .casa-club p {
+body.tema-oscuro .casa-club .material-symbols-outlined,
+body.tema-oscuro .casa-club h3,
+body.tema-oscuro .casa-club p {
     color: #1ac559 !important;
 }
 
-body.dark-theme .casa-club:hover {
+body.tema-oscuro .casa-club:hover {
     background-color: rgba(17, 78, 40, 0.65);
 }
 
-body.dark-theme .zona-parrilla {
+body.tema-oscuro .zona-parrilla {
     background-color: rgba(100, 40, 10, 0.45);
     border-color: rgba(251, 146, 60, 0.5) !important;
 }
 
-body.dark-theme .zona-parrilla .material-symbols-outlined,
-body.dark-theme .zona-parrilla h3,
-body.dark-theme .zona-parrilla p {
+body.tema-oscuro .zona-parrilla .material-symbols-outlined,
+body.tema-oscuro .zona-parrilla h3,
+body.tema-oscuro .zona-parrilla p {
     color: #ff931f !important;
 }
 
-body.dark-theme .zona-parrilla:hover {
+body.tema-oscuro .zona-parrilla:hover {
     background-color: rgba(100, 40, 10, 0.65);
 }
 
-body.dark-theme .cita-jd {
+body.tema-oscuro .cita-jd {
     background-color: rgba(60, 20, 120, 0.45);
     border-color: rgba(167, 139, 250, 0.5) !important;
 }
 
-body.dark-theme .cita-jd .material-symbols-outlined,
-body.dark-theme .cita-jd h3,
-body.dark-theme .cita-jd p {
+body.tema-oscuro .cita-jd .material-symbols-outlined,
+body.tema-oscuro .cita-jd h3,
+body.tema-oscuro .cita-jd p {
     color: #a250fa !important;
 }
 
-body.dark-theme .cita-jd:hover {
+body.tema-oscuro .cita-jd:hover {
     background-color: rgba(60, 20, 120, 0.65);
 }
 
-body.dark-theme .calendario,
-body.dark-theme .mis-reservas {
+body.tema-oscuro .calendario,
+body.tema-oscuro .mis-reservas {
     background-color: rgba(255, 255, 255, 0.05) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
-body.dark-theme .calendario:hover,
-body.dark-theme .mis-reservas:hover {
+body.tema-oscuro .calendario:hover,
+body.tema-oscuro .mis-reservas:hover {
     background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-body.dark-theme .calendario h3,
-body.dark-theme .calendario p,
-body.dark-theme .mis-reservas h3,
-body.dark-theme .mis-reservas p {
+body.tema-oscuro .calendario h3,
+body.tema-oscuro .calendario p,
+body.tema-oscuro .mis-reservas h3,
+body.tema-oscuro .mis-reservas p {
     color: #f0ede8 !important;
 }
 
-body.dark-theme .calendario img,
-body.dark-theme .mis-reservas img {
+body.tema-oscuro .calendario img,
+body.tema-oscuro .mis-reservas img {
     filter: brightness(0) invert(1);
     opacity: 0.8;
 }
@@ -322,51 +319,51 @@ body.dark-theme .mis-reservas img {
 /* ══════════════════════════════════════════════
    DARK MODE — COCHERA
 ══════════════════════════════════════════════ */
-body.dark-theme .reservar-cochera {
+body.tema-oscuro .reservar-cochera {
     background-color: rgba(61, 149, 255, 0.45);
     border-color: rgba(59, 130, 246, 0.5) !important;
 }
 
-body.dark-theme .reservar-cochera h3,
-body.dark-theme .reservar-cochera p {
+body.tema-oscuro .reservar-cochera h3,
+body.tema-oscuro .reservar-cochera p {
     color: #0077ff !important;
 }
 
-body.dark-theme .reservar-cochera:hover {
+body.tema-oscuro .reservar-cochera:hover {
     background-color: rgba(29, 78, 137, 0.65);
 }
 
-body.dark-theme .alquilar-cochera {
+body.tema-oscuro .alquilar-cochera {
     background-color: rgba(100, 40, 10, 0.45);
     border-color: rgba(251, 146, 60, 0.5) !important;
 }
 
-body.dark-theme .alquilar-cochera h3,
-body.dark-theme .alquilar-cochera p {
+body.tema-oscuro .alquilar-cochera h3,
+body.tema-oscuro .alquilar-cochera p {
     color: #f8962e !important;
 }
 
-body.dark-theme .alquilar-cochera:hover {
+body.tema-oscuro .alquilar-cochera:hover {
     background-color: rgba(100, 40, 10, 0.65);
 }
 
-body.dark-theme .publicar-cochera {
+body.tema-oscuro .publicar-cochera {
     background-color: rgba(17, 78, 40, 0.45);
     border-color: rgba(34, 197, 94, 0.5) !important;
 }
 
-body.dark-theme .publicar-cochera h3,
-body.dark-theme .publicar-cochera p {
+body.tema-oscuro .publicar-cochera h3,
+body.tema-oscuro .publicar-cochera p {
     color: #23d063 !important;
 }
 
-body.dark-theme .publicar-cochera:hover {
+body.tema-oscuro .publicar-cochera:hover {
     background-color: rgba(17, 78, 40, 0.65);
 }
 
-body.dark-theme .reservar-cochera img,
-body.dark-theme .alquilar-cochera img,
-body.dark-theme .publicar-cochera img {
+body.tema-oscuro .reservar-cochera img,
+body.tema-oscuro .alquilar-cochera img,
+body.tema-oscuro .publicar-cochera img {
     filter: brightness(0) invert(1);
     opacity: 0.85;
 }
@@ -374,36 +371,36 @@ body.dark-theme .publicar-cochera img {
 /* ══════════════════════════════════════════════
    DARK MODE — INFORMACIÓN
 ══════════════════════════════════════════════ */
-body.dark-theme .seccion-info h4 {
+body.tema-oscuro .seccion-info h4 {
     color: #f0ede8 !important;
 }
 
-body.dark-theme .card {
+body.tema-oscuro .card {
     background-color: rgba(30, 30, 28, 0.95) !important;
     border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-body.dark-theme .card h3 {
+body.tema-oscuro .card h3 {
     color: #f0ede8 !important;
 }
 
-body.dark-theme .card p {
+body.tema-oscuro .card p {
     color: #a8a49f !important;
 }
 
-body.dark-theme .card .badge {
+body.tema-oscuro .card .badge {
     color: #a8a49f !important;
 }
 
-body.dark-theme .card .link-contacto {
+body.tema-oscuro .card .link-contacto {
     color: #93c5fd !important;
 }
 
-body.dark-theme .card.directivo .rol {
+body.tema-oscuro .card.directivo .rol {
     color: #a8a49f !important;
 }
 
-body.dark-theme .card.directivo .whatsapp-badge {
+body.tema-oscuro .card.directivo .whatsapp-badge {
     background-color: rgba(22, 101, 52, 0.3) !important;
     color: #86efac !important;
     border-color: rgba(34, 197, 94, 0.3) !important;
@@ -412,67 +409,67 @@ body.dark-theme .card.directivo .whatsapp-badge {
 /* ══════════════════════════════════════════════
    DARK MODE — MODAL
 ══════════════════════════════════════════════ */
-body.dark-theme .modal-overlay .modal {
+body.tema-oscuro .modal-overlay .modal {
     background-color: #1e1e1c;
 }
 
-body.dark-theme .modal-overlay .modal header {
+body.tema-oscuro .modal-overlay .modal header {
     border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
-body.dark-theme .modal-overlay .modal header .modal-close {
+body.tema-oscuro .modal-overlay .modal header .modal-close {
     background-color: rgba(255, 255, 255, 0.05);
     border-color: rgba(255, 255, 255, 0.15) !important;
     color: #f0ede8;
 }
 
-body.dark-theme .modal-overlay .modal #modal-content h3 {
+body.tema-oscuro .modal-overlay .modal #modal-content h3 {
     color: #f0ede8 !important;
 }
 
-body.dark-theme .detalles-reserva .informacion {
+body.tema-oscuro .detalles-reserva .informacion {
     background-color: rgba(255, 255, 255, 0.05) !important;
 }
 
-body.dark-theme .detalles-reserva .informacion p {
+body.tema-oscuro .detalles-reserva .informacion p {
     color: #a8a49f !important;
 }
 
-body.dark-theme .detalles-reserva .datos-reserva {
+body.tema-oscuro .detalles-reserva .datos-reserva {
     border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-body.dark-theme .hoy,
-body.dark-theme .personalizado,
-body.dark-theme .inicio,
-body.dark-theme .fin {
+body.tema-oscuro .hoy,
+body.tema-oscuro .personalizado,
+body.tema-oscuro .inicio,
+body.tema-oscuro .fin {
     border-color: rgba(255, 255, 255, 0.15) !important;
     color: #f0ede8 !important;
     background: transparent;
 }
 
-body.dark-theme .hoy:hover,
-body.dark-theme .personalizado:hover,
-body.dark-theme .inicio:hover,
-body.dark-theme .fin:hover {
+body.tema-oscuro .hoy:hover,
+body.tema-oscuro .personalizado:hover,
+body.tema-oscuro .inicio:hover,
+body.tema-oscuro .fin:hover {
     border-color: rgba(255, 255, 255, 0.3) !important;
 }
 
-body.dark-theme .info-detalles textarea {
+body.tema-oscuro .info-detalles textarea {
     background-color: rgba(255, 255, 255, 0.06);
     border-color: rgba(255, 255, 255, 0.12) !important;
     color: #f0ede8;
 }
 
-body.dark-theme .info-detalles textarea::placeholder {
+body.tema-oscuro .info-detalles textarea::placeholder {
     color: rgba(255, 255, 255, 0.3);
 }
 
-body.dark-theme .info-detalles textarea:hover {
+body.tema-oscuro .info-detalles textarea:hover {
     border-color: rgba(255, 255, 255, 0.25) !important;
 }
 
-body.dark-theme #btn-menu-movil,
-body.dark-theme #btn-menu-movil .material-symbols-outlined {
+body.tema-oscuro #btn-menu-movil,
+body.tema-oscuro #btn-menu-movil .material-symbols-outlined {
     color: #f0ede8 !important;
 }

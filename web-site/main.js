@@ -230,20 +230,20 @@ const vistas = {
         </div>
     </div>`,
     },
-    "configuracion": {
+"configuracion": {
         titulo: "Configuración",
         descripcion: "Personaliza tu perfil y ajustes de la interfaz.",
         html: `
         <div class="contenido-configuracion">
-            <div class="config-card">
+            <div class="tarjeta-config">
                 <h3>Modo Oscuro</h3>
                 <p>Cambia el aspecto visual del sistema.</p>
-                <button id="btn-toggle-dark" class="btn-config">
+                <button id="btn-tema-oscuro" class="boton-config">
                     <img src="../images/icons/dark.png" alt="Luna">
                     <span>Activar / Desactivar</span>
                 </button>
             </div>           
-            <div class="config-card">
+            <div class="tarjeta-config">
                 <h3>Información de Perfil</h3>
                 <p>Actualiza tu numero telefonico.</p>
                 <div class="contenedor-input">
@@ -258,22 +258,22 @@ const vistas = {
                         required
                         placeholder="Escribe tu numero..."
                     >
-                    <button id="btn-guardar-nombre" class="btn-config-accion" type="submit">Guardar</button>
+                    <button id="btn-guardar-nombre" class="boton-accion" type="submit">Guardar</button>
                 </form>
                 </div>
             </div>
-            <div class="config-card">
+            <div class="tarjeta-config">
                 <h3>Foto de Perfil</h3>
                 <p>Selecciona una imagen desde tu dispositivo.</p>
                 <div class="grupo-input">
                     <input type="file" id="input-archivo-foto" accept="image/*" style="display: none;">
-                    <button id="btn-seleccionar-foto" class="btn-config">Selecciona</button>
-                    <button id="btn-guardar-foto" class="btn-config-accion">Guardar</button>
+                    <button id="btn-seleccionar-foto" class="boton-config">Selecciona</button>
+                    <button id="btn-guardar-foto" class="boton-accion">Guardar</button>
                 </div>
             </div>
+        </div>
     `
     }
-
 };
 
 function cargarVista(seccion) {
@@ -329,55 +329,58 @@ document.querySelectorAll(".modal-close").forEach((btn) => {
 
 // --------------
 // funciones de configuracion
+// funciones de configuracion
 function activarFuncionesConfiguracion() {
     // 1. MODO OSCURO
-    const btnDark = document.getElementById("btn-toggle-dark");
-    if (btnDark) {
-        btnDark.addEventListener("click", () => {
-            document.body.classList.toggle("dark-theme");
+    const btnOscuro = document.getElementById("btn-tema-oscuro"); // ← Actualizado en español
+    if (btnOscuro) {
+        btnOscuro.addEventListener("click", () => {
+            document.body.classList.toggle("tema-oscuro"); // ← Clase actualizada en español
             // Guardamos la preferencia en el navegador
-            localStorage.setItem("modoOscuro", document.body.classList.contains("dark-theme"));
+            localStorage.setItem("modoOscuro", document.body.classList.contains("tema-oscuro"));
         });
     }
-    // 2. CAMBIAR NOMBRE
-    //  const btnNombre = document.getElementById("btn-guardar-nombre");
-    //  const inputNombre = document.getElementById("nuevo-nombre");
-    //  if (btnNombre && inputNombre) {
-    //      btnNombre.addEventListener("click", () => {
+
+    // 2. CAMBIAR NOMBRE / TELÉFONO
+    // const btnNombre = document.getElementById("btn-guardar-nombre");
+    // const inputNombre = document.getElementById("nuevo-nombre");
+    // if (btnNombre && inputNombre) {
+    //     btnNombre.addEventListener("click", (e) => {
+    //         e.preventDefault(); // Evita que se recargue la página si usas un formulario
     //         const nuevoNombre = inputNombre.value.trim();
-    //        if (nuevoNombre !== "") {
+    //         if (nuevoNombre !== "") {
     //             document.querySelector(".perfil .usuario .informacion .nombre-apellido").textContent = nuevoNombre;
-    //            localStorage.setItem("nombreGuardado", nuevoNombre);
+    //             localStorage.setItem("nombreGuardado", nuevoNombre);
     //             inputNombre.value = "";
-    //           }
+    //         }
     //     });
     // }
 
     // 3. CAMBIAR FOTO DE PERFIL
     const btnSeleccionar = document.getElementById("btn-seleccionar-foto");
-    const inputFile = document.getElementById("input-archivo-foto");
+    const inputArchivo = document.getElementById("input-archivo-foto"); // ← Variable e ID en español
     const btnGuardar = document.getElementById("btn-guardar-foto");
 
-    if (btnSeleccionar && inputFile) {
-        btnSeleccionar.addEventListener("click", () => inputFile.click());
-        inputFile.addEventListener("change", (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (event) => {
+    if (btnSeleccionar && inputArchivo) {
+        btnSeleccionar.addEventListener("click", () => inputArchivo.click());
+        inputArchivo.addEventListener("change", (e) => {
+            const archivo = e.target.files[0]; // ← Variable en español
+            if (archivo) {
+                const lector = new FileReader(); // ← Variable en español
+                lector.onload = (event) => {
                     // Guardamos temporalmente en localStorage y aplicamos al instante
-                    const imgData = event.target.result;
-                    localStorage.setItem("fotoGuardada", imgData);
+                    const datosImagen = event.target.result; // ← Variable en español
+                    localStorage.setItem("fotoGuardada", datosImagen);
 
                     // Aplicar al instante al perfil
                     const avatar = document.querySelector(".perfil .usuario .avatar");
                     const spanLetra = avatar.querySelector("span");
-                    avatar.style.backgroundImage = `url('${imgData}')`;
+                    avatar.style.backgroundImage = `url('${datosImagen}')`;
                     avatar.style.backgroundSize = "cover";
                     avatar.style.backgroundPosition = "center";
                     if (spanLetra) spanLetra.style.display = "none";
                 };
-                reader.readAsDataURL(file);
+                lector.readAsDataURL(archivo);
             }
         });
     }
@@ -389,7 +392,7 @@ function activarFuncionesConfiguracion() {
 window.addEventListener("DOMContentLoaded", () => {
     // Aplicar tema oscuro si estaba guardado
     if (localStorage.getItem("modoOscuro") === "true") {
-        document.body.classList.add("dark-theme");
+        document.body.classList.add("tema-oscuro"); // ← Clase actualizada en español
     }
 
     // Aplicar nombre si estaba guardado
