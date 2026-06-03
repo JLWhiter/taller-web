@@ -329,7 +329,6 @@ document.querySelectorAll(".modal-close").forEach((btn) => {
 
 // --------------
 // funciones de configuracion
-// funciones de configuracion
 function activarFuncionesConfiguracion() {
     // 1. MODO OSCURO
     const btnOscuro = document.getElementById("btn-tema-oscuro"); // ← Actualizado en español

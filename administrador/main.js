@@ -1110,6 +1110,7 @@ window.addEventListener("DOMContentLoaded", () => {
         if (elementoAvatar) elementoAvatar.textContent = fotoGuardada;
     }
 });
+
 function cargarGraficos(){
 
     /* BARRAS */
