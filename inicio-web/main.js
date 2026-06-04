@@ -1,133 +1,109 @@
-/* ══════════════════════════════════════════════
-   VILLA SANTA CLARA — main.js
-   Controla:
-   · Navegación entre paneles fullscreen
-   · Puntos indicadores laterales
-   · Marcado del enlace activo en la barra
-   · Animaciones reveal al entrar cada panel
-══════════════════════════════════════════════ */
+/* VILLA SANTA CLARA — main.js
+   Controla: navegación entre paneles, puntos indicadores,
+   nav activo y animaciones reveal */
 
 (function () {
   'use strict';
 
-  var TOTAL   = 5;                             // número de paneles
-  var current = 0;                             // panel visible ahora
-  var locked  = false;                         // evita saltos dobles
+  var TOTAL       = 5;   // número de paneles
+  var panelActual = 0;   // panel visible ahora
+  var bloqueado   = false; // evita saltos dobles
 
-  var scroller  = document.getElementById('main');
-  var navBtns   = document.querySelectorAll('.nav-btn');
-  var dots      = document.querySelectorAll('.dot');
-  var panels    = document.querySelectorAll('.panel');
+  var contenedor  = document.getElementById('main');
+  var botonesNav  = document.querySelectorAll('.nav-btn');
+  var puntos      = document.querySelectorAll('.dot');
+  var paneles     = document.querySelectorAll('.panel');
 
-  /* ══════════════════════════════════════════
-     1. IR A UN PANEL ESPECÍFICO
-  ══════════════════════════════════════════ */
-  function goTo(index) {
-    if (index < 0 || index >= TOTAL) return;
+  /* IR A UN PANEL ESPECÍFICO */
+  function irA(indice) {
+    if (indice < 0 || indice >= TOTAL) return;
 
-    current = index;
-    var panel = document.getElementById('panel-' + index);
+    panelActual = indice;
+    var panel = document.getElementById('panel-' + indice);
     if (!panel) return;
 
-    /* Desplaza el contenedor al panel */
-    scroller.scrollTo({ top: panel.offsetTop, behavior: 'smooth' });
-
-    updateUI(index);
-    revealPanel(index);
+    contenedor.scrollTo({ top: panel.offsetTop, behavior: 'smooth' });
+    actualizarUI(indice);
+    revelarPanel(indice);
   }
 
-  /* Función global — usada desde el botón del hero en el HTML */
-  window.goTo = goTo;
+  // Expuesta globalmente para el botón del hero en el HTML
+  window.goTo = irA;
 
-  /* ══════════════════════════════════════════
-     2. ACTUALIZAR NAV Y DOTS
-  ══════════════════════════════════════════ */
-  function updateUI(index) {
-    navBtns.forEach(function (btn) {
-      btn.classList.toggle('active', parseInt(btn.getAttribute('data-index')) === index);
+  /* ACTUALIZAR NAV Y DOTS */
+  function actualizarUI(indice) {
+    botonesNav.forEach(function (btn) {
+      btn.classList.toggle('active', parseInt(btn.getAttribute('data-index')) === indice);
     });
-    dots.forEach(function (dot) {
-      dot.classList.toggle('active', parseInt(dot.getAttribute('data-index')) === index);
+    puntos.forEach(function (punto) {
+      punto.classList.toggle('active', parseInt(punto.getAttribute('data-index')) === indice);
     });
   }
 
-  /* ══════════════════════════════════════════
-     3. REVELAR ELEMENTOS DEL PANEL VISIBLE
-  ══════════════════════════════════════════ */
-  function revealPanel(index) {
-    var panel = document.getElementById('panel-' + index);
+  /* REVELAR ELEMENTOS DEL PANEL VISIBLE */
+  function revelarPanel(indice) {
+    var panel = document.getElementById('panel-' + indice);
     if (!panel) return;
     panel.querySelectorAll('.reveal').forEach(function (el) {
       el.classList.add('visible');
     });
   }
 
-  /* ══════════════════════════════════════════
-     4. DETECTAR PANEL VISIBLE AL HACER SCROLL
-        (el usuario baja/sube con el mouse)
-  ══════════════════════════════════════════ */
-  function onScroll() {
-    if (locked) return;
+  /* DETECTAR PANEL AL HACER SCROLL */
+  function alHacerScroll() {
+    if (bloqueado) return;
 
-    var containerH = scroller.clientHeight;
-    var scrollTop  = scroller.scrollTop;
+    var scrollActual = contenedor.scrollTop;
+    var masCercano   = 0;
+    var menorDist    = Infinity;
 
-    /* El panel activo es el que más ocupa la pantalla */
-    var closest = 0;
-    var minDist = Infinity;
-
-    panels.forEach(function (panel, i) {
-      var dist = Math.abs(panel.offsetTop - scrollTop);
-      if (dist < minDist) {
-        minDist = dist;
-        closest = i;
+    paneles.forEach(function (panel, i) {
+      var dist = Math.abs(panel.offsetTop - scrollActual);
+      if (dist < menorDist) {
+        menorDist  = dist;
+        masCercano = i;
       }
     });
 
-    if (closest !== current) {
-      current = closest;
-      updateUI(current);
-      revealPanel(current);
+    if (masCercano !== panelActual) {
+      panelActual = masCercano;
+      actualizarUI(panelActual);
+      revelarPanel(panelActual);
     }
   }
 
-  scroller.addEventListener('scroll', onScroll, { passive: true });
+  contenedor.addEventListener('scroll', alHacerScroll, { passive: true });
 
-  /* 
-     5. CLIC EN BOTONES DE LA BARRA DE NAV */
-  navBtns.forEach(function (btn) {
+  /* CLIC EN BOTONES DE NAV */
+  botonesNav.forEach(function (btn) {
     btn.addEventListener('click', function () {
-      var index = parseInt(btn.getAttribute('data-index'));
-      goTo(index);
+      irA(parseInt(btn.getAttribute('data-index')));
     });
   });
 
-  /*
-     6. CLIC EN LOS PUNTOS INDICADORES*/
-  dots.forEach(function (dot) {
-    dot.addEventListener('click', function () {
-      var index = parseInt(dot.getAttribute('data-index'));
-      goTo(index);
+  /* CLIC EN PUNTOS INDICADORES */
+  puntos.forEach(function (punto) {
+    punto.addEventListener('click', function () {
+      irA(parseInt(punto.getAttribute('data-index')));
     });
   });
 
-  /*
-     7. TECLAS ↑ ↓ PARA NAVEGAR */
+  /* TECLAS ↑ ↓ PARA NAVEGAR */
   document.addEventListener('keydown', function (e) {
     if (e.key === 'ArrowDown' || e.key === 'PageDown') {
       e.preventDefault();
-      goTo(current + 1);
+      irA(panelActual + 1);
     }
     if (e.key === 'ArrowUp' || e.key === 'PageUp') {
       e.preventDefault();
-      goTo(current - 1);
+      irA(panelActual - 1);
     }
   });
 
-  /*  8. INICIALIZACIÓN */
+  /* INICIALIZACIÓN */
   document.addEventListener('DOMContentLoaded', function () {
-    updateUI(0);
-    revealPanel(0);   /* revela el primer panel al cargar */
+    actualizarUI(0);
+    revelarPanel(0);
   });
 
 })();
