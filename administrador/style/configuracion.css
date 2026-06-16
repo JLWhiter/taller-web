@@ -1,0 +1,475 @@
+.contenido-configuracion {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    /* align-items: start;*/
+}
+
+.tarjeta-config {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-borde-claro);
+    border-radius: 14px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    /* align-self: start;*/
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.tarjeta-config h3 {
+    font-size: 18px;
+    color: var(--color-text-1);
+}
+
+.tarjeta-config p {
+    font-size: 13px;
+    color: var(--color-text-2);
+    margin-bottom: 5px;
+}
+
+.boton-config {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 45px;
+    border-radius: 8px;
+    border: 1px solid var(--color-borde-claro);
+    background-color: transparent;
+    color: var(--color-text-1);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transicion-normal);
+    overflow: hidden;
+}
+
+.boton-config:hover {
+    background-color: var(--color-surface-muted);
+    border-color: var(--color-borde-hover);
+}
+
+.boton-config img {
+    height: 20px;
+    width: 20px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.boton-config span {
+    font-size: 14px;
+    color: var(--color-text-1);
+}
+
+.grupo-input {
+    display: flex;
+    gap: 5px;
+}
+
+.grupo-input input {
+    flex: 1;
+    min-width: 0;
+    height: 45px;
+    box-sizing: border-box;
+    padding: 0px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--color-borde-claro);
+    background-color: var(--color-surface);
+    color: var(--color-text-1);
+    font-family: var(--font-ui);
+    font-size: 14px;
+    outline: none;
+    transition: var(--transicion-normal);
+}
+
+.grupo-input input:focus {
+    border-color: var(--color-borde-hover);
+}
+
+.grupo-input input::placeholder {
+    color: var(--color-text-3);
+}
+
+.boton-accion {
+    flex: 1;
+    padding: 0 20px;
+    height: 45px;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--color-primario);
+    color: white;
+    font-family: var(--font-ui);
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transicion-normal);
+    white-space: nowrap;
+}
+
+.boton-accion:hover {
+    background-color: var(--color-primario-hover);
+}
+
+#btn-tema-oscuro {
+    width: 100%;
+    height: 45px;
+    box-sizing: border-box;
+    margin-top: auto;
+}
+
+/* ══════════════════════════════════════════════
+   DARK MODE — CONFIGURACIÓN
+══════════════════════════════════════════════ */
+body.tema-oscuro .tarjeta-config {
+    background-color: rgba(30, 30, 28, 0.95);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.tema-oscuro .tarjeta-config h3 {
+    color: #f0ede8;
+}
+
+body.tema-oscuro .tarjeta-config p {
+    color: #a8a49f;
+}
+
+body.tema-oscuro .boton-config {
+    border-color: rgba(255, 255, 255, 0.15);
+    color: #f0ede8;
+}
+
+body.tema-oscuro .boton-config span {
+    color: #f0ede8;
+}
+
+body.tema-oscuro .boton-config:hover {
+    background-color: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+body.tema-oscuro .boton-config img {
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+}
+
+body.tema-oscuro .grupo-input input {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.12);
+    color: #f0ede8;
+}
+
+body.tema-oscuro .grupo-input input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+body.tema-oscuro .grupo-input input:focus {
+    border-color: rgba(88, 66, 66, 0.3);
+}
+
+body.tema-oscuro .boton-accion {
+    background-color: var(--color-accent);
+}
+
+body.tema-oscuro .boton-accion:hover {
+    background-color: var(--color-accent-light);
+}
+
+/* ══════════════════════════════════════════════
+   DARK MODE — HEADER MAIN
+══════════════════════════════════════════════ */
+body.tema-oscuro main header {
+    background-color: transparent;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.tema-oscuro #titulo-seccion {
+    color: #f0ede8 !important;
+}
+
+body.tema-oscuro main header hgroup p {
+    color: #a8a49f !important;
+}
+
+body.tema-oscuro main header .perfil .rol {
+    background-color: rgba(20, 80, 45, 0.4);
+    color: #86efac;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+body.tema-oscuro main header .perfil .usuario .informacion .nombre-apellido,
+body.tema-oscuro main header .perfil .usuario .informacion .torre-departamento {
+    color: #f0ede8 !important;
+}
+
+body.tema-oscuro main header .perfil button {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+body.tema-oscuro main header .perfil button span {
+    color: #f0ede8 !important;
+}
+
+body.tema-oscuro main header .perfil button img {
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+}
+
+body.tema-oscuro main header .perfil button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ══════════════════════════════════════════════
+   DARK MODE — PANEL PRINCIPAL
+══════════════════════════════════════════════ */
+body.tema-oscuro .reservas h4,
+body.tema-oscuro .herramientas h4 {
+    color: #f0ede8 !important;
+}
+
+body.tema-oscuro .loza-deportiva {
+    background-color: rgba(29, 78, 137, 0.7);
+    border-color: rgba(59, 130, 246, 0.5) !important;
+}
+
+body.tema-oscuro .loza-deportiva .material-symbols-outlined,
+body.tema-oscuro .loza-deportiva h3,
+body.tema-oscuro .loza-deportiva p {
+    color: #2581ea !important;
+}
+
+body.tema-oscuro .loza-deportiva:hover {
+    background-color: rgba(21, 74, 138, 0.912);
+}
+
+body.tema-oscuro .casa-club {
+    background-color: rgba(17, 78, 40, 0.45);
+    border-color: rgba(34, 197, 94, 0.5) !important;
+}
+
+body.tema-oscuro .casa-club .material-symbols-outlined,
+body.tema-oscuro .casa-club h3,
+body.tema-oscuro .casa-club p {
+    color: #1ac559 !important;
+}
+
+body.tema-oscuro .casa-club:hover {
+    background-color: rgba(17, 78, 40, 0.65);
+}
+
+body.tema-oscuro .zona-parrilla {
+    background-color: rgba(100, 40, 10, 0.45);
+    border-color: rgba(251, 146, 60, 0.5) !important;
+}
+
+body.tema-oscuro .zona-parrilla .material-symbols-outlined,
+body.tema-oscuro .zona-parrilla h3,
+body.tema-oscuro .zona-parrilla p {
+    color: #ff931f !important;
+}
+
+body.tema-oscuro .zona-parrilla:hover {
+    background-color: rgba(100, 40, 10, 0.65);
+}
+
+body.tema-oscuro .cita-jd {
+    background-color: rgba(60, 20, 120, 0.45);
+    border-color: rgba(167, 139, 250, 0.5) !important;
+}
+
+body.tema-oscuro .cita-jd .material-symbols-outlined,
+body.tema-oscuro .cita-jd h3,
+body.tema-oscuro .cita-jd p {
+    color: #a250fa !important;
+}
+
+body.tema-oscuro .cita-jd:hover {
+    background-color: rgba(60, 20, 120, 0.65);
+}
+
+body.tema-oscuro .calendario,
+body.tema-oscuro .mis-reservas {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+body.tema-oscuro .calendario:hover,
+body.tema-oscuro .mis-reservas:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.tema-oscuro .calendario h3,
+body.tema-oscuro .calendario p,
+body.tema-oscuro .mis-reservas h3,
+body.tema-oscuro .mis-reservas p {
+    color: #f0ede8 !important;
+}
+
+body.tema-oscuro .calendario img,
+body.tema-oscuro .mis-reservas img {
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+}
+
+/* ══════════════════════════════════════════════
+   DARK MODE — COCHERA
+══════════════════════════════════════════════ */
+body.tema-oscuro .reservar-cochera {
+    background-color: rgba(61, 149, 255, 0.45);
+    border-color: rgba(59, 130, 246, 0.5) !important;
+}
+
+body.tema-oscuro .reservar-cochera h3,
+body.tema-oscuro .reservar-cochera p {
+    color: #0077ff !important;
+}
+
+body.tema-oscuro .reservar-cochera:hover {
+    background-color: rgba(29, 78, 137, 0.65);
+}
+
+body.tema-oscuro .alquilar-cochera {
+    background-color: rgba(100, 40, 10, 0.45);
+    border-color: rgba(251, 146, 60, 0.5) !important;
+}
+
+body.tema-oscuro .alquilar-cochera h3,
+body.tema-oscuro .alquilar-cochera p {
+    color: #f8962e !important;
+}
+
+body.tema-oscuro .alquilar-cochera:hover {
+    background-color: rgba(100, 40, 10, 0.65);
+}
+
+body.tema-oscuro .publicar-cochera {
+    background-color: rgba(17, 78, 40, 0.45);
+    border-color: rgba(34, 197, 94, 0.5) !important;
+}
+
+body.tema-oscuro .publicar-cochera h3,
+body.tema-oscuro .publicar-cochera p {
+    color: #23d063 !important;
+}
+
+body.tema-oscuro .publicar-cochera:hover {
+    background-color: rgba(17, 78, 40, 0.65);
+}
+
+body.tema-oscuro .reservar-cochera img,
+body.tema-oscuro .alquilar-cochera img,
+body.tema-oscuro .publicar-cochera img {
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+}
+
+/* ══════════════════════════════════════════════
+   DARK MODE — INFORMACIÓN
+══════════════════════════════════════════════ */
+body.tema-oscuro .seccion-info h4 {
+    color: #f0ede8 !important;
+}
+
+body.tema-oscuro .card {
+    background-color: rgba(30, 30, 28, 0.95) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.tema-oscuro .card h3 {
+    color: #f0ede8 !important;
+}
+
+body.tema-oscuro .card p {
+    color: #a8a49f !important;
+}
+
+body.tema-oscuro .card .badge {
+    color: #a8a49f !important;
+}
+
+body.tema-oscuro .card .link-contacto {
+    color: #93c5fd !important;
+}
+
+body.tema-oscuro .card.directivo .rol {
+    color: #a8a49f !important;
+}
+
+body.tema-oscuro .card.directivo .whatsapp-badge {
+    background-color: rgba(22, 101, 52, 0.3) !important;
+    color: #86efac !important;
+    border-color: rgba(34, 197, 94, 0.3) !important;
+}
+
+/* ══════════════════════════════════════════════
+   DARK MODE — MODAL
+══════════════════════════════════════════════ */
+body.tema-oscuro .modal-overlay .modal {
+    background-color: #1e1e1c;
+}
+
+body.tema-oscuro .modal-overlay .modal header {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.tema-oscuro .modal-overlay .modal header .modal-close {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    color: #f0ede8;
+}
+
+body.tema-oscuro .modal-overlay .modal #modal-content h3 {
+    color: #f0ede8 !important;
+}
+
+body.tema-oscuro .detalles-reserva .informacion {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+body.tema-oscuro .detalles-reserva .informacion p {
+    color: #a8a49f !important;
+}
+
+body.tema-oscuro .detalles-reserva .datos-reserva {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.tema-oscuro .hoy,
+body.tema-oscuro .personalizado,
+body.tema-oscuro .inicio,
+body.tema-oscuro .fin {
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    color: #f0ede8 !important;
+    background: transparent;
+}
+
+body.tema-oscuro .hoy:hover,
+body.tema-oscuro .personalizado:hover,
+body.tema-oscuro .inicio:hover,
+body.tema-oscuro .fin:hover {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+body.tema-oscuro .info-detalles textarea {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #f0ede8;
+}
+
+body.tema-oscuro .info-detalles textarea::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+body.tema-oscuro .info-detalles textarea:hover {
+    border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+body.tema-oscuro #btn-menu-movil,
+body.tema-oscuro #btn-menu-movil .material-symbols-outlined {
+    color: #f0ede8 !important;
+}

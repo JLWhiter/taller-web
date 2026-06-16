@@ -1,56 +1,336 @@
-// Botón activo en la barra lateral
 const botones = document.querySelectorAll("nav button, footer button");
-
-botones.forEach((btn) => {
-    btn.addEventListener("click", () => {
-        botones.forEach((b) => b.classList.remove("activo"));
-        btn.classList.add("activo");
-
-        const seccion = btn.dataset.seccion;
-        cargarVista(seccion);
-    });
-});
-
-// Minimizar barra lateral
 const sidebar = document.getElementById("sidebar");
 const minimizarBtn = document.getElementById("btn-minimizar");
 
-minimizarBtn.addEventListener("click", () => {
-    sidebar.classList.toggle("minimize");
-});
+const tarjetasPanel = [
+    ["total-usuario", "Total de Usuarios", "../images/icons/users-dark.png", "usuario", "230"],
+    ["reserva-totales", "Reservas Totales Este Mes", "../images/icons/grafico-de-barras.png", "Analisis", "15650"],
+    ["ingreso-reserva", "Ingresos por Reservas", "../images/icons/passive-income.png", "Ingresos", "12500"]
+];
+
+const reservasPendientes = [
+    ["#001", "Carlos Ramírez", "Loza Deportiva", "2024-07-15", "18:00 - 22:00", "pendiente"],
+    ["#002", "Lucía Fernández", "Loza Deportiva", "2024-07-20", "10:00 - 12:00", "pendiente"],
+    ["#003", "Pedro Castillo", "Loza Deportiva", "2024-07-20", "10:00 - 12:00", "pendiente"],
+    ["#004", "María Torres", "Loza Deportiva", "2024-07-20", "10:00 - 12:00", "pendiente"],
+    ["#005", "Jorge Mendoza", "Loza Deportiva", "2024-07-20", "10:00 - 12:00", "pendiente"],
+    ["#006", "Andrea Rojas", "Loza Deportiva", "2024-07-20", "10:00 - 12:00", "pendiente"],
+    ["#007", "Diego Navarro", "Parrilla", "2024-07-20", "10:00 - 12:00", "pendiente"]
+];
+
+const actividadesRecientes = [
+    ["Ana Gomez", "Aprobo reserva #002", "Hace 2 horas"],
+    ["Carlos López", "Aprobo reserva #008", "Hace 5 horas"],
+    ["María Rodríguez", "Rechazó reserva #012", "Hace 5 horas"]
+];
+
+const usuariosSistema = [
+    ["#001", "Carlos Ramírez", "carlos.ramirez@example.com", "Administrador", "2024-07-10 14:30", "Activo"],
+    ["#002", "Lucía Fernández", "lucia.fernandez@example.com", "Mantenimiento", "2024-07-10 14:30", "Activo"],
+    ["#003", "Pedro Castillo", "pedro.castillo@example.com", "Recepcionista", "2024-07-10 14:30", "Inactivo"],
+    ["#004", "María Torres", "maria.torres@example.com", "Residente", "2024-07-10 14:30", "Activo"],
+    ["#005", "Jorge Mendoza", "jorge.mendoza@example.com", "Residente", "2024-07-10 14:30", "Inactivo"],
+    ["#006", "Andrea Rojas", "andrea.rojas@example.com", "Recepcionista", "2024-07-10 14:30", "Activo"],
+    ["#007", "Diego Navarro", "diego.navarro@example.com", "Residente", "2024-07-10 14:30", "Inactivo"],
+    ["#008", "Ana Gomez", "ana.gomez@example.com", "Recepcionista", "2024-07-10 14:30", "Pendiente"]
+];
+
+const diasCalendario = [
+    [1, "Carlos Ramírez", "Loza Deportiva", "18:00 - 22:00"],
+    [2, "Lucía Fernández", "Casa Club", "10:00 - 12:00"],
+    [3, "Pedro Castillo", "Zona Parrilla", "14:00 - 16:00"],
+    [4, "", "", ""],
+    [5, "María Torres", "Loza Deportiva", "18:00 - 22:00"],
+    [6, "", "", ""],
+    [7, "Jorge Mendoza", "Casa Club", "10:00 - 12:00"],
+    [8, "", "", ""],
+    [9, "Andrea Rojas", "Zona Parrilla", "14:00 - 16:00"],
+    [10, "", "", ""],
+    [11, "Diego Navarro", "Loza Deportiva", "18:00 - 22:00"],
+    [12, "", "", ""],
+    [13, "Valeria Soto", "Casa Club", "09:00 - 11:00"],
+    [14, "", "", ""],
+    [15, "Miguel Salas", "Zona Parrilla", "15:00 - 18:00"],
+    [16, "", "", ""],
+    [17, "Fernanda Ruiz", "Loza Deportiva", "17:00 - 20:00"],
+    [18, "", "", ""],
+    [19, "", "", ""],
+    [20, "Ricardo Peña", "Casa Club", "13:00 - 16:00"],
+    [21, "", "", ""],
+    [22, "Camila León", "Zona Parrilla", "12:00 - 15:00"],
+    [23, "", "", ""],
+    [24, "", "", ""],
+    [25, "Luis Herrera", "Loza Deportiva", "19:00 - 22:00"],
+    [26, "", "", ""],
+    [27, "Paola Díaz", "Casa Club", "11:00 - 14:00"],
+    [28, "", "", ""],
+    [29, "", "", ""],
+    [30, "Sebastián Cruz", "Zona Parrilla", "16:00 - 19:00"],
+    [31, "", "", ""]
+];
+
+const resumenReservas = [
+    ["Carlos Ramírez", "Loza Deportiva", "18:00 - 22:00", "Pendiente"],
+    ["Lucía Fernández", "Casa Club", "10:00 - 12:00", "Aprobado"],
+    ["Pedro Castillo", "Zona Parrilla", "14:00 - 16:00", "Rechazado"],
+    ["María Torres", "Loza Deportiva", "08:00 - 11:00", "Aprobado"],
+    ["Jorge Mendoza", "Casa Club", "16:00 - 19:00", "Pendiente"],
+    ["Andrea Rojas", "Zona Parrilla", "13:00 - 15:00", "Aprobado"],
+    ["Diego Navarro", "Loza Deportiva", "19:00 - 22:00", "Rechazado"],
+    ["Valeria Soto", "Casa Club", "09:00 - 11:00", "Pendiente"],
+    ["Miguel Salas", "Zona Parrilla", "15:00 - 18:00", "Aprobado"],
+    ["Fernanda Ruiz", "Loza Deportiva", "17:00 - 20:00", "Pendiente"],
+    ["Ricardo Peña", "Casa Club", "12:00 - 14:00", "Rechazado"],
+    ["Camila León", "Zona Parrilla", "11:00 - 13:00", "Aprobado"],
+    ["Luis Herrera", "Loza Deportiva", "20:00 - 22:00", "Aprobado"],
+    ["Paola Díaz", "Casa Club", "14:00 - 17:00", "Pendiente"],
+    ["Sebastián Cruz", "Zona Parrilla", "18:00 - 21:00", "Rechazado"],
+    ["Daniela Flores", "Loza Deportiva", "07:00 - 09:00", "Aprobado"],
+    ["Kevin Morales", "Casa Club", "13:00 - 15:00", "Pendiente"],
+    ["Rosa Gutiérrez", "Zona Parrilla", "16:00 - 18:00", "Aprobado"],
+    ["José Vargas", "Loza Deportiva", "18:00 - 20:00", "Rechazado"],
+    ["Ana Beltrán", "Casa Club", "09:00 - 12:00", "Aprobado"],
+    ["Renato Silva", "Zona Parrilla", "15:00 - 17:00", "Pendiente"],
+    ["Claudia Paredes", "Loza Deportiva", "08:00 - 10:00", "Aprobado"],
+    ["Bruno Medina", "Casa Club", "19:00 - 21:00", "Rechazado"],
+    ["Patricia Núñez", "Zona Parrilla", "10:00 - 13:00", "Aprobado"],
+    ["Álvaro Campos", "Loza Deportiva", "12:00 - 15:00", "Pendiente"],
+    ["Sofía Herrera", "Casa Club", "17:00 - 19:00", "Aprobado"],
+    ["Gabriel Luna", "Zona Parrilla", "18:00 - 20:00", "Rechazado"],
+    ["Elena Castro", "Loza Deportiva", "09:00 - 11:00", "Aprobado"],
+    ["Tomás Rivas", "Casa Club", "14:00 - 16:00", "Pendiente"],
+    ["Nicole Vega", "Zona Parrilla", "20:00 - 22:00", "Aprobado"]
+];
+
+const eventos = [
+    ["Torneo de Tenis", "2024-07-15"],
+    ["Clases de Yoga", "2024-07-20"],
+    ["Noche de Cine", "2024-07-25"]
+];
+
+const actividadesPopulares = [
+    ["Fútbol 5", "150 participantes"],
+    ["Natación", "120 participantes"],
+    ["Gimnasia", "90 participantes"]
+];
+
+const reportesInformes = [
+    ["#001", "Informe de Reservas Mensuales", "2024-07-01", "excel"],
+    ["#002", "Análisis de Uso de Amenidades", "2024-07-05", "pdf"],
+    ["#003", "Reporte de Ingresos por Reservas", "2024-07-10", "excel"],
+    ["#004", "Informe de Cancelaciones y Reembolsos", "2024-07-15", "pdf"],
+    ["#005", "Análisis de Satisfacción del Usuario", "2024-07-20", "pdf"]
+];
+
+function crearTarjetasPanel() {
+    let html = "";
+
+    for (let i = 0; i < tarjetasPanel.length; i++) {
+        html += `
+            <button class="${tarjetasPanel[i][0]}" onclick="">
+                <h3>${tarjetasPanel[i][1]}</h3>
+                <img src="${tarjetasPanel[i][2]}" alt="${tarjetasPanel[i][3]}">
+                <p>${tarjetasPanel[i][4]}</p>
+            </button>
+        `;
+    }
+
+    return html;
+}
+
+function crearTablaReservas() {
+    let html = "";
+
+    for (let i = 0; i < reservasPendientes.length; i++) {
+        html += `
+            <tr>
+                <td>${reservasPendientes[i][0]}</td>
+                <td>${reservasPendientes[i][1]}</td>
+                <td>${reservasPendientes[i][2]}</td>
+                <td>${reservasPendientes[i][3]}</td>
+                <td>${reservasPendientes[i][4]}</td>
+                <td>${reservasPendientes[i][5]}</td>
+                <td class="acciones">
+                    <button class="aprobar">Aprobar</button>
+                    <button class="rechazar">Rechazar</button>
+                    <button class="detalles">ver detalles...</button>
+                </td>
+            </tr>
+        `;
+    }
+
+    return html;
+}
+
+function crearActividadesRecientes() {
+    let html = "";
+
+    for (let i = 0; i < actividadesRecientes.length; i++) {
+        html += `
+            <li>
+                <span class="actividad-usuario">${actividadesRecientes[i][0]}</span>
+                <span class="actividad-descripcion">${actividadesRecientes[i][1]}</span>
+                <span class="actividad-hora">${actividadesRecientes[i][2]}</span>
+            </li>
+        `;
+    }
+
+    return html;
+}
+
+function crearBotones(lista, clase) {
+    let html = "";
+
+    for (let i = 0; i < lista.length; i++) {
+        html += `<button class="${clase}">${lista[i]}</button>`;
+    }
+
+    return html;
+}
+
+function crearTablaUsuarios() {
+    let html = "";
+
+    for (let i = 0; i < usuariosSistema.length; i++) {
+        let claseEstado = usuariosSistema[i][5].toLowerCase();
+
+        html += `
+            <tr>
+                <td>${usuariosSistema[i][0]}</td>
+                <td><img src="../images/icons/usuario.png" alt="Avatar" class="avatar"></td>
+                <td>${usuariosSistema[i][1]}</td>
+                <td>${usuariosSistema[i][2]}</td>
+                <td>${usuariosSistema[i][3]}</td>
+                <td>${usuariosSistema[i][4]}</td>
+                <td><span class="estado ${claseEstado}">${usuariosSistema[i][5]}</span></td>
+                <td class="acciones">
+                    <button class="editar">Editar</button>
+                    <button class="bloquear">Bloquear</button>
+                    <button class="eliminar">Eliminar</button>
+                </td>
+            </tr>
+        `;
+    }
+
+    return html;
+}
+
+function crearCalendario() {
+    let html = "";
+    let contador = 0;
+
+    for (let i = 0; i < 5; i++) {
+        html += `<tr>`;
+
+        for (let j = 0; j < 7; j++) {
+            if (contador < diasCalendario.length) {
+                html += `
+                    <td class="dia">
+                        <div class="numero-dia">${diasCalendario[contador][0]}</div>
+                        ${diasCalendario[contador][1] !== "" ? `
+                            <div class="reserva">
+                                <span class="reserva-usuario">${diasCalendario[contador][1]}</span>
+                                <span class="reserva-area">${diasCalendario[contador][2]}</span>
+                                <span class="reserva-hora">${diasCalendario[contador][3]}</span>
+                            </div>
+                        ` : ""}
+                    </td>
+                `;
+            } else {
+                html += `<td class="dia"></td>`;
+            }
+
+            contador++;
+        }
+
+        html += `</tr>`;
+    }
+
+    return html;
+}
+
+function crearResumenReservas() {
+    let html = "";
+
+    for (let i = 0; i < resumenReservas.length; i++) {
+        let claseEstado = resumenReservas[i][3].toLowerCase();
+
+        html += `
+            <tr>
+                <td>${resumenReservas[i][0]}</td>
+                <td>${resumenReservas[i][1]}</td>
+                <td>${resumenReservas[i][2]}</td>
+                <td><span class="estado ${claseEstado}">${resumenReservas[i][3]}</span></td>
+            </tr>
+        `;
+    }
+
+    return html;
+}
+
+function crearEventos() {
+    let html = "";
+
+    for (let i = 0; i < eventos.length; i++) {
+        html += `
+            <li>
+                <span class="evento-nombre">${eventos[i][0]}</span>
+                <span class="evento-fecha">${eventos[i][1]}</span>
+            </li>
+        `;
+    }
+
+    return html;
+}
+
+function crearActividadesPopulares() {
+    let html = "";
+
+    for (let i = 0; i < actividadesPopulares.length; i++) {
+        html += `
+            <li>
+                <span class="actividad-nombre">${actividadesPopulares[i][0]}</span>
+                <span class="actividad-cantidad">${actividadesPopulares[i][1]}</span>
+            </li>
+        `;
+    }
+
+    return html;
+}
+
+function crearReportesInformes() {
+    let html = "";
+
+    for (let i = 0; i < reportesInformes.length; i++) {
+        html += `
+            <tr>
+                <td>${reportesInformes[i][0]}</td>
+                <td>${reportesInformes[i][1]}</td>
+                <td>${reportesInformes[i][2]}</td>
+                <td>${reportesInformes[i][3]}</td>
+                <td>
+                    <button class="btn-accion">Descargar</button>
+                </td>
+            </tr>
+        `;
+    }
+
+    return html;
+}
 
 const vistas = {
     "panel-control": {
-        "titulo": "Panel Principal",
-        "contenido": "Gestiona tus reservas de áreas comunes",
-        "html": ` 
+        titulo: "Panel Principal",
+        contenido: "Gestiona tus reservas de áreas comunes",
+        html: ` 
             <div class="contenido">
                 <div class="reservas">
                     <h4>Sección de reservas</h4>
                     <div class="botones">
-                        <button class="total-usuario" onclick="">
-                            <h3>Total de Usuarios</h3>
-                            <img src="../images/icons/users-light.png" alt="usuario">
-                            <p>
-                                230
-                            </p>
-                        </button>
-                        <button class="reserva-totales" onclick="">
-                            <h3>Reservas Totales Este Mes</h3>
-                            <img src="../images/icons/panel.png" alt="Analisis">
-                            <p>
-                                15650
-                            </p>
-                        </button>
-                        <button class="ingreso-reserva" onclick="">
-                            <h3>Ingresos por Reservas</h3>
-                            <img src="../images/icons/ingresi-light.png" alt="Ingresos">
-                            <p>
-                                12500
-                            </p>
-                        </button>
+                        ${crearTarjetasPanel()}
                     </div>
                 </div>
+
                 <div class="reservas-aprobar">
                     <h4>Reservas por Aprobar</h4>
                     <div class="contenedor-tabla">
@@ -67,151 +347,46 @@ const vistas = {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>#001</td>
-                                    <td>Carlos Ramírez</td>
-                                    <td>Loza Deportiva</td>
-                                    <td>2024-07-15</td>
-                                    <td>18:00 - 22:00</td>
-                                    <td>pendiente</td>
-                                    <td class="acciones">
-                                        <button class="aprobar">Aprobar</button>
-                                        <button class="rechazar">Rechazar</button>
-                                        <button class="detalles">ver detalles...</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#002</td>
-                                    <td>Lucía Fernández</td>
-                                    <td>Loza Deportiva</td>
-                                    <td>2024-07-20</td>
-                                    <td>10:00 - 12:00</td>
-                                    <td>pendiente</td>
-                                    <td class="acciones">
-                                        <button class="aprobar">Aprobar</button>
-                                        <button class="rechazar">Rechazar</button>
-                                        <button class="detalles">ver detalles...</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#003</td>
-                                    <td>Pedro Castillo</td>
-                                    <td>Loza Deportiva</td>
-                                    <td>2024-07-20</td>
-                                    <td>10:00 - 12:00</td>
-                                    <td>pendiente</td>
-                                    <td class="acciones">
-                                        <button class="aprobar">Aprobar</button>
-                                        <button class="rechazar">Rechazar</button>
-                                        <button class="detalles">ver detalles...</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#004</td>
-                                    <td>María Torres</td>
-                                    <td>Loza Deportiva</td>
-                                    <td>2024-07-20</td>
-                                    <td>10:00 - 12:00</td>
-                                    <td>pendiente</td>
-                                    <td class="acciones">
-                                        <button class="aprobar">Aprobar</button>
-                                        <button class="rechazar">Rechazar</button>
-                                        <button class="detalles">ver detalles...</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#005</td>
-                                    <td>Jorge Mendoza</td>
-                                    <td>Loza Deportiva</td>
-                                    <td>2024-07-20</td>
-                                    <td>10:00 - 12:00</td>
-                                    <td>pendiente</td>
-                                    <td class="acciones">
-                                        <button class="aprobar">Aprobar</button>
-                                        <button class="rechazar">Rechazar</button>
-                                        <button class="detalles">ver detalles...</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#006</td>
-                                    <td>Andrea Rojas</td>
-                                    <td>Loza Deportiva</td>
-                                    <td>2024-07-20</td>
-                                    <td>10:00 - 12:00</td>
-                                    <td>pendiente</td>
-                                    <td class="acciones">
-                                        <button class="aprobar">Aprobar</button>
-                                        <button class="rechazar">Rechazar</button>
-                                        <button class="detalles">ver detalles...</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#007</td>
-                                    <td>Diego Navarro</td>
-                                    <td>Parrilla</td>
-                                    <td>2024-07-20</td>
-                                    <td>10:00 - 12:00</td>
-                                    <td>pendiente</td>
-                                    <td class="acciones">
-                                        <button class="aprobar">Aprobar</button>
-                                        <button class="rechazar">Rechazar</button>
-                                        <button class="detalles">ver detalles...</button>
-                                    </td>
-                                </tr>
+                                ${crearTablaReservas()}
                             </tbody>
                         </table>
                     </div>
+
                     <div class="actividad-reciente">
                         <h4>Actividad Reciente</h4>
                         <ul class="lista-actividad">
-                            <li>
-                                <span class="actividad-usuario">Ana Gomez</span>
-                                <span class="actividad-descripcion">Aprobo reserva #002</span>
-                                <span class="actividad-hora">Hace 2 horas</span>
-                            </li>
-                            <li>
-                                <span class="actividad-usuario">Carlos López</span>
-                                <span class="actividad-descripcion">Aprobo reserva #008</span>
-                                <span class="actividad-hora">Hace 5 horas</span>
-                            </li>
-                            <li>
-                                <span class="actividad-usuario">María Rodríguez</span>
-                                <span class="actividad-descripcion">Rechazó reserva #012</span>
-                                <span class="actividad-hora">Hace 5 horas</span>
-                            </li>
+                            ${crearActividadesRecientes()}
                         </ul>
                     </div>
                 </div>
-            </div>`,
-
+            </div>`
     },
+
     "gestion-usuarios": {
-        "titulo": "Gestión de Usuarios",
-        "contenido": "Aquí puedes gestionar los usuarios del sistema.",
-        "html": `
+        titulo: "Gestión de Usuarios",
+        contenido: "Aquí puedes gestionar los usuarios del sistema.",
+        html: `
             <section>
                 <nav class="sub-menu">
                     <button class="crear">Crear Nuevo Usuario</button>
+
                     <div class="roles">
-                        <button class="rol">todos</button>
-                        <button class="rol">Administrador</button>
-                        <button class="rol">Residente</button>
-                        <button class="rol">Recepcionista</button>
-                        <button class="rol">Mantenimiento</button>
+                        ${crearBotones(["todos", "Administrador", "Residente", "Recepcionista", "Mantenimiento"], "rol")}
                     </div>
+
                     <div class="filtros">
-                        <button class="filtro">todos</button>
-                        <button class="filtro">Activos</button>
-                        <button class="filtro">Inactivos</button>
-                        <button class="filtro">Pendientes</button>
+                        ${crearBotones(["todos", "Activos", "Inactivos", "Pendientes"], "filtro")}
                     </div>
+
                     <search>
-                        <label for="buscar"><img src="/images/icons/lupa-dark.png" alt="lupa" /></label>
+                        <label for="buscar">
+                            <img src="../images/icons/lupa-dark.png" alt="lupa" />
+                        </label>
                         <input id="buscar" type="search" placeholder="Buscar" />
                     </search>
                 </nav>
+
                 <div class="contenido-submenu">
-                    <p>Lista de usuarios registrados en el sistema.</p>
                     <table class="tabla-usuarios">
                         <thead>
                             <tr>
@@ -226,688 +401,155 @@ const vistas = {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>#001</td>
-                                <td><img src="avatar.jpg" alt="Avatar" class="avatar"></td>
-                                <td>Carlos Ramírez</td>
-                                <td>carlos.ramirez@example.com</td>
-                                <td>Administrador</td>
-                                <td>2024-07-10 14:30</td>
-                                <td><span class="estado activo">Activo</span></td>
-                                <td class="acciones">
-                                    <button class="editar">Editar</button>
-                                    <button class="bloquear">Bloquear</button>
-                                    <button class="eliminar">Eliminar</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#002</td>
-                                <td><img src="avatar.jpg" alt="Avatar" class="avatar"></td>
-                                <td>Lucía Fernández</td>
-                                <td>lucia.fernandez@example.com</td>
-                                <td>mantenimiento</td>
-                                <td>2024-07-10 14:30</td>
-                                <td><span class="estado activo">Activo</span></td>
-                                <td class="acciones">
-                                    <button class="editar">Editar</button>
-                                    <button class="bloquear">Bloquear</button>
-                                    <button class="eliminar">Eliminar</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#003</td>
-                                <td><img src="avatar.jpg" alt="Avatar" class="avatar"></td>
-                                <td>Pedro Castillo</td>
-                                <td>pedro.castillo@example.com</td>
-                                <td>Recepcionista</td>
-                                <td>2024-07-10 14:30</td>
-                                <td><span class="estado inactivo">Inactivo</span></td>
-                                <td class="acciones">
-                                    <button class="editar">Editar</button>
-                                    <button class="bloquear">Bloquear</button>
-                                    <button class="eliminar">Eliminar</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#004</td>
-                                <td><img src="avatar.jpg" alt="Avatar" class="avatar"></td>
-                                <td>María Torres</td>
-                                <td>maria.torres@example.com</td>
-                                <td>Residente</td>
-                                <td>2024-07-10 14:30</td>
-                                <td><span class="estado activo">Activo</span></td>
-                                <td class="acciones">
-                                    <button class="editar">Editar</button>
-                                    <button class="bloquear">Bloquear</button>
-                                    <button class="eliminar">Eliminar</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#005</td>
-                                <td><img src="avatar.jpg" alt="Avatar" class="avatar"></td>
-                                <td>Jorge Mendoza</td>
-                                <td>jorge.mendoza@example.com</td>
-                                <td>Residente</td>
-                                <td>2024-07-10 14:30</td>
-                                <td><span class="estado inactivo">Inactivo</span></td>
-                                <td class="acciones">
-                                    <button class="editar">Editar</button>
-                                    <button class="bloquear">Bloquear</button>
-                                    <button class="eliminar">Eliminar</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#006</td>
-                                <td><img src="avatar.jpg" alt="Avatar" class="avatar"></td>
-                                <td>Andrea Rojas</td>
-                                <td>andrea.rojas@example.com</td>
-                                <td>Recepcionista</td>
-                                <td>2024-07-10 14:30</td>
-                                <td><span class="estado activo">Activo</span></td>
-                                <td class="acciones">
-                                    <button class="editar">Editar</button>
-                                    <button class="bloquear">Bloquear</button>
-                                    <button class="eliminar">Eliminar</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#007</td>
-                                <td><img src="avatar.jpg" alt="Avatar" class="avatar"></td>
-                                <td>Diego Navarro</td>
-                                <td>diego.navarro@example.com</td>
-                                <td>Residente</td>
-                                <td>2024-07-10 14:30</td>
-                                <td><span class="estado inactivo">Inactivo</span></td>
-                                <td class="acciones">
-                                    <button class="editar">Editar</button>
-                                    <button class="bloquear">Bloquear</button>
-                                    <button class="eliminar">Eliminar</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#008</td>
-                                <td><img src="avatar.jpg" alt="Avatar" class="avatar"></td>
-                                <td>Ana Gomez</td>
-                                <td>ana.gomez@example.com</td>
-                                <td>Recepcionista</td>
-                                <td>2024-07-10 14:30</td>
-                                <td><span class="estado pendiente">Pendiente</span></td>
-                                <td class="acciones">
-                                    <button class="editar">Editar</button>
-                                    <button class="bloquear">Bloquear</button>
-                                    <button class="eliminar">Eliminar</button>
-                                </td>
-                            </tr>
+                            ${crearTablaUsuarios()}
                         </tbody>
                     </table>
                 </div>
-            </section>`,
+            </section>`
     },
+
     "reserva-calendario": {
-        "titulo": "Reserva y Calendario",
-        "contenido": "Administra las reservas y el calendario de eventos.",
-        "html": ` 
-        <section class="reserva-calendario">
-            <div class="calendario-navegador">
-                <nav class="sub-menu-calendario">
-                    <div class="vistas">
-                        <h3>Vistas</h3>
-                        <div class="opciones-vista">
-                            <button class="vista">Mes</button>
-                            <button class="vista">Semana</button>
-                            <button class="vista">Lista</button>
+        titulo: "Reserva y Calendario",
+        contenido: "Administra las reservas y el calendario de eventos.",
+        html: ` 
+            <section class="reserva-calendario">
+                <div class="calendario-navegador">
+                    <nav class="sub-menu-calendario">
+                        <div class="vistas">
+                            <h3>Vistas</h3>
+                            <div class="opciones-vista">
+                                ${crearBotones(["Mes", "Semana", "Lista"], "vista")}
+                            </div>
                         </div>
+
+                        <div class="filtros-calendario">
+                            ${crearBotones(["todos", "Loza Deportiva", "Casa Club", "Zona Parrilla"], "filtro-calendario")}
+                        </div>
+                    </nav>
+                </div>
+
+                <div class="contenedor-vista">
+                    <div class="contenedor-calendario vista-izquierda">
+                        <table class="calendario">
+                            <thead>
+                                <tr>
+                                    <th>Lunes</th>
+                                    <th>Martes</th>
+                                    <th>Miércoles</th>
+                                    <th>Jueves</th>
+                                    <th>Viernes</th>
+                                    <th>Sábado</th>
+                                    <th>Domingo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${crearCalendario()}
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="filtros-calendario">
-                        <button class="filtro-calendario">todos</button>
-                        <button class="filtro-calendario">Loza Deportiva</button>
-                        <button class="filtro-calendario">Casa Club</button>
-                        <button class="filtro-calendario">Zona Parrilla</button>
+
+                    <div class="resumen-dia vista-derecha">
+                        <h3>Resumen del Día</h3>
+                        <table class="resumen-reservas">
+                            <thead>
+                                <tr>
+                                    <th>Usuario</th>
+                                    <th>Área Común</th>
+                                    <th>Hora</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${crearResumenReservas()}
+                            </tbody>
+                        </table>
                     </div>
-                </nav>
-            </div>
+                </div>
 
-        <div class="contenedor-vista">
-            <div class="contenedor-calendario vista-izquierda">
-                <table class="calendario">
-                    <thead>
-                        <tr>
-                            <th>Lunes</th>
-                            <th>Martes</th>
-                            <th>Miércoles</th>
-                            <th>Jueves</th>
-                            <th>Viernes</th>
-                            <th>Sábado</th>
-                            <th>Domingo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Aquí se generarían dinámicamente las celdas del calendario -->
-                        <tr>
-                            <!-- Semana 1 -->
-                            <td class="dia">
-                                <div class="numero-dia">1</div>
-                                <div class="reserva">
-                                    <span class="reserva-usuario">Carlos Ramírez</span>
-                                    <span class="reserva-area">Loza Deportiva</span>
-                                    <span class="reserva-hora">18:00 - 22:00</span>
-                                </div>
-                            </td>
+                <div class="actividad-populares">
+                    <div class="proximos-eventos">
+                        <h3>Próximos Eventos</h3>
+                        <ul class="lista-eventos">
+                            ${crearEventos()}
+                        </ul>
+                    </div>
 
-                            <td class="dia">
-                                <div class="numero-dia">2</div>
-                                <div class="reserva">
-                                    <span class="reserva-usuario">Lucía Fernández</span>
-                                    <span class="reserva-area">Casa Club</span>
-                                    <span class="reserva-hora">10:00 - 12:00</span>
-                                </div>
-                            </td>
-
-                            <td class="dia">
-                                <div class="numero-dia">3</div>
-                                <div class="reserva">
-                                    <span class="reserva-usuario">Pedro Castillo</span>
-                                    <span class="reserva-area">Zona Parrilla</span>
-                                    <span class="reserva-hora">14:00 - 16:00</span>
-                                </div>
-                            </td>
-
-                            <td class="dia">
-                                <div class="numero-dia">4</div>
-                            </td>
-
-                            <td class="dia">
-                                <div class="numero-dia">5</div>
-                                <div class="reserva">
-                                    <span class="reserva-usuario">María Torres</span>
-                                    <span class="reserva-area">Loza Deportiva</span>
-                                    <span class="reserva-hora">18:00 - 22:00</span>
-                                </div>
-                            </td>
-
-                            <td class="dia">
-                                <div class="numero-dia">6</div>
-                            </td>
-
-                            <td class="dia">
-                                <div class="numero-dia">7</div>
-                                <div class="reserva">
-                                    <span class="reserva-usuario">Jorge Mendoza</span>
-                                    <span class="reserva-area">Casa Club</span>
-                                    <span class="reserva-hora">10:00 - 12:00</span>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <!-- Semana 2 -->
-                            <td class="dia">
-                                <div class="numero-dia">8</div>
-                            </td>
-
-                            <td class="dia">
-                                <div class="numero-dia">9</div>
-                                <div class="reserva">
-                                    <span class="reserva-usuario">Andrea Rojas</span>
-                                    <span class="reserva-area">Zona Parrilla</span>
-                                    <span class="reserva-hora">14:00 - 16:00</span>
-                                </div>
-                            </td>
-
-                            <td class="dia">
-                                <div class="numero-dia">10</div>
-                            </td>
-
-                            <td class="dia">
-                                <div class="numero-dia">11</div>
-                                <div class="reserva">
-                                    <span class="reserva-usuario">Diego Navarro</span>
-                                    <span class="reserva-area">Loza Deportiva</span>
-                                    <span class="reserva-hora">18:00 - 22:00</span>
-                                </div>
-                            </td>
-
-                            <td class="dia">
-                                <div class="numero-dia">12</div>
-                            </td>
-
-                            <td class="dia">
-                                <div class="numero-dia">13</div>
-                                <div class="reserva">
-                                    <span class="reserva-usuario">Valeria Soto</span>
-                                    <span class="reserva-area">Casa Club</span>
-                                    <span class="reserva-hora">09:00 - 11:00</span>
-                                </div>
-                            </td>
-
-                            <td class="dia">
-                                <div class="numero-dia">14</div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <!-- Semana 3 -->
-                            <td class="dia">
-                                <div class="numero-dia">15</div>
-                                <div class="reserva">
-                                    <span class="reserva-usuario">Miguel Salas</span>
-                                    <span class="reserva-area">Zona Parrilla</span>
-                                    <span class="reserva-hora">15:00 - 18:00</span>
-                                </div>
-                            </td>
-
-                            <td class="dia">
-                                <div class="numero-dia">16</div>
-                            </td>
-
-                            <td class="dia">
-                                <div class="numero-dia">17</div>
-                                <div class="reserva">
-                                    <span class="reserva-usuario">Fernanda Ruiz</span>
-                                    <span class="reserva-area">Loza Deportiva</span>
-                                    <span class="reserva-hora">17:00 - 20:00</span>
-                                </div>
-                            </td>
-
-                            <td class="dia">
-                                <div class="numero-dia">18</div>
-                            </td>
-
-                            <td class="dia">
-                                <div class="numero-dia">19</div>
-                            </td>
-
-                            <td class="dia">
-                                <div class="numero-dia">20</div>
-                                <div class="reserva">
-                                    <span class="reserva-usuario">Ricardo Peña</span>
-                                    <span class="reserva-area">Casa Club</span>
-                                    <span class="reserva-hora">13:00 - 16:00</span>
-                                </div>
-                            </td>
-
-                            <td class="dia">
-                                <div class="numero-dia">21</div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <!-- Semana 4 -->
-                            <td class="dia">
-                                <div class="numero-dia">22</div>
-                                <div class="reserva">
-                                    <span class="reserva-usuario">Camila León</span>
-                                    <span class="reserva-area">Zona Parrilla</span>
-                                    <span class="reserva-hora">12:00 - 15:00</span>
-                                </div>
-                            </td>
-
-                            <td class="dia">
-                                <div class="numero-dia">23</div>
-                            </td>
-
-                            <td class="dia">
-                                <div class="numero-dia">24</div>
-                            </td>
-
-                            <td class="dia">
-                                <div class="numero-dia">25</div>
-                                <div class="reserva">
-                                    <span class="reserva-usuario">Luis Herrera</span>
-                                    <span class="reserva-area">Loza Deportiva</span>
-                                    <span class="reserva-hora">19:00 - 22:00</span>
-                                </div>
-                            </td>
-
-                            <td class="dia">
-                                <div class="numero-dia">26</div>
-                            </td>
-
-                            <td class="dia">
-                                <div class="numero-dia">27</div>
-                                <div class="reserva">
-                                    <span class="reserva-usuario">Paola Díaz</span>
-                                    <span class="reserva-area">Casa Club</span>
-                                    <span class="reserva-hora">11:00 - 14:00</span>
-                                </div>
-                            </td>
-
-                            <td class="dia">
-                                <div class="numero-dia">28</div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <!-- Semana 5 -->
-                            <td class="dia">
-                                <div class="numero-dia">29</div>
-                            </td>
-
-                            <td class="dia">
-                                <div class="numero-dia">30</div>
-                                <div class="reserva">
-                                    <span class="reserva-usuario">Sebastián Cruz</span>
-                                    <span class="reserva-area">Zona Parrilla</span>
-                                    <span class="reserva-hora">16:00 - 19:00</span>
-                                </div>
-                            </td>
-
-                            <td class="dia">
-                                <div class="numero-dia">31</div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="resumen-dia vista-derecha">
-                <h3>Resumen del Día</h3>
-                <table class="resumen-reservas">
-                    <thead>
-                        <tr>
-                            <th>Usuario</th>
-                            <th>Área Común</th>
-                            <th>Hora</th>
-                            <th>Estado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Carlos Ramírez</td>
-                            <td>Loza Deportiva</td>
-                            <td>18:00 - 22:00</td>
-                            <td><span class="estado pendiente">Pendiente</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Lucía Fernández</td>
-                            <td>Casa Club</td>
-                            <td>10:00 - 12:00</td>
-                            <td><span class="estado aprobado">Aprobado</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Pedro Castillo</td>
-                            <td>Zona Parrilla</td>
-                            <td>14:00 - 16:00</td>
-                            <td><span class="estado rechazado">Rechazado</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>María Torres</td>
-                            <td>Loza Deportiva</td>
-                            <td>08:00 - 11:00</td>
-                            <td><span class="estado aprobado">Aprobado</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Jorge Mendoza</td>
-                            <td>Casa Club</td>
-                            <td>16:00 - 19:00</td>
-                            <td><span class="estado pendiente">Pendiente</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Andrea Rojas</td>
-                            <td>Zona Parrilla</td>
-                            <td>13:00 - 15:00</td>
-                            <td><span class="estado aprobado">Aprobado</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Diego Navarro</td>
-                            <td>Loza Deportiva</td>
-                            <td>19:00 - 22:00</td>
-                            <td><span class="estado rechazado">Rechazado</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Valeria Soto</td>
-                            <td>Casa Club</td>
-                            <td>09:00 - 11:00</td>
-                            <td><span class="estado pendiente">Pendiente</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Miguel Salas</td>
-                            <td>Zona Parrilla</td>
-                            <td>15:00 - 18:00</td>
-                            <td><span class="estado aprobado">Aprobado</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Fernanda Ruiz</td>
-                            <td>Loza Deportiva</td>
-                            <td>17:00 - 20:00</td>
-                            <td><span class="estado pendiente">Pendiente</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Ricardo Peña</td>
-                            <td>Casa Club</td>
-                            <td>12:00 - 14:00</td>
-                            <td><span class="estado rechazado">Rechazado</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Camila León</td>
-                            <td>Zona Parrilla</td>
-                            <td>11:00 - 13:00</td>
-                            <td><span class="estado aprobado">Aprobado</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Luis Herrera</td>
-                            <td>Loza Deportiva</td>
-                            <td>20:00 - 22:00</td>
-                            <td><span class="estado aprobado">Aprobado</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Paola Díaz</td>
-                            <td>Casa Club</td>
-                            <td>14:00 - 17:00</td>
-                            <td><span class="estado pendiente">Pendiente</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Sebastián Cruz</td>
-                            <td>Zona Parrilla</td>
-                            <td>18:00 - 21:00</td>
-                            <td><span class="estado rechazado">Rechazado</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Daniela Flores</td>
-                            <td>Loza Deportiva</td>
-                            <td>07:00 - 09:00</td>
-                            <td><span class="estado aprobado">Aprobado</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Kevin Morales</td>
-                            <td>Casa Club</td>
-                            <td>13:00 - 15:00</td>
-                            <td><span class="estado pendiente">Pendiente</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Rosa Gutiérrez</td>
-                            <td>Zona Parrilla</td>
-                            <td>16:00 - 18:00</td>
-                            <td><span class="estado aprobado">Aprobado</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>José Vargas</td>
-                            <td>Loza Deportiva</td>
-                            <td>18:00 - 20:00</td>
-                            <td><span class="estado rechazado">Rechazado</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Ana Beltrán</td>
-                            <td>Casa Club</td>
-                            <td>09:00 - 12:00</td>
-                            <td><span class="estado aprobado">Aprobado</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Renato Silva</td>
-                            <td>Zona Parrilla</td>
-                            <td>15:00 - 17:00</td>
-                            <td><span class="estado pendiente">Pendiente</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Claudia Paredes</td>
-                            <td>Loza Deportiva</td>
-                            <td>08:00 - 10:00</td>
-                            <td><span class="estado aprobado">Aprobado</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Bruno Medina</td>
-                            <td>Casa Club</td>
-                            <td>19:00 - 21:00</td>
-                            <td><span class="estado rechazado">Rechazado</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Patricia Núñez</td>
-                            <td>Zona Parrilla</td>
-                            <td>10:00 - 13:00</td>
-                            <td><span class="estado aprobado">Aprobado</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Álvaro Campos</td>
-                            <td>Loza Deportiva</td>
-                            <td>12:00 - 15:00</td>
-                            <td><span class="estado pendiente">Pendiente</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Sofía Herrera</td>
-                            <td>Casa Club</td>
-                            <td>17:00 - 19:00</td>
-                            <td><span class="estado aprobado">Aprobado</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Gabriel Luna</td>
-                            <td>Zona Parrilla</td>
-                            <td>18:00 - 20:00</td>
-                            <td><span class="estado rechazado">Rechazado</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Elena Castro</td>
-                            <td>Loza Deportiva</td>
-                            <td>09:00 - 11:00</td>
-                            <td><span class="estado aprobado">Aprobado</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Tomás Rivas</td>
-                            <td>Casa Club</td>
-                            <td>14:00 - 16:00</td>
-                            <td><span class="estado pendiente">Pendiente</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Nicole Vega</td>
-                            <td>Zona Parrilla</td>
-                            <td>20:00 - 22:00</td>
-                            <td><span class="estado aprobado">Aprobado</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="actividad-populares">
-            <div class="proximos-eventos">
-                <h3>Próximos Eventos</h3>
-                <ul class="lista-eventos">
-                    <li>
-                        <span class="evento-nombre">Torneo de Tenis</span>
-                        <span class="evento-fecha">2024-07-15</span>
-                    </li>
-                    <li>
-                        <span class="evento-nombre">Clases de Yoga</span>
-                        <span class="evento-fecha">2024-07-20</span>
-                    </li>
-                    <li>
-                        <span class="evento-nombre">Noche de Cine</span>
-                        <span class="evento-fecha">2024-07-25</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="actividad-populares">
-                <h3>Actividad Populares</h3>
-                <ul class="lista-actividades">
-                    <li>
-                        <span class="actividad-nombre">Fútbol 5</span>
-                        <span class="actividad-cantidad">150 participantes</span>
-                    </li>
-                    <li>
-                        <span class="actividad-nombre">Natación</span>
-                        <span class="actividad-cantidad">120 participantes</span>
-                    </li>
-                    <li>
-                        <span class="actividad-nombre">Gimnasia</span>
-                        <span class="actividad-cantidad">90 participantes</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        </section>
-        `,
+                    <div class="actividad-populares">
+                        <h3>Actividad Populares</h3>
+                        <ul class="lista-actividades">
+                            ${crearActividadesPopulares()}
+                        </ul>
+                    </div>
+                </div>
+            </section>`
     },
+
     "informes-analitica": {
-        "titulo": "Informes y Analítica",
-        "contenido": "Visualiza informes y analíticas de uso.",
-        "html": ` 
+        titulo: "Informes y Analítica",
+        contenido: "Visualiza informes y analíticas de uso.",
+        html: ` 
             <section class="informes-analitica">
                 <div class="graficos-header">
                     <ul>
-                        <li><div class="grafico">
-                            <h3>Total de Reservas(Mes actual)</h3>
-                            <span> 23,153 </span>
-                        </div></li>
-                        <li><div class="grafico">
-                            <h3>Amenidades Más Usadas</h3>
-                            <canvas id="grafico-amenidades" width="100" height="40"></canvas>
-                        </div></li>
-                        <li><div class="grafico">
-                            <h3>Ingresos por Reservas</h3>
-                            <canvas id="grafico-ingresos" width="100" height="40"></canvas>
-                        </div></li>
-                        <li><div class="grafico">
-                            <h3>Cancelaciones(Mes Actual)</h3>
-                            <span> 45 </span>
-                        </div></li>
+                        <li>
+                            <div class="grafico">
+                                <h3>Total de Reservas(Mes actual)</h3>
+                                <span>23,153</span>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="grafico">
+                                <h3>Amenidades Más Usadas</h3>
+                                <canvas id="grafico-amenidades" width="100" height="40"></canvas>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="grafico">
+                                <h3>Ingresos por Reservas</h3>
+                                <canvas id="grafico-ingresos" width="100" height="40"></canvas>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="grafico">
+                                <h3>Cancelaciones(Mes Actual)</h3>
+                                <span>45</span>
+                            </div>
+                        </li>
                     </ul>
                 </div>
+
                 <div class="graficos-main">
                     <div class="grafico-superior">
-                    <ul>
-                        <li><div class="grafico">
-                            <h3>Uso de Amenidades por Hora/Día</h3>
-                            <canvas id="grafico-satisfaccion" width="100" height="40"></canvas>
-                            </div></li>
-                        <li><div class="grafico">
-                            <h3>Evolución de Reservas (Año Actual vs Año Anterior)</h3>
-                            <canvas id="grafico-reservas-semana" width="100" height="40"></canvas>
-                        </div></li>
-                        <li><div class="grafico">
-                            <h3>Perfil de Usuario (Propetario vs Inquilino)</h3>
-                            <canvas id="grafico-usuarios" width="100" height="40"></canvas>
-                        </div></li>
-                    </ul>
-                        
+                        <ul>
+                            <li>
+                                <div class="grafico">
+                                    <h3>Uso de Amenidades por Hora/Día</h3>
+                                    <canvas id="grafico-satisfaccion" width="100" height="40"></canvas>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="grafico">
+                                    <h3>Evolución de Reservas (Año Actual vs Año Anterior)</h3>
+                                    <canvas id="grafico-reservas-semana" width="100" height="40"></canvas>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="grafico">
+                                    <h3>Perfil de Usuario (Propetario vs Inquilino)</h3>
+                                    <canvas id="grafico-usuarios" width="100" height="40"></canvas>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
+
                     <div class="tabla-reportes inferior">
                         <h3>Reportes Detallados</h3>
+
                         <table class="tabla-informes">
                             <thead>
                                 <tr>
@@ -919,298 +561,333 @@ const vistas = {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>#001</td>
-                                    <td>Informe de Reservas Mensuales</td>
-                                    <td>2024-07-01</td>
-                                    <td>excel</td>
-                                    <td>
-                                        <button class="btn-accion">Descargar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#002</td>
-                                    <td>Análisis de Uso de Amenidades</td>
-                                    <td>2024-07-05</td>
-                                    <td>pdf</td>
-                                    <td>
-                                        <button class="btn-accion">Descargar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#003</td>
-                                    <td>Reporte de Ingresos por Reservas</td>
-                                    <td>2024-07-10</td>
-                                    <td>excel</td>
-                                    <td>
-                                        <button class="btn-accion">Descargar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#004</td>
-                                    <td>Informe de Cancelaciones y Reembolsos</td>
-                                    <td>2024-07-15</td>
-                                    <td>pdf</td>
-                                    <td>
-                                        <button class="btn-accion">Descargar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#005</td>
-                                    <td>Análisis de Satisfacción del Usuario</td>
-                                    <td>2024-07-20</td>
-                                    <td>pdf</td>
-                                    <td>
-                                        <button class="btn-accion">Descargar</button>
-                                    </td>
-                                </tr>
+                                ${crearReportesInformes()}
                             </tbody>
                         </table>
                     </div>
                 </div>
-            </section>
-        `,
+            </section>`
     },
-"configuracion": {
+
+    "configuracion": {
         titulo: "Configuración",
-        descripcion: "Personaliza tu perfil y ajustes de la interfaz.",
+        contenido: "Personaliza tu perfil y ajustes de la interfaz.",
         html: `
-        <div class="contenido-configuracion">
-            <div class="tarjeta-config">
-                <h3>Modo Oscuro</h3>
-                <p>Cambia el aspecto visual del sistema.</p>
-                <button id="btn-tema-oscuro" class="boton-config">
-                    <img src="../images/icons/dark.png" alt="Luna">
-                    <span>Activar / Desactivar</span>
-                </button>
-            </div>           
-            <div class="tarjeta-config">
-                <h3>Información de Perfil</h3>
-                <p>Actualiza tu numero telefonico.</p>
-                <div class="contenedor-input">
-                <form id="form-guardar-nombre" class="grupo-input">
+            <div class="contenido-configuracion">
+                <div class="tarjeta-config">
+                    <h3>Modo Oscuro</h3>
+                    <p>Cambia el aspecto visual del sistema.</p>
 
-                    <input 
-                        type="text" 
-                        id="nuevo-nombre" 
-                        name="nuevo-nombre" 
-                        minlength="1" 
-                        maxlength="9"  
-                        required
-                        placeholder="Escribe tu numero..."
-                    >
-                    <button id="btn-guardar-nombre" class="boton-accion" type="submit">Guardar</button>
-                </form>
+                    <button id="btn-tema-oscuro" class="boton-config">
+                        <img src="images/icons/dark.png" alt="Luna">
+                        <span>Activar / Desactivar</span>
+                    </button>
                 </div>
-            </div>
-            <div class="tarjeta-config">
-                <h3>Foto de Perfil</h3>
-                <p>Selecciona una imagen desde tu dispositivo.</p>
-                <div class="grupo-input">
-                    <input type="file" id="input-archivo-foto" accept="image/*" style="display: none;">
-                    <button id="btn-seleccionar-foto" class="boton-config">Selecciona</button>
-                    <button id="btn-guardar-foto" class="boton-accion">Guardar</button>
+
+                <div class="tarjeta-config">
+                    <h3>Información de Perfil</h3>
+                    <p>Actualiza tu numero telefonico.</p>
+
+                    <div class="contenedor-input">
+                        <form id="form-guardar-nombre" class="grupo-input">
+                            <input 
+                                type="text" 
+                                id="nuevo-nombre" 
+                                name="nuevo-nombre" 
+                                minlength="1" 
+                                maxlength="9"  
+                                required
+                                placeholder="Escribe tu numero..."
+                            >
+                            <button id="btn-guardar-nombre" class="boton-accion" type="submit">Guardar</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        </div>
-    `
+
+                <div class="tarjeta-config">
+                    <h3>Foto de Perfil</h3>
+                    <p>Selecciona una imagen desde tu dispositivo.</p>
+
+                    <div class="grupo-input">
+                        <input type="file" id="input-archivo-foto" accept="image/*" style="display: none;">
+                        <button id="btn-seleccionar-foto" class="boton-config">Selecciona</button>
+                        <button id="btn-guardar-foto" class="boton-accion">Guardar</button>
+                    </div>
+                </div>
+            </div>`
     }
-}
+};
 
-// funcion para mostrar la vista seleccionada
 function cargarVista(seccion) {
     const vista = vistas[seccion];
+
+    if (!vista) {
+        return;
+    }
+
     document.getElementById("titulo-seccion").textContent = vista.titulo;
     document.getElementById("subtitulo-seccion").textContent = vista.contenido;
     document.getElementById("vista").innerHTML = vista.html;
-    if(seccion === "informes-analitica"){
+
+    if (seccion === "informes-analitica") {
         cargarGraficos();
     }
+
     if (seccion === "configuracion") {
         activarFuncionesConfiguracion();
     }
 }
 
-// cargar por defecto
-cargarVista("panel-control");
+for (let i = 0; i < botones.length; i++) {
+    botones[i].addEventListener("click", () => {
+        for (let j = 0; j < botones.length; j++) {
+            botones[j].classList.remove("activo");
+        }
 
-// eventos botones
-document.querySelectorAll("nav button").forEach(btn => {
-    btn.addEventListener("click", () => {
-        const seccion = btn.getAttribute("data-seccion");
-        cargarVista(seccion);
+        botones[i].classList.add("activo");
+
+        const seccion = botones[i].dataset.seccion;
+
+        if (seccion) {
+            cargarVista(seccion);
+        }
+
+        if (window.innerWidth <= 768) {
+            cerrarSidebar();
+        }
     });
-});
+}
 
-// activo inicial
-document
-    .querySelector("[data-seccion='panel-control']")
-    .classList.add("activo");
+if (minimizarBtn) {
+    minimizarBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("minimize");
+    });
+}
 
 function activarFuncionesConfiguracion() {
-    // 1. MODO OSCURO
-    const btnOscuro = document.getElementById("btn-tema-oscuro"); // ← Actualizado en español
+    const btnOscuro = document.getElementById("btn-tema-oscuro");
+
     if (btnOscuro) {
         btnOscuro.addEventListener("click", () => {
-            document.body.classList.toggle("tema-oscuro"); // ← Clase actualizada en español
-            // Guardamos la preferencia en el navegador
-            localStorage.setItem("modoOscuro", document.body.classList.contains("tema-oscuro")); // ← Actualizado
+            document.body.classList.toggle("tema-oscuro");
+            localStorage.setItem("modoOscuro", document.body.classList.contains("tema-oscuro"));
         });
     }
 
-    // 2. CAMBIAR NOMBRE
-    const btnNombre = document.getElementById("btn-guardar-nombre");
+    const formNombre = document.getElementById("form-guardar-nombre");
     const inputNombre = document.getElementById("nuevo-nombre");
-    if (btnNombre && inputNombre) {
-        btnNombre.addEventListener("click", () => {
+
+    if (formNombre && inputNombre) {
+        formNombre.addEventListener("submit", (e) => {
+            e.preventDefault();
+
             const nuevoNombre = inputNombre.value.trim();
+
             if (nuevoNombre !== "") {
-                document.querySelector(".perfil .usuario .informacion .nombre-apellido").textContent = nuevoNombre;
+                const elementoNombre = document.querySelector(".perfil .usuario .informacion .nombre-apellido");
+
+                if (elementoNombre) {
+                    elementoNombre.textContent = nuevoNombre;
+                }
+
                 localStorage.setItem("nombreGuardado", nuevoNombre);
                 inputNombre.value = "";
-                alert("¡Nombre actualizado correctamente!");
+                alert("¡Dato actualizado correctamente!");
             }
         });
     }
 
-    // 3. CAMBIAR INICIAL DEL AVATAR
-    const btnFoto = document.getElementById("btn-guardar-foto");
-    const inputFoto = document.getElementById("nueva-inicial");
-    if (btnFoto && inputFoto) {
-        btnFoto.addEventListener("click", () => {
-            const nuevaInicial = inputFoto.value.trim().toUpperCase();
-            if (nuevaInicial !== "") {
-                document.querySelector(".perfil .usuario .avatar span").textContent = nuevaInicial;
-                localStorage.setItem("fotoGuardada", nuevaInicial);
-                inputFoto.value = "";
-                alert("¡Avatar actualizado correctamente!");
+    const btnSeleccionarFoto = document.getElementById("btn-seleccionar-foto");
+    const btnGuardarFoto = document.getElementById("btn-guardar-foto");
+    const inputFoto = document.getElementById("input-archivo-foto");
+
+    if (btnSeleccionarFoto && inputFoto) {
+        btnSeleccionarFoto.addEventListener("click", () => {
+            inputFoto.click();
+        });
+    }
+
+    if (btnGuardarFoto && inputFoto) {
+        btnGuardarFoto.addEventListener("click", () => {
+            const archivo = inputFoto.files[0];
+
+            if (archivo) {
+                const lector = new FileReader();
+
+                lector.onload = function () {
+                    localStorage.setItem("fotoGuardada", lector.result);
+                    colocarFotoPerfil(lector.result);
+                    alert("¡Foto actualizada correctamente!");
+                };
+
+                lector.readAsDataURL(archivo);
+            } else {
+                alert("Selecciona una imagen primero");
             }
         });
     }
 }
 
-// Cargar los datos guardados automáticamente al abrir o recargar la página
-window.addEventListener("DOMContentLoaded", () => {
-    // Aplicar tema oscuro si estaba guardado
-    if (localStorage.getItem("modoOscuro") === "true") {
-        document.body.classList.add("tema-oscuro"); // ← Clase actualizada en español
+function colocarFotoPerfil(imagen) {
+    const avatarImg = document.querySelector(".perfil .usuario .avatar img");
+    const avatar = document.querySelector(".perfil .usuario .avatar");
+
+    if (avatarImg) {
+        avatarImg.src = imagen;
+    } else if (avatar) {
+        avatar.style.backgroundImage = `url(${imagen})`;
+        avatar.style.backgroundSize = "cover";
+        avatar.style.backgroundPosition = "center";
+
+        const span = avatar.querySelector("span");
+
+        if (span) {
+            span.style.display = "none";
+        }
     }
-    
-    // Aplicar nombre si estaba guardado
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+    if (localStorage.getItem("modoOscuro") === "true") {
+        document.body.classList.add("tema-oscuro");
+    }
+
     const nombreGuardado = localStorage.getItem("nombreGuardado");
+
     if (nombreGuardado) {
         const elementoNombre = document.querySelector(".usuario .informacion .nombre-apellido");
-        if (elementoNombre) elementoNombre.textContent = nombreGuardado;
+
+        if (elementoNombre) {
+            elementoNombre.textContent = nombreGuardado;
+        }
     }
-    
-    // Aplicar avatar (inicial) si estaba guardado
+
     const fotoGuardada = localStorage.getItem("fotoGuardada");
+
     if (fotoGuardada) {
-        const elementoAvatar = document.querySelector(".usuario .avatar span");
-        if (elementoAvatar) elementoAvatar.textContent = fotoGuardada;
+        colocarFotoPerfil(fotoGuardada);
+    }
+
+    cargarVista("panel-control");
+
+    const botonInicial = document.querySelector("[data-seccion='panel-control']");
+
+    if (botonInicial) {
+        botonInicial.classList.add("activo");
     }
 });
 
-function cargarGraficos(){
-
-    /* BARRAS */
-    new Chart(document.getElementById('grafico-amenidades'), {
-        type: 'bar',
+function cargarGraficos() {
+    new Chart(document.getElementById("grafico-amenidades"), {
+        type: "bar",
         data: {
-            labels: ['Piscina', 'Parrilla', 'Gym', 'Sala'],
+            labels: ["Piscina", "Parrilla", "Gym", "Sala"],
             datasets: [{
                 data: [50, 40, 25, 20]
             }]
         }
     });
 
-    /* LINEA */
-    new Chart(document.getElementById('grafico-ingresos'), {
-        type: 'line',
+    new Chart(document.getElementById("grafico-ingresos"), {
+        type: "line",
         data: {
-            labels: ['Ene','Feb','Mar','Abr','May'],
+            labels: ["Ene", "Feb", "Mar", "Abr", "May"],
             datasets: [{
-                data: [200,400,300,600,800],
+                data: [200, 400, 300, 600, 800],
                 fill: false
             }]
         }
     });
 
-    /* BARRAS GRANDES */
-    new Chart(document.getElementById('grafico-satisfaccion'), {
-        type: 'bar',
+    new Chart(document.getElementById("grafico-satisfaccion"), {
+        type: "bar",
         data: {
-            labels: ['00:00','08:00','12:00','17:00','20:00'],
+            labels: ["00:00", "08:00", "12:00", "17:00", "20:00"],
             datasets: [{
-                data: [20,240,120,220,40]
+                data: [20, 240, 120, 220, 40]
             }]
         }
     });
 
-    /* EVOLUCION */
-    new Chart(document.getElementById('grafico-reservas-semana'), {
-        type: 'line',
+    new Chart(document.getElementById("grafico-reservas-semana"), {
+        type: "line",
         data: {
-            labels: ['Ene','Feb','Mar','Abr','May','Jun'],
-            datasets: [{
-                label:'2024',
-                data:[20,100,120,210,170,280]
-            },
-            {
-                label:'2023',
-                data:[30,120,110,90,150,200]
-            }]
+            labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun"],
+            datasets: [
+                {
+                    label: "2024",
+                    data: [20, 100, 120, 210, 170, 280]
+                },
+                {
+                    label: "2023",
+                    data: [30, 120, 110, 90, 150, 200]
+                }
+            ]
         }
     });
 
-    /* PIE */
-    new Chart(document.getElementById('grafico-usuarios'), {
-        type: 'pie',
+    new Chart(document.getElementById("grafico-usuarios"), {
+        type: "pie",
         data: {
-            labels: ['Propietario','Inquilino'],
+            labels: ["Propietario", "Inquilino"],
             datasets: [{
-                data: [60,40]
+                data: [60, 40]
             }]
         }
     });
 }
 
-// NOTIFICACIONES DEL ADMINISTRADOR
-
-// Guardamos los elementos
 const btnNotif = document.getElementById("btn-notificaciones");
-const panel    = document.getElementById("panel-notificaciones");
+const panel = document.getElementById("panel-notificaciones");
 
-// Clic en el botón → abre o cierra el panel
-btnNotif.addEventListener("click", function(e) {
-    e.stopPropagation();
-    panel.classList.toggle("visible");
-});
+if (btnNotif && panel) {
+    btnNotif.addEventListener("click", function (e) {
+        e.stopPropagation();
+        panel.classList.toggle("visible");
+    });
 
-// Clic fuera del panel → cierra
-document.addEventListener("click", function(e) {
-    if (!panel.contains(e.target)) {
-        panel.classList.remove("visible");
-    }
-});
+    document.addEventListener("click", function (e) {
+        if (!panel.contains(e.target)) {
+            panel.classList.remove("visible");
+        }
+    });
+}
 
-
-// ===================== MENÚ MÓVIL =====================
 const btnMenuMovil = document.getElementById("btn-menu-movil");
 const sidebarOverlay = document.getElementById("sidebar-overlay");
 
 function abrirSidebar() {
     sidebar.classList.add("open");
-    sidebarOverlay.classList.add("active");
-    btnMenuMovil.style.display = "none";
-    document.getElementById("vista").style.pointerEvents = "none"; // ← bloquear clicks
+
+    if (sidebarOverlay) {
+        sidebarOverlay.classList.add("active");
+    }
+
+    if (btnMenuMovil) {
+        btnMenuMovil.style.display = "none";
+    }
+
+    const vista = document.getElementById("vista");
+
+    if (vista) {
+        vista.style.pointerEvents = "none";
+    }
 }
 
 function cerrarSidebar() {
     sidebar.classList.remove("open");
-    sidebarOverlay.classList.remove("active");
-    document.getElementById("vista").style.pointerEvents = "auto"; // ← desbloquear clicks
-    if (window.innerWidth <= 768) {
+
+    if (sidebarOverlay) {
+        sidebarOverlay.classList.remove("active");
+    }
+
+    const vista = document.getElementById("vista");
+
+    if (vista) {
+        vista.style.pointerEvents = "auto";
+    }
+
+    if (window.innerWidth <= 768 && btnMenuMovil) {
         btnMenuMovil.style.display = "flex";
     }
 }
@@ -1223,15 +900,12 @@ if (sidebarOverlay) {
     sidebarOverlay.addEventListener("click", cerrarSidebar);
 }
 
-botones.forEach((btn) => {
-    btn.addEventListener("click", () => {
-        if (window.innerWidth <= 768) cerrarSidebar();
-    });
-});
+const vistaPrincipal = document.getElementById("vista");
 
-// Cerrar sidebar al tocar el contenido principal
-document.getElementById("vista").addEventListener("click", () => {
-    if (window.innerWidth <= 768 && sidebar.classList.contains("open")) {
-        cerrarSidebar();
-    }
-});
+if (vistaPrincipal) {
+    vistaPrincipal.addEventListener("click", () => {
+        if (window.innerWidth <= 768 && sidebar.classList.contains("open")) {
+            cerrarSidebar();
+        }
+    });
+}

@@ -1,0 +1,240 @@
+* {
+    font-family: "Google Sans Flex", var(--font-ui), sans-serif;
+}
+
+body {
+    background: var(--color-bg);
+}
+
+
+
+main header hgroup div #titulo-seccion,
+main header hgroup #titulo-seccion {
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+}
+
+main header hgroup div #subtitulo-seccion,
+main header hgroup #subtitulo-seccion {
+    font-size: 13px;
+    color: var(--color-text-2);
+}
+
+aside {
+    background-color: var(--color-sidebar, var(--color-primario));
+}
+
+aside nav button.activo,
+aside footer button.activo {
+    background-color: rgb(49, 49, 49);
+    border-color: rgb(71, 71, 71);
+}
+
+#vista {
+    padding-bottom: 18px;
+}
+
+.contenido,
+.reserva-calendario,
+.informes-analitica,
+.contenido-configuracion,
+section {
+    animation: fadeIn 0.25s ease;
+}
+
+.contenido .botones .total-usuario,
+.contenido .botones .reserva-totales,
+.contenido .botones .ingreso-reserva,
+section .contenido-submenu,
+.resumen-dia,
+.contenedor-calendario,
+.grafico,
+.tabla-reportes,
+.tarjeta-config,
+.proximos-eventos,
+.actividad-populares > .actividad-populares {
+    background-color: var(--color-surface) !important;
+    border: 1px solid var(--color-borde-claro) !important;
+    border-radius: var(--radio-grande) !important;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.02) !important;
+}
+
+.contenido .botones .total-usuario:hover,
+.contenido .botones .reserva-totales:hover,
+.contenido .botones .ingreso-reserva:hover,
+.grafico:hover,
+.tarjeta-config:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-borde-hover) !important;
+    background-color: var(--color-surface-muted) !important;
+}
+
+.contenedor-tabla,
+section .contenido-submenu,
+.tabla-reportes,
+.contenedor-calendario,
+.resumen-dia {
+    overflow: auto;
+}
+
+table,
+.tabla-usuarios,
+.resumen-reservas,
+.tabla-informes,
+.calendario {
+    background-color: var(--color-surface) !important;
+    color: var(--color-text-1);
+    border-collapse: collapse;
+}
+
+thead th,
+.tabla-usuarios thead th,
+.resumen-reservas thead th,
+.tabla-informes thead th,
+.calendario thead th {
+    background-color: var(--color-surface-muted) !important;
+    color: var(--color-text-1) !important;
+    border-bottom: 1px solid var(--color-borde-claro);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    font-size: 12px;
+}
+
+tbody td,
+.tabla-usuarios tbody td,
+.resumen-reservas tbody td,
+.tabla-informes tbody td {
+    color: var(--color-text-2);
+    border-bottom: 1px solid var(--color-borde-claro) !important;
+}
+
+tbody tr:hover td,
+.tabla-usuarios tbody tr:hover,
+.resumen-reservas tbody tr:hover,
+.tabla-informes tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.015) !important;
+}
+
+button,
+.btn-accion,
+.boton-config,
+.boton-accion {
+    font-family: "Google Sans Flex", var(--font-ui), sans-serif;
+}
+
+.crear,
+.rol,
+.filtro,
+.filtro-calendario,
+.vista,
+.btn-accion,
+.boton-accion,
+.boton-config {
+    border-radius: var(--radio-pequeno) !important;
+    transition: 0.2s ease !important;
+}
+
+.crear,
+.btn-accion,
+.boton-accion {
+    background-color: var(--color-primario) !important;
+    color: white !important;
+}
+
+.roles .rol,
+.filtros .filtro,
+.filtros-calendario .filtro-calendario,
+.opciones-vista .vista {
+    background-color: var(--color-accent-bg) !important;
+    color: var(--color-accent-dark) !important;
+    border: 1px solid var(--color-borde-claro) !important;
+}
+
+.roles .rol:hover,
+.filtros .filtro:hover,
+.filtros-calendario .filtro-calendario:hover,
+.opciones-vista .vista:hover,
+.btn-accion:hover,
+.boton-config:hover,
+.boton-accion:hover {
+    transform: scale(0.98);
+    border-color: var(--color-borde-hover) !important;
+}
+
+.estado.activo,
+.estado.aprobado {
+    background-color: var(--color-success-bg);
+    color: var(--color-success-text);
+    border: 1px solid var(--color-success-border);
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.estado.inactivo,
+.estado.rechazado {
+    background-color: rgba(155, 28, 28, 0.08);
+    color: #9B1C1C;
+    border: 1px solid rgba(155, 28, 28, 0.2);
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.estado.pendiente {
+    background-color: var(--color-accent-bg);
+    color: var(--color-accent-dark);
+    border: 1px solid var(--color-borde-claro);
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.perfil .usuario .avatar {
+    overflow: hidden;
+}
+
+.perfil .usuario .avatar span,
+.perfil .usuario .avatar p {
+    color: white;
+    font-weight: 600;
+}
+
+search {
+    background-color: var(--color-surface) !important;
+    border-color: var(--color-borde-claro) !important;
+}
+
+search input {
+    color: var(--color-text-1) !important;
+}
+
+body.tema-oscuro .panel-notificaciones,
+body.tema-oscuro .modal {
+    background-color: var(--color-surface) !important;
+    color: var(--color-text-1) !important;
+    border-color: var(--color-borde-claro) !important;
+}
+
+body.tema-oscuro tbody tr:hover td,
+body.tema-oscuro .tabla-usuarios tbody tr:hover,
+body.tema-oscuro .resumen-reservas tbody tr:hover,
+body.tema-oscuro .tabla-informes tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+@media (max-width: 768px) {
+    main header hgroup div #titulo-seccion,
+    main header hgroup #titulo-seccion {
+        font-size: 18px !important;
+    }
+
+    .contenido .botones {
+        grid-template-columns: 1fr !important;
+    }
+}

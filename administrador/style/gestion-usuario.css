@@ -98,10 +98,8 @@ section {
     /* ================= CONTENIDO ================= */
 
     .contenido-submenu {
-        background-color: #f9f9f9;
-        padding: 1rem;
-        border-radius: 8px;
-        overflow-x: auto; /* Asegura el scroll contenedor si la tabla excede el tamaño */
+        background:transparent;
+        overflow-x: auto; 
         width: 100%;
         -webkit-overflow-scrolling: touch;
 
@@ -112,9 +110,8 @@ section {
         /* TABLA DE USUARIOS */
         .tabla-usuarios {
             width: 100%;
-            min-width: 850px; /* Evita que las columnas colapsen entre sí */
+            min-width: 850px; 
             border-collapse: collapse;
-            margin-top: 1rem;
             background-color: var(--color-primario);
             border-radius: var(--radio-pequeno);
             overflow: hidden;
