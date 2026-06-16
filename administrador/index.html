@@ -15,8 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap"
         rel="stylesheet">
     <title>Página Administrativa</title>
 </head>
@@ -24,154 +23,152 @@
 <body>
     <aside id="sidebar">
 
-    <!-- ================= LOGO ================= -->
-    <div class="logo">
-        <hgroup>
-            <h2>Villa Santa Clara</h2>
-            <p>Gestión de Reservas</p>
-        </hgroup>
+        <!-- ================= LOGO ================= -->
+        <div class="logo">
+            <hgroup>
+                <h2>Villa Santa Clara</h2>
+                <p>Gestión de Reservas</p>
+            </hgroup>
 
-        <!-- Icon: Menu -->
-        <button id="btn-minimizar">
-            <span class="material-symbols-outlined">
-                menu
-            </span>
-        </button>
-    </div>
-
-    <!-- ================= NAVEGACIÓN ================= -->
-    <nav>
-
-        <button data-seccion="panel-control">
-
-            <!-- Icon: dashboard -->
-            <span class="material-symbols-outlined">
-                space_dashboard
-            </span>
-
-            <span>Panel de Control</span>
-        </button>
-
-        <button data-seccion="gestion-usuarios">
-
-            <!-- Icon: users -->
-            <span class="material-symbols-outlined">
-                people
-            </span>
-
-            <span>Gestión de Usuarios</span>
-        </button>
-
-        <button data-seccion="reserva-calendario">
-
-            <!-- Icon: calendar -->
-            <span class="material-symbols-outlined">
-                calendar_today
-            </span>
-
-            <span>Reserva y Calendario</span>
-        </button>
-
-        <button data-seccion="informes-analitica">
-
-            <!-- Icon: analytics -->
-            <span class="material-symbols-outlined">
-                bar_chart
-            </span>
-
-            <span>Informes y Analítica</span>
-        </button>
-
-    </nav>
-
-    <!-- ================= FOOTER ================= -->
-    <footer>
-
-        <button id="btn-notificaciones">
-
-            <!-- Icon: notifications -->
-            <span class="material-symbols-outlined">
-                notifications
-            </span>
-
-            <span>Notificaciones</span>
-        </button>
-
-        <button data-seccion="configuracion">
-
-            <!-- Icon: settings -->
-            <span class="material-symbols-outlined">
-                settings
-            </span>
-
-            <span>Configuración</span>
-        </button>
-
-    </footer>
-
-</aside>
-
-<div id="sidebar-overlay"></div>
-
-<main>
-
-    <header>
-
-        <hgroup>
-
-            <!-- BOTÓN MOBILE -->
-            <button id="btn-menu-movil">
+            <!-- Icon: Menu -->
+            <button id="btn-minimizar">
                 <span class="material-symbols-outlined">
                     menu
                 </span>
             </button>
+        </div>
 
-            <div>
-                <h1 id="titulo-seccion">Panel de Control</h1>
-                <p id="subtitulo-seccion">
-                    Gestiona las reservas y usuarios del sistema
-                </p>
-            </div>
+        <!-- ================= NAVEGACIÓN ================= -->
+        <nav>
 
-        </hgroup>
+            <button data-seccion="panel-control">
 
-        <div class="perfil">
+                <!-- Icon: dashboard -->
+                <span class="material-symbols-outlined">
+                    space_dashboard
+                </span>
 
-            <p class="rol">Administrador</p>
+                <span>Panel de Control</span>
+            </button>
 
-            <div class="usuario">
+            <button data-seccion="gestion-usuarios">
 
-                <div class="avatar">
-                    <span>A</span>
-                </div>
+                <!-- Icon: users -->
+                <span class="material-symbols-outlined">
+                    people
+                </span>
 
-                <div class="informacion">
-                    <p class="nombre-apellido">Administrador</p>
-                    <p class="torre-departamento">
-                        Supervisor General
+                <span>Gestión de Usuarios</span>
+            </button>
+
+            <button data-seccion="reserva-calendario">
+
+                <!-- Icon: calendar -->
+                <span class="material-symbols-outlined">
+                    calendar_today
+                </span>
+
+                <span>Reserva y Calendario</span>
+            </button>
+
+            <button data-seccion="informes-analitica">
+
+                <!-- Icon: analytics -->
+                <span class="material-symbols-outlined">
+                    bar_chart
+                </span>
+
+                <span>Informes y Analítica</span>
+            </button>
+
+        </nav>
+
+        <footer>
+
+            <button id="btn-notificaciones">
+
+                <!-- Icon: notifications -->
+                <span class="material-symbols-outlined">
+                    notifications
+                </span>
+
+                <span>Notificaciones</span>
+            </button>
+
+            <button data-seccion="configuracion">
+
+                <!-- Icon: settings -->
+                <span class="material-symbols-outlined">
+                    settings
+                </span>
+
+                <span>Configuración</span>
+            </button>
+
+        </footer>
+
+    </aside>
+
+    <div id="sidebar-overlay"></div>
+
+    <main>
+
+        <header>
+
+            <hgroup>
+
+                <!-- BOTÓN MOBILE -->
+                <button id="btn-menu-movil">
+                    <span class="material-symbols-outlined">
+                        menu
+                    </span>
+                </button>
+
+                <div>
+                    <h1 id="titulo-seccion">Panel de Control</h1>
+                    <p id="subtitulo-seccion">
+                        Gestiona las reservas y usuarios del sistema
                     </p>
                 </div>
 
+            </hgroup>
+
+            <div class="perfil">
+
+                <p class="rol">Administrador</p>
+
+                <div class="usuario">
+
+                    <div class="avatar">
+                        <span>A</span>
+                    </div>
+
+                    <div class="informacion">
+                        <p class="nombre-apellido">Administrador</p>
+                        <p class="torre-departamento">
+                            Supervisor General
+                        </p>
+                    </div>
+
+                </div>
+
+                <button id="cerrar-sesion" onclick="window.location.href='../login/login.html'">
+
+                    <span class="material-symbols-outlined">
+                        logout
+                    </span>
+
+                    <span>Cerrar Sesión</span>
+
+                </button>
+
             </div>
 
-            <button id="cerrar-sesion"
-                onclick="window.location.href='../login/login.html'">
+        </header>
 
-                <span class="material-symbols-outlined">
-                    logout
-                </span>
+        <div id="vista"></div>
 
-                <span>Cerrar Sesión</span>
-
-            </button>
-
-        </div>
-
-    </header>
-    
-    <div id="vista"></div>
-
-</main>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 

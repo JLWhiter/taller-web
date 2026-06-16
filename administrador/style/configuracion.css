@@ -1,9 +1,9 @@
 .contenido-configuracion {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    padding: 20px;
-    /* align-items: start;*/
+    padding: 15px;
+    height: 70%;
 }
 
 .tarjeta-config {
@@ -472,4 +472,16 @@ body.tema-oscuro .info-detalles textarea:hover {
 body.tema-oscuro #btn-menu-movil,
 body.tema-oscuro #btn-menu-movil .material-symbols-outlined {
     color: #f0ede8 !important;
+}
+
+@media (max-width: 900px) {
+    .contenido-configuracion {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .contenido-configuracion {
+        grid-template-columns: 1fr;
+    }
 }
