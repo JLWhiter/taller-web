@@ -6,6 +6,11 @@
   box-sizing: border-box;
 }
 
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
   font-family: 'DM Sans', sans-serif;
   background-color: #FFFFFF;
@@ -30,7 +35,7 @@ body.sin-scroll {
   overflow: hidden;
 }
 
-/* CLASES REUTILIZABLES*/
+/* CLASES REUTILIZABLES */
 
 .etiqueta {
   display: block;
@@ -114,8 +119,11 @@ body.sin-scroll {
 
 .encabezado {
   text-align: center;
-  max-width: 580px;
+  max-width: 100%;
+  width: 100%;
   margin: 0 auto 44px;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .encabezado h2 {
@@ -124,20 +132,23 @@ body.sin-scroll {
   font-weight: 700;
   line-height: 1.15;
   margin-bottom: 12px;
+  word-break: break-word;
 }
 
 .encabezado-descripcion {
   font-size: 15px;
   line-height: 1.65;
   color: #8A8782;
+  word-break: break-word;
 }
 
 .seccion {
   position: relative;
   padding: 100px 7%;
+  overflow: hidden;
 }
 
-/*  NAVBAR*/
+/* NAVBAR */
 
 #navbar {
   position: fixed;
@@ -217,7 +228,6 @@ body.sin-scroll {
   color: #FFFFFF;
 }
 
-/* Botón hamburguesa (solo mobile) */
 .nav-hamburguesa {
   display: none;
   flex-direction: column;
@@ -241,7 +251,6 @@ body.sin-scroll {
   background-color: #1C1B19;
 }
 
-/* Menú móvil desplegable */
 .nav-menu-movil {
   display: none;
   position: fixed;
@@ -323,7 +332,8 @@ body.sin-scroll {
   position: relative;
   z-index: 2;
   padding: 0 7% 56px;
-  max-width: 720px;
+  max-width: 100%;
+  width: 100%;
 }
 
 .hero-texto .etiqueta {
@@ -338,6 +348,7 @@ body.sin-scroll {
   line-height: 1.02;
   margin-bottom: 18px;
   text-shadow: 0 10px 36px rgba(0, 0, 0, 0.3);
+  word-break: break-word;
 }
 
 .hero-subtitulo {
@@ -346,6 +357,7 @@ body.sin-scroll {
   color: rgba(255, 255, 255, 0.88);
   max-width: 44ch;
   margin-bottom: 28px;
+  word-break: break-word;
 }
 
 .hero-texto .btn {
@@ -361,6 +373,7 @@ body.sin-scroll {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(12px);
+  flex-wrap: wrap;
 }
 
 .chip {
@@ -394,6 +407,7 @@ body.sin-scroll {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 18px;
+  width: 100%;
   max-width: 900px;
   margin: 0 auto 48px;
   text-align: center;
@@ -404,6 +418,8 @@ body.sin-scroll {
   border: 1px solid #E8E4DD;
   border-radius: 18px;
   padding: 24px 14px;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .cifra strong {
@@ -419,12 +435,14 @@ body.sin-scroll {
 .cifra p {
   font-size: 13px;
   color: #8A8782;
+  word-break: break-word;
 }
 
 .grilla-info {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+  width: 100%;
   max-width: 960px;
   margin: 0 auto;
 }
@@ -435,6 +453,8 @@ body.sin-scroll {
   border-radius: 20px;
   padding: 28px 24px;
   transition: transform 0.4s, box-shadow 0.4s;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .tarjeta-info:hover {
@@ -451,12 +471,14 @@ body.sin-scroll {
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 8px;
+  word-break: break-word;
 }
 
 .tarjeta-info p {
   font-size: 14.5px;
   line-height: 1.55;
   color: #8A8782;
+  word-break: break-word;
 }
 
 /* AREAS COMUNES */
@@ -465,6 +487,7 @@ body.sin-scroll {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
+  width: 100%;
   max-width: 1080px;
   margin: 0 auto;
 }
@@ -474,6 +497,7 @@ body.sin-scroll {
   border-radius: 22px;
   overflow: hidden;
   transition: transform 0.4s, box-shadow 0.4s;
+  min-width: 0;
 }
 
 .tarjeta-area:hover {
@@ -484,6 +508,7 @@ body.sin-scroll {
 .tarjeta-area-imagen {
   aspect-ratio: 4 / 3;
   overflow: hidden;
+  width: 100%;
 }
 
 .tarjeta-area-imagen img {
@@ -516,12 +541,14 @@ body.sin-scroll {
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 8px;
+  word-break: break-word;
 }
 
 .tarjeta-area p {
   font-size: 14.5px;
   line-height: 1.5;
   color: #8A8782;
+  word-break: break-word;
 }
 
 /* PASOS PARA RESERVAR */
@@ -530,9 +557,14 @@ body.sin-scroll {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 28px;
+  width: 100%;
   max-width: 1080px;
   margin: 0 auto;
   list-style: none;
+}
+
+.paso {
+  min-width: 0;
 }
 
 .paso-numero {
@@ -551,6 +583,7 @@ body.sin-scroll {
   margin-bottom: 18px;
   box-shadow: 0 8px 18px rgba(28, 27, 25, 0.15);
   transition: background 0.4s, color 0.4s, border-color 0.4s;
+  flex-shrink: 0;
 }
 
 .paso:hover .paso-numero {
@@ -563,12 +596,14 @@ body.sin-scroll {
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 8px;
+  word-break: break-word;
 }
 
 .paso p {
   font-size: 14px;
   line-height: 1.55;
   color: #8A8782;
+  word-break: break-word;
 }
 
 /* CIERRE */
@@ -578,7 +613,8 @@ body.sin-scroll {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 800px;
+  width: 100%;
+  max-width: 800px;
   height: 450px;
   background: radial-gradient(ellipse, rgba(176, 141, 87, 0.26) 0%, transparent 70%);
   pointer-events: none;
@@ -588,8 +624,9 @@ body.sin-scroll {
   position: relative;
   z-index: 1;
   text-align: center;
-  max-width: 580px;
+  max-width: 100%;
   margin: 0 auto;
+  word-break: break-word;
 }
 
 .cierre-texto h2 {
@@ -598,6 +635,7 @@ body.sin-scroll {
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 16px;
+  word-break: break-word;
 }
 
 .cierre-texto p {
@@ -605,6 +643,7 @@ body.sin-scroll {
   line-height: 1.65;
   color: rgba(255, 255, 255, 0.72);
   margin-bottom: 28px;
+  word-break: break-word;
 }
 
 /* MODAL */
@@ -709,6 +748,7 @@ body.sin-scroll {
   background-color: #FAF7F2;
   color: #1C1B19;
   transition: border-color 0.3s, background 0.3s;
+  width: 100%;
 }
 
 .campo input:focus {
@@ -733,228 +773,120 @@ body.sin-scroll {
   margin-top: 4px;
 }
 
-/* RESPONSIVE */
+/* ============================================
+   RESPONSIVE
+   ============================================ */
 
-/* 1280px: (laptops pequeñas)  */
+/* 1280px — laptops pequeñas */
 @media (max-width: 1280px) {
-  .hero-texto h1 {
-    font-size: 68px;
-  }
-  .seccion {
-    padding: 80px 6%;
-  }
-  .lista-pasos {
-    gap: 20px;
-  }
+  .hero-texto h1 { font-size: 68px; }
+  .seccion { padding: 80px 6%; }
+  .lista-pasos { gap: 20px; }
 }
 
-/* ── 1024px: tablets horizontales */
+/* 1024px — tablets horizontales */
 @media (max-width: 1024px) {
-  .hero-texto h1 {
-    font-size: 58px;
-  }
-  .hero-subtitulo {
-    font-size: 16px;
-  }
-  .nav-menu {
-    gap: 16px;
-  }
-  .nav-menu a {
-    font-size: 13px;
-  }
-  .grilla-cifras {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 600px;
-  }
-  .lista-pasos {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
-  .encabezado h2 {
-    font-size: 34px;
-  }
-  .cierre-texto h2 {
-    font-size: 34px;
-  }
+  .hero-texto h1 { font-size: 58px; }
+  .hero-subtitulo { font-size: 16px; }
+  .nav-menu { gap: 16px; }
+  .nav-menu a { font-size: 13px; }
+  .grilla-cifras { grid-template-columns: repeat(2, 1fr); }
+  .lista-pasos { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .encabezado h2 { font-size: 34px; }
+  .cierre-texto h2 { font-size: 34px; }
 }
 
-/* 900px: tablets medianas */
+/* 900px — tablets medianas */
 @media (max-width: 900px) {
-  .hero-texto h1 {
-    font-size: 45px;
-  }
-  .grilla-info {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .grilla-areas {
-    gap: 16px;
-  }
-  .nav-menu {
-    display: none;
-  }
-  #navbar .btn-pequeno {
-    display: none;
-  }
-  .nav-hamburguesa {
-    display: flex;
-  }
+  .hero-texto h1 { font-size: 48px; }
+  .grilla-info { grid-template-columns: repeat(2, 1fr); }
+  .nav-menu { display: none; }
+  #navbar .btn-pequeno { display: none; }
+  .nav-hamburguesa { display: flex; }
 }
 
-/* 768px: tablets verticales */
+/* 768px — tablets verticales */
 @media (max-width: 768px) {
-  .seccion {
-    padding: 70px 5%;
-  }
-  .hero-texto {
-    padding: 0 5% 48px;
-  }
-  .hero-texto h1 {
-    font-size: 44px;
-  }
-  .hero-subtitulo {
-    font-size: 15px;
-    max-width: 100%;
-  }
-  .hero-chips {
-    gap: 12px;
-    padding: 12px 16px;
-  }
-  .chip strong {
-    font-size: 17px;
-  }
-  .grilla-areas {
-    grid-template-columns: 1fr;
-    max-width: 480px;
-  }
-  .grilla-info {
-    grid-template-columns: 1fr;
-    max-width: 480px;
-  }
-  .encabezado h2 {
-    font-size: 30px;
-  }
-  .cierre-texto h2 {
-    font-size: 30px;
-  }
-  .cierre-texto p {
-    font-size: 14px;
-  }
+  .seccion { padding: 70px 5%; }
+  .hero-texto { padding: 0 5% 48px; }
+  .hero-texto h1 { font-size: 42px; }
+  .hero-subtitulo { font-size: 15px; max-width: 100%; }
+  .hero-chips { gap: 12px; padding: 12px 16px; }
+  .chip strong { font-size: 17px; }
+  .grilla-areas { grid-template-columns: 1fr; }
+  .grilla-info { grid-template-columns: 1fr; }
+  .encabezado h2 { font-size: 30px; }
+  .cierre-texto h2 { font-size: 30px; }
+  .cierre-texto p { font-size: 14px; }
+  .lista-pasos { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* 600px: móviles grandes  */
+/* 600px — móviles grandes landscape */
 @media (max-width: 600px) {
-  .hero-texto h1 {
-    font-size: 38px;
-  }
-  .hero-subtitulo {
-    font-size: 14px;
-  }
-  .hero-chips {
-    display: none;
-  }
-  .grilla-cifras {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-  .cifra strong {
-    font-size: 36px;
-  }
-  .lista-pasos {
-    grid-template-columns: 1fr;
-    max-width: 380px;
-  }
-  .encabezado {
-    margin-bottom: 32px;
-  }
-  .encabezado h2 {
-    font-size: 26px;
-  }
-  .seccion {
-    padding: 60px 5%;
-  }
-  .modal {
-    padding: 30px 22px 26px;
-  }
+  .seccion { padding: 60px 5%; }
+  .hero-texto { padding: 0 5% 40px; }
+  .hero-texto h1 { font-size: 36px; }
+  .hero-subtitulo { font-size: 14px; }
+  .hero-chips { display: none; }
+  .grilla-cifras { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .cifra strong { font-size: 36px; }
+  .cifra p { font-size: 12px; }
+  .lista-pasos { grid-template-columns: 1fr; }
+  .encabezado { margin-bottom: 32px; }
+  .encabezado h2 { font-size: 26px; }
+  .encabezado-descripcion { font-size: 14px; }
+  .cierre-texto h2 { font-size: 26px; }
+  .cierre-texto p { font-size: 13.5px; }
+  .modal { padding: 30px 22px 26px; }
 }
 
-/* 480px: móviles estándar */
+/* 480px — móviles estándar */
 @media (max-width: 480px) {
-  .hero {
-    min-height: 100svh;
-  }
-  .hero-texto h1 {
-    font-size: 32px;
-    margin-bottom: 12px;
-  }
-  .hero-texto .etiqueta {
-    font-size: 11px;
-  }
-  .hero-subtitulo {
-    font-size: 13.5px;
-    margin-bottom: 20px;
-  }
-  .btn {
-    padding: 12px 22px;
-    font-size: 13px;
-  }
-  .grilla-info {
-    grid-template-columns: 1fr;
-  }
-  .grilla-cifras {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .cifra {
-    padding: 18px 10px;
-  }
-  .cifra strong {
-    font-size: 30px;
-  }
-  .tarjeta-info {
-    padding: 20px 18px;
-  }
-  .tarjeta-area h3 {
-    font-size: 19px;
-  }
-  .cierre-texto h2 {
-    font-size: 26px;
-  }
-  .cierre-texto p {
-    font-size: 13.5px;
-  }
-  .modal {
-    border-radius: 20px;
-    padding: 28px 18px 24px;
-  }
-  .modal-titulo {
-    font-size: 26px;
-  }
-  .seccion {
-    padding: 50px 5%;
-  }
-  .encabezado h2 {
-    font-size: 24px;
-  }
+  .seccion { padding: 50px 5%; }
+  .hero { min-height: 100svh; }
+  .hero-texto { padding: 0 5% 36px; }
+  .hero-texto h1 { font-size: 30px; margin-bottom: 12px; }
+  .hero-texto .etiqueta { font-size: 11px; }
+  .hero-subtitulo { font-size: 13.5px; margin-bottom: 20px; }
+  .btn { padding: 12px 20px; font-size: 13px; }
+  .grilla-cifras { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .cifra { padding: 18px 10px; }
+  .cifra strong { font-size: 28px; }
+  .cifra p { font-size: 11px; }
+  .grilla-info { grid-template-columns: 1fr; }
+  .tarjeta-info { padding: 20px 18px; }
+  .tarjeta-info h3 { font-size: 15px; }
+  .tarjeta-info p { font-size: 13.5px; }
+  .grilla-areas { grid-template-columns: 1fr; gap: 16px; }
+  .tarjeta-area h3 { font-size: 19px; }
+  .tarjeta-area p { font-size: 13.5px; }
+  .tarjeta-area-cuerpo { padding: 16px 18px 20px; }
+  .lista-pasos { grid-template-columns: 1fr; gap: 20px; }
+  .paso h3 { font-size: 15px; }
+  .paso p { font-size: 13px; }
+  .paso-numero { width: 44px; height: 44px; font-size: 16px; margin-bottom: 14px; }
+  .encabezado h2 { font-size: 24px; }
+  .encabezado-descripcion { font-size: 13.5px; }
+  .cierre-texto h2 { font-size: 24px; }
+  .cierre-texto p { font-size: 13px; }
+  .modal { border-radius: 20px; padding: 28px 18px 24px; }
+  .modal-titulo { font-size: 26px; }
 }
 
-/* 360px: móviles pequeños */
+/* 360px — móviles pequeños */
 @media (max-width: 360px) {
-  .hero-texto h1 {
-    font-size: 28px;
-  }
-  .hero-texto {
-    padding: 0 5% 36px;
-  }
-  .grilla-cifras {
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .cifra strong {
-    font-size: 26px;
-  }
-  .nav-logo {
-    font-size: 17px;
-  }
-  .encabezado h2 {
-    font-size: 22px;
-  }
+  .seccion { padding: 44px 4%; }
+  .hero-texto { padding: 0 4% 32px; }
+  .hero-texto h1 { font-size: 26px; }
+  .hero-subtitulo { font-size: 13px; }
+  .nav-logo { font-size: 17px; }
+  .grilla-cifras { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .cifra strong { font-size: 24px; }
+  .cifra p { font-size: 11px; }
+  .encabezado h2 { font-size: 22px; }
+  .encabezado-descripcion { font-size: 13px; }
+  .cierre-texto h2 { font-size: 22px; }
+  .modal { padding: 24px 14px 20px; }
+  .modal-titulo { font-size: 24px; }
+  .campo input { font-size: 14px; padding: 10px 12px; }
 }
