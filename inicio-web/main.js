@@ -46,11 +46,11 @@ function activarAnimaciones() {
 // MODAL: abrir y cerrar el login
 
 function activarModal() {
-  var modalFondo      = document.getElementById("modal-fondo");
-  var btnAbrir        = document.getElementById("btn-abrir-login");
-  var btnAbrirCierre  = document.getElementById("btn-abrir-login-cierre");
-  var btnCerrar       = document.getElementById("btn-cerrar-modal");
-  var formLogin       = document.getElementById("form-login");
+  var modalFondo = document.getElementById("modal-fondo");
+  var btnAbrir = document.getElementById("btn-abrir-login");
+  var btnAbrirCierre = document.getElementById("btn-abrir-login-cierre");
+  var btnCerrar = document.getElementById("btn-cerrar-modal");
+  var formLogin = document.getElementById("form-login");
 
   function abrirModal() {
     modalFondo.classList.add("activo");
@@ -83,16 +83,16 @@ function activarModal() {
   formLogin.addEventListener("submit", function (evento) {
     evento.preventDefault();
 
-    var usuario   = formLogin.querySelector("input[name='usuario']").value;
+    var usuario = formLogin.querySelector("input[name='usuario']").value;
     var contrasena = formLogin.querySelector("input[name='contrasena']").value;
 
     // Credenciales del administrador
     if (usuario === "admin@gmail.com" && contrasena === "admin123") {
       window.location.href = "../administrador/index.html";
 
-    // Credenciales del usuario residente
+      // Credenciales del usuario residente
     } else if (usuario === "usuario@gmail.com" && contrasena === "usuario123") {
-      window.location.href = "../web-site/index.html";
+      window.location.href = "../residente/index.html";
 
     } else {
       alert("Correo o contraseña incorrectos. Inténtalo de nuevo.");
@@ -108,7 +108,7 @@ function activarContadores() {
   var observador = new IntersectionObserver(function (entradas) {
     for (var i = 0; i < entradas.length; i++) {
       if (entradas[i].isIntersecting) {
-        var span     = entradas[i].target;
+        var span = entradas[i].target;
         var valorFin = parseInt(span.getAttribute("data-hasta"));
         animarNumero(span, valorFin);
         observador.unobserve(span);
@@ -128,9 +128,9 @@ function animarNumero(elemento, fin) {
   var intervalo = setInterval(function () {
     actual = actual + 1;
     elemento.textContent = actual;
-    
+
     if (actual >= fin) {
       clearInterval(intervalo);
     }
-  }, 1200 / fin); 
+  }, 1200 / fin);
 }
