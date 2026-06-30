@@ -32,11 +32,10 @@
 
             .filtros-calendario {
             display: flex;
-            background-color: var(--color-primario);
             border-radius: 4px;
             gap: 10px;
             margin-left: auto;
-            padding: 10px;
+            padding: 15px;
             overflow-x: auto;
             scrollbar-width: none; 
             min-width: 0; 
@@ -50,6 +49,7 @@
                 white-space: nowrap; 
                 flex-shrink: 0; 
                 transition: background-color 0.2s ease, color 0.2s ease;
+                padding: 5px;
 
                 &:hover {
                     background-color: rgb(255, 255, 255); /* Fondo blanco sutil */
