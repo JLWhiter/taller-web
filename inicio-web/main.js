@@ -89,7 +89,7 @@ function activarModal() {
     // Credenciales del administrador
     if (usuario === "admin@gmail.com" && contrasena === "admin123") {
       window.location.href = "../administrador/index.html";
-
+      
       // Credenciales del usuario residente
     } else if (usuario === "usuario@gmail.com" && contrasena === "usuario123") {
       window.location.href = "../residente/index.html";
