@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="contenido-configuracion">
+        <div class="tarjeta-config">
+            <h3>Modo Oscuro</h3>
+            <p>Cambia el aspecto visual del sistema.</p>
+            <button id="btn-tema-oscuro" class="boton-config">
+                <img src="../images/icons/dark.png" alt="Luna">
+                <span>Activar / Desactivar</span>
+            </button>
+        </div>
+        <div class="tarjeta-config">
+            <h3>Información de Perfil</h3>
+            <p>Actualiza tu numero telefonico.</p>
+            <div class="contenedor-input">
+                <form id="form-guardar-nombre" class="grupo-input">
+
+                    <input type="text" id="nuevo-nombre" name="nuevo-nombre" minlength="1" maxlength="9" required
+                        placeholder="Escribe tu numero...">
+                    <button id="btn-guardar-nombre" class="boton-accion" type="submit">Guardar</button>
+                </form>
+            </div>
+        </div>
+        <div class="tarjeta-config">
+            <h3>Foto de Perfil</h3>
+            <p>Selecciona una imagen desde tu dispositivo.</p>
+            <div class="grupo-input">
+                <input type="file" id="input-archivo-foto" accept="image/*" style="display: none;">
+                <button id="btn-seleccionar-foto" class="boton-config">Selecciona</button>
+                <button id="btn-guardar-foto" class="boton-accion">Guardar</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

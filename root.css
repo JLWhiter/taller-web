@@ -7,6 +7,20 @@
 
 :root {
 
+  /* ESCALA TIPOGRÁFICA (Base 16px) */
+  --font-xs: 0.75rem;
+  /* 12px  - Textos secundarios / Datos del perfil */
+  --font-sm: 0.875rem;
+  /* 14px  - Texto de botones / Subtítulos de logo */
+  --font-base: 1rem;
+  /* 16px  - Títulos de botones / Texto base */
+  --font-md: 1.125rem;
+  /* 18px  - Título del condominio (h2) */
+  --font-lg: 1.5rem;
+  /* 24px  - Títulos medianos */
+  --font-xl: 1.875rem;
+  /* 30px  - Título de sección principal (h1) */
+
   /* ── COLORES PRINCIPALES ── */
   --color-sidebar: #1A1A18;
   /* grafito oscuro (mismo que hero) */
@@ -71,32 +85,32 @@
 
 /* ===== MODO OSCURO GLOBAL ===== */
 body.tema-oscuro {
-    background-image: url('images/fondo_oscuro.avif');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+  background-image: url('images/fondo_oscuro.avif');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 
-    /* Sobreescribimos solo las variables necesarias */
-    --color-bg: transparent;
-    --color-surface: #1e1e1c;
-    --color-surface-muted: #2a2926;
+  /* Sobreescribimos solo las variables necesarias */
+  --color-bg: transparent;
+  --color-surface: #1e1e1c;
+  --color-surface-muted: #2a2926;
 
-    --color-text-1: #F0EDE8;
-    --color-text-2: #A8A49F;
-    --color-text-3: #6A6660;
+  --color-text-1: #F0EDE8;
+  --color-text-2: #A8A49F;
+  --color-text-3: #6A6660;
 
-    --color-borde-claro: rgba(255, 255, 255, 0.08);
-    --color-borde-hover: #9C8F7B;
+  --color-borde-claro: rgba(255, 255, 255, 0.08);
+  --color-borde-hover: #9C8F7B;
 
-    --color-accent-bg: rgba(124, 111, 91, 0.15);
+  --color-accent-bg: rgba(124, 111, 91, 0.15);
 
-    --color-fondo-header: rgba(20, 20, 18, 0.85);
-    --color-fondo-modal: #1e1e1c;
-    --color-fondo-info: rgba(255, 255, 255, 0.05);
-    --color-fondo-input: rgba(255, 255, 255, 0.06);
-    --color-fondo-card: rgba(30, 30, 28, 0.95);
+  --color-fondo-header: rgba(20, 20, 18, 0.85);
+  --color-fondo-modal: #1e1e1c;
+  --color-fondo-info: rgba(255, 255, 255, 0.05);
+  --color-fondo-input: rgba(255, 255, 255, 0.06);
+  --color-fondo-card: rgba(30, 30, 28, 0.95);
 
-    --color-success-bg: rgba(20, 80, 45, 0.3);
-    --color-success-text: #86efac;
-    --color-success-border: rgba(40, 120, 70, 0.4);
+  --color-success-bg: rgba(20, 80, 45, 0.3);
+  --color-success-text: #86efac;
+  --color-success-border: rgba(40, 120, 70, 0.4);
 }

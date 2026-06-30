@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="areas-comunes">
+        <div class="panel-filtros">
+            <div class="buscador">
+                <span class="material-symbols-outlined">search</span>
+                <input type="search" placeholder="Buscar..." />
+                <button class="btn-icono" aria-label="Editar">
+                    <span class="material-symbols-outlined">edit</span>
+                </button>
+                <button class="btn-icono" aria-label="Ver más">
+                    <span class="material-symbols-outlined">visibility</span>
+                </button>
+            </div>
+            <div class="botones">
+                <button data-area="loza">
+                    <span class="material-symbols-outlined">sports_soccer</span>
+                    Loza deportiva
+                </button>
+                <button>
+                    <span class="material-symbols-outlined">home_work</span>
+                    Casa club
+                </button>
+                <button>
+                    <span class="material-symbols-outlined">outdoor_grill</span>
+                    Zona de parrillas
+                </button>
+            </div>
+        </div>
+        <div class="detalle-reservas">
+            <div class="detalle-header">
+                <button class="detalle-flecha" id="detalle-dia-anterior" aria-label="Día anterior">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                </button>
+                <span class="detalle-fecha" id="detalle-fecha-actual"></span>
+                <button class="detalle-flecha" id="detalle-dia-siguiente" aria-label="Día siguiente">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                </button>
+            </div>
+            <div class="detalle-reservas-lista" id="detalle-reservas-lista"></div>
+        </div>
+    </div>
+    <div class="calendario">
+        <div class="calendario-header">
+            <div class="calendario-nav">
+                <button class="cal-flecha" id="mes-anterior" aria-label="Mes anterior">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                </button>
+
+                <h2 class="cal-titulo" id="titulo-mes-actual"></h2>
+
+                <button class="cal-flecha" id="mes-siguiente" aria-label="Mes siguiente">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                </button>
+            </div>
+            <div class="cal-filtro-wrapper">
+                <button class="cal-filtro" id="boton-filtro">
+                    <span class="material-symbols-outlined">filter_list</span>
+                    <span class="filtro-texto">Filtro</span>
+                </button>
+                <div class="filtro-dropdown" id="filtro-dropdown"></div>
+            </div>
+            <button class="cal-hoy" id="boton-hoy">
+                <span class="material-symbols-outlined">today</span>
+                <span class="cal-hoy-texto">Hoy</span>
+            </button>
+        </div>
+
+        <div class="calendario-dias-semana">
+            <div>Dom</div>
+            <div>Lun</div>
+            <div>Mar</div>
+            <div>Mié</div>
+            <div>Jue</div>
+            <div>Vie</div>
+            <div>Sáb</div>
+        </div>
+
+        <div class="calendario-grid" id="calendario-grid">
+        </div>
+    </div>
+
+    <!--MODALES-->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="modal-indicador-pasos" id="modal-indicador-pasos"></div>
+                <div class="modal-header-texto">
+                    <h2 class="modal-titulo" id="modal-titulo"></h2>
+                    <p class="modal-subtitulo" id="modal-subtitulo"></p>
+                </div>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+            <div class="modal-footer">
+                <button class="modal-btn-sec" id="modal-btn-anterior">Cancelar</button>
+                <div style="display: flex; gap: 8px;">
+                    <button class="modal-btn-pri" id="modal-btn-siguiente">Siguiente →</button>
+                    <button class="modal-btn-pri" id="modal-btn-guardar" style="display:none;">Guardar reserva</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
