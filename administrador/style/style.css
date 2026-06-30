@@ -726,51 +726,188 @@ main {
     position: fixed;
     top: 20px;
     right: 20px;
-    width: 320px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    border: 1px solid #eee;
+    width: 340px;
+    background: var(--color-surface);
+    border-radius: var(--radio-grande);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    border: 1px solid var(--color-borde-claro);
     z-index: 1000;
+
+    /* Estado inicial: oculto hacia arriba */
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-12px);
     pointer-events: none;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
 
     &.visible {
         opacity: 1;
         transform: translateY(0);
         pointer-events: all;
     }
+}
 
-    h3 {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 14px;
-        font-weight: 700;
-        color: #1a1a18;
-        padding: 14px 16px 10px;
-        border-bottom: 1px solid #eee;
-        margin: 0;
+/* ── Encabezado: título + contador ── */
+.notif-header {
+    display: flex;                  /* Flexbox */
+    align-items: center;            /* centra verticalmente */
+    justify-content: space-between; /* título a la izq, contador a la der */
+    padding: 14px 16px 12px;
+    border-bottom: 1px solid var(--color-borde-claro);
+}
+
+.notif-header h3 {
+    display: flex;                  /* Flexbox para ícono + texto */
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-text-1);
+    margin: 0;
+
+    /* Ícono de Material Symbols */
+    span.material-symbols-outlined {
+        font-size: 18px;
+        color: var(--color-accent);
+    }
+}
+
+/* Contador rojo de notificaciones nuevas */
+.notif-contador {
+    font-size: 11px;
+    font-weight: 600;
+    color: white;
+    background: #e53e3e;
+    padding: 2px 8px;
+    border-radius: 99px;             /* píldora */
+}
+
+/* ── Lista ── */
+.notif-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* ── Cada notificación: Flexbox para avatar + texto ── */
+.notif-item {
+    display: flex;                  /* Flexbox */
+    align-items: flex-start;        /* alinea desde arriba */
+    gap: 12px;                      /* espacio entre avatar y texto */
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--color-borde-claro);
+    transition: background var(--transicion-normal);
+
+    /* Animación de entrada */
+    animation: notifEntrar 0.3s var(--ease) both;
+
+    &:last-child {
+        border-bottom: none;
     }
 
-    ul {
-        list-style: none;
-        li {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3px;
-            padding: 12px 16px;
-            font-size: 13px;
-            color: #1a1a18;
-            border-bottom: 1px solid #f0f0f0;
-            transition: background 0.2s ease;
+    &:hover {
+        background: var(--color-surface-muted);
+    }
 
-            &:last-child { border-bottom: none; }
-            &:hover { background: #f7f6f4; }
-            span { font-size: 11px; color: #999; }
+    /* Las leídas tienen fondo más apagado */
+    &.leida {
+        opacity: 0.6;
+    }
+}
+
+@keyframes notifEntrar {
+    from {
+        opacity: 0;
+        transform: translateX(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ── Avatar circular con puntito rojo ── */
+.notif-avatar {
+    position: relative;             /* necesario para el puntito */
+    flex-shrink: 0;                 /* que no se achique */
+}
+
+.notif-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;             /* convierte en círculo */
+    object-fit: cover;
+    border: 2px solid var(--color-borde-claro);
+    display: block;
+}
+
+/* Puntito rojo — position absolute encima del avatar */
+.notif-punto {
+    position: absolute;             /* se sale del flujo */
+    top: 0;
+    right: 0;
+    width: 11px;
+    height: 11px;
+    background-color: #e53e3e;
+    border-radius: 50%;             /* círculo */
+    border: 2px solid var(--color-surface); /* borde blanco para separarlo */
+}
+
+/* ── Texto: Grid para título y hora ── */
+.notif-texto {
+    display: grid;                  /* Grid */
+    grid-template-columns: 1fr;     /* una sola columna */
+    gap: 3px;
+    flex: 1;                        /* ocupa el espacio restante */
+    min-width: 0;                   /* evita desbordamiento */
+}
+
+.notif-texto p {
+    font-size: 13px;
+    color: var(--color-text-1);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.notif-texto span {
+    font-size: 11px;
+    color: var(--color-text-3);
+}
+
+/* ── Pie del panel ── */
+.notif-footer {
+    padding: 10px 16px;
+    border-top: 1px solid var(--color-borde-claro);
+    text-align: center;
+
+    span {
+        font-size: 12px;
+        color: var(--color-accent);
+        font-weight: 600;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
         }
+    }
+}
+
+/* ── Modo oscuro ── */
+body.tema-oscuro .panel-notificaciones {
+    background: var(--color-surface);
+    border-color: var(--color-borde-claro);
+
+    .notif-punto {
+        border-color: var(--color-surface);
+    }
+}
+
+/* ── Responsive: en celular ocupa todo el ancho ── */
+@media (max-width: 768px) {
+    .panel-notificaciones {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        width: auto;
     }
 }
 
