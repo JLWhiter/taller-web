@@ -331,11 +331,11 @@ document.querySelectorAll(".modal-close").forEach((btn) => {
 // funciones de configuracion
 function activarFuncionesConfiguracion() {
     // 1. MODO OSCURO
-    const btnOscuro = document.getElementById("btn-tema-oscuro"); // ← Actualizado en español
+    const btnOscuro = document.getElementById("btn-tema-oscuro");
     if (btnOscuro) {
         btnOscuro.addEventListener("click", () => {
-            document.body.classList.toggle("tema-oscuro"); // ← Clase actualizada en español
-            // Guardamos la preferencia en el navegador
+            document.body.classList.toggle("tema-oscuro");
+            
             localStorage.setItem("modoOscuro", document.body.classList.contains("tema-oscuro"));
         });
     }
