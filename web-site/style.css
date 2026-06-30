@@ -723,74 +723,179 @@ body {
     position: fixed;
     top: 20px;
     right: 20px;
-    width: 320px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    border: 1px solid #eee;
+    width: 340px;
+    background: var(--color-surface);
+    border-radius: var(--radio-grande);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    border: 1px solid var(--color-borde-claro);
     z-index: 1000;
 
-    /* Por defecto arranca oculto y desplazado un poco hacia arriba para el efecto de entrada */
+    /* Estado inicial: oculto */
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-12px);
     pointer-events: none;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
 }
 
-/* El estado activo se maneja inyectando esta clase desde JS */
 .panel-notificaciones.visible {
     opacity: 1;
     transform: translateY(0);
     pointer-events: all;
 }
 
-/* Header del panel: usamos flexbox para alinear el título y el icono */
-.panel-notificaciones h3 {
+/* ── Encabezado ── */
+.notif-header {
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: space-between;
+    padding: 14px 16px 12px;
+    border-bottom: 1px solid var(--color-borde-claro);
+}
+
+.notif-header h3 {
+    display: flex;
+    align-items: center;
+    gap: 6px;
     font-size: 14px;
     font-weight: 700;
-    color: #1a1a18;
-    padding: 14px 16px 10px;
-    border-bottom: 1px solid #eee;
+    color: var(--color-text-1);
     margin: 0;
 }
 
-.panel-notificaciones ul {
+.notif-header h3 span.material-symbols-outlined {
+    font-size: 18px;
+    color: var(--color-accent);
+}
+
+/* Contador de notificaciones nuevas */
+.notif-contador {
+    font-size: 11px;
+    font-weight: 600;
+    color: white;
+    background: #e53e3e;
+    padding: 2px 8px;
+    border-radius: 99px;
+}
+
+/* ── Lista ── */
+.notif-lista {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-/* Distribución interna de cada alerta usando Grid (texto arriba, metadata abajo) */
-.panel-notificaciones li {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3px;
+/* ── Cada ítem: Flexbox ── */
+.notif-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
     padding: 12px 16px;
-    font-size: 13px;
-    color: #1a1a18;
-    border-bottom: 1px solid #f0f0f0;
-    transition: background 0.2s ease;
+    border-bottom: 1px solid var(--color-borde-claro);
+    transition: background var(--transicion-normal);
+    animation: notifEntrar 0.3s ease both;
 }
 
-/* Quitamos el borde al último elemento de la lista */
-.panel-notificaciones li:last-child {
+.notif-item:last-child {
     border-bottom: none;
 }
 
-.panel-notificaciones li:hover {
-    background: #f7f6f4;
+.notif-item:hover {
+    background: var(--color-surface-muted);
 }
 
-/* Estilos para el timestamp o texto secundario de la notificación */
-.panel-notificaciones li span {
+/* Leídas: más apagadas */
+.notif-item.leida {
+    opacity: 0.6;
+}
+
+@keyframes notifEntrar {
+    from {
+        opacity: 0;
+        transform: translateX(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ── Avatar circular ── */
+.notif-avatar {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.notif-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-borde-claro);
+    display: block;
+}
+
+/* Puntito rojo encima del avatar */
+.notif-punto {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 11px;
+    height: 11px;
+    background-color: #e53e3e;
+    border-radius: 50%;
+    border: 2px solid var(--color-surface);
+}
+
+/* ── Texto: Grid ── */
+.notif-texto {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3px;
+    flex: 1;
+    min-width: 0;
+}
+
+.notif-texto p {
+    font-size: 13px;
+    color: var(--color-text-1);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.notif-texto span {
     font-size: 11px;
-    color: #999;
+    color: var(--color-text-3);
 }
 
-/* En mobile rompemos el ancho fijo y hacemos que abarque casi toda la pantalla */
+/* ── Pie ── */
+.notif-footer {
+    padding: 10px 16px;
+    border-top: 1px solid var(--color-borde-claro);
+    text-align: center;
+}
+
+.notif-footer span {
+    font-size: 12px;
+    color: var(--color-accent);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.notif-footer span:hover {
+    text-decoration: underline;
+}
+
+/* ── Modo oscuro ── */
+body.tema-oscuro .panel-notificaciones {
+    background: var(--color-surface);
+    border-color: var(--color-borde-claro);
+}
+
+body.tema-oscuro .notif-punto {
+    border-color: var(--color-surface);
+}
+
+/* ── Responsive ── */
 @media (max-width: 768px) {
     .panel-notificaciones {
         top: 10px;

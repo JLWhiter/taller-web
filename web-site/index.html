@@ -524,31 +524,75 @@
     </div>
   </div>
 
-  <!-- PANEL FLOTANTE DE NOTIFICACIONES DEL CLIENTE -->
-  <div class="panel-notificaciones" id="panel-notificaciones">
+ <!-- ══ PANEL DE NOTIFICACIONES — CLIENTE ══ -->
+<div class="panel-notificaciones" id="panel-notificaciones">
 
-    <h3>🔔 Mis Notificaciones</h3>
+    <!-- Encabezado con título y contador -->
+    <div class="notif-header">
+        <h3>
+            <span class="material-symbols-outlined">notifications</span>
+            Mis Notificaciones
+        </h3>
+        <span class="notif-contador">3 nuevas</span>
+    </div>
 
-    <ul>
-      <li>
-        ✅ Tu reserva #005 fue <strong>aprobada</strong>
-        <span>Loza Deportiva — Hoy 10:00 AM</span>
-      </li>
-      <li>
-        ⏰ Tu reserva vence <strong>mañana</strong>
-        <span>Casa Club — 26 Mayo, 15:00 PM</span>
-      </li>
-      <li>
-        🚫 La <strong>Loza Deportiva</strong> estará cerrada el sábado
-        <span>Por mantenimiento — Todo el día</span>
-      </li>
-      <li>
-        📋 Nueva norma de convivencia <strong>publicada</strong>
-        <span>Revisa el reglamento actualizado</span>
-      </li>
+    <ul class="notif-lista">
+
+        <!-- Notificación 1: nueva -->
+        <li class="notif-item">
+            <div class="notif-avatar">
+                <img src="../images/icons/Administrador.png" alt="Perfil" />
+                <span class="notif-punto"></span>
+            </div>
+            <div class="notif-texto">
+                <p>✅ Tu reserva <strong>#005</strong> en la Loza Deportiva fue aprobada</p>
+                <span>Hoy 10:00 AM</span>
+            </div>
+        </li>
+
+        <!-- Notificación 2: nueva -->
+        <li class="notif-item">
+            <div class="notif-avatar">
+                <img src="../images/icons/Administrador.png" alt="Perfil" />
+                <span class="notif-punto"></span>
+            </div>
+            <div class="notif-texto">
+                <p>⏰ Tu reserva en <strong>Casa Club</strong> vence mañana</p>
+                <span>1 Julio, 15:00 PM</span>
+            </div>
+        </li>
+
+        <!-- Notificación 3: nueva -->
+        <li class="notif-item">
+            <div class="notif-avatar">
+                <img src="../images/icons/Administrador.png" alt="Perfil" />
+                <span class="notif-punto"></span>
+            </div>
+            <div class="notif-texto">
+                <p>🚫 La <strong>Loza Deportiva</strong> estará cerrada el sábado por mantenimiento</p>
+                <span>Todo el día</span>
+            </div>
+        </li>
+
+        <!-- Notificación 4: ya vista -->
+        <li class="notif-item leida">
+            <div class="notif-avatar">
+                <img src="../images/icons/Administrador.png" alt="Perfil" />
+            </div>
+            <div class="notif-texto">
+                <p>📋 Nueva norma de convivencia <strong>publicada</strong></p>
+                <span>Revisa el reglamento actualizado</span>
+            </div>
+        </li>
+
     </ul>
 
-  </div>
+    <!-- Pie del panel -->
+    <div class="notif-footer">
+        <span>Ver todas las notificaciones</span>
+    </div>
+
+</div>
 
   <div id="sidebar-overlay"></div>
 
