@@ -579,7 +579,7 @@ const vistas = {
                     <p>Cambia el aspecto visual del sistema.</p>
 
                     <button id="btn-tema-oscuro" class="boton-config">
-                        <img src="images/icons/dark.png" alt="Luna">
+                        <img src="../images/icons/dark.png" alt="Luna">
                         <span>Activar / Desactivar</span>
                     </button>
                 </div>
