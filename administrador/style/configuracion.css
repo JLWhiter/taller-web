@@ -1,9 +1,17 @@
+/* ══════════════════════════════════════════════
+   VILLA SANTA CLARA — administrador/style/configuracion.css
+   Responsive del grid alineado con web-site
+   (auto-fit fluido en lugar de breakpoints fijos)
+══════════════════════════════════════════════ */
+
 .contenido-configuracion {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
-    padding: 15px;
-    height: 70%;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    /* align-items: start; */
 }
 
 .tarjeta-config {
@@ -14,8 +22,7 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    /* align-self: start;*/
-    height: 100%;
+    align-self: start;
     box-sizing: border-box;
 }
 
@@ -117,7 +124,6 @@
     width: 100%;
     height: 45px;
     box-sizing: border-box;
-    margin-top: auto;
 }
 
 /* ══════════════════════════════════════════════
@@ -170,11 +176,11 @@ body.tema-oscuro .grupo-input input:focus {
 }
 
 body.tema-oscuro .boton-accion {
-    background-color: var(--color-accent);
+    background-color: var(--color-accent) !important;
 }
 
 body.tema-oscuro .boton-accion:hover {
-    background-color: var(--color-accent-light);
+    background-color: var(--color-accent-light) !important;
 }
 
 /* ══════════════════════════════════════════════
@@ -222,6 +228,25 @@ body.tema-oscuro main header .perfil button img {
 
 body.tema-oscuro main header .perfil button:hover {
     background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.tema-oscuro #cerrar-sesion {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    color: #f0ede8 !important;
+}
+
+body.tema-oscuro #cerrar-sesion span {
+    color: #f0ede8 !important;
+}
+
+body.tema-oscuro #cerrar-sesion .material-symbols-outlined {
+    color: #f0ede8 !important;
+}
+
+body.tema-oscuro #cerrar-sesion:hover {
+    background-color: rgba(255, 255, 255, 0.14) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
 }
 
 /* ══════════════════════════════════════════════
@@ -472,16 +497,4 @@ body.tema-oscuro .info-detalles textarea:hover {
 body.tema-oscuro #btn-menu-movil,
 body.tema-oscuro #btn-menu-movil .material-symbols-outlined {
     color: #f0ede8 !important;
-}
-
-@media (max-width: 900px) {
-    .contenido-configuracion {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 600px) {
-    .contenido-configuracion {
-        grid-template-columns: 1fr;
-    }
 }

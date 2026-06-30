@@ -1,214 +1,235 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Villa Santa Clara</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="site-grid">
 
-    <!-- BARRA DE NAVEGACION -->
-    <header class="topnav site-header" id="barraNave">
-      <div class="brand">
-        <span class="brand-name">Villa Santa Clara</span>
-        <span class="brand-sep">|</span>
-        <span class="brand-sub">Condominio Residencial</span>
+  <!-- BARRA DE NAVEGACION -->
+  <nav id="navbar">
+    <div class="nav-contenedor">
+      <a href="#inicio" class="nav-logo">Villa Santa Clara</a>
+      <ul class="nav-menu">
+        <li><a href="#sobre">El condominio</a></li>
+        <li><a href="#areas">Áreas comunes</a></li>
+        <li><a href="#pasos">Cómo reservar</a></li>
+      </ul>
+      <button id="btn-abrir-login" class="btn btn-oscuro btn-pequeno">Iniciar sesión</button>
+    </div>
+  </nav>
+
+  <!-- SECCION HERO -->
+  <section id="inicio" class="hero">
+
+    <!-- IMAGEN DE FONDO DEL CONDOMINIO -->
+    <!-- Ruta: ../images/background.png -->
+    <img id="hero-imagen" src="../images/background.png" alt="Vista del condominio">
+
+    <div class="hero-capa"></div>
+    <div class="hero-brillo"></div>
+
+    <div class="hero-texto">
+      <p class="etiqueta animar">Condominio Residencial</p>
+      <h1 class="animar">Villa Santa Clara</h1>
+      <p class="hero-subtitulo animar">Reserva tus áreas comunes de forma rápida, sencilla y desde cualquier lugar.</p>
+      <a href="#sobre" class="btn btn-oscuro animar">Conocer más</a>
+
+      <div class="hero-chips animar">
+        <div class="chip">
+          <strong>4</strong>
+          <span>Áreas comunes</span>
+        </div>
+        <div class="chip-separador"></div>
+        <div class="chip">
+          <strong>150+</strong>
+          <span>Familias residentes</span>
+        </div>
+        <div class="chip-separador"></div>
+        <div class="chip">
+          <strong>24/7</strong>
+          <span>Acceso a tu cuenta</span>
+        </div>
       </div>
-      <nav>
-        <button class="nav-btn active" data-index="0">Inicio</button>
-        <button class="nav-btn" data-index="1">Áreas comunes</button>
-        <button class="nav-btn" data-index="2">Nosotros</button>
-        <button class="nav-btn" data-index="3">Cómo reservar</button>
-        <button class="nav-btn" data-index="4">Contacto</button>
-      </nav>
-      <a href="../login/login.html" class="btn-login">Iniciar sesión</a>
-    </header>
+    </div>
+  </section>
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <main class="site-main" id="main">
+  <!-- SECCION SOBRE EL CONDOMINIO -->
+  <section id="sobre" class="seccion fondo-crema">
+    <div class="encabezado animar">
+      <p class="etiqueta">Sobre el condominio</p>
+      <h2>Una comunidad pensada para vivir mejor</h2>
+      <p class="encabezado-descripcion">Villa Santa Clara es un condominio residencial ubicado en Lima, diseñado para que sus familias vivan con comodidad, seguridad y acceso a espacios compartidos de calidad.</p>
+    </div>
 
-      <!-- 0: INICIO -->
-      <section class="panel" id="panel-0">
-        <div class="panel-bg">
-          <img src="../images/background.png" alt="Condominio Villa Santa Clara"
-            onerror="this.style.display='none';document.getElementById('marcadorHero').style.display='flex'"/>
-          <div class="ph" id="marcadorHero"><span>hero.jpg</span></div>
-          <div class="overlay"></div>
-        </div>
-        <div class="panel-content center">
-          <p class="eyebrow reveal">Ate, Lima · Perú</p>
-          <h1 class="display reveal delay-1">Villa Santa Clara</h1>
-          <p class="subtitle reveal delay-2">Gestiona tus reservas de áreas comunes<br>de forma fácil y desde cualquier dispositivo.</p>
-          <button class="btn-ghost reveal delay-3" onclick="goTo(3)">Ver cómo reservar</button>
-        </div>
-        <div class="scroll-hint reveal delay-4">
-          <span>Desliza para explorar</span>
-          <div class="arrow-down"></div>
-        </div>
-      </section>
+    <!-- Cifras del condominio -->
+    <div class="grilla-cifras">
+      <div class="cifra animar">
+        <strong><span class="contador" data-hasta="150">0</span>+</strong>
+        <p>Familias residentes</p>
+      </div>
+      <div class="cifra animar">
+        <strong><span class="contador" data-hasta="4">0</span></strong>
+        <p>Áreas comunes</p>
+      </div>
+      <div class="cifra animar">
+        <strong><span class="contador" data-hasta="10">0</span>+</strong>
+        <p>Años de comunidad</p>
+      </div>
+      <div class="cifra animar">
+        <strong>24/7</strong>
+        <p>Acceso a tus reservas</p>
+      </div>
+    </div>
 
-      <!-- 1: AREAS COMUNES -->
-      <section class="panel" id="panel-1">
-        <div class="panel-header reveal">
-          <p class="eyebrow light">Espacios del condominio</p>
-          <h2 class="display-sm light">Áreas comunes</h2>
-        </div>
-        <div class="areas-row">
-          <div class="area reveal">
-            <div class="area-img">
-              <img src="../images/icons/loza.png" alt="Loza deportiva"
-                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-              <div class="ph"><span>loza.jpg</span></div>
-              <div class="area-tag">Reservable</div>
-            </div>
-            <div class="area-body">
-              <h3>Loza deportiva</h3>
-              <p>Cancha multiusos para fútbol, básquet y actividades al aire libre disponible todos los días.</p>
-            </div>
-          </div>
-          <div class="area reveal delay-1">
-            <div class="area-img">
-              <img src="../images/icons/casa_clup.png" alt="Casa club"
-                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-              <div class="ph"><span>casaclub.jpg</span></div>
-              <div class="area-tag">Reservable</div>
-            </div>
-            <div class="area-body">
-              <h3>Casa club</h3>
-              <p>Salón equipado para eventos, reuniones y celebraciones familiares con amplia capacidad.</p>
-            </div>
-          </div>
-          <div class="area reveal delay-2">
-            <div class="area-img">
-              <img src="../images/icons/parrillas.png" alt="Zona de parrilla"
-                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-              <div class="ph"><span>parrilla.jpg</span></div>
-              <div class="area-tag">Reservable</div>
-            </div>
-            <div class="area-body">
-              <h3>Zona de parrilla</h3>
-              <p>Piso equipado para asados y reuniones al aire libre en familia o con amigos.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+    <!-- Tarjetas de informacion -->
+    <div class="grilla-info">
+      <div class="tarjeta-info animar">
+        <div class="tarjeta-info-icono">🏢</div>
+        <h3>Administración transparente</h3>
+        <p>La junta directiva gestiona cada solicitud de reserva y notifica el estado directamente en tu cuenta.</p>
+      </div>
+      <div class="tarjeta-info animar">
+        <div class="tarjeta-info-icono">🔐</div>
+        <h3>Acceso seguro</h3>
+        <p>Cada residente tiene su propia cuenta con credenciales únicas para gestionar sus reservas y su cochera.</p>
+      </div>
+      <div class="tarjeta-info animar">
+        <div class="tarjeta-info-icono">🚗</div>
+        <h3>Gestión de cocheras</h3>
+        <p>Visualiza y administra tu cochera asignada desde el panel de residente sin necesidad de apersonarte.</p>
+      </div>
+    </div>
+  </section>
 
-      <!-- 2: NOSOTROS -->
-      <section class="panel split" id="panel-2">
-        <div class="split-img reveal">
-          <img src="../images/icons/nosotros.png" alt="Condominio"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-          <div class="ph"><span>nosotros.jpg</span></div>
-        </div>
-        <div class="split-text reveal delay-1">
-          <p class="eyebrow">Nuestra historia</p>
-          <h2 class="display-sm">Un condominio construido para durar</h2>
-          <p class="body-text">Inaugurado en 2010, Villa Santa Clara nació con la visión de ofrecer vivienda de calidad en Ate, Lima. Con 17 torres y 544 departamentos, ha crecido junto a sus residentes por más de una década.</p>
-          <p class="body-text" style="margin-top:1rem">En 2025 se completó su última remodelación, renovando espacios comunes y fortaleciendo la infraestructura del condominio.</p>
-          <div class="stats">
-            <div class="stat"><span class="num">17</span><span class="lbl">Torres</span></div>
-            <div class="stat"><span class="num">544</span><span class="lbl">Departamentos</span></div>
-            <div class="stat"><span class="num">150</span><span class="lbl">Estacionamientos</span></div>
-          </div>
-        </div>
-      </section>
+  <!-- SECCION AREAS COMUNES -->
+  <section id="areas" class="seccion fondo-blanco">
+    <div class="encabezado animar">
+      <p class="etiqueta">Áreas comunes</p>
+      <h2>Espacios para disfrutar en comunidad</h2>
+    </div>
 
-      <!-- 3: COMO RESERVAR -->
-      <section class="panel dark" id="panel-3">
-        <div class="panel-header reveal">
-          <p class="eyebrow bronze">Proceso de reserva</p>
-          <h2 class="display-sm light">¿Cómo reservar un área común?</h2>
-          <p class="subtitle muted">Solo necesitas tu cuenta de residente.</p>
-        </div>
-        <div class="steps-row">
-          <div class="step reveal">
-            <div class="step-img">
-              <img src="../images/icons/sesion.png" alt="Paso 1"
-                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-              <div class="ph dark"><span>paso1.jpg</span></div>
-            </div>
-            <div class="step-num">01</div>
-            <h3 class="step-title">Inicia sesión</h3>
-            <p class="step-desc">Ingresa con tu correo de residente y contraseña.</p>
-          </div>
-          <div class="step reveal delay-1">
-            <div class="step-img">
-              <img src="../images/icons/elegir.png" alt="Paso 2"
-                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-              <div class="ph dark"><span>paso2.jpg</span></div>
-            </div>
-            <div class="step-num">02</div>
-            <h3 class="step-title">Elige el área</h3>
-            <p class="step-desc">Selecciona el espacio que deseas reservar desde el panel.</p>
-          </div>
-          <div class="step reveal delay-2">
-            <div class="step-img">
-              <img src="../images/icons/fecha.png" alt="Paso 3"
-                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-              <div class="ph dark"><span>paso3.jpg</span></div>
-            </div>
-            <div class="step-num">03</div>
-            <h3 class="step-title">Elige fecha y hora</h3>
-            <p class="step-desc">Consulta disponibilidad y escoge el horario que prefieras.</p>
-          </div>
-          <div class="step reveal delay-3">
-            <div class="step-img">
-              <img src="../images/icons/confirmacion.png" alt="Paso 4"
-                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-              <div class="ph dark"><span>paso4.jpg</span></div>
-            </div>
-            <div class="step-num">04</div>
-            <h3 class="step-title">Confirma</h3>
-            <p class="step-desc">Revisa los detalles y confirma. Recibirás una notificación.</p>
-          </div>
-        </div>
-        <div class="cta-row reveal delay-4">
-          <span class="cta-text">¿Listo para reservar?</span>
-          <a href="../login/login.html" class="btn-bronze">Iniciar sesión</a>
-        </div>
-      </section>
+    <div class="grilla-areas">
 
-      <!-- 4: CONTACTO -->
-      <section class="panel cream" id="panel-4">
-        <div class="panel-header reveal">
-          <p class="eyebrow">Escríbenos</p>
-          <h2 class="display-sm">Contacto</h2>
+      <article class="tarjeta-area animar">
+        <div class="tarjeta-area-imagen">
+          <img src="../images/icons/loza.png" alt="Losa deportiva">
         </div>
-        <div class="contact-row">
-          <div class="contact-card reveal">
-            <span class="c-label">Dirección</span>
-            <span class="c-val">Av. Nicolás Ayllón 7548<br>Ate, Lima — Perú</span>
-          </div>
-          <div class="contact-card reveal delay-1">
-            <span class="c-label">Teléfono</span>
-            <span class="c-val">+51 1 234 5678</span>
-          </div>
-          <div class="contact-card reveal delay-2">
-            <span class="c-label">Correo electrónico</span>
-            <span class="c-val">info@villasantaclara.com</span>
-          </div>
+        <div class="tarjeta-area-cuerpo">
+          <span class="area-etiqueta">Deporte</span>
+          <h3>Losa Deportiva</h3>
+          <p>Cancha techada para fútbol, vóley y básquet. Espacio amplio para que los residentes practiquen deporte en comunidad.</p>
         </div>
-        <footer class="foot">
-          <span>© 2026 Villa Santa Clara · Sistema de Gestión de Reservas</span>
-          <a href="../login/login.html">Acceso para residentes</a>
-        </footer>
-      </section>
+      </article>
 
-    </main>
-  </div>
+      <article class="tarjeta-area animar">
+        <div class="tarjeta-area-imagen">
+          <img src="../images/icons/parrillas.png" alt="Zona de parrillas">
+        </div>
+        <div class="tarjeta-area-cuerpo">
+          <span class="area-etiqueta">Reuniones</span>
+          <h3>Parrillas</h3>
+          <p>Zona techada con parrillas fijas, mesas y bancas. Ideal para reuniones familiares y encuentros entre vecinos.</p>
+        </div>
+      </article>
 
-  <!-- PUNTOS INDICADORES -->
-  <div class="dots" id="contenedorPuntos">
-    <button class="dot active" data-index="0"></button>
-    <button class="dot" data-index="1"></button>
-    <button class="dot" data-index="2"></button>
-    <button class="dot" data-index="3"></button>
-    <button class="dot" data-index="4"></button>
+      <article class="tarjeta-area animar">
+        <div class="tarjeta-area-imagen">
+          <img src="../images/icons/casa_clup.png" alt="Local de fiestas">
+        </div>
+        <div class="tarjeta-area-cuerpo">
+          <span class="area-etiqueta">Celebraciones</span>
+          <h3>Local de Fiestas</h3>
+          <p>Salón amplio y techado para eventos, cumpleaños y celebraciones familiares dentro del condominio.</p>
+        </div>
+      </article>
+
+      <article class="tarjeta-area animar">
+        <div class="tarjeta-area-imagen">
+          <img src="../images/icons/cocherainicio.png" alt="Área de cochera">
+        </div>
+        <div class="tarjeta-area-cuerpo">
+          <span class="area-etiqueta">Transito</span>
+          <h3>Área de cochera</h3>
+          <p>Cochera privada con espacios numerados y amplias zonas de maniobra. Diseñada para garantizar el resguardo cómodo y seguro de tu vehículo dentro del condominio.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- SECCION PASOS PARA RESERVAR -->
+  <section id="pasos" class="seccion fondo-crema">
+    <div class="encabezado animar">
+      <p class="etiqueta">Cómo reservar</p>
+      <h2>Cuatro pasos y tu área está lista</h2>
+    </div>
+
+    <ol class="lista-pasos">
+
+      <li class="paso animar">
+        <span class="paso-numero">01</span>
+        <h3>Inicia sesión</h3>
+        <p>Ingresa con tu cuenta de residente o regístrate si es la primera vez.</p>
+      </li>
+
+      <li class="paso animar">
+
+        <span class="paso-numero">02</span>
+        <h3>Elige el área</h3>
+        <p>Selecciona el área común que deseas reservar desde tu panel de residente.</p>
+      </li>
+
+      <li class="paso animar">
+        <span class="paso-numero">03</span>
+        <h3>Confirma tu reserva</h3>
+        <p>Revisa los detalles de tu solicitud y envíala para que la junta directiva la evalúe.</p>
+      </li>
+
+      <li class="paso animar">
+        <span class="paso-numero">04</span>
+        <h3>Espera la verificación</h3>
+        <p>Recibirás la confirmación o rechazo de tu reserva directamente en tu cuenta.</p>
+      </li>
+
+    </ol>
+  </section>
+
+  <!-- SECCION CIERRE -->
+  <section class="seccion fondo-carbon">
+    <div class="cierre-brillo"></div>
+    <div class="cierre-texto animar">
+      <h2>Tu hogar, tu comunidad, tu espacio.</h2>
+      <p>Villa Santa Clara es el lugar donde tu familia crece, celebra y convive. Ingresa a tu cuenta y empieza a reservar.</p>
+      <button id="btn-abrir-login-cierre" class="btn btn-borde">Iniciar sesión</button>
+    </div>
+  </section>
+
+  <!-- MODAL DE INICIO DE SESION -->
+  <div id="modal-fondo" class="modal-fondo">
+    <div class="modal">
+      <button id="btn-cerrar-modal" class="modal-cerrar">✕</button>
+      <p class="etiqueta">Bienvenido de nuevo</p>
+      <h2 class="modal-titulo">Iniciar sesión</h2>
+      <p class="modal-subtitulo">Accede para administrar tus reservas y cochera.</p>
+      <form id="form-login" class="form-login">
+        <label class="campo">
+          <span>Correo o usuario</span>
+          <input type="text" name="usuario" placeholder="nombre@correo.com" required>
+        </label>
+        <label class="campo">
+          <span>Contraseña</span>
+          <input type="password" name="contrasena" placeholder="••••••••" required>
+        </label>
+        <a href="#" class="link-olvide">¿Olvidaste tu contraseña?</a>
+        <button type="submit" class="btn btn-oscuro btn-login-enviar">Ingresar</button>
+      </form>
+    </div>
   </div>
 
   <script src="main.js"></script>

@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="root.css">
+    <link rel="stylesheet" href="../root.css">
+    <!-- <link rel="stylesheet" href="root.css"> -->
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/gestion-usuario.css">
     <link rel="stylesheet" href="style/reserva-calendario.css">
@@ -152,7 +153,7 @@
 
                 </div>
 
-                <button id="cerrar-sesion" onclick="window.location.href='../login/login.html'">
+                <button id="cerrar-sesion" onclick="window.location.href='../inicio-web/index.html  '">
 
                     <span class="material-symbols-outlined">
                         logout
@@ -169,7 +170,86 @@
         <div id="vista"></div>
 
     </main>
+    <!-- ══ PANEL DE NOTIFICACIONES — ADMINISTRADOR ══ -->
+<div class="panel-notificaciones" id="panel-notificaciones">
 
+    <!-- Encabezado con título y contador -->
+    <div class="notif-header">
+        <h3>
+            <span class="material-symbols-outlined">notifications</span>
+            Notificaciones
+        </h3>
+        <span class="notif-contador">3 nuevas</span>
+    </div>
+
+    <ul class="notif-lista">
+
+        <!-- Notificación 1: nueva (tiene puntito rojo) -->
+        <li class="notif-item">
+            <div class="notif-avatar">
+                <img src="../images/icons/Hombre.png" alt="Carlos" />
+                <span class="notif-punto"></span>
+            </div>
+            <div class="notif-texto">
+                <p><strong>Carlos Ramírez</strong> solicitó la Loza Deportiva</p>
+                <span>Hace 5 min</span>
+            </div>
+        </li>
+
+        <!-- Notificación 2: nueva (tiene puntito rojo) -->
+        <li class="notif-item">
+            <div class="notif-avatar">
+                <img src="../images/icons/Hombre.png" alt="Pedro" />
+                <span class="notif-punto"></span>
+            </div>
+            <div class="notif-texto">
+                <p>Reserva #003 de <strong>Pedro Castillo</strong> vence hoy a las 14:00</p>
+                <span>Hace 20 min</span>
+            </div>
+        </li>
+
+        <!-- Notificación 3: nueva (tiene puntito rojo) -->
+        <li class="notif-item">
+            <div class="notif-avatar">
+                <img src="../images/icons/Mujer.png" alt="Ana" />
+                <span class="notif-punto"></span>
+            </div>
+            <div class="notif-texto">
+                <p><strong>Ana Beltrán</strong> se unió como Residente</p>
+                <span>Hace 1 hora</span>
+            </div>
+        </li>
+
+        <!-- Notificación 4: ya vista (sin puntito) -->
+        <li class="notif-item leida">
+            <div class="notif-avatar">
+                <img src="../images/icons/Hombre.png" alt="Diego" />
+            </div>
+            <div class="notif-texto">
+                <p>Aprobaste la reserva <strong>#008</strong> de Diego Navarro</p>
+                <span>Hace 3 horas</span>
+            </div>
+        </li>
+
+        <!-- Notificación 5: ya vista (sin puntito) -->
+        <li class="notif-item leida">
+            <div class="notif-avatar">
+                <img src="../images/icons/Mujer.png" alt="Lucía" />
+            </div>
+            <div class="notif-texto">
+                <p><strong>Lucía Fernández</strong> canceló su reserva de Zona Parrilla</p>
+                <span>Ayer</span>
+            </div>
+        </li>
+
+    </ul>
+
+    <!-- Pie del panel -->
+    <div class="notif-footer">
+        <span>Ver todas las notificaciones</span>
+    </div>
+
+</div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script src="main.js"></script>

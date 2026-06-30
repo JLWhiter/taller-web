@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!--Google Icons-->
+
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+  <!--CSS-->
+
+  <link rel="stylesheet" href="../root.css" />
+  <link rel="stylesheet" href="css-contenidos/panel-principal.css" />
+  <link rel="stylesheet" href="css-contenidos/informacion.css" />
+  <link rel="stylesheet" href="css-contenidos/cochera.css">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css-contenidos/configuracion.css">
+
+  <!--Tipogafía: Google Sans Flex-->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap"
+    rel="stylesheet">
+
+  <title>[NE] - Sistema de Gestión de Reservas</title>
+</head>
+
+<body>
+  <aside id="sidebar">
+    <div class="logo">
+      <hgroup>
+        <h2>Villa Santa Clara</h2>
+        <p>Gestión de Reservas</p>
+      </hgroup>
+
+      <!--Icon: Menu-->
+
+      <button id="btn-minimizar">
+        <span class="material-symbols-outlined">
+          menu
+        </span>
+      </button>
+    </div>
+
+    <nav>
+      <button data-seccion="panel-principal">
+
+        <!--Icon: dashboard-->
+
+        <span class="material-symbols-outlined">
+          space_dashboard
+        </span>
+
+        <span>Panel Principal</span>
+      </button>
+      <button data-seccion="cochera">
+
+        <!--Icon: car-->
+
+        <span class="material-symbols-outlined">
+          directions_car
+        </span>
+
+        <span>Cochera</span>
+      </button>
+      <button data-seccion="informacion">
+
+        <!--Icon: info-->
+
+        <span class="material-symbols-outlined">
+          info
+        </span>
+
+        <span>Información</span>
+      </button>
+    </nav>
+    <footer>
+      <button id="btn-notificaciones">
+        <!--Icon: notificacion-->
+        <span class="material-symbols-outlined">
+          notifications
+        </span>
+        <span>Notificaciones</span>
+      </button>
+
+      <button data-seccion="configuracion">
+
+        <!--Icon: configuracion-->
+
+        <span class="material-symbols-outlined">
+          settings
+        </span>
+
+        <span>Configuración</span>
+      </button>
+    </footer>
+  </aside>
+
+  <main>
+    <header>
+      <hgroup>
+        <button id="btn-menu-movil">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+        <h1 id="titulo-seccion">Panel Principal</h1>
+        <p id="subtitulo-seccion">Gestiona tus reservas de áreas comunes</p>
+      </hgroup>
+      <div class="perfil">
+        <p class="rol">Residente</p>
+        <div class="usuario">
+          <div class="avatar">
+            <span>E</span>
+          </div>
+          <div class="informacion">
+            <p class="nombre-apellido">Emanuel Espinoza</p>
+            <p class="torre-departamento">Torre B - Dpto 205</p>
+          </div>
+        </div>
+        <button id="cerrar-sesion">
+          <img src="../images/icons/salida-dark.png" alt="Cerrar Sesión" />
+          <span>Cerrar Sesión</span>
+        </button>
+      </div>
+    </header>
+    <div id="vista"></div>
+  </main>
+
+  <!--Modal: Loza deportiva-->
+
+  <div class="modal-overlay" id="overlay-loza">
+    <div class="modal">
+      <header>
+        <h2>Loza Deportiva</h2>
+        <button class="modal-close">✕</button>
+      </header>
+      <div id="modal-content">
+        <div class="detalles-reserva">
+          <h3 class="detalles">Detalles de la reservación</h3>
+          <div class="informacion">
+            <div class="datos-personales">
+              <div class="usuario">
+                <img src="../images/icons/persona.png" alt="Usuario" />
+                <p>Alberto Jupiter Apaza</p>
+              </div>
+              <div class="vivienda">
+                <img src="../images/icons/hogar.png" alt="Vivienda" />
+                <p>Torre B - 205</p>
+              </div>
+            </div>
+            <div class="datos-reserva">
+              <div class="fecha-reserva">
+                <img src="../images/icons/calendario.png" alt="Calendario" />
+                <p>29 de abril del 2026</p>
+              </div>
+              <div class="horario-reserva">
+                <img src="../images/icons/reloj.png" alt="Reloj" />
+                <p>8:00 - 10:00 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fecha">
+          <h3>Fecha de la reserva</h3>
+          <div class="botones">
+            <button class="hoy" value="Hoy">Hoy</button>
+            <button class="personalizado" value="Personalizado">Personalizado</button>
+          </div>
+        </div>
+        <div class="horario">
+          <h3>Horario</h3>
+          <div class="seleccion-rango-horario">
+            <button class="inicio" value="Hora de Inicio">Hora de Inicio</button>
+            <button class="fin" value="Hora de Finalización">Hora de Finalización</button>
+          </div>
+        </div>
+        <div class="info-detalles">
+          <h3>Información Adicional</h3>
+          <textarea placeholder="Agrega información adicional sobre tu reserva o motivo de la cita."></textarea>
+        </div>
+      </div>
+      <button class="btn-confirmar-reserva">Confirmar Reserva</button>
+    </div>
+  </div>
+
+  <!--Modal: Casa Club-->
+
+  <div class="modal-overlay" id="overlay-casa">
+    <div class="modal">
+      <header>
+        <h2>Casa Club</h2>
+        <button class="modal-close">✕</button>
+      </header>
+      <div id="modal-content">
+        <div class="detalles-reserva">
+          <h3 class="detalles">Detalles de la reservación</h3>
+          <div class="informacion">
+            <div class="datos-personales">
+              <div class="usuario">
+                <img src="../images/icons/persona.png" alt="Usuario" />
+                <p>Alberto Jupiter Apaza</p>
+              </div>
+              <div class="vivienda">
+                <img src="../images/icons/hogar.png" alt="Vivienda" />
+                <p>Torre B - 205</p>
+              </div>
+            </div>
+            <div class="datos-reserva">
+              <div class="fecha-reserva">
+                <img src="../images/icons/calendario.png" alt="Calendario" />
+                <p>29 de abril del 2026</p>
+              </div>
+              <div class="horario-reserva">
+                <img src="../images/icons/reloj.png" alt="Reloj" />
+                <p>8:00 - 10:00 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fecha">
+          <h3>Fecha de la reserva</h3>
+          <div class="botones">
+            <button class="hoy" value="Hoy">Hoy</button>
+            <button class="personalizado" value="Personalizado">Personalizado</button>
+          </div>
+        </div>
+        <div class="horario">
+          <h3>Horario</h3>
+          <div class="seleccion-rango-horario">
+            <button class="inicio" value="Hora de Inicio">Hora de Inicio</button>
+          </div>
+        </div>
+        <div class="info-detalles">
+          <h3>Información Adicional</h3>
+          <textarea placeholder="Agrega información adicional sobre tu reserva o motivo de la cita."></textarea>
+        </div>
+      </div>
+      <button class="btn-confirmar-reserva">Confirmar Reserva</button>
+    </div>
+  </div>
+
+  <!--Modal: Zona Parrilla-->
+
+  <div class="modal-overlay" id="overlay-parrilla">
+    <div class="modal">
+      <header>
+        <h2>Zona de Parrilla</h2>
+        <button class="modal-close">✕</button>
+      </header>
+      <div id="modal-content">
+        <div class="detalles-reserva">
+          <h3 class="detalles">Detalles de la reservación</h3>
+          <div class="informacion">
+            <div class="datos-personales">
+              <div class="usuario">
+                <img src="../images/icons/persona.png" alt="Usuario" />
+                <p>Alberto Jupiter Apaza</p>
+              </div>
+              <div class="vivienda">
+                <img src="../images/icons/hogar.png" alt="Vivienda" />
+                <p>Torre B - 205</p>
+              </div>
+            </div>
+            <div class="datos-reserva">
+              <div class="fecha-reserva">
+                <img src="../images/icons/calendario.png" alt="Calendario" />
+                <p>29 de abril del 2026</p>
+              </div>
+              <div class="horario-reserva">
+                <img src="../images/icons/reloj.png" alt="Reloj" />
+                <p>8:00 - 10:00 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fecha">
+          <h3>Fecha de la reserva</h3>
+          <div class="botones">
+            <button class="hoy" value="Hoy">Hoy</button>
+            <button class="personalizado" value="Personalizado">Personalizado</button>
+          </div>
+        </div>
+        <div class="horario">
+          <h3>Horario</h3>
+          <div class="seleccion-rango-horario">
+            <button class="inicio" value="Hora de Inicio">Hora de Inicio</button>
+            <button class="fin" value="Hora de Finalización">Hora de Finalización</button>
+          </div>
+        </div>
+        <div class="info-detalles">
+          <h3>Información Adicional</h3>
+          <textarea placeholder="Agrega información adicional sobre tu reserva o motivo de la cita."></textarea>
+        </div>
+      </div>
+      <button class="btn-confirmar-reserva">Confirmar Reserva</button>
+    </div>
+  </div>
+
+  <!--Modal: Cita con la Junta Directiva-->
+
+  <div class="modal-overlay" id="overlay-jd">
+    <div class="modal">
+      <header>
+        <h2>Junta Directiva</h2>
+        <button class="modal-close">✕</button>
+      </header>
+      <div id="modal-content">
+        <div class="detalles-reserva">
+          <h3 class="detalles">Detalles de la reservación</h3>
+          <div class="informacion">
+            <div class="datos-personales">
+              <div class="usuario">
+                <img src="../images/icons/persona.png" alt="Usuario" />
+                <p>Alberto Jupiter Apaza</p>
+              </div>
+              <div class="vivienda">
+                <img src="../images/icons/hogar.png" alt="Vivienda" />
+                <p>Torre B - 205</p>
+              </div>
+            </div>
+            <div class="datos-reserva">
+              <div class="fecha-reserva">
+                <img src="../images/icons/calendario.png" alt="Calendario" />
+                <p>29 de abril del 2026</p>
+              </div>
+              <div class="horario-reserva">
+                <img src="../images/icons/reloj.png" alt="Reloj" />
+                <p>8:00 - 10:00 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fecha">
+          <h3>Fecha de la reserva</h3>
+          <div class="botones">
+            <button class="hoy" value="Hoy">Hoy</button>
+            <button class="personalizado" value="Personalizado">Personalizado</button>
+          </div>
+        </div>
+        <div class="horario">
+          <h3>Horario</h3>
+          <div class="seleccion-rango-horario">
+            <button class="inicio" value="Hora de Inicio">Hora de la Cita</button>
+          </div>
+        </div>
+        <div class="info-detalles">
+          <h3>Información Adicional</h3>
+          <textarea placeholder="Agrega información adicional sobre tu reserva o motivo de la cita."></textarea>
+        </div>
+      </div>
+      <button class="btn-confirmar-reserva">Confirmar Reserva</button>
+    </div>
+  </div>
+
+  <!--Modal: Reservar Cochera-->
+
+  <div class="modal-overlay" id="overlay-cochera">
+    <div class="modal">
+      <header>
+        <h2>Reservar Cochera</h2>
+        <button class="modal-close">✕</button>
+      </header>
+      <div id="modal-content">
+        <div class="detalles-reserva">
+          <h3 class="detalles">Detalles de la reservación</h3>
+          <div class="informacion">
+            <div class="datos-personales">
+              <div class="usuario">
+                <img src="../images/icons/persona.png" alt="Usuario" />
+                <p>Emanuel Espinoza</p>
+              </div>
+              <div class="vivienda">
+                <img src="../images/icons/hogar.png" alt="Vivienda" />
+                <p>Torre B - 205</p>
+              </div>
+            </div>
+            <div class="datos-reserva">
+              <div class="fecha-reserva">
+                <img src="../images/icons/calendario.png" alt="Calendario" />
+                <p>30 de abril del 2026</p>
+              </div>
+              <div class="horario-reserva">
+                <img src="../images/icons/reloj.png" alt="Reloj" />
+                <p>Por definir</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fecha">
+          <h3>Fecha de reserva</h3>
+          <div class="botones">
+            <button class="hoy" value="Hoy">Hoy</button>
+            <button class="personalizado" value="Personalizado">Personalizado</button>
+          </div>
+        </div>
+        <div class="horario">
+          <h3>Horario</h3>
+          <div class="seleccion-rango-horario">
+            <button class="inicio" value="Hora de Inicio">Hora de Inicio</button>
+            <button class="fin" value="Hora de Finalización">Hora de Finalización</button>
+          </div>
+        </div>
+        <div class="info-detalles">
+          <h3>Información Adicional</h3>
+          <textarea placeholder="Indica el tipo de vehículo, placa u otro detalle relevante."></textarea>
+        </div>
+      </div>
+      <button class="btn-confirmar-reserva">Confirmar Reserva</button>
+    </div>
+  </div>
+
+  <!--Modal: Alquilar Cochera de Propietario-->
+
+  <div class="modal-overlay" id="overlay-alquilar-cochera">
+    <div class="modal">
+      <header>
+        <h2>Alquilar Cochera</h2>
+        <button class="modal-close">✕</button>
+      </header>
+      <div id="modal-content">
+        <div class="detalles-reserva">
+          <h3 class="detalles">Datos del solicitante</h3>
+          <div class="informacion">
+            <div class="datos-personales">
+              <div class="usuario">
+                <img src="../images/icons/persona.png" alt="Usuario" />
+                <p>Emanuel Espinoza</p>
+              </div>
+              <div class="vivienda">
+                <img src="../images/icons/hogar.png" alt="Vivienda" />
+                <p>Torre B - 205</p>
+              </div>
+            </div>
+            <div class="datos-reserva">
+              <div class="fecha-reserva">
+                <img src="../images/icons/calendario.png" alt="Calendario" />
+                <p>Contrato mensual</p>
+              </div>
+              <div class="horario-reserva">
+                <img src="../images/icons/reloj.png" alt="Reloj" />
+                <p>Acceso 24/7</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fecha">
+          <h3>Período de alquiler</h3>
+          <div class="botones">
+            <button class="hoy" value="1 mes">1 Mes</button>
+            <button class="personalizado" value="Personalizado">Personalizado</button>
+          </div>
+        </div>
+        <div class="horario">
+          <h3>Fecha de inicio</h3>
+          <div class="seleccion-rango-horario">
+            <button class="inicio" value="Fecha de Inicio">Seleccionar Fecha</button>
+          </div>
+        </div>
+        <div class="info-detalles">
+          <h3>Información Adicional</h3>
+          <textarea
+            placeholder="Indica el número de cochera de tu interés, tipo de vehículo y cualquier consulta."></textarea>
+        </div>
+      </div>
+      <button class="btn-confirmar-reserva">Enviar Solicitud</button>
+    </div>
+  </div>
+
+  <!--Modal: Publicar mi Cochera-->
+
+  <div class="modal-overlay" id="overlay-publicar-cochera">
+    <div class="modal">
+      <header>
+        <h2>Publicar mi Cochera</h2>
+        <button class="modal-close">✕</button>
+      </header>
+      <div id="modal-content">
+        <div class="detalles-reserva">
+          <h3 class="detalles">Datos del propietario</h3>
+          <div class="informacion">
+            <div class="datos-personales">
+              <div class="usuario">
+                <img src="../images/icons/persona.png" alt="Usuario" />
+                <p>Emanuel Espinoza</p>
+              </div>
+              <div class="vivienda">
+                <img src="../images/icons/hogar.png" alt="Vivienda" />
+                <p>Torre B - 205</p>
+              </div>
+            </div>
+            <div class="datos-reserva">
+              <div class="fecha-reserva">
+                <img src="../images/icons/calendario.png" alt="Calendario" />
+                <p>Alquiler mensual</p>
+              </div>
+              <div class="horario-reserva">
+                <img src="../images/icons/reloj.png" alt="Reloj" />
+                <p>Acceso 24/7</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fecha">
+          <h3>Período de disponibilidad</h3>
+          <div class="botones">
+            <button class="hoy" value="1 mes">1 Mes</button>
+            <button class="personalizado" value="Personalizado">Personalizado</button>
+          </div>
+        </div>
+        <div class="horario">
+          <h3>Fecha de inicio</h3>
+          <div class="seleccion-rango-horario">
+            <button class="inicio">Seleccionar Fecha</button>
+          </div>
+        </div>
+        <div class="info-detalles">
+          <h3>Información Adicional</h3>
+          <textarea placeholder="Indica el número de tu cochera, precio mensual y condiciones de uso."></textarea>
+        </div>
+      </div>
+      <button class="btn-confirmar-reserva">Publicar Cochera</button>
+    </div>
+  </div>
+
+ <!-- ══ PANEL DE NOTIFICACIONES — CLIENTE ══ -->
+<div class="panel-notificaciones" id="panel-notificaciones">
+
+    <!-- Encabezado con título y contador -->
+    <div class="notif-header">
+        <h3>
+            <span class="material-symbols-outlined">notifications</span>
+            Mis Notificaciones
+        </h3>
+        <span class="notif-contador">3 nuevas</span>
+    </div>
+
+    <ul class="notif-lista">
+
+        <!-- Notificación 1: nueva -->
+        <li class="notif-item">
+            <div class="notif-avatar">
+                <img src="../images/icons/Administrador.png" alt="Perfil" />
+                <span class="notif-punto"></span>
+            </div>
+            <div class="notif-texto">
+                <p>✅ Tu reserva <strong>#005</strong> en la Loza Deportiva fue aprobada</p>
+                <span>Hoy 10:00 AM</span>
+            </div>
+        </li>
+
+        <!-- Notificación 2: nueva -->
+        <li class="notif-item">
+            <div class="notif-avatar">
+                <img src="../images/icons/Administrador.png" alt="Perfil" />
+                <span class="notif-punto"></span>
+            </div>
+            <div class="notif-texto">
+                <p>⏰ Tu reserva en <strong>Casa Club</strong> vence mañana</p>
+                <span>1 Julio, 15:00 PM</span>
+            </div>
+        </li>
+
+        <!-- Notificación 3: nueva -->
+        <li class="notif-item">
+            <div class="notif-avatar">
+                <img src="../images/icons/Administrador.png" alt="Perfil" />
+                <span class="notif-punto"></span>
+            </div>
+            <div class="notif-texto">
+                <p>🚫 La <strong>Loza Deportiva</strong> estará cerrada el sábado por mantenimiento</p>
+                <span>Todo el día</span>
+            </div>
+        </li>
+
+        <!-- Notificación 4: ya vista -->
+        <li class="notif-item leida">
+            <div class="notif-avatar">
+                <img src="../images/icons/Administrador.png" alt="Perfil" />
+            </div>
+            <div class="notif-texto">
+                <p>📋 Nueva norma de convivencia <strong>publicada</strong></p>
+                <span>Revisa el reglamento actualizado</span>
+            </div>
+        </li>
+
+    </ul>
+
+    <!-- Pie del panel -->
+    <div class="notif-footer">
+        <span>Ver todas las notificaciones</span>
+    </div>
+
+</div>
+
+  <div id="sidebar-overlay"></div>
+
+  <script src="main.js"></script>
+</body>
+</html>
