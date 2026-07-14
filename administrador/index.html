@@ -19,6 +19,10 @@
         rel="stylesheet">
     <title>Página Administrativa</title>
     <script src="../validacion.js"></script>
+    <script>
+        // Bloquea el acceso a esta página si no se inició sesión como administrador
+        protegerPagina("administrador");
+    </script>
 </head>
 
 <body>
@@ -153,7 +157,7 @@
 
                 </div>
 
-                <button id="cerrar-sesion" onclick="window.location.href='../inicio-web/index.html  '">
+                <button id="cerrar-sesion" onclick="cerrarSesion(); window.location.href='../inicio-web/index.html'">
 
                     <span class="material-symbols-outlined">
                         logout

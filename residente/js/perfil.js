@@ -66,6 +66,7 @@ function iniciarCierreSesion(cerrarDropdown) {
     btnConfirmar.addEventListener("click", () => {
         btnConfirmar.textContent = "Cerrando sesión...";
         btnConfirmar.disabled = true;
+        window.cerrarSesion();
         setTimeout(() => {
             location.href = "../inicio-web/index.html";
         }, 700);
