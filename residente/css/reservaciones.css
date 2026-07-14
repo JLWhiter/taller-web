@@ -50,32 +50,37 @@
                 }
             }
 
-            .btn-icono {
-                width: 38px;
+            .btn-ver-todos {
                 height: 38px;
+                padding: 0 12px;
                 display: flex;
                 align-items: center;
-                justify-content: center;
-                border: 1px solid #d0d0d0;
+                gap: 6px;
+                border: 1px solid transparent;
                 border-radius: 8px;
-                background-color: white;
+                background-color: black;
                 cursor: pointer;
                 flex-shrink: 0;
                 box-sizing: border-box;
+                font-size: 0.8rem;
+                font-weight: 300;
+                color: white;
+                white-space: nowrap;
+                font-family: inherit;
                 transition: 0.2s ease;
 
                 .material-symbols-outlined {
                     position: static;
-                    font-size: 1.1rem;
-                    color: #555;
+                    font-size: 1.05rem;
+                    color: white;
                 }
 
                 &:hover {
-                    background-color: #f1f1f1;
+                    background-color: #1a1a1a;
                 }
 
                 &:active {
-                    transform: scale(0.9);
+                    transform: scale(0.96);
                 }
             }
 
@@ -122,7 +127,34 @@
                         background-color: rgba(217, 215, 215);
                         border-color: #b0b0b0;
                     }
+
+                    &:disabled {
+                        opacity: 0.55;
+                        cursor: not-allowed;
+                        pointer-events: none;
+                    }
                 }
+            }
+
+            .etiqueta-proximamente {
+                margin-left: auto;
+                margin-right: 12px;
+                font-size: 0.65rem;
+                font-weight: 300;
+                text-transform: uppercase;
+                letter-spacing: 0.4px;
+                color: #888;
+                background-color: #f0f0f0;
+                padding: 3px 8px;
+                border-radius: 20px;
+                white-space: nowrap;
+            }
+
+            .sin-resultados-botones {
+                padding: 0.75rem 0.25rem;
+                font-size: 0.8rem;
+                color: #888;
+                text-align: center;
             }
         }
 
@@ -181,7 +213,7 @@
 
                 .tarjeta-reserva-area {
                     font-size: 0.875rem;
-                    font-weight: 500;
+                    font-weight: 300;
                     color: #1a1a1a;
                 }
 
@@ -202,13 +234,13 @@
 
                 .tarjeta-reserva-rango {
                     font-size: 0.95rem;
-                    font-weight: 500;
+                    font-weight: 300;
                     color: #1a1a1a;
                 }
 
                 .tarjeta-reserva-duracion {
                     font-size: 0.7rem;
-                    font-weight: 500;
+                    font-weight: 300;
                     color: #1565c0;
                     background-color: #cedbeb;
                     padding: 3px 8px;
@@ -311,6 +343,91 @@
                         }
                     }
                 }
+
+                &.area-piscina {
+                    .tarjeta-reserva-duracion {
+                        background-color: #bae6fd;
+                        color: #075985;
+                    }
+
+                    .tarjeta-reserva-paso-actual {
+                        .tarjeta-reserva-paso-estado {
+                            color: #0369a1;
+
+                            .punto {
+                                background-color: #0284c7;
+                            }
+                        }
+                    }
+                }
+
+                &.area-gimnasio {
+                    .tarjeta-reserva-duracion {
+                        background-color: #ddd6fe;
+                        color: #4c1d95;
+                    }
+
+                    .tarjeta-reserva-paso-actual {
+                        .tarjeta-reserva-paso-estado {
+                            color: #5b21b6;
+
+                            .punto {
+                                background-color: #7c3aed;
+                            }
+                        }
+                    }
+                }
+
+                &.area-salon-eventos {
+                    .tarjeta-reserva-duracion {
+                        background-color: #fde68a;
+                        color: #78350f;
+                    }
+
+                    .tarjeta-reserva-paso-actual {
+                        .tarjeta-reserva-paso-estado {
+                            color: #92400e;
+
+                            .punto {
+                                background-color: #b45309;
+                            }
+                        }
+                    }
+                }
+
+                &.area-cancha-tenis {
+                    .tarjeta-reserva-duracion {
+                        background-color: #d9f99d;
+                        color: #365314;
+                    }
+
+                    .tarjeta-reserva-paso-actual {
+                        .tarjeta-reserva-paso-estado {
+                            color: #4d7c0f;
+
+                            .punto {
+                                background-color: #65a30d;
+                            }
+                        }
+                    }
+                }
+
+                &.area-sala-juegos {
+                    .tarjeta-reserva-duracion {
+                        background-color: #c7d2fe;
+                        color: #312e81;
+                    }
+
+                    .tarjeta-reserva-paso-actual {
+                        .tarjeta-reserva-paso-estado {
+                            color: #3730a3;
+
+                            .punto {
+                                background-color: #4338ca;
+                            }
+                        }
+                    }
+                }
             }
 
             .detalle-header {
@@ -352,7 +469,7 @@
 
             .detalle-fecha {
                 font-size: 0.95rem;
-                font-weight: 500;
+                font-weight: 300;
                 color: #1a1a1a;
                 text-align: center;
                 flex: 1;
@@ -419,7 +536,7 @@
 
                 .cal-titulo {
                     font-size: 1.125rem;
-                    font-weight: 500;
+                    font-weight: 300;
                     color: #1a1a1a;
                     min-width: 160px;
                     text-align: center;
@@ -487,6 +604,12 @@
                         display: flex;
                     }
 
+                    .filtro-opcion-todas {
+                        margin-bottom: 6px;
+                        padding-bottom: 10px;
+                        border-bottom: 1px solid #f0f0f0;
+                    }
+
                     .filtro-opcion {
                         display: flex;
                         align-items: center;
@@ -540,7 +663,7 @@
                 align-items: center;
                 gap: 0.4rem;
                 padding: 0.4rem 0.8rem;
-                border: none;
+                border: 1px solid transparent;
                 border-radius: 7px;
                 background-color: black;
                 cursor: pointer;
@@ -556,6 +679,12 @@
                 &:active {
                     transform: scale(0.9);
                 }
+
+                &:disabled {
+                    opacity: 0.45;
+                    cursor: not-allowed;
+                    transform: none;
+                }
             }
         }
 
@@ -565,7 +694,7 @@
             text-align: center;
             font-size: 0.8rem;
             color: #888;
-            font-weight: 500;
+            font-weight: 300;
             padding-bottom: 0.5rem;
             border-bottom: 1px solid #e5e5e5;
         }
@@ -600,13 +729,13 @@
                 }
 
                 &.dia-hoy {
-                    font-weight: 700;
+                    font-weight: 300;
                     color: #1565c0;
                     background-color: #cedbeb;
                 }
 
                 &.dia-seleccionado {
-                    font-weight: 700;
+                    font-weight: 300;
                     color: #0d3d75;
                     background-color: #e8f0fa;
                     border: 1.5px solid #1565c0;
@@ -628,7 +757,7 @@
                     background-color: #1d9e75;
                     color: white;
                     font-size: 0.7rem;
-                    font-weight: 500;
+                    font-weight: 300;
                     padding: 2px 6px;
                     border-radius: 4px;
                     text-align: center;
@@ -651,9 +780,29 @@
                     background-color: #d85a30;
                 }
 
+                .evento-reserva.area-piscina {
+                    background-color: #0284c7;
+                }
+
+                .evento-reserva.area-gimnasio {
+                    background-color: #7c3aed;
+                }
+
+                .evento-reserva.area-salon-eventos {
+                    background-color: #b45309;
+                }
+
+                .evento-reserva.area-cancha-tenis {
+                    background-color: #65a30d;
+                }
+
+                .evento-reserva.area-sala-juegos {
+                    background-color: #4338ca;
+                }
+
                 .evento-mas {
                     font-size: 0.7rem;
-                    font-weight: 500;
+                    font-weight: 300;
                     color: #888;
                     text-align: center;
                 }
@@ -711,7 +860,7 @@
             align-items: center;
             justify-content: center;
             font-size: 0.7rem;
-            font-weight: 500;
+            font-weight: 300;
             color: #888;
             flex-shrink: 0;
         }
@@ -725,7 +874,7 @@
 
             .modal-step-txt {
                 color: #1a1a1a;
-                font-weight: 500;
+                font-weight: 300;
             }
         }
 
@@ -747,7 +896,7 @@
 
     .modal-titulo {
         font-size: 0.95rem;
-        font-weight: 500;
+        font-weight: 300;
         color: #1a1a1a;
         margin-bottom: 4px;
     }
@@ -819,6 +968,230 @@
         }
     }
 
+    /* ===== VENTANA FLOTANTE: TODAS LAS ÁREAS COMUNES ===== */
+
+    .modal-areas {
+        background: white;
+        border-radius: 12px;
+        border: 1px solid #e0e0e0;
+        width: 420px;
+        max-width: 90vw;
+        max-height: 85vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-areas-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.1rem 1.25rem 0;
+
+        h2 {
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: #1a1a1a;
+        }
+    }
+
+    .modal-close {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 1px solid #e0e0e0;
+        background-color: white;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.2s ease;
+
+        .material-symbols-outlined {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        &:hover {
+            background-color: #f1f1f1;
+        }
+    }
+
+    .modal-areas-buscador {
+        position: relative;
+        margin: 1rem 1.25rem 0;
+
+        .material-symbols-outlined {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: #888;
+            pointer-events: none;
+        }
+
+        input[type="search"] {
+            width: 100%;
+            height: 38px;
+            padding: 0 12px 0 36px;
+            border: 1px solid #d0d0d0;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            box-sizing: border-box;
+            font-family: inherit;
+            transition: border-color 0.15s ease;
+
+            &:focus {
+                border-color: #888;
+            }
+
+            &::placeholder {
+                color: #999;
+            }
+        }
+    }
+
+    .modal-areas .modal-ayuda {
+        margin: 10px 1.25rem 2px;
+    }
+
+    .modal-areas-lista {
+        padding: 0.75rem 1.25rem 0.25rem;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .area-fila {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 8px 10px;
+        border: 1px solid #e8e8e8;
+        border-radius: 8px;
+    }
+
+    .area-fila-info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+        font-size: 0.85rem;
+        color: #1a1a1a;
+
+        .material-symbols-outlined {
+            font-size: 1.15rem;
+            color: #555;
+            flex-shrink: 0;
+        }
+    }
+
+    .area-fila-acciones {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+    }
+
+    .area-fila-reservar {
+        height: 30px;
+        padding: 0 10px;
+        border: 1px solid #d0d0d0;
+        border-radius: 6px;
+        background-color: white;
+        font-size: 0.75rem;
+        font-weight: 300;
+        color: #1a1a1a;
+        cursor: pointer;
+        font-family: inherit;
+        transition: 0.2s ease;
+        white-space: nowrap;
+
+        &:hover {
+            background-color: #f1f1f1;
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+
+    .area-fila.no-disponible {
+        .area-fila-info {
+            opacity: 0.55;
+        }
+    }
+
+    .area-fila-check {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+
+        input[type="checkbox"] {
+            position: absolute;
+            inset: 0;
+            margin: 0;
+            opacity: 0;
+            cursor: pointer;
+
+            &:disabled {
+                cursor: not-allowed;
+            }
+        }
+
+        .area-fila-check-caja {
+            position: absolute;
+            inset: 0;
+            border: 1.5px solid #c4c4c4;
+            border-radius: 5px;
+            background-color: white;
+            transition: 0.15s ease;
+            pointer-events: none;
+        }
+
+        input[type="checkbox"]:checked+.area-fila-check-caja {
+            background-color: #1a1a1a;
+            border-color: #1a1a1a;
+        }
+
+        input[type="checkbox"]:checked+.area-fila-check-caja::after {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        input[type="checkbox"]:disabled+.area-fila-check-caja {
+            opacity: 0.5;
+        }
+    }
+
+    .modal-areas-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 1rem 1.25rem;
+        border-top: 1px solid #f0f0f0;
+        margin-top: 0.5rem;
+
+        span {
+            font-size: 0.8rem;
+            color: #888;
+        }
+    }
+
     .modal-deportes-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -843,7 +1216,7 @@
 
         .material-symbols-outlined {
             font-size: 1.6rem;
-            color: #555;
+            color: inherit;
         }
 
         &:hover {
@@ -854,9 +1227,60 @@
             border-color: #1565c0;
             background-color: #e8f0fa;
             color: #0d3d75;
+        }
+    }
 
-            .material-symbols-outlined {
-                color: #1565c0;
+    .modal-check-sillas {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 12px;
+        padding: 0.85rem 1rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 0.875rem;
+        color: #1a1a1a;
+
+        .modal-check-sillas-control {
+            position: relative;
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+
+            input[type="checkbox"] {
+                position: absolute;
+                inset: 0;
+                margin: 0;
+                opacity: 0;
+                cursor: pointer;
+            }
+
+            .modal-check-sillas-caja {
+                position: absolute;
+                inset: 0;
+                border: 1.5px solid #c4c4c4;
+                border-radius: 5px;
+                background-color: white;
+                transition: 0.15s ease;
+                pointer-events: none;
+            }
+
+            input[type="checkbox"]:checked+.modal-check-sillas-caja {
+                background-color: #1a1a1a;
+                border-color: #1a1a1a;
+            }
+
+            input[type="checkbox"]:checked+.modal-check-sillas-caja::after {
+                content: "";
+                position: absolute;
+                left: 6px;
+                top: 2px;
+                width: 5px;
+                height: 10px;
+                border: solid white;
+                border-width: 0 2px 2px 0;
+                transform: rotate(45deg);
             }
         }
     }
@@ -872,9 +1296,36 @@
         margin-bottom: 12px;
     }
 
+    .modal-cal-nav-acciones {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .modal-cal-hoy {
+        padding: 4px 10px;
+        border: 1px solid #d0d0d0;
+        border-radius: 6px;
+        background: white;
+        font-size: 0.75rem;
+        color: #333;
+        cursor: pointer;
+        font-family: inherit;
+        transition: 0.15s ease;
+
+        &:hover:not(:disabled) {
+            background-color: #f1f1f1;
+        }
+
+        &:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+    }
+
     .modal-cal-titulo {
         font-size: 0.875rem;
-        font-weight: 500;
+        font-weight: 300;
         color: #1a1a1a;
         text-transform: capitalize;
     }
@@ -934,13 +1385,13 @@
 
         &.hoy {
             color: #1565c0;
-            font-weight: 700;
+            font-weight: 300;
         }
 
         &.seleccionado {
             background-color: #1a1a1a;
             color: white;
-            font-weight: 700;
+            font-weight: 300;
         }
 
         &.otro-mes {
@@ -1087,7 +1538,7 @@
         display: flex;
         align-items: center;
         gap: 6px;
-        font-weight: 500;
+        font-weight: 300;
         color: #1a1a1a;
 
         .material-symbols-outlined {
@@ -1159,6 +1610,10 @@
                     .filtro-texto {
                         display: none;
                     }
+
+                    .mis-reservas-texto {
+                        display: none;
+                    }
                 }
 
                 .cal-hoy {
@@ -1188,4 +1643,798 @@
             width: calc(100% - 2rem);
         }
     }
+}
+
+/* ══════════════════════════════════════════════
+   DARK MODE — PANEL PRINCIPAL
+   (Todo aquí lleva el prefijo "#vista" porque las
+   reglas base viven anidadas dentro de #vista{}, lo
+   que les da más especificidad que un simple
+   "body.tema-oscuro .clase"; sin el prefijo, el modo
+   oscuro nunca llegaba a pintarse.)
+══════════════════════════════════════════════ */
+body.tema-oscuro #vista .reservas h4,
+body.tema-oscuro #vista .herramientas h4 {
+    color: #e1e4e8 !important;
+}
+
+body.tema-oscuro #vista .loza-deportiva {
+    background-color: rgba(29, 78, 137, 0.7);
+    border-color: rgba(59, 130, 246, 0.5) !important;
+}
+
+body.tema-oscuro #vista .loza-deportiva .material-symbols-outlined,
+body.tema-oscuro #vista .loza-deportiva h3,
+body.tema-oscuro #vista .loza-deportiva p {
+    color: #2581ea !important;
+}
+
+body.tema-oscuro #vista .loza-deportiva:hover {
+    background-color: rgba(21, 74, 138, 0.912);
+}
+
+body.tema-oscuro #vista .casa-club {
+    background-color: rgba(17, 78, 40, 0.45);
+    border-color: rgba(34, 197, 94, 0.5) !important;
+}
+
+body.tema-oscuro #vista .casa-club .material-symbols-outlined,
+body.tema-oscuro #vista .casa-club h3,
+body.tema-oscuro #vista .casa-club p {
+    color: #1ac559 !important;
+}
+
+body.tema-oscuro #vista .casa-club:hover {
+    background-color: rgba(17, 78, 40, 0.65);
+}
+
+body.tema-oscuro #vista .zona-parrilla {
+    background-color: rgba(100, 40, 10, 0.45);
+    border-color: rgba(251, 146, 60, 0.5) !important;
+}
+
+body.tema-oscuro #vista .zona-parrilla .material-symbols-outlined,
+body.tema-oscuro #vista .zona-parrilla h3,
+body.tema-oscuro #vista .zona-parrilla p {
+    color: #ff931f !important;
+}
+
+body.tema-oscuro #vista .zona-parrilla:hover {
+    background-color: rgba(100, 40, 10, 0.65);
+}
+
+body.tema-oscuro #vista .cita-jd {
+    background-color: rgba(60, 20, 120, 0.45);
+    border-color: rgba(167, 139, 250, 0.5) !important;
+}
+
+body.tema-oscuro #vista .cita-jd .material-symbols-outlined,
+body.tema-oscuro #vista .cita-jd h3,
+body.tema-oscuro #vista .cita-jd p {
+    color: #a250fa !important;
+}
+
+body.tema-oscuro #vista .cita-jd:hover {
+    background-color: rgba(60, 20, 120, 0.65);
+}
+
+body.tema-oscuro #vista .calendario {
+    background-color: #23272b !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+body.tema-oscuro #vista .mis-reservas {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+body.tema-oscuro #vista .mis-reservas:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.tema-oscuro #vista .calendario h3,
+body.tema-oscuro #vista .calendario p,
+body.tema-oscuro #vista .mis-reservas h3,
+body.tema-oscuro #vista .mis-reservas p {
+    color: #e1e4e8 !important;
+}
+
+body.tema-oscuro #vista .calendario img,
+body.tema-oscuro #vista .mis-reservas img {
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+}
+
+/* ══════════════════════════════════════════════
+   DARK MODE — COCHERA (sección aún no implementada)
+══════════════════════════════════════════════ */
+body.tema-oscuro #vista .reservar-cochera {
+    background-color: rgba(61, 149, 255, 0.45);
+    border-color: rgba(59, 130, 246, 0.5) !important;
+}
+
+body.tema-oscuro #vista .reservar-cochera h3,
+body.tema-oscuro #vista .reservar-cochera p {
+    color: #0077ff !important;
+}
+
+body.tema-oscuro #vista .reservar-cochera:hover {
+    background-color: rgba(29, 78, 137, 0.65);
+}
+
+body.tema-oscuro #vista .alquilar-cochera {
+    background-color: rgba(100, 40, 10, 0.45);
+    border-color: rgba(251, 146, 60, 0.5) !important;
+}
+
+body.tema-oscuro #vista .alquilar-cochera h3,
+body.tema-oscuro #vista .alquilar-cochera p {
+    color: #f8962e !important;
+}
+
+body.tema-oscuro #vista .alquilar-cochera:hover {
+    background-color: rgba(100, 40, 10, 0.65);
+}
+
+body.tema-oscuro #vista .publicar-cochera {
+    background-color: rgba(17, 78, 40, 0.45);
+    border-color: rgba(34, 197, 94, 0.5) !important;
+}
+
+body.tema-oscuro #vista .publicar-cochera h3,
+body.tema-oscuro #vista .publicar-cochera p {
+    color: #23d063 !important;
+}
+
+body.tema-oscuro #vista .publicar-cochera:hover {
+    background-color: rgba(17, 78, 40, 0.65);
+}
+
+body.tema-oscuro #vista .reservar-cochera img,
+body.tema-oscuro #vista .alquilar-cochera img,
+body.tema-oscuro #vista .publicar-cochera img {
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+}
+
+/* ══════════════════════════════════════════════
+   DARK MODE — MODAL DE RESERVA
+══════════════════════════════════════════════ */
+body.tema-oscuro #vista .modal-overlay .modal {
+    background-color: #23272b;
+}
+
+body.tema-oscuro #vista .modal-overlay .modal header {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.tema-oscuro #vista .modal-overlay .modal header .modal-close {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .modal-overlay .modal #modal-content h3 {
+    color: #e1e4e8 !important;
+}
+
+body.tema-oscuro #vista .detalles-reserva .informacion {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+body.tema-oscuro #vista .detalles-reserva .informacion p {
+    color: #9ba1aa !important;
+}
+
+body.tema-oscuro #vista .detalles-reserva .datos-reserva {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.tema-oscuro #vista .hoy,
+body.tema-oscuro #vista .personalizado,
+body.tema-oscuro #vista .inicio,
+body.tema-oscuro #vista .fin {
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    color: #e1e4e8 !important;
+    background: transparent;
+}
+
+body.tema-oscuro #vista .hoy:hover,
+body.tema-oscuro #vista .personalizado:hover,
+body.tema-oscuro #vista .inicio:hover,
+body.tema-oscuro #vista .fin:hover {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+body.tema-oscuro #vista .info-detalles textarea {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .info-detalles textarea::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+body.tema-oscuro #vista .info-detalles textarea:hover {
+    border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+body.tema-oscuro #vista .modal-step {
+    color: #9ba1aa;
+}
+
+body.tema-oscuro #vista .modal-step-sep {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.tema-oscuro #vista .modal-titulo {
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .modal-cal-dia,
+body.tema-oscuro #vista .modal-deporte-btn,
+body.tema-oscuro #vista .modal-rango-input {
+    color: #e1e4e8;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.tema-oscuro #vista .modal-footer {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.tema-oscuro #vista .modal-card {
+    background-color: #23272b;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.tema-oscuro #vista .modal-subtitulo,
+body.tema-oscuro #vista .modal-ayuda,
+body.tema-oscuro #vista .modal-cal-semana,
+body.tema-oscuro #vista .modal-time-sep,
+body.tema-oscuro #vista .modal-rango-label {
+    color: #9ba1aa;
+}
+
+body.tema-oscuro #vista .modal-cal-titulo {
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .modal-cal-btn .material-symbols-outlined {
+    color: #9ba1aa;
+}
+
+body.tema-oscuro #vista .modal-cal-hoy {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .modal-cal-hoy:hover:not(:disabled) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.tema-oscuro #vista .modal-cal-btn:hover,
+body.tema-oscuro #vista .modal-cal-dia:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+body.tema-oscuro #vista .modal-cal-dia.otro-mes,
+body.tema-oscuro #vista .modal-cal-dia.pasado {
+    color: rgba(255, 255, 255, 0.25);
+}
+
+body.tema-oscuro #vista .modal-deporte-btn {
+    background-color: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .modal-deporte-btn:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+body.tema-oscuro #vista .modal-deporte-btn.seleccionado {
+    background-color: rgba(86, 98, 111, 0.3);
+    border-color: #56626f;
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .modal-rango-input {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+body.tema-oscuro #vista .modal-resumen {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+body.tema-oscuro #vista .modal-resumen-fila span:last-child,
+body.tema-oscuro #vista .modal-resumen-etiqueta {
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .modal-btn-sec {
+    background-color: transparent;
+    border-color: rgba(255, 255, 255, 0.15);
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .modal-btn-sec:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Encabezado de pasos (1 Deporte · 2 Fecha · 3 Horario) */
+body.tema-oscuro #vista .modal-step .modal-step-num {
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #9ba1aa;
+}
+
+body.tema-oscuro #vista .modal-step.activo .modal-step-num {
+    background-color: #e1e4e8;
+    border-color: #e1e4e8;
+    color: #1a1d21;
+}
+
+body.tema-oscuro #vista .modal-step.activo .modal-step-txt {
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .modal-step.completo .modal-step-num {
+    background-color: #56626f;
+    border-color: #56626f;
+    color: #e1e4e8;
+}
+
+/* Botón primario (Siguiente / Confirmar) */
+body.tema-oscuro #vista .modal-btn-pri {
+    background-color: #e1e4e8;
+    color: #1a1d21;
+}
+
+body.tema-oscuro #vista .modal-btn-pri:hover {
+    background-color: #c7cdd4;
+}
+
+body.tema-oscuro #vista .modal-btn-pri:disabled {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #6b7078;
+}
+
+/* Mini calendario del modal */
+body.tema-oscuro #vista .modal-cal-dia {
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .modal-cal-dia.hoy {
+    color: #8fa3b8;
+}
+
+body.tema-oscuro #vista .modal-cal-dia.seleccionado {
+    background-color: #56626f;
+    color: #e1e4e8;
+}
+
+/* Chip de duración y resumen */
+body.tema-oscuro #vista .modal-duracion {
+    background-color: rgba(86, 98, 111, 0.35);
+    color: #c7d0d9;
+}
+
+body.tema-oscuro #vista .modal-resumen-etiqueta .material-symbols-outlined {
+    color: #e1e4e8;
+}
+
+/* ══════════════════════════════════════════════
+   DARK MODE — TODAS LAS ÁREAS COMUNES
+══════════════════════════════════════════════ */
+body.tema-oscuro #vista .areas-comunes .panel-filtros .btn-ver-todos {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .areas-comunes .panel-filtros .btn-ver-todos:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.tema-oscuro #vista .areas-comunes .panel-filtros .buscador .btn-ver-todos .material-symbols-outlined {
+    color: #9ba1aa;
+}
+
+body.tema-oscuro #vista .modal-areas {
+    background-color: #23272b;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.tema-oscuro #vista .modal-areas-header h2 {
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .modal-close {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+body.tema-oscuro #vista .modal-close .material-symbols-outlined {
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .modal-areas-buscador input[type="search"] {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.12);
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .modal-areas-buscador input[type="search"]::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+body.tema-oscuro #vista .area-fila {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.tema-oscuro #vista .area-fila-info {
+    color: #e1e4e8;
+}
+
+/* Iconos de las 3 áreas disponibles: mismo color que los
+   iconos de los botones de reserva del panel lateral. */
+body.tema-oscuro #vista .area-fila[data-area="loza"] .area-fila-info .material-symbols-outlined,
+body.tema-oscuro #vista .area-fila[data-area="casa-club"] .area-fila-info .material-symbols-outlined,
+body.tema-oscuro #vista .area-fila[data-area="parrillas"] .area-fila-info .material-symbols-outlined {
+    color: #9ba1aa;
+}
+
+body.tema-oscuro #vista .area-fila-reservar {
+    background-color: transparent;
+    border-color: rgba(255, 255, 255, 0.15);
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .area-fila-reservar:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+body.tema-oscuro #vista .area-fila-check .area-fila-check-caja {
+    border-color: rgba(255, 255, 255, 0.25);
+    background-color: transparent;
+}
+
+body.tema-oscuro #vista .area-fila-check input[type="checkbox"]:checked+.area-fila-check-caja {
+    background-color: #3b4552;
+    border-color: #3b4552;
+}
+
+body.tema-oscuro #vista .modal-areas-footer {
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ══════════════════════════════════════════════
+   DARK MODE — DROPDOWN DE FILTRO
+══════════════════════════════════════════════ */
+body.tema-oscuro #vista .calendario .cal-filtro-wrapper .filtro-dropdown {
+    background-color: #23272b;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.tema-oscuro #vista .calendario .cal-filtro-wrapper .filtro-dropdown .filtro-opcion {
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .calendario .cal-filtro-wrapper .filtro-dropdown .filtro-opcion .material-symbols-outlined {
+    color: #9ba1aa;
+}
+
+body.tema-oscuro #vista .calendario .cal-filtro-wrapper .filtro-dropdown .filtro-opcion-dot {
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+body.tema-oscuro #vista .calendario .cal-filtro-wrapper .filtro-dropdown .filtro-opcion-todas {
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.tema-oscuro #vista .calendario .cal-filtro-wrapper .filtro-dropdown .filtro-opcion:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+body.tema-oscuro #vista .calendario .cal-filtro-wrapper .filtro-dropdown .filtro-opcion.seleccionada {
+    background-color: rgba(255, 255, 255, 0.14);
+
+    .material-symbols-outlined {
+        color: #e1e4e8;
+    }
+
+    .filtro-opcion-dot {
+        background-color: #e1e4e8;
+        border-color: #e1e4e8;
+    }
+}
+
+body.tema-oscuro #vista .areas-comunes .panel-filtros .sin-resultados-botones {
+    color: #9ba1aa;
+}
+
+/* ══════════════════════════════════════════════
+   DARK MODE — PANEL DE BOTONES DE ÁREA
+══════════════════════════════════════════════ */
+body.tema-oscuro #vista .areas-comunes .panel-filtros .botones button {
+    background-color: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .areas-comunes .panel-filtros .botones button .material-symbols-outlined {
+    color: #9ba1aa;
+}
+
+body.tema-oscuro #vista .areas-comunes .panel-filtros .botones button:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+body.tema-oscuro #vista .areas-comunes .panel-filtros .botones button.activo {
+    background-color: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+body.tema-oscuro #vista .areas-comunes .panel-filtros .etiqueta-proximamente {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #9ba1aa;
+}
+
+body.tema-oscuro #vista .modal-check-sillas {
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .modal-check-sillas .modal-check-sillas-caja {
+    border-color: rgba(255, 255, 255, 0.25);
+    background-color: transparent;
+}
+
+body.tema-oscuro #vista .modal-check-sillas input[type="checkbox"]:checked+.modal-check-sillas-caja {
+    background-color: #3b4552;
+    border-color: #3b4552;
+}
+
+body.tema-oscuro #vista .area-fila.no-disponible .area-fila-info {
+    color: #e1e4e8;
+}
+
+/* ══════════════════════════════════════════════
+   DARK MODE — BUSCADOR DE ÁREAS
+══════════════════════════════════════════════ */
+body.tema-oscuro #vista .areas-comunes .panel-filtros .buscador input[type="search"] {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.12);
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .areas-comunes .panel-filtros .buscador input[type="search"]::placeholder {
+    color: #6b7078;
+}
+
+body.tema-oscuro #vista .areas-comunes .panel-filtros .buscador .material-symbols-outlined {
+    color: #6b7078;
+}
+
+/* ══════════════════════════════════════════════
+   DARK MODE — CALENDARIO
+══════════════════════════════════════════════ */
+body.tema-oscuro #vista .calendario .calendario-header .calendario-nav .cal-flecha .material-symbols-outlined {
+    color: #9ba1aa;
+}
+
+body.tema-oscuro #vista .calendario .calendario-header .calendario-nav .cal-flecha:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+body.tema-oscuro #vista .calendario .calendario-header .calendario-nav .cal-titulo {
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .calendario .calendario-header .cal-filtro {
+    background-color: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.12);
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .calendario .calendario-header .cal-filtro .material-symbols-outlined {
+    color: #9ba1aa;
+}
+
+body.tema-oscuro #vista .calendario .calendario-header .cal-filtro:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+body.tema-oscuro #vista .calendario .calendario-header .cal-filtro.activo {
+    border-color: #e1e4e8;
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .calendario .calendario-header .cal-filtro.activo .material-symbols-outlined {
+    color: #e1e4e8;
+}
+
+/* Botón "Hoy": en oscuro el fondo negro se pierde contra el
+   calendario, así que le damos un fondo tenue + borde visible. */
+body.tema-oscuro #vista .calendario .calendario-header .cal-hoy {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .calendario .calendario-header .cal-hoy:hover:not(:disabled) {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+body.tema-oscuro #vista .calendario-dias-semana {
+    color: #6b7078;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.tema-oscuro #vista .calendario-grid .dia-celda {
+    color: #e1e4e8;
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+body.tema-oscuro #vista .calendario-grid .dia-celda.dia-otro-mes {
+    color: #52585f;
+}
+
+body.tema-oscuro #vista .calendario-grid .dia-celda:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+body.tema-oscuro #vista .calendario-grid .dia-celda.dia-hoy {
+    color: #c7d0d9;
+    background-color: rgba(59, 69, 82, 0.35);
+}
+
+body.tema-oscuro #vista .calendario-grid .dia-celda.dia-seleccionado {
+    color: #e1e4e8;
+    background-color: rgba(59, 69, 82, 0.5);
+    border-color: #56626f;
+}
+
+body.tema-oscuro #vista .calendario .calendario-grid .dia-celda .evento-reserva {
+    background-color: rgba(59, 69, 82, 0.4);
+    color: #dbe2e8;
+}
+
+body.tema-oscuro #vista .calendario .calendario-grid .dia-celda .evento-reserva.area-loza {
+    background-color: rgba(29, 158, 117, 0.25);
+    color: #8fd9bd;
+}
+
+body.tema-oscuro #vista .calendario .calendario-grid .dia-celda .evento-reserva.area-casa-club {
+    background-color: rgba(212, 83, 126, 0.25);
+    color: #f0a8c2;
+}
+
+body.tema-oscuro #vista .calendario .calendario-grid .dia-celda .evento-reserva.area-parrillas {
+    background-color: rgba(216, 90, 48, 0.25);
+    color: #f2ab8a;
+}
+
+body.tema-oscuro #vista .calendario .calendario-grid .dia-celda .evento-mas {
+    color: #6b7078;
+}
+
+/* ══════════════════════════════════════════════
+   DARK MODE — PANEL DE DETALLE DE RESERVAS
+══════════════════════════════════════════════ */
+body.tema-oscuro #vista .detalle-reservas {
+    background-color: #23272b;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-reservas-vacio {
+    color: #6b7078;
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-header {
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-flecha .material-symbols-outlined {
+    color: #9ba1aa;
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-flecha:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-fecha {
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-reservas .tarjeta-reserva {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-reservas .tarjeta-reserva-icono {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-reservas .tarjeta-reserva-icono .material-symbols-outlined {
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-reservas .tarjeta-reserva-area {
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-reservas .tarjeta-reserva-residente {
+    color: #6b7078;
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-reservas .tarjeta-reserva-horario {
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-reservas .tarjeta-reserva-rango {
+    color: #e1e4e8;
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-reservas .tarjeta-reserva-duracion {
+    background-color: rgba(59, 69, 82, 0.35);
+    color: #c7d0d9;
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-reservas .tarjeta-reserva-historial {
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-reservas .tarjeta-reserva-paso {
+    color: #6b7078;
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-reservas .tarjeta-reserva-paso .punto {
+    background-color: #52585f;
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-reservas .tarjeta-reserva-paso-fecha {
+    color: #6b7078;
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-reservas .tarjeta-reserva.area-loza .tarjeta-reserva-duracion {
+    background-color: rgba(29, 158, 117, 0.25);
+    color: #8fd9bd;
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-reservas .tarjeta-reserva.area-loza .tarjeta-reserva-paso-actual .tarjeta-reserva-paso-estado {
+    color: #8fd9bd;
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-reservas .tarjeta-reserva.area-loza .tarjeta-reserva-paso-actual .punto {
+    background-color: #3fae82;
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-reservas .tarjeta-reserva.area-casa-club .tarjeta-reserva-duracion {
+    background-color: rgba(212, 83, 126, 0.25);
+    color: #f0a8c2;
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-reservas .tarjeta-reserva.area-casa-club .tarjeta-reserva-paso-actual .tarjeta-reserva-paso-estado {
+    color: #f0a8c2;
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-reservas .tarjeta-reserva.area-casa-club .tarjeta-reserva-paso-actual .punto {
+    background-color: #d97298;
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-reservas .tarjeta-reserva.area-parrillas .tarjeta-reserva-duracion {
+    background-color: rgba(216, 90, 48, 0.25);
+    color: #f2ab8a;
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-reservas .tarjeta-reserva.area-parrillas .tarjeta-reserva-paso-actual .tarjeta-reserva-paso-estado {
+    color: #f2ab8a;
+}
+
+body.tema-oscuro #vista .areas-comunes .detalle-reservas .tarjeta-reserva.area-parrillas .tarjeta-reserva-paso-actual .punto {
+    background-color: #dd7c53;
 }

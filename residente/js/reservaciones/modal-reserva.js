@@ -1,26 +1,31 @@
 import { agregarReserva, hayConflictoHorario } from "./reservas-prueba.js";
-
-const DEPORTES = [
-    { nombre: "Fútbol", icono: "sports_soccer" },
-    { nombre: "Voley", icono: "sports_volleyball" },
-    { nombre: "Básquet", icono: "sports_basketball" },
-    { nombre: "Otros", icono: "sports" },
-];
+import { obtenerArea } from "./catalogo-areas.js";
+import { notificarReservaAprobada } from "../notificaciones.js";
 
 const NOMBRES_MES = [
     "enero", "febrero", "marzo", "abril", "mayo", "junio",
     "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre",
 ];
 
-const NOMBRES_MES_CORTO = [
-    "Ene", "Feb", "Mar", "Abr", "May", "Jun",
-    "Jul", "Ago", "Sep", "Oct", "Nov", "Dic",
-];
+const ICONOS_ZONA = {
+    "Zona Norte": "north",
+    "Zona Sur": "south",
+};
 
+let areaActual = null;
 let pasoActual = 1;
 let deporteSeleccionado = null;
+let zonaSeleccionada = null;
+let sillasSeleccionadas = false;
 let fechaSeleccionada = null;
 let mesCalendario = new Date();
+
+function pasosDeAreaActual() {
+    if (areaActual.deportes) return ["Deporte", "Fecha", "Horario"];
+    if (areaActual.zonas && areaActual.horarioFijo) return ["Zona", "Fecha", "Resumen"];
+    if (areaActual.zonas) return ["Zona", "Fecha", "Horario"];
+    return ["Fecha", "Horario"];
+}
 
 function formatearFechaResumen(fecha) {
     const dias = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
@@ -39,8 +44,22 @@ function calcularDuracion(inicio, fin) {
     return `${h}h ${String(m).padStart(2, "0")}m`;
 }
 
+function iconoResumen() {
+    if (!areaActual.deportes) return areaActual.icono;
+    return areaActual.deportes.find((d) => d.nombre === deporteSeleccionado)?.icono ?? areaActual.icono;
+}
+
+function nombreResumen() {
+    return areaActual.deportes ? `${areaActual.nombre} — ${deporteSeleccionado}` : areaActual.nombre;
+}
+
+function nombreParaNotificacion() {
+    const base = nombreResumen();
+    return zonaSeleccionada ? `${base} — ${zonaSeleccionada}` : base;
+}
+
 function renderIndicadorPasos(container) {
-    const pasos = ["Deporte", "Fecha", "Horario"];
+    const pasos = pasosDeAreaActual();
     container.innerHTML = "";
     pasos.forEach((nombre, i) => {
         const num = i + 1;
@@ -70,13 +89,13 @@ function renderIndicadorPasos(container) {
     });
 }
 
-function renderPaso1(body) {
+function renderPasoDeporte(body) {
     body.innerHTML = "";
 
     const grid = document.createElement("div");
     grid.className = "modal-deportes-grid";
 
-    DEPORTES.forEach(({ nombre, icono }) => {
+    areaActual.deportes.forEach(({ nombre, icono }) => {
         const btn = document.createElement("button");
         btn.className = "modal-deporte-btn";
         if (deporteSeleccionado === nombre) btn.classList.add("seleccionado");
@@ -99,6 +118,51 @@ function renderPaso1(body) {
     body.appendChild(grid);
 }
 
+function renderPasoZona(body) {
+    body.innerHTML = "";
+
+    const grid = document.createElement("div");
+    grid.className = "modal-deportes-grid";
+
+    areaActual.zonas.forEach((zona) => {
+        const btn = document.createElement("button");
+        btn.className = "modal-deporte-btn";
+        if (zonaSeleccionada === zona) btn.classList.add("seleccionado");
+
+        btn.innerHTML = `
+            <span class="material-symbols-outlined">${ICONOS_ZONA[zona] ?? "location_on"}</span>
+            <span>${zona}</span>
+        `;
+
+        btn.addEventListener("click", () => {
+            document.querySelectorAll(".modal-deporte-btn").forEach((b) => b.classList.remove("seleccionado"));
+            btn.classList.add("seleccionado");
+            zonaSeleccionada = zona;
+            document.getElementById("modal-btn-siguiente").disabled = false;
+        });
+
+        grid.appendChild(btn);
+    });
+
+    body.appendChild(grid);
+
+    if (areaActual.requiereSillas) {
+        const opcionSillas = document.createElement("label");
+        opcionSillas.className = "modal-check-sillas";
+        opcionSillas.innerHTML = `
+            <span class="modal-check-sillas-control">
+                <input type="checkbox" id="modal-input-sillas" ${sillasSeleccionadas ? "checked" : ""}>
+                <span class="modal-check-sillas-caja"></span>
+            </span>
+            <span>¿Necesitarás ocupar sillas? Haz click aquí.</span>
+        `;
+        opcionSillas.querySelector("input").addEventListener("change", (evento) => {
+            sillasSeleccionadas = evento.target.checked;
+        });
+        body.appendChild(opcionSillas);
+    }
+}
+
 function renderCalendario(container) {
     const anio = mesCalendario.getFullYear();
     const mes = mesCalendario.getMonth();
@@ -109,10 +173,13 @@ function renderCalendario(container) {
             <button class="modal-cal-btn" id="modal-mes-anterior">
                 <span class="material-symbols-outlined">chevron_left</span>
             </button>
-            <span class="modal-cal-titulo">${NOMBRES_MES_CORTO[mes]} ${anio}</span>
-            <button class="modal-cal-btn" id="modal-mes-siguiente">
-                <span class="material-symbols-outlined">chevron_right</span>
-            </button>
+            <span class="modal-cal-titulo">${NOMBRES_MES[mes].charAt(0).toUpperCase() + NOMBRES_MES[mes].slice(1, 3)} ${anio}</span>
+            <div class="modal-cal-nav-acciones">
+                <button class="modal-cal-hoy" id="modal-btn-hoy">Hoy</button>
+                <button class="modal-cal-btn" id="modal-mes-siguiente">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                </button>
+            </div>
         </div>
         <div class="modal-cal-semana">
             <span>Do</span><span>Lu</span><span>Ma</span><span>Mi</span><span>Ju</span><span>Vi</span><span>Sá</span>
@@ -178,9 +245,16 @@ function renderCalendario(container) {
         mesCalendario.setMonth(mesCalendario.getMonth() + 1);
         renderCalendario(container);
     });
+
+    container.querySelector("#modal-btn-hoy").addEventListener("click", () => {
+        mesCalendario = new Date();
+        fechaSeleccionada = new Date();
+        renderCalendario(container);
+        document.getElementById("modal-btn-siguiente").disabled = false;
+    });
 }
 
-function renderPaso2(body) {
+function renderPasoFecha(body) {
     body.innerHTML = "";
     const calContainer = document.createElement("div");
     calContainer.className = "modal-cal-container";
@@ -188,7 +262,7 @@ function renderPaso2(body) {
     renderCalendario(calContainer);
 }
 
-function renderPaso3(body) {
+function renderPasoHorario(body) {
     body.innerHTML = "";
 
     const rangoWrap = document.createElement("div");
@@ -220,7 +294,7 @@ function renderPaso3(body) {
     errorConflictoEl.className = "modal-error";
     errorConflictoEl.id = "modal-error-conflicto";
     errorConflictoEl.style.display = "none";
-    errorConflictoEl.textContent = "Ya existe una reserva en la loza que se cruza con este horario.";
+    errorConflictoEl.textContent = "Ya existe una reserva en esta área que se cruza con este horario.";
 
     const resumen = document.createElement("div");
     resumen.className = "modal-resumen";
@@ -232,16 +306,26 @@ function renderPaso3(body) {
     body.appendChild(resumen);
 
     function pintarResumen(inicio, fin, duracion) {
-        const iconoDeporte = DEPORTES.find((d) => d.nombre === deporteSeleccionado)?.icono ?? "sports";
+        const filaZona = zonaSeleccionada
+            ? `
+            <div class="modal-resumen-fila">
+                <span class="modal-resumen-etiqueta">
+                    <span class="material-symbols-outlined">${ICONOS_ZONA[zonaSeleccionada] ?? "location_on"}</span>
+                    Zona
+                </span>
+                <span>${zonaSeleccionada}</span>
+            </div>`
+            : "";
 
         resumen.innerHTML = `
             <div class="modal-resumen-fila">
                 <span class="modal-resumen-etiqueta">
-                    <span class="material-symbols-outlined">${iconoDeporte}</span>
+                    <span class="material-symbols-outlined">${iconoResumen()}</span>
                     Área
                 </span>
-                <span>Loza deportiva — ${deporteSeleccionado}</span>
+                <span>${nombreResumen()}</span>
             </div>
+            ${filaZona}
             <div class="modal-resumen-fila">
                 <span class="modal-resumen-etiqueta">
                     <span class="material-symbols-outlined">calendar_month</span>
@@ -322,7 +406,7 @@ function renderPaso3(body) {
         const dia = String(fechaSeleccionada.getDate()).padStart(2, "0");
         const fechaTexto = `${anio}-${mes}-${dia}`;
 
-        if (hayConflictoHorario(fechaTexto, "Loza deportiva", inicio, fin)) {
+        if (hayConflictoHorario(fechaTexto, areaActual.nombre, inicio, fin, zonaSeleccionada)) {
             btnGuardar.disabled = true;
             errorConflictoEl.style.display = "block";
             pintarResumen(inicio, fin, duracion);
@@ -349,6 +433,73 @@ function renderPaso3(body) {
     document.getElementById("modal-btn-guardar").disabled = true;
 }
 
+function renderResumenFijo(body) {
+    body.innerHTML = "";
+
+    const errorConflictoEl = document.createElement("p");
+    errorConflictoEl.className = "modal-error";
+    errorConflictoEl.id = "modal-error-conflicto";
+    errorConflictoEl.style.display = "none";
+    errorConflictoEl.textContent = "Ya existe una reserva de Casa club en esa zona para ese día.";
+
+    const resumen = document.createElement("div");
+    resumen.className = "modal-resumen";
+
+    const { inicio, fin } = areaActual.horarioFijo;
+    const duracion = "20h 00m"; // 7:00 a. m. a 3:00 a. m. del día siguiente, siempre fijo
+
+    resumen.innerHTML = `
+        <div class="modal-resumen-fila">
+            <span class="modal-resumen-etiqueta">
+                <span class="material-symbols-outlined">${areaActual.icono}</span>
+                Área
+            </span>
+            <span>${areaActual.nombre}</span>
+        </div>
+        <div class="modal-resumen-fila">
+            <span class="modal-resumen-etiqueta">
+                <span class="material-symbols-outlined">${ICONOS_ZONA[zonaSeleccionada] ?? "location_on"}</span>
+                Zona
+            </span>
+            <span>${zonaSeleccionada}</span>
+        </div>
+        <div class="modal-resumen-fila">
+            <span class="modal-resumen-etiqueta">
+                <span class="material-symbols-outlined">calendar_month</span>
+                Fecha
+            </span>
+            <span>${formatearFechaResumen(fechaSeleccionada)}</span>
+        </div>
+        <div class="modal-resumen-fila">
+            <span class="modal-resumen-etiqueta">
+                <span class="material-symbols-outlined">schedule</span>
+                Horario
+            </span>
+            <span class="modal-resumen-horario">${inicio} – ${fin} <span class="modal-duracion">${duracion}</span></span>
+        </div>
+        <div class="modal-resumen-fila">
+            <span class="modal-resumen-etiqueta">
+                <span class="material-symbols-outlined">event_seat</span>
+                Sillas
+            </span>
+            <span>${sillasSeleccionadas ? "Sí" : "No"}</span>
+        </div>
+    `;
+
+    body.appendChild(errorConflictoEl);
+    body.appendChild(resumen);
+
+    const anio = fechaSeleccionada.getFullYear();
+    const mes = String(fechaSeleccionada.getMonth() + 1).padStart(2, "0");
+    const dia = String(fechaSeleccionada.getDate()).padStart(2, "0");
+    const fechaTexto = `${anio}-${mes}-${dia}`;
+
+    const btnGuardar = document.getElementById("modal-btn-guardar");
+    const hayConflicto = hayConflictoHorario(fechaTexto, areaActual.nombre, inicio, fin, zonaSeleccionada);
+    errorConflictoEl.style.display = hayConflicto ? "block" : "none";
+    btnGuardar.disabled = hayConflicto;
+}
+
 function renderModal() {
     const indicador = document.getElementById("modal-indicador-pasos");
     const titulo = document.getElementById("modal-titulo");
@@ -360,52 +511,73 @@ function renderModal() {
 
     renderIndicadorPasos(indicador);
 
-    if (pasoActual === 1) {
+    const pasos = pasosDeAreaActual();
+    const nombrePaso = pasos[pasoActual - 1];
+
+    if (nombrePaso === "Deporte") {
         titulo.textContent = "Selecciona el deporte";
         subtitulo.textContent = "¿Qué deporte se va a realizar en la loza?";
-        renderPaso1(body);
+        renderPasoDeporte(body);
         btnAnterior.textContent = "Cancelar";
         btnSiguiente.style.display = "inline-flex";
         btnGuardar.style.display = "none";
         btnSiguiente.disabled = !deporteSeleccionado;
-    } else if (pasoActual === 2) {
+    } else if (nombrePaso === "Zona") {
+        titulo.textContent = "Selecciona la zona";
+        subtitulo.textContent = `¿Qué zona de ${areaActual.nombre.toLowerCase()} deseas usar?`;
+        renderPasoZona(body);
+        btnAnterior.textContent = "Cancelar";
+        btnSiguiente.style.display = "inline-flex";
+        btnGuardar.style.display = "none";
+        btnSiguiente.disabled = !zonaSeleccionada;
+    } else if (nombrePaso === "Fecha") {
         titulo.textContent = "Selecciona la fecha";
-        subtitulo.textContent = "¿Para qué día deseas reservar?";
-        renderPaso2(body);
-        btnAnterior.textContent = "← Atrás";
+        subtitulo.textContent = `¿Para qué día deseas reservar ${areaActual.nombre.toLowerCase()}?`;
+        renderPasoFecha(body);
+        btnAnterior.textContent = pasoActual === 1 ? "Cancelar" : "← Atrás";
         btnSiguiente.style.display = "inline-flex";
         btnGuardar.style.display = "none";
         btnSiguiente.disabled = !fechaSeleccionada;
-    } else if (pasoActual === 3) {
+    } else if (nombrePaso === "Horario") {
         titulo.textContent = "Selecciona el horario";
         subtitulo.textContent = "¿En qué rango de horas usarás el área?";
-        renderPaso3(body);
+        renderPasoHorario(body);
+        btnAnterior.textContent = "← Atrás";
+        btnSiguiente.style.display = "none";
+        btnGuardar.style.display = "inline-flex";
+    } else if (nombrePaso === "Resumen") {
+        titulo.textContent = "Confirma tu reserva";
+        subtitulo.textContent = "Este horario es fijo y no se puede modificar.";
+        renderResumenFijo(body);
         btnAnterior.textContent = "← Atrás";
         btnSiguiente.style.display = "none";
         btnGuardar.style.display = "inline-flex";
     }
 }
 
+export function abrirModalReserva(areaId) {
+    const overlay = document.getElementById("modal-overlay");
+    const area = obtenerArea(areaId);
+    if (!overlay || !area || !area.disponible) return;
+
+    areaActual = area;
+    pasoActual = 1;
+    deporteSeleccionado = null;
+    zonaSeleccionada = null;
+    sillasSeleccionadas = false;
+    fechaSeleccionada = null;
+    mesCalendario = new Date();
+    overlay.classList.add("visible");
+    renderModal();
+}
+
 export function iniciarModalReserva() {
     const overlay = document.getElementById("modal-overlay");
-    const btnLoza = document.querySelector('.botones button[data-area="loza"]');
-
-    if (!overlay || !btnLoza) return;
-
-    function abrirModal() {
-        pasoActual = 1;
-        deporteSeleccionado = null;
-        fechaSeleccionada = null;
-        mesCalendario = new Date();
-        overlay.classList.add("visible");
-        renderModal();
-    }
+    if (!overlay) return;
 
     function cerrarModal() {
         overlay.classList.remove("visible");
     }
-
-    btnLoza.addEventListener("click", abrirModal);
 
     overlay.addEventListener("click", (e) => {
         if (e.target === overlay) cerrarModal();
@@ -421,26 +593,32 @@ export function iniciarModalReserva() {
     });
 
     document.getElementById("modal-btn-siguiente").addEventListener("click", () => {
-        if (pasoActual < 3) {
+        if (pasoActual < pasosDeAreaActual().length) {
             pasoActual++;
             renderModal();
         }
     });
 
     document.getElementById("modal-btn-guardar").addEventListener("click", () => {
-        const hIni = document.getElementById("modal-hora-inicio-h")?.value;
-        const mIni = document.getElementById("modal-hora-inicio-m")?.value;
-        const hFin = document.getElementById("modal-hora-fin-h")?.value;
-        const mFin = document.getElementById("modal-hora-fin-m")?.value;
+        let inicio;
+        let fin;
 
-        if (!hIni || !mIni || !hFin || !mFin) return;
+        if (areaActual.horarioFijo) {
+            inicio = areaActual.horarioFijo.inicio;
+            fin = areaActual.horarioFijo.fin;
+        } else {
+            const hIni = document.getElementById("modal-hora-inicio-h")?.value;
+            const mIni = document.getElementById("modal-hora-inicio-m")?.value;
+            const hFin = document.getElementById("modal-hora-fin-h")?.value;
+            const mFin = document.getElementById("modal-hora-fin-m")?.value;
 
-        const inicio = `${hIni}:${mIni}`;
-        const fin = `${hFin}:${mFin}`;
-        const duracion = calcularDuracion(inicio, fin);
-        if (!duracion) return;
+            if (!hIni || !mIni || !hFin || !mFin) return;
 
-        const iconoDeporte = DEPORTES.find((d) => d.nombre === deporteSeleccionado)?.icono ?? "sports";
+            inicio = `${hIni}:${mIni}`;
+            fin = `${hFin}:${mFin}`;
+            if (!calcularDuracion(inicio, fin)) return;
+        }
+
         const anio = fechaSeleccionada.getFullYear();
         const mes = String(fechaSeleccionada.getMonth() + 1).padStart(2, "0");
         const dia = String(fechaSeleccionada.getDate()).padStart(2, "0");
@@ -449,9 +627,11 @@ export function iniciarModalReserva() {
             fecha: `${anio}-${mes}-${dia}`,
             horaInicio: inicio,
             horaFin: fin,
-            area: "Loza deportiva",
+            area: areaActual.nombre,
+            zona: zonaSeleccionada,
+            sillas: areaActual.requiereSillas ? sillasSeleccionadas : undefined,
             deporte: deporteSeleccionado,
-            icono: iconoDeporte,
+            icono: iconoResumen(),
             residente: "Emanuel Espinoza",
             unidad: "BL04 - 201",
             historial: [
@@ -460,6 +640,7 @@ export function iniciarModalReserva() {
             ],
         });
 
+        notificarReservaAprobada(nombreParaNotificacion());
         cerrarModal();
     });
 }

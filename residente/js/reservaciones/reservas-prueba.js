@@ -15,9 +15,11 @@ export const reservasPrueba = [
     },
     {
         fecha: "2026-06-18",
-        horaInicio: "10:00",
-        horaFin: "11:00",
+        horaInicio: "07:00",
+        horaFin: "03:00",
         area: "Casa club",
+        zona: "Zona Norte",
+        sillas: true,
         deporte: null,
         icono: "home_work",
         residente: "Mariana López",
@@ -28,10 +30,39 @@ export const reservasPrueba = [
         ],
     },
     {
+        fecha: "2026-06-18",
+        horaInicio: "13:00",
+        horaFin: "14:00",
+        area: "Piscina",
+        deporte: null,
+        icono: "pool",
+        residente: "Sofía Vargas",
+        unidad: "BL03 - 407",
+        historial: [
+            { estado: "Reservado", fecha: "11 jun, 08:00" },
+            { estado: "Aprobado", fecha: "11 jun, 08:30" },
+        ],
+    },
+    {
+        fecha: "2026-06-18",
+        horaInicio: "07:30",
+        horaFin: "08:30",
+        area: "Gimnasio",
+        deporte: null,
+        icono: "fitness_center",
+        residente: "Diego Herrera",
+        unidad: "BL05 - 108",
+        historial: [
+            { estado: "Reservado", fecha: "09 jun, 07:00" },
+            { estado: "Aprobado", fecha: "09 jun, 07:20" },
+        ],
+    },
+    {
         fecha: "2026-06-22",
         horaInicio: "15:00",
         horaFin: "17:00",
         area: "Zona de parrillas",
+        zona: "Zona Sur",
         deporte: null,
         icono: "outdoor_grill",
         residente: "Carlos Ramírez",
@@ -50,7 +81,9 @@ export function obtenerReservasDeFecha(anio, mes, dia) {
     const diaTexto = String(dia).padStart(2, "0");
     const fechaTexto = `${anio}-${mesTexto}-${diaTexto}`;
 
-    return reservasPrueba.filter((reserva) => reserva.fecha === fechaTexto);
+    return reservasPrueba
+        .filter((reserva) => reserva.fecha === fechaTexto)
+        .sort((a, b) => aMinutos(a.horaInicio) - aMinutos(b.horaInicio));
 }
 
 export function agregarReserva(nuevaReserva) {
@@ -67,15 +100,23 @@ function aMinutos(horaTexto) {
     return h * 60 + m;
 }
 
-export function hayConflictoHorario(fecha, area, horaInicio, horaFin) {
-    const inicioNuevo = aMinutos(horaInicio);
-    const finNuevo = aMinutos(horaFin);
+// Convierte un rango a minutos; si la hora fin es menor o igual que la de
+// inicio, se asume que el rango cruza la medianoche (ej. Casa club: 07:00 a 03:00).
+function aRangoMinutos(horaInicio, horaFin) {
+    const inicio = aMinutos(horaInicio);
+    let fin = aMinutos(horaFin);
+    if (fin <= inicio) fin += 24 * 60;
+    return [inicio, fin];
+}
+
+export function hayConflictoHorario(fecha, area, horaInicio, horaFin, zona = null) {
+    const [inicioNuevo, finNuevo] = aRangoMinutos(horaInicio, horaFin);
 
     return reservasPrueba.some((reserva) => {
         if (reserva.fecha !== fecha || reserva.area !== area) return false;
+        if (zona !== null && reserva.zona !== zona) return false;
 
-        const inicioExistente = aMinutos(reserva.horaInicio);
-        const finExistente = aMinutos(reserva.horaFin);
+        const [inicioExistente, finExistente] = aRangoMinutos(reserva.horaInicio, reserva.horaFin);
 
         return inicioNuevo < finExistente && inicioExistente < finNuevo;
     });

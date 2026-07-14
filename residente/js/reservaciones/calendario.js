@@ -2,8 +2,9 @@ import { obtenerFechaSeleccionada, seleccionarFecha, alCambiarFecha } from "./es
 import { obtenerReservasDeFecha, alCambiarReservas } from "./reservas-prueba.js";
 import { obtenerClaseColorArea } from "./colores-areas.js";
 import { obtenerFiltroActivo, alCambiarFiltro } from "./estado-filtro.js";
+import { obtenerSoloMisReservas, esMiReserva, alCambiarMisReservas } from "./estado-mis-reservas.js";
 
-const LIMITE_RESERVAS_VISIBLES = 5;
+const LIMITE_RESERVAS_VISIBLES = 2;
 
 const NOMBRES_MES = [
     "enero", "febrero", "marzo", "abril", "mayo", "junio",
@@ -54,9 +55,12 @@ export function iniciarCalendario() {
 
             const reservasDelDia = obtenerReservasDeFecha(anio, mes, dia);
             const filtro = obtenerFiltroActivo();
-            const reservasFiltradas = filtro
+            let reservasFiltradas = filtro
                 ? reservasDelDia.filter((r) => r.area === filtro)
                 : reservasDelDia;
+            if (obtenerSoloMisReservas()) {
+                reservasFiltradas = reservasFiltradas.filter(esMiReserva);
+            }
 
             if (reservasFiltradas.length > 0) {
                 const eventosEl = document.createElement("div");
@@ -140,6 +144,7 @@ export function iniciarCalendario() {
     });
 
     alCambiarFiltro(() => render());
+    alCambiarMisReservas(() => render());
     alCambiarReservas(() => render());
 
     render();

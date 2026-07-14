@@ -10,15 +10,15 @@
 }
 
 .seccion-info {
-    padding: 15px;
-    padding-top: 0;
+    padding: 0 0 15px;
     width: 1;
 }
 
 .subtitulo_1,
 .subtitulo_2 {
-    font-weight: bold;
-    color: #000000;
+    font-size: 18px;
+    font-weight: 300;
+    color: #1a1a1a;
     margin-bottom: 20px;
 }
 
@@ -32,7 +32,6 @@
     gap: 15px;
     width: 100%;
     box-sizing: border-box;
-    padding-right: 15px;
 }
 
 /* ===== CARD BASE ===== */
@@ -57,8 +56,10 @@
 }
 
 .card h3 {
+    display: flex;
+    align-items: center;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 300;
     color: #1a1a1a;
     margin-bottom: 8px;
 }
@@ -78,44 +79,29 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    background-color: #f1f1f1;
+    border: 1px solid #e0e0e0;
     margin-bottom: 10px;
-}
 
-.ubicacion {
-    background-color: #dbeafe;
-}
-
-.construccion {
-    background-color: #dcfce7;
-}
-
-.datos {
-    background-color: #ede9fe;
-}
-
-.contacto {
-    background-color: #ffedd5;
+    .material-symbols-outlined {
+        font-size: 22px;
+        color: #555;
+    }
 }
 
 /* ===== CARDS DIRECTIVOS ===== */
 
-.card.directivo {
-    border-left: 4px solid rgb(97, 56, 56);
-    cursor: pointer;
-}
-
 .card.directivo .rol {
     font-size: 12px;
     color: #888;
-    font-weight: 500;
+    font-weight: 300;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .card.directivo h3 {
-    font-size: 17px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 300;
     color: #1a1a1a;
     margin: 4px 0;
 }
@@ -127,50 +113,380 @@
 
 /* ===== INTERACTIVIDAD ===== */
 
-.card[onclick] {
+.card-clic,
+.card.directivo {
     cursor: pointer;
 }
 
 .badge {
-    font-size: 12px;
-    background-color: #f0f0f0;
-    padding: 2px 7px;
-    border-radius: 20px;
-    color: #555;
+    display: inline-flex;
+    align-items: center;
     margin-left: 6px;
+    color: #999;
     vertical-align: middle;
+
+    .material-symbols-outlined {
+        font-size: 16px;
+    }
 }
 
 .link-contacto {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     font-size: 14px;
     color: #555;
     text-decoration: none;
     padding: 6px 8px;
     border-radius: 8px;
     transition: background-color 0.2s, color 0.2s;
+
+    .material-symbols-outlined {
+        font-size: 16px;
+        color: #888;
+        transition: color 0.2s ease;
+    }
 }
 
 .link-contacto:hover {
     background-color: #f5f5f5;
-    color: rgb(97, 56, 56);
+    color: #1a1a1a;
+
+    .material-symbols-outlined {
+        color: #1a1a1a;
+    }
 }
 
 .whatsapp-badge {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
     margin-top: 8px;
     font-size: 12px;
-    background-color: #dcfce7;
-    color: #16a34a;
+    background-color: var(--color-success-bg);
+    color: var(--color-success-text);
     padding: 3px 10px;
     border-radius: 20px;
-    font-weight: 500;
+    font-weight: 300;
+
+    .material-symbols-outlined {
+        font-size: 14px;
+    }
 }
 
 .card.directivo:hover .whatsapp-badge {
     background-color: #16a34a;
     color: white;
 }
+
+/* ===== TABLA: HORARIO DE ATENCIÓN ===== */
+
+.tabla-wrap {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #e8e8e8;
+    border-radius: 14px;
+    box-sizing: border-box;
+}
+
+.tabla-horarios {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    background-color: white;
+}
+
+.tabla-horarios th,
+.tabla-horarios td {
+    text-align: left;
+    padding: 14px 20px;
+    white-space: nowrap;
+}
+
+.tabla-horarios thead th {
+    background-color: #faf9f7;
+    color: #1a1a1a;
+    font-weight: 300;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.tabla-horarios tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+.tabla-horarios tbody tr:not(:last-child) {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.tabla-horarios tbody tr:hover {
+    background-color: #faf9f7;
+}
+
+.tabla-horarios tbody td:first-child {
+    font-weight: 300;
+    color: #1a1a1a;
+}
+
+.tabla-horarios tbody td {
+    color: #555;
+}
+
+/* ===== BUSCADOR DE DIRECTIVOS ===== */
+
+.cabecera-directiva {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.cabecera-directiva .subtitulo_2 {
+    margin-bottom: 0;
+}
+
+.buscador-directivos-wrap {
+    position: relative;
+    flex: 1;
+    max-width: 280px;
+    min-width: 180px;
+
+    .material-symbols-outlined {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 16px;
+        color: #888;
+        pointer-events: none;
+    }
+}
+
+.buscador-directivos {
+    width: 100%;
+    height: 40px;
+    padding: 0 14px 0 36px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    background-color: white;
+    font-family: "DM Sans", system-ui, sans-serif;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+}
+
+.buscador-directivos:focus {
+    border-color: #1a1a1a;
+}
+
+.buscador-directivos::placeholder {
+    color: #999;
+}
+
+.sin-resultados {
+    font-size: 14px;
+    color: #888;
+    padding: 20px 4px 0;
+}
+
+/* ===== ACORDEÓN: PREGUNTAS FRECUENTES ===== */
+
+.acordeon {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.acordeon-item {
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: white;
+}
+
+.acordeon-pregunta {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 16px 20px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 300;
+    color: #1a1a1a;
+    text-align: left;
+    font-family: inherit;
+}
+
+.acordeon-icono {
+    font-size: 1.3rem;
+    color: #888;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+}
+
+.acordeon-item.abierto .acordeon-icono {
+    transform: rotate(180deg);
+}
+
+.acordeon-respuesta {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.acordeon-item.abierto .acordeon-respuesta {
+    max-height: 160px;
+}
+
+.acordeon-respuesta p {
+    padding: 0 20px 16px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* ===== VENTANA FLOTANTE: DETALLE DE DIRECTIVO ===== */
+
+.modal-directivo-overlay,
+#modal-directivo-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.45);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+}
+
+#modal-directivo-overlay.visible {
+    display: flex;
+    animation: fadeIn 0.2s ease;
+}
+
+.modal-directivo {
+    background-color: white;
+    border-radius: 14px;
+    padding: 28px;
+    width: 300px;
+    max-width: 90vw;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 4px;
+    position: relative;
+    animation: slideDown 0.25s ease;
+}
+
+.modal-directivo-cerrar {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #e0e0e0;
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.modal-directivo-cerrar:hover {
+    background-color: #f1f1f1;
+}
+
+.modal-directivo-cerrar .material-symbols-outlined {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.modal-directivo-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: #1a1a1a;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 300;
+    margin-bottom: 8px;
+}
+
+.modal-directivo h3 {
+    font-size: 18px;
+    font-weight: 300;
+    color: #1a1a1a;
+    margin: 2px 0;
+}
+
+.modal-directivo p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 14px;
+}
+
+.modal-directivo-whatsapp {
+    width: 100%;
+    height: 42px;
+    box-sizing: border-box;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 8px;
+    background-color: #1a1a1a;
+    color: white;
+    font-weight: 300;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+
+    .material-symbols-outlined {
+        font-size: 18px;
+    }
+
+    &:hover {
+        background-color: #333;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 /* ===== RESPONSIVE ===== */
 
 @media (max-width: 1400px) {
@@ -187,7 +503,6 @@
 
     .cards-grid {
         gap: 12px;
-        padding-right: 10px;
     }
 
     .card {
@@ -203,8 +518,22 @@
 
     .cards-grid {
         grid-template-columns: 1fr 1fr;
-        padding-right: 0;
         gap: 12px;
+    }
+
+    .cabecera-directiva {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .buscador-directivos-wrap {
+        max-width: none;
+    }
+
+    .tabla-horarios th,
+    .tabla-horarios td {
+        padding: 12px 14px;
+        font-size: 13px;
     }
 }
 
@@ -226,4 +555,157 @@
     .subtitulo_2 {
         margin-top: 8px;
     }
+
+    .modal-directivo {
+        width: 260px;
+        padding: 22px;
+    }
+}
+
+/* ══════════════════════════════════════════════
+   DARK MODE — INFORMACIÓN
+══════════════════════════════════════════════ */
+body.tema-oscuro .seccion-info h4 {
+    color: #e1e4e8 !important;
+}
+
+body.tema-oscuro .card {
+    background-color: rgba(30, 30, 28, 0.95) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.tema-oscuro .card h3 {
+    color: #e1e4e8 !important;
+}
+
+body.tema-oscuro .card p {
+    color: #9ba1aa !important;
+}
+
+body.tema-oscuro .card-icono {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+body.tema-oscuro .card-icono .material-symbols-outlined {
+    color: #e1e4e8;
+}
+
+body.tema-oscuro .badge {
+    color: #9ba1aa !important;
+}
+
+body.tema-oscuro .link-contacto {
+    color: #d8d4cd !important;
+}
+
+body.tema-oscuro .link-contacto .material-symbols-outlined {
+    color: #9ba1aa;
+}
+
+body.tema-oscuro .link-contacto:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+    color: #e1e4e8 !important;
+}
+
+body.tema-oscuro .link-contacto:hover .material-symbols-outlined {
+    color: #e1e4e8;
+}
+
+body.tema-oscuro .card.directivo .rol {
+    color: #9ba1aa !important;
+}
+
+body.tema-oscuro .tabla-wrap {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.tema-oscuro .tabla-horarios {
+    background-color: rgba(30, 30, 28, 0.95);
+}
+
+body.tema-oscuro .tabla-horarios thead th {
+    background-color: rgba(255, 255, 255, 0.04);
+    color: #e1e4e8;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.tema-oscuro .tabla-horarios tbody tr:not(:last-child) {
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.tema-oscuro .tabla-horarios tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+body.tema-oscuro .tabla-horarios tbody td {
+    color: #9ba1aa;
+}
+
+body.tema-oscuro .tabla-horarios tbody td:first-child {
+    color: #e1e4e8;
+}
+
+body.tema-oscuro .buscador-directivos {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.12);
+    color: #e1e4e8;
+}
+
+body.tema-oscuro .buscador-directivos::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+body.tema-oscuro .buscador-directivos-wrap .material-symbols-outlined {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+body.tema-oscuro .sin-resultados {
+    color: #9ba1aa;
+}
+
+body.tema-oscuro .acordeon-item {
+    background-color: rgba(30, 30, 28, 0.95);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.tema-oscuro .acordeon-pregunta {
+    color: #e1e4e8;
+}
+
+body.tema-oscuro .acordeon-respuesta p {
+    color: #9ba1aa;
+}
+
+body.tema-oscuro .modal-directivo {
+    background-color: #23272b;
+}
+
+body.tema-oscuro .modal-directivo h3 {
+    color: #e1e4e8;
+}
+
+body.tema-oscuro .modal-directivo .rol {
+    color: #9ba1aa;
+}
+
+body.tema-oscuro .modal-directivo p {
+    color: #9ba1aa;
+}
+
+body.tema-oscuro .modal-directivo-whatsapp {
+    background-color: #3b4552;
+}
+
+body.tema-oscuro .modal-directivo-whatsapp:hover {
+    background-color: #4a5563;
+}
+
+body.tema-oscuro .modal-directivo-cerrar {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+body.tema-oscuro .modal-directivo-cerrar .material-symbols-outlined {
+    color: #e1e4e8;
 }

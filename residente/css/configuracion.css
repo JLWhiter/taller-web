@@ -1,9 +1,25 @@
+.seccion-config {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.seccion-config+.seccion-config {
+    margin-top: 32px;
+}
+
+.subtitulo_1 {
+    font-size: 18px;
+    font-weight: 300;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+}
+
 .contenido-configuracion {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 20px;
-    padding: 20px;
-    /* align-items: start;*/
+    width: 100%;
 }
 
 .tarjeta-config {
@@ -13,21 +29,108 @@
     padding: 25px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    /* align-self: start;*/
-    height: 100%;
+    gap: 16px;
     box-sizing: border-box;
 }
 
+.tarjeta-config-cabecera {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.tarjeta-config-icono {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1f1f1;
+    border: 1px solid #e0e0e0;
+
+    .material-symbols-outlined {
+        font-size: 22px;
+        color: #555;
+    }
+}
+
 .tarjeta-config h3 {
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: 300;
     color: #1a1a18;
 }
 
 .tarjeta-config p {
     font-size: 13px;
     color: #5a5750;
-    margin-bottom: 5px;
+}
+
+/* ===== INTERRUPTOR DE MODO OSCURO ===== */
+
+.interruptor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    margin-top: auto;
+}
+
+.interruptor input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.interruptor-riel {
+    position: relative;
+    width: 42px;
+    height: 24px;
+    border-radius: 999px;
+    background-color: #e0ddd6;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.interruptor-perilla {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease;
+}
+
+.interruptor input:checked+.interruptor-riel {
+    background-color: #1a1a18;
+}
+
+.interruptor input:checked+.interruptor-riel .interruptor-perilla {
+    transform: translateX(18px);
+}
+
+.interruptor input:focus-visible+.interruptor-riel {
+    outline: 2px solid #7c6f5b;
+    outline-offset: 2px;
+}
+
+.interruptor-texto {
+    font-size: 14px;
+    font-weight: 300;
+    color: #1a1a18;
+}
+
+/* ===== TARJETA: FOTO DE PERFIL ===== */
+
+.grupo-foto {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .boton-config {
@@ -35,114 +138,191 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    height: 45px;
+    gap: 8px;
+    height: 42px;
     border-radius: 8px;
     border: 1px solid rgba(0, 0, 0, 0.08);
     background-color: transparent;
     color: #1a1a18;
-    font-weight: 600;
+    font-family: "DM Sans", system-ui, sans-serif;
+    font-weight: 300;
+    font-size: 14px;
     cursor: pointer;
     transition: 0.2s ease;
-    overflow: hidden;
+
+    .material-symbols-outlined {
+        font-size: 18px;
+        color: #555;
+    }
 }
 
 .boton-config:hover {
-    background-color: #f0ede8;
+    background-color: #e1e4e8;
     border-color: #7c6f5b;
 }
 
-.boton-config img {
-    height: 20px;
-    width: 20px;
-    object-fit: contain;
+.boton-config:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.grupo-acciones-foto {
+    display: flex;
+    gap: 10px;
+}
+
+.grupo-acciones-foto .boton-config,
+.grupo-acciones-foto .boton-accion {
+    flex: 1;
+}
+
+.boton-eliminar-foto:hover:not(:disabled) {
+    background-color: #fdecec;
+    border-color: #d33636;
+    color: #d33636;
+
+    .material-symbols-outlined {
+        color: #d33636;
+    }
+}
+
+.mensaje-formulario {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    font-weight: 400;
+    min-height: 16px;
+    margin: 0;
+    padding: 0;
+    border-radius: 7px;
+    transition: color 0.2s ease, background-color 0.2s ease, padding 0.2s ease;
+}
+
+.mensaje-formulario.error,
+.mensaje-formulario.exito {
+    padding: 10px 10px;
+    margin: 4px 0;
+}
+
+.mensaje-formulario.error::before,
+.mensaje-formulario.exito::before {
+    font-family: "Material Symbols Outlined";
+    font-size: 15px;
+    font-variation-settings: 'wght' 400;
+    line-height: 1;
+}
+
+.mensaje-formulario.error {
+    color: #d33636;
+    background-color: rgba(211, 54, 54, 0.08);
+}
+
+.mensaje-formulario.error::before {
+    content: "error";
+}
+
+.mensaje-formulario.exito {
+    color: #16a34a;
+    background-color: rgba(22, 163, 74, 0.08);
+}
+
+.mensaje-formulario.exito::before {
+    content: "check_circle";
+}
+
+.previsualizacion-foto {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #e1e4e8;
+    border: 1px solid #e0e0e0;
     flex-shrink: 0;
 }
 
-.boton-config span {
-    font-size: 14px;
-    color: #1a1a18;
+.previsualizacion-foto:empty {
+    background-color: #f1f1f1;
 }
 
-.grupo-input {
-    display: flex;
-    gap: 5px;
-}
-
-.grupo-input input {
-    flex: 1;
-    min-width: 0;
-    height: 45px;
-    box-sizing: border-box;
-    padding: 0px 15px;
-    border-radius: 8px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    background-color: #ffffff;
-    color: #1a1a18;
-    font-family: "DM Sans", system-ui, sans-serif;
-    font-size: 14px;
-    outline: none;
-    transition: 0.2s ease;
-}
-
-.grupo-input input:focus {
-    border-color: #7c6f5b;
-}
-
-.grupo-input input::placeholder {
-    color: #9a9590;
+.previsualizacion-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .boton-accion {
-    flex: 1;
+    height: 42px;
     padding: 0 20px;
-    height: 45px;
     border-radius: 8px;
     border: none;
     background-color: #1a1a18;
     color: white;
     font-family: "DM Sans", system-ui, sans-serif;
-    font-weight: bold;
+    font-weight: 300;
     font-size: 14px;
     cursor: pointer;
     transition: 0.2s ease;
-    white-space: nowrap;
 }
 
 .boton-accion:hover {
     background-color: #7c6f5b;
 }
 
-#btn-tema-oscuro {
-    width: 100%;
-    height: 45px;
-    box-sizing: border-box;
-    margin-top: auto;
+.boton-accion:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
 }
 
 /* ══════════════════════════════════════════════
    DARK MODE — CONFIGURACIÓN
 ══════════════════════════════════════════════ */
+body.tema-oscuro .subtitulo_1 {
+    color: #e1e4e8;
+}
+
 body.tema-oscuro .tarjeta-config {
     background-color: rgba(30, 30, 28, 0.95);
     border-color: rgba(255, 255, 255, 0.1);
 }
 
 body.tema-oscuro .tarjeta-config h3 {
-    color: #f0ede8;
+    color: #e1e4e8;
 }
 
 body.tema-oscuro .tarjeta-config p {
-    color: #a8a49f;
+    color: #9ba1aa;
+}
+
+body.tema-oscuro .tarjeta-config-icono {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+body.tema-oscuro .tarjeta-config-icono .material-symbols-outlined {
+    color: #e1e4e8;
+}
+
+body.tema-oscuro .interruptor-riel {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+body.tema-oscuro .interruptor input:checked+.interruptor-riel {
+    background-color: #3b4552;
+}
+
+body.tema-oscuro .interruptor-texto {
+    color: #e1e4e8;
 }
 
 body.tema-oscuro .boton-config {
     border-color: rgba(255, 255, 255, 0.15);
-    color: #f0ede8;
+    color: #e1e4e8;
 }
 
-body.tema-oscuro .boton-config span {
-    color: #f0ede8;
+body.tema-oscuro .boton-config .material-symbols-outlined {
+    color: #e1e4e8;
 }
 
 body.tema-oscuro .boton-config:hover {
@@ -150,326 +330,39 @@ body.tema-oscuro .boton-config:hover {
     border-color: rgba(255, 255, 255, 0.25);
 }
 
-body.tema-oscuro .boton-config img {
-    filter: brightness(0) invert(1);
-    opacity: 0.85;
+body.tema-oscuro .mensaje-formulario.error {
+    color: #f28b8b;
+    background-color: rgba(211, 54, 54, 0.15);
 }
 
-body.tema-oscuro .grupo-input input {
-    background-color: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.12);
-    color: #f0ede8;
+body.tema-oscuro .mensaje-formulario.exito {
+    color: #4ade80;
+    background-color: rgba(22, 163, 74, 0.18);
 }
 
-body.tema-oscuro .grupo-input input::placeholder {
-    color: rgba(255, 255, 255, 0.3);
+body.tema-oscuro .boton-eliminar-foto:hover:not(:disabled) {
+    background-color: rgba(211, 54, 54, 0.15);
+    border-color: #f28b8b;
+    color: #f28b8b;
+
+    .material-symbols-outlined {
+        color: #f28b8b;
+    }
 }
 
-body.tema-oscuro .grupo-input input:focus {
-    border-color: rgba(88, 66, 66, 0.3);
+body.tema-oscuro .previsualizacion-foto {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+body.tema-oscuro .previsualizacion-foto:empty {
+    background-color: rgba(255, 255, 255, 0.08);
 }
 
 body.tema-oscuro .boton-accion {
-    background-color: #725529;
+    background-color: #3b4552;
 }
 
 body.tema-oscuro .boton-accion:hover {
-    background-color: #9c8f7b;
-}
-
-/* ══════════════════════════════════════════════
-   DARK MODE — HEADER MAIN
-══════════════════════════════════════════════ */
-body.tema-oscuro main header {
-    background-color: transparent;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-color: rgba(255, 255, 255, 0.08) !important;
-}
-
-body.tema-oscuro #titulo-seccion {
-    color: #f0ede8 !important;
-}
-
-body.tema-oscuro main header hgroup p {
-    color: #a8a49f !important;
-}
-
-body.tema-oscuro main header .perfil .rol {
-    background-color: rgba(20, 80, 45, 0.4);
-    color: #86efac;
-    border: 1px solid rgba(34, 197, 94, 0.3);
-}
-
-body.tema-oscuro main header .perfil .usuario .informacion .nombre-apellido,
-body.tema-oscuro main header .perfil .usuario .informacion .torre-departamento {
-    color: #f0ede8 !important;
-}
-
-body.tema-oscuro main header .perfil button {
-    background-color: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.15) !important;
-}
-
-body.tema-oscuro main header .perfil button span {
-    color: #f0ede8 !important;
-}
-
-body.tema-oscuro main header .perfil button img {
-    filter: brightness(0) invert(1);
-    opacity: 0.8;
-}
-
-body.tema-oscuro main header .perfil button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* ══════════════════════════════════════════════
-   DARK MODE — PANEL PRINCIPAL
-══════════════════════════════════════════════ */
-body.tema-oscuro .reservas h4,
-body.tema-oscuro .herramientas h4 {
-    color: #f0ede8 !important;
-}
-
-body.tema-oscuro .loza-deportiva {
-    background-color: rgba(29, 78, 137, 0.7);
-    border-color: rgba(59, 130, 246, 0.5) !important;
-}
-
-body.tema-oscuro .loza-deportiva .material-symbols-outlined,
-body.tema-oscuro .loza-deportiva h3,
-body.tema-oscuro .loza-deportiva p {
-    color: #2581ea !important;
-}
-
-body.tema-oscuro .loza-deportiva:hover {
-    background-color: rgba(21, 74, 138, 0.912);
-}
-
-body.tema-oscuro .casa-club {
-    background-color: rgba(17, 78, 40, 0.45);
-    border-color: rgba(34, 197, 94, 0.5) !important;
-}
-
-body.tema-oscuro .casa-club .material-symbols-outlined,
-body.tema-oscuro .casa-club h3,
-body.tema-oscuro .casa-club p {
-    color: #1ac559 !important;
-}
-
-body.tema-oscuro .casa-club:hover {
-    background-color: rgba(17, 78, 40, 0.65);
-}
-
-body.tema-oscuro .zona-parrilla {
-    background-color: rgba(100, 40, 10, 0.45);
-    border-color: rgba(251, 146, 60, 0.5) !important;
-}
-
-body.tema-oscuro .zona-parrilla .material-symbols-outlined,
-body.tema-oscuro .zona-parrilla h3,
-body.tema-oscuro .zona-parrilla p {
-    color: #ff931f !important;
-}
-
-body.tema-oscuro .zona-parrilla:hover {
-    background-color: rgba(100, 40, 10, 0.65);
-}
-
-body.tema-oscuro .cita-jd {
-    background-color: rgba(60, 20, 120, 0.45);
-    border-color: rgba(167, 139, 250, 0.5) !important;
-}
-
-body.tema-oscuro .cita-jd .material-symbols-outlined,
-body.tema-oscuro .cita-jd h3,
-body.tema-oscuro .cita-jd p {
-    color: #a250fa !important;
-}
-
-body.tema-oscuro .cita-jd:hover {
-    background-color: rgba(60, 20, 120, 0.65);
-}
-
-body.tema-oscuro .calendario,
-body.tema-oscuro .mis-reservas {
-    background-color: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-}
-
-body.tema-oscuro .calendario:hover,
-body.tema-oscuro .mis-reservas:hover {
-    background-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-body.tema-oscuro .calendario h3,
-body.tema-oscuro .calendario p,
-body.tema-oscuro .mis-reservas h3,
-body.tema-oscuro .mis-reservas p {
-    color: #f0ede8 !important;
-}
-
-body.tema-oscuro .calendario img,
-body.tema-oscuro .mis-reservas img {
-    filter: brightness(0) invert(1);
-    opacity: 0.8;
-}
-
-/* ══════════════════════════════════════════════
-   DARK MODE — COCHERA
-══════════════════════════════════════════════ */
-body.tema-oscuro .reservar-cochera {
-    background-color: rgba(61, 149, 255, 0.45);
-    border-color: rgba(59, 130, 246, 0.5) !important;
-}
-
-body.tema-oscuro .reservar-cochera h3,
-body.tema-oscuro .reservar-cochera p {
-    color: #0077ff !important;
-}
-
-body.tema-oscuro .reservar-cochera:hover {
-    background-color: rgba(29, 78, 137, 0.65);
-}
-
-body.tema-oscuro .alquilar-cochera {
-    background-color: rgba(100, 40, 10, 0.45);
-    border-color: rgba(251, 146, 60, 0.5) !important;
-}
-
-body.tema-oscuro .alquilar-cochera h3,
-body.tema-oscuro .alquilar-cochera p {
-    color: #f8962e !important;
-}
-
-body.tema-oscuro .alquilar-cochera:hover {
-    background-color: rgba(100, 40, 10, 0.65);
-}
-
-body.tema-oscuro .publicar-cochera {
-    background-color: rgba(17, 78, 40, 0.45);
-    border-color: rgba(34, 197, 94, 0.5) !important;
-}
-
-body.tema-oscuro .publicar-cochera h3,
-body.tema-oscuro .publicar-cochera p {
-    color: #23d063 !important;
-}
-
-body.tema-oscuro .publicar-cochera:hover {
-    background-color: rgba(17, 78, 40, 0.65);
-}
-
-body.tema-oscuro .reservar-cochera img,
-body.tema-oscuro .alquilar-cochera img,
-body.tema-oscuro .publicar-cochera img {
-    filter: brightness(0) invert(1);
-    opacity: 0.85;
-}
-
-/* ══════════════════════════════════════════════
-   DARK MODE — INFORMACIÓN
-══════════════════════════════════════════════ */
-body.tema-oscuro .seccion-info h4 {
-    color: #f0ede8 !important;
-}
-
-body.tema-oscuro .card {
-    background-color: rgba(30, 30, 28, 0.95) !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-body.tema-oscuro .card h3 {
-    color: #f0ede8 !important;
-}
-
-body.tema-oscuro .card p {
-    color: #a8a49f !important;
-}
-
-body.tema-oscuro .card .badge {
-    color: #a8a49f !important;
-}
-
-body.tema-oscuro .card .link-contacto {
-    color: #93c5fd !important;
-}
-
-body.tema-oscuro .card.directivo .rol {
-    color: #a8a49f !important;
-}
-
-body.tema-oscuro .card.directivo .whatsapp-badge {
-    background-color: rgba(22, 101, 52, 0.3) !important;
-    color: #86efac !important;
-    border-color: rgba(34, 197, 94, 0.3) !important;
-}
-
-/* ══════════════════════════════════════════════
-   DARK MODE — MODAL
-══════════════════════════════════════════════ */
-body.tema-oscuro .modal-overlay .modal {
-    background-color: #1e1e1c;
-}
-
-body.tema-oscuro .modal-overlay .modal header {
-    border-color: rgba(255, 255, 255, 0.08) !important;
-}
-
-body.tema-oscuro .modal-overlay .modal header .modal-close {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.15) !important;
-    color: #f0ede8;
-}
-
-body.tema-oscuro .modal-overlay .modal #modal-content h3 {
-    color: #f0ede8 !important;
-}
-
-body.tema-oscuro .detalles-reserva .informacion {
-    background-color: rgba(255, 255, 255, 0.05) !important;
-}
-
-body.tema-oscuro .detalles-reserva .informacion p {
-    color: #a8a49f !important;
-}
-
-body.tema-oscuro .detalles-reserva .datos-reserva {
-    border-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-body.tema-oscuro .hoy,
-body.tema-oscuro .personalizado,
-body.tema-oscuro .inicio,
-body.tema-oscuro .fin {
-    border-color: rgba(255, 255, 255, 0.15) !important;
-    color: #f0ede8 !important;
-    background: transparent;
-}
-
-body.tema-oscuro .hoy:hover,
-body.tema-oscuro .personalizado:hover,
-body.tema-oscuro .inicio:hover,
-body.tema-oscuro .fin:hover {
-    border-color: rgba(255, 255, 255, 0.3) !important;
-}
-
-body.tema-oscuro .info-detalles textarea {
-    background-color: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.12) !important;
-    color: #f0ede8;
-}
-
-body.tema-oscuro .info-detalles textarea::placeholder {
-    color: rgba(255, 255, 255, 0.3);
-}
-
-body.tema-oscuro .info-detalles textarea:hover {
-    border-color: rgba(255, 255, 255, 0.25) !important;
-}
-
-body.tema-oscuro #btn-menu-movil,
-body.tema-oscuro #btn-menu-movil .material-symbols-outlined {
-    color: #f0ede8 !important;
+    background-color: #4a5563;
 }

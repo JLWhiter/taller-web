@@ -1,6 +1,7 @@
 import { obtenerFechaSeleccionada, seleccionarFecha, alCambiarFecha } from "./estado-fecha.js";
 import { obtenerReservasDeFecha, alCambiarReservas } from "./reservas-prueba.js";
 import { obtenerClaseColorArea } from "./colores-areas.js";
+import { obtenerSoloMisReservas, esMiReserva, alCambiarMisReservas } from "./estado-mis-reservas.js";
 
 const NOMBRES_DIA = [
     "domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado",
@@ -23,7 +24,9 @@ function calcularDuracion(horaInicio, horaFin) {
     const [horaIni, minIni] = horaInicio.split(":").map(Number);
     const [horaFinNum, minFin] = horaFin.split(":").map(Number);
 
-    const minutosTotales = (horaFinNum * 60 + minFin) - (horaIni * 60 + minIni);
+    let minutosTotales = (horaFinNum * 60 + minFin) - (horaIni * 60 + minIni);
+    if (minutosTotales <= 0) minutosTotales += 24 * 60; // cruza medianoche (ej. Casa club)
+
     const horas = Math.floor(minutosTotales / 60);
     const minutos = minutosTotales % 60;
 
@@ -43,10 +46,11 @@ function crearTarjetaReserva(reserva) {
 
     const infoEl = document.createElement("div");
     infoEl.className = "tarjeta-reserva-info";
-    const titulo = reserva.deporte ?? reserva.area;
+    const titulo = reserva.deporte ?? (reserva.zona ? `${reserva.area} — ${reserva.zona}` : reserva.area);
+    const detalleResidente = `${reserva.residente} · ${reserva.unidad}${reserva.sillas ? " · Con sillas" : ""}`;
     infoEl.innerHTML = `
     <span class="tarjeta-reserva-area">${titulo}</span>
-    <span class="tarjeta-reserva-residente">${reserva.residente} · ${reserva.unidad}</span>
+    <span class="tarjeta-reserva-residente">${detalleResidente}</span>
 `;
 
     encabezado.appendChild(iconoEl);
@@ -95,14 +99,19 @@ export function iniciarDetalleReservas() {
         const anio = fechaActual.getFullYear();
         const mes = fechaActual.getMonth();
         const dia = fechaActual.getDate();
-        const reservasDelDia = obtenerReservasDeFecha(anio, mes, dia);
+        let reservasDelDia = obtenerReservasDeFecha(anio, mes, dia);
+        if (obtenerSoloMisReservas()) {
+            reservasDelDia = reservasDelDia.filter(esMiReserva);
+        }
 
         listaEl.innerHTML = "";
 
         if (reservasDelDia.length === 0) {
             const vacioEl = document.createElement("p");
             vacioEl.className = "detalle-reservas-vacio";
-            vacioEl.textContent = "No hay reservas aprobadas para este día.";
+            vacioEl.textContent = obtenerSoloMisReservas()
+                ? "No tienes reservas para este día."
+                : "No hay reservas aprobadas para este día.";
             listaEl.appendChild(vacioEl);
             return;
         }
@@ -126,6 +135,7 @@ export function iniciarDetalleReservas() {
 
     alCambiarFecha(render);
     alCambiarReservas(render);
+    alCambiarMisReservas(render);
 
     render();
 }

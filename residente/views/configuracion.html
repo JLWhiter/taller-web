@@ -8,37 +8,68 @@
 </head>
 
 <body>
-    <div class="contenido-configuracion">
-        <div class="tarjeta-config">
-            <h3>Modo Oscuro</h3>
-            <p>Cambia el aspecto visual del sistema.</p>
-            <button id="btn-tema-oscuro" class="boton-config">
-                <img src="../images/icons/dark.png" alt="Luna">
-                <span>Activar / Desactivar</span>
-            </button>
-        </div>
-        <div class="tarjeta-config">
-            <h3>Información de Perfil</h3>
-            <p>Actualiza tu numero telefonico.</p>
-            <div class="contenedor-input">
-                <form id="form-guardar-nombre" class="grupo-input">
+    <section class="seccion-config">
+        <h4 class="subtitulo_1">Configuración del sistema</h4>
+        <div class="contenido-configuracion">
+            <div class="tarjeta-config">
+                <div class="tarjeta-config-cabecera">
+                    <div class="tarjeta-config-icono">
+                        <span class="material-symbols-outlined" id="icono-tema">dark_mode</span>
+                    </div>
+                    <div>
+                        <h3>Modo Oscuro</h3>
+                        <p>Cambia el aspecto visual del sistema.</p>
+                    </div>
+                </div>
 
-                    <input type="text" id="nuevo-nombre" name="nuevo-nombre" minlength="1" maxlength="9" required
-                        placeholder="Escribe tu numero...">
-                    <button id="btn-guardar-nombre" class="boton-accion" type="submit">Guardar</button>
+                <label class="interruptor" for="switch-tema">
+                    <input type="checkbox" id="switch-tema">
+                    <span class="interruptor-riel">
+                        <span class="interruptor-perilla"></span>
+                    </span>
+                    <span class="interruptor-texto">Activar modo oscuro</span>
+                </label>
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion-config">
+        <h4 class="subtitulo_1">Configuración del perfil</h4>
+        <div class="contenido-configuracion">
+            <div class="tarjeta-config">
+                <div class="tarjeta-config-cabecera">
+                    <div class="tarjeta-config-icono">
+                        <span class="material-symbols-outlined">photo_camera</span>
+                    </div>
+                    <div>
+                        <h3>Foto de Perfil</h3>
+                        <p>JPG, PNG o WEBP · máx. 2 MB</p>
+                    </div>
+                </div>
+
+                <form id="formulario-foto" novalidate>
+                    <div class="grupo-foto">
+                        <div class="previsualizacion-foto" id="previsualizacion-foto"></div>
+                        <input type="file" id="input-archivo-foto" accept="image/*" style="display: none;">
+                        <button id="btn-seleccionar-foto" class="boton-config" type="button">
+                            <span class="material-symbols-outlined">upload</span>
+                            <span>Seleccionar imagen</span>
+                        </button>
+                    </div>
+
+                    <p class="mensaje-formulario" id="mensaje-foto"></p>
+
+                    <div class="grupo-acciones-foto">
+                        <button id="btn-eliminar-foto" class="boton-config boton-eliminar-foto" type="button" disabled>
+                            <span class="material-symbols-outlined">delete</span>
+                            <span>Eliminar foto</span>
+                        </button>
+                        <button id="btn-guardar-foto" class="boton-accion" type="button" disabled>Guardar foto</button>
+                    </div>
                 </form>
             </div>
         </div>
-        <div class="tarjeta-config">
-            <h3>Foto de Perfil</h3>
-            <p>Selecciona una imagen desde tu dispositivo.</p>
-            <div class="grupo-input">
-                <input type="file" id="input-archivo-foto" accept="image/*" style="display: none;">
-                <button id="btn-seleccionar-foto" class="boton-config">Selecciona</button>
-                <button id="btn-guardar-foto" class="boton-accion">Guardar</button>
-            </div>
-        </div>
-    </div>
+    </section>
 </body>
 
 </html>

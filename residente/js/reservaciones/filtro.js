@@ -1,10 +1,10 @@
-import { reservasPrueba } from "./reservas-prueba.js";
 import { obtenerFiltroActivo, seleccionarFiltro, alCambiarFiltro } from "./estado-filtro.js";
 
-const areasDisponibles = [...new Set(reservasPrueba.map((r) => r.area))].map((area) => {
-    const reserva = reservasPrueba.find((r) => r.area === area);
-    return { area, icono: reserva.icono };
-});
+const AREAS_FILTRABLES = [
+    { area: "Loza deportiva", icono: "sports_soccer" },
+    { area: "Casa club", icono: "home_work" },
+    { area: "Zona de parrillas", icono: "outdoor_grill" },
+];
 
 export function iniciarFiltro() {
     const btnFiltro = document.getElementById("boton-filtro");
@@ -12,25 +12,31 @@ export function iniciarFiltro() {
 
     if (!btnFiltro || !dropdown) return;
 
+    function crearOpcion(area, icono, nombreMostrado, esTodas = false) {
+        const opcion = document.createElement("div");
+        opcion.className = "filtro-opcion";
+        if (esTodas) opcion.classList.add("filtro-opcion-todas");
+        if (obtenerFiltroActivo() === area) opcion.classList.add("seleccionada");
+
+        opcion.innerHTML = `
+            <span class="material-symbols-outlined">${icono}</span>
+            <span class="filtro-opcion-nombre">${nombreMostrado}</span>
+            <span class="filtro-opcion-dot"></span>
+        `;
+
+        opcion.addEventListener("click", () => {
+            seleccionarFiltro(area);
+            cerrarDropdown();
+        });
+
+        return opcion;
+    }
+
     function renderDropdown() {
         dropdown.innerHTML = "";
-        areasDisponibles.forEach(({ area, icono }) => {
-            const opcion = document.createElement("div");
-            opcion.className = "filtro-opcion";
-            if (obtenerFiltroActivo() === area) opcion.classList.add("seleccionada");
-
-            opcion.innerHTML = `
-                <span class="material-symbols-outlined">${icono}</span>
-                <span class="filtro-opcion-nombre">${area}</span>
-                <span class="filtro-opcion-dot"></span>
-            `;
-
-            opcion.addEventListener("click", () => {
-                seleccionarFiltro(area);
-                cerrarDropdown();
-            });
-
-            dropdown.appendChild(opcion);
+        dropdown.appendChild(crearOpcion(null, "filter_alt_off", "Todas las áreas", true));
+        AREAS_FILTRABLES.forEach(({ area, icono }) => {
+            dropdown.appendChild(crearOpcion(area, icono, area));
         });
     }
 

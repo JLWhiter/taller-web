@@ -12,28 +12,16 @@
         <div class="panel-filtros">
             <div class="buscador">
                 <span class="material-symbols-outlined">search</span>
-                <input type="search" placeholder="Buscar..." />
-                <button class="btn-icono" aria-label="Editar">
-                    <span class="material-symbols-outlined">edit</span>
-                </button>
-                <button class="btn-icono" aria-label="Ver más">
-                    <span class="material-symbols-outlined">visibility</span>
+                <input type="search" id="buscador-areas" placeholder="Buscar..." />
+                <button class="btn-ver-todos" id="btn-ver-todos-areas" type="button">
+                    <span class="material-symbols-outlined">grid_view</span>
+                    Ver todos
                 </button>
             </div>
-            <div class="botones">
-                <button data-area="loza">
-                    <span class="material-symbols-outlined">sports_soccer</span>
-                    Loza deportiva
-                </button>
-                <button>
-                    <span class="material-symbols-outlined">home_work</span>
-                    Casa club
-                </button>
-                <button>
-                    <span class="material-symbols-outlined">outdoor_grill</span>
-                    Zona de parrillas
-                </button>
-            </div>
+            <div class="botones"></div>
+            <p class="sin-resultados-botones" id="sin-resultados-botones" style="display:none;">
+                No se encontraron áreas comunes.
+            </p>
         </div>
         <div class="detalle-reservas">
             <div class="detalle-header">
@@ -61,6 +49,10 @@
                     <span class="material-symbols-outlined">chevron_right</span>
                 </button>
             </div>
+            <button class="cal-filtro cal-mis-reservas" id="boton-mis-reservas">
+                <span class="material-symbols-outlined">event_available</span>
+                <span class="mis-reservas-texto">Mis reservas</span>
+            </button>
             <div class="cal-filtro-wrapper">
                 <button class="cal-filtro" id="boton-filtro">
                     <span class="material-symbols-outlined">filter_list</span>
@@ -105,6 +97,32 @@
                     <button class="modal-btn-pri" id="modal-btn-siguiente">Siguiente →</button>
                     <button class="modal-btn-pri" id="modal-btn-guardar" style="display:none;">Guardar reserva</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!--VENTANA FLOTANTE: TODAS LAS ÁREAS COMUNES-->
+    <div class="modal-overlay" id="modal-areas-overlay">
+        <div class="modal-areas">
+            <div class="modal-areas-header">
+                <h2>Áreas comunes</h2>
+                <button class="modal-close" id="modal-areas-cerrar" aria-label="Cerrar">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <div class="modal-areas-buscador">
+                <span class="material-symbols-outlined">search</span>
+                <input type="search" id="buscador-todas-areas" placeholder="Buscar área común..." />
+            </div>
+
+            <p class="modal-ayuda">Marca hasta 3 áreas para fijarlas en el inicio de Reservas.</p>
+
+            <div class="modal-areas-lista" id="modal-areas-lista"></div>
+
+            <div class="modal-areas-footer">
+                <span id="modal-areas-contador">3 de 3 fijadas</span>
+                <button class="modal-btn-pri" id="modal-areas-guardar">Guardar selección</button>
             </div>
         </div>
     </div>

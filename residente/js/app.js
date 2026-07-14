@@ -2,8 +2,17 @@ import { marcarBotonActivo } from "./ui.js";
 import { iniciarCalendario } from "./reservaciones/calendario.js";
 import { iniciarDetalleReservas } from "./reservaciones/detalle-reservas.js";
 import { iniciarFiltro } from "./reservaciones/filtro.js";
+import { iniciarMisReservas } from "./reservaciones/mis-reservas.js";
 import { iniciarModalReserva } from "./reservaciones/modal-reserva.js";
-import { iniciarSidebarMovil } from "./sidebar-movil.js";
+import { iniciarPanelBotones } from "./reservaciones/panel-botones.js";
+import { iniciarModalTodasAreas } from "./reservaciones/modal-todas-areas.js";
+import { iniciarNavMovil } from "./nav.js";
+import { iniciarTema } from "./tema.js";
+import { iniciarPerfil } from "./perfil.js";
+import { iniciarNotificaciones } from "./notificaciones.js";
+import { iniciarFotoPerfil } from "./foto-perfil.js";
+import { iniciarInformacion } from "./informacion.js";
+import { iniciarValidacionConfig } from "./validacion.js";
 
 const vista = document.getElementById("vista");
 const botones = document.querySelectorAll("[data-seccion]");
@@ -32,7 +41,14 @@ async function cargarVista(seccion) {
         iniciarCalendario();
         iniciarDetalleReservas();
         iniciarFiltro();
+        iniciarMisReservas();
         iniciarModalReserva();
+        iniciarPanelBotones();
+        iniciarModalTodasAreas();
+    } else if (seccion === "informacion") {
+        iniciarInformacion();
+    } else if (seccion === "configuracion") {
+        iniciarValidacionConfig();
     }
 }
 
@@ -40,5 +56,9 @@ botones.forEach((boton) => {
     boton.addEventListener("click", () => cargarVista(boton.dataset.seccion));
 });
 
-iniciarSidebarMovil();
+iniciarNavMovil();
+iniciarTema();
+iniciarPerfil();
+iniciarNotificaciones();
+iniciarFotoPerfil();
 cargarVista("reservaciones");

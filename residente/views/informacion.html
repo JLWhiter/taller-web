@@ -12,78 +12,218 @@
         <h4 class="subtitulo_1">Información del Condominio</h4>
         <div class="cards-grid">
 
-            <div class="card"
-                onclick="window.open('https://www.google.com/maps?q=Av.+Nicolas+Ayllon+7548+Ate+Lima', '_blank')"
-                title="Ver en Google Maps">
-                <div class="card-icono ubicacion">📍</div>
-                <h3>Ubicación <span class="badge">↗</span></h3>
+            <div class="card card-clic" id="card-ubicacion" title="Ver en Google Maps">
+                <div class="card-icono">
+                    <span class="material-symbols-outlined">location_on</span>
+                </div>
+                <h3>
+                    Ubicación
+                    <span class="badge"><span class="material-symbols-outlined">open_in_new</span></span>
+                </h3>
                 <p>Av. Nicolas Ayllon 7548</p>
                 <p>Ate, Lima - Perú</p>
                 <p>Código Postal: 15487</p>
             </div>
 
-            <div class="card" title="Información de la construccion">
-                <div class="card-icono construccion">🗓️</div>
-                <h3>Año de Construcción <span class="badge">↗</span></h3>
+            <div class="card">
+                <div class="card-icono">
+                    <span class="material-symbols-outlined">calendar_month</span>
+                </div>
+                <h3>Año de Construcción</h3>
                 <p>Inaugurado en 2010</p>
                 <p>16 años de antigüedad</p>
                 <p>Última remodelación: 2025</p>
             </div>
 
-            <div class="card" title="Ver reglamento interno">
-                <div class="card-icono datos">👥</div>
-                <h3>Datos Generales <span class="badge">📄</span></h3>
+            <div class="card">
+                <div class="card-icono">
+                    <span class="material-symbols-outlined">apartment</span>
+                </div>
+                <h3>Datos Generales</h3>
                 <p>17 Torres</p>
                 <p>544 Departamentos</p>
                 <p>150 Estacionamientos</p>
             </div>
 
-            <div class="card contacto-card" title="Contactar">
-                <div class="card-icono contacto">📞</div>
+            <div class="card contacto-card">
+                <div class="card-icono">
+                    <span class="material-symbols-outlined">call</span>
+                </div>
                 <h3>Contacto</h3>
-                <a class="link-contacto" href="tel:+5112345678">📞 +51 1 234 5678</a>
-                <a class="link-contacto" href="mailto:info@villasantaclara.com">✉️ info@villasantaclara.com</a>
+                <a class="link-contacto" href="tel:+5112345678">
+                    <span class="material-symbols-outlined">call</span>
+                    +51 1 234 5678
+                </a>
+                <a class="link-contacto" href="mailto:info@villasantaclara.com">
+                    <span class="material-symbols-outlined">mail</span>
+                    info@villasantaclara.com
+                </a>
             </div>
         </div>
     </section>
 
     <section class="seccion-info">
-        <h4 class="subtitulo_2">Junta Directiva 2026</h4>
-        <div class="cards-grid">
+        <h4 class="subtitulo_1">Horario de Atención</h4>
+        <div class="tabla-wrap">
+            <table class="tabla-horarios">
+                <thead>
+                    <tr>
+                        <th>Servicio</th>
+                        <th>Días</th>
+                        <th>Horario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Administración</td>
+                        <td>Lunes a Viernes</td>
+                        <td>9:00 a. m. – 6:00 p. m.</td>
+                    </tr>
+                    <tr>
+                        <td>Seguridad / Portería</td>
+                        <td>Todos los días</td>
+                        <td>Las 24 horas</td>
+                    </tr>
+                    <tr>
+                        <td>Áreas comunes</td>
+                        <td>Todos los días</td>
+                        <td>7:00 a. m. – 10:00 p. m.</td>
+                    </tr>
+                    <tr>
+                        <td>Mantenimiento</td>
+                        <td>Lunes a Sábado</td>
+                        <td>8:00 a. m. – 4:00 p. m.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 
-            <div class="card directivo" onclick="window.open('https://wa.me/51987654321', '_blank')"
-                title="Contactar por WhatsApp">
+    <section class="seccion-info">
+        <div class="cabecera-directiva">
+            <h4 class="subtitulo_2">Junta Directiva 2026</h4>
+            <div class="buscador-directivos-wrap">
+                <span class="material-symbols-outlined">search</span>
+                <input type="search" id="buscador-directivos" class="buscador-directivos"
+                    placeholder="Buscar por nombre o cargo...">
+            </div>
+        </div>
+
+        <div class="cards-grid" id="grid-directivos">
+
+            <div class="card directivo" data-nombre="Carlos Mendoza" data-rol="Presidente" data-telefono="51987654321">
                 <span class="rol">Presidente</span>
                 <h3>Carlos Mendoza</h3>
                 <p>+51 987 654 321</p>
-                <span class="whatsapp-badge"> WhatsApp</span>
+                <span class="whatsapp-badge">
+                    <span class="material-symbols-outlined">chat</span>
+                    WhatsApp
+                </span>
             </div>
 
-            <div class="card directivo" onclick="window.open('https://wa.me/51987654322', '_blank')"
-                title="Contactar por WhatsApp">
+            <div class="card directivo" data-nombre="Ana Rodríguez" data-rol="Vicepresidente" data-telefono="51987654322">
                 <span class="rol">Vicepresidente</span>
                 <h3>Ana Rodríguez</h3>
                 <p>+51 987 654 322</p>
-                <span class="whatsapp-badge">💬 WhatsApp</span>
+                <span class="whatsapp-badge">
+                    <span class="material-symbols-outlined">chat</span>
+                    WhatsApp
+                </span>
             </div>
 
-            <div class="card directivo" onclick="window.open('https://wa.me/51987654323', '_blank')"
-                title="Contactar por WhatsApp">
+            <div class="card directivo" data-nombre="Luis Torres" data-rol="Secretario" data-telefono="51987654323">
                 <span class="rol">Secretario</span>
                 <h3>Luis Torres</h3>
                 <p>+51 987 654 323</p>
-                <span class="whatsapp-badge">💬 WhatsApp</span>
+                <span class="whatsapp-badge">
+                    <span class="material-symbols-outlined">chat</span>
+                    WhatsApp
+                </span>
             </div>
 
-            <div class="card directivo" onclick="window.open('https://wa.me/51987654324', '_blank')"
-                title="Contactar por WhatsApp">
+            <div class="card directivo" data-nombre="María Sánchez" data-rol="Tesorero" data-telefono="51987654324">
                 <span class="rol">Tesorero</span>
                 <h3>María Sánchez</h3>
                 <p>+51 987 654 324</p>
-                <span class="whatsapp-badge">💬 WhatsApp</span>
+                <span class="whatsapp-badge">
+                    <span class="material-symbols-outlined">chat</span>
+                    WhatsApp
+                </span>
             </div>
         </div>
+
+        <p class="sin-resultados" id="sin-resultados-directivos" style="display:none;">
+            No se encontraron directivos con ese criterio de búsqueda.
+        </p>
     </section>
+
+    <section class="seccion-info">
+        <h4 class="subtitulo_1">Preguntas Frecuentes</h4>
+        <div class="acordeon" id="acordeon-faq">
+
+            <div class="acordeon-item">
+                <button class="acordeon-pregunta">
+                    <span>¿Cuál es el horario de la piscina?</span>
+                    <span class="material-symbols-outlined acordeon-icono">expand_more</span>
+                </button>
+                <div class="acordeon-respuesta">
+                    <p>La piscina está disponible de 7:00 a. m. a 8:00 p. m., todos los días, sujeta al aforo
+                        máximo permitido por seguridad.</p>
+                </div>
+            </div>
+
+            <div class="acordeon-item">
+                <button class="acordeon-pregunta">
+                    <span>¿Se permiten mascotas en las áreas comunes?</span>
+                    <span class="material-symbols-outlined acordeon-icono">expand_more</span>
+                </button>
+                <div class="acordeon-respuesta">
+                    <p>Sí, siempre que estén sujetas con correa. No está permitido su ingreso a la piscina ni a
+                        la loza deportiva durante partidos.</p>
+                </div>
+            </div>
+
+            <div class="acordeon-item">
+                <button class="acordeon-pregunta">
+                    <span>¿Cómo registro a un visitante?</span>
+                    <span class="material-symbols-outlined acordeon-icono">expand_more</span>
+                </button>
+                <div class="acordeon-respuesta">
+                    <p>Comunícate con seguridad indicando el nombre completo y DNI del visitante antes de su
+                        llegada. Próximamente esto se podrá hacer desde el sistema.</p>
+                </div>
+            </div>
+
+            <div class="acordeon-item">
+                <button class="acordeon-pregunta">
+                    <span>¿Hasta qué hora está permitido hacer ruido?</span>
+                    <span class="material-symbols-outlined acordeon-icono">expand_more</span>
+                </button>
+                <div class="acordeon-respuesta">
+                    <p>El horario de tolerancia de ruido es hasta las 11:00 p. m. de domingo a jueves, y hasta
+                        la 1:00 a. m. viernes y sábado.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!--VENTANA FLOTANTE: DETALLE DE DIRECTIVO-->
+    <div class="modal-overlay" id="modal-directivo-overlay">
+        <div class="modal-directivo">
+            <button class="modal-directivo-cerrar" id="modal-directivo-cerrar" aria-label="Cerrar">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <div class="modal-directivo-avatar" id="modal-directivo-avatar"></div>
+            <span class="rol" id="modal-directivo-rol"></span>
+            <h3 id="modal-directivo-nombre"></h3>
+            <p id="modal-directivo-telefono"></p>
+            <a class="modal-directivo-whatsapp" id="modal-directivo-whatsapp" target="_blank">
+                <span class="material-symbols-outlined">chat</span>
+                Contactar por WhatsApp
+            </a>
+        </div>
+    </div>
 </body>
 
 </html>
