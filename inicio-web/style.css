@@ -161,6 +161,8 @@ body.sin-scroll {
   align-items: center;
   border-bottom: 1px solid transparent;
   transition: background 0.4s, border-color 0.4s;
+  background-color: rgba(255, 255, 255, 0.589);
+  
 }
 
 #navbar.activa {
@@ -184,7 +186,7 @@ body.sin-scroll {
   font-family: 'Cormorant Garamond', serif;
   font-size: 21px;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #000000;
   transition: color 0.4s;
   white-space: nowrap;
 }
@@ -203,7 +205,7 @@ body.sin-scroll {
 .nav-menu a {
   font-size: 14px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(0, 0, 0, 0.88);
   transition: color 0.3s;
   white-space: nowrap;
 }
@@ -217,8 +219,8 @@ body.sin-scroll {
 }
 
 #navbar .btn-oscuro {
-  background-color: #FFFFFF;
-  color: #1C1B19;
+  background-color: #000000;
+  color: #ffffff;
   box-shadow: none;
   white-space: nowrap;
 }
